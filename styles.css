@@ -1228,6 +1228,19 @@ strong {
 }
 
 @media (max-width: 768px) {
+    .hero {
+        min-height: auto;
+        padding: var(--space-4xl) 0 var(--space-3xl);
+    }
+    
+    .hero-container {
+        gap: var(--space-2xl);
+    }
+    
+    .hero-image {
+        display: none;
+    }
+    
     .nav-links {
         display: none;
     }
