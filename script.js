@@ -303,6 +303,17 @@ function initPasswordGate() {
         pendingHref = null;
     };
 
+    // If the user is already on a protected page and cancels, redirect away
+    const dismiss = () => {
+        const isCaseStudyPage = location.pathname.includes('case-study-');
+        const lockedInPlace = isCaseStudyPage && !pendingHref;
+        if (lockedInPlace) {
+            window.location.href = 'index.html';
+            return;
+        }
+        closeModal();
+    };
+
     const grantAccess = () => {
         if (pendingHref && !isSamePage(pendingHref)) {
             window.location.href = pendingHref;
@@ -335,13 +346,13 @@ function initPasswordGate() {
     }
 
     submitBtn.addEventListener('click', validate);
-    cancelBtn.addEventListener('click', closeModal);
+    cancelBtn.addEventListener('click', dismiss);
     input.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') validate();
-        if (e.key === 'Escape') closeModal();
+        if (e.key === 'Escape') dismiss();
     });
     modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
+        if (e.target === modal) dismiss();
     });
 }
 
