@@ -303,12 +303,19 @@ function initPasswordGate() {
         pendingHref = null;
     };
 
+    const requirePassword = () => {
+        error.textContent = 'Password required to view this page.';
+        error.style.display = 'block';
+        input.focus();
+    };
+
     // If the user is already on a protected page and cancels, redirect away
     const dismiss = () => {
         const isCaseStudyPage = location.pathname.includes('case-study-');
         const lockedInPlace = isCaseStudyPage && !pendingHref;
         if (lockedInPlace) {
-            window.location.href = 'index.html';
+            // Stay on the modal; do not allow dismiss without password
+            requirePassword();
             return;
         }
         closeModal();
