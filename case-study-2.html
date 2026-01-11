@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merged: Unified B2B/B2C Health App | Vani Balasundaram</title>
+    <meta http-equiv="refresh" content="0; url=case-study-1.html">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="case-study.css">
+</head>
+<body>
+    <noscript>
+        <div style="padding:16px;background:#FFF4E6;color:#663C00;text-align:center;">
+            This case study was merged into the identity accuracy onboarding story. Please visit
+            <a href="case-study-1.html">case-study-1.html</a>.
+        </div>
+    </noscript>
+
+    <!-- Password Modal -->
+    <div class="password-modal" id="password-modal" aria-hidden="true">
+        <div class="modal-card">
+            <div>
+                <h3>Enter password</h3>
+                <p>Please enter the password to view this case study.</p>
+            </div>
+            <input type="password" id="password-input" placeholder="Password" aria-label="Password">
+            <div class="error" id="password-error" style="display:none;">Incorrect password. Try again.</div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="password-cancel">Cancel</button>
+                <button class="btn btn-primary" id="password-submit">Continue</button>
+            </div>
+        </div>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">VANI</a>
+            <div class="nav-links">
+                <a href="index.html#case-studies">Work</a>
+                <a href="index.html#experience">Experience</a>
+                <a href="ai-practices.html">AI Practices</a>
+                <a href="about.html">About</a>
+                <a href="contact.html" class="nav-cta">Let's Talk</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-links">
+            <a href="index.html#case-studies">Work</a>
+            <a href="index.html#experience">Experience</a>
+            <a href="ai-practices.html">AI Practices</a>
+            <a href="about.html">About</a>
+            <a href="contact.html" class="nav-cta">Let's Talk</a>
+        </div>
+    </div>
+
+    <!-- Case Study Hero -->
+    <section class="cs-hero">
+        <div class="cs-hero-container">
+            <a href="index.html#case-studies" class="cs-back-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Work
+            </a>
+            
+            <div class="cs-hero-content">
+                <div class="cs-tags">
+                    <span class="tag">Mobile App</span>
+                    <span class="tag">Super App</span>
+                    <span class="tag">Healthcare</span>
+                </div>
+                <h1>Telehealth to super app transformation</h1>
+                <p class="cs-hero-description">
+                    Led the strategic redesign transforming a single-purpose telehealth app into a 
+                    comprehensive healthcare super app ecosystem, dramatically increasing user 
+                    retention and feature adoption.
+                </p>
+                
+                <div class="cs-meta">
+                    <div class="cs-meta-item">
+                        <span class="cs-meta-label">Role</span>
+                        <span class="cs-meta-value">Senior Product Designer</span>
+                    </div>
+                    <div class="cs-meta-item">
+                        <span class="cs-meta-label">Timeline</span>
+                        <span class="cs-meta-value">8 months</span>
+                    </div>
+                    <div class="cs-meta-item">
+                        <span class="cs-meta-label">Team</span>
+                        <span class="cs-meta-value">3 Designers, 8 Engineers, 2 PMs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Image -->
+    <section class="cs-hero-image">
+        <div class="cs-image-container">
+            <div class="cs-image-placeholder">
+                <span>Project Hero Image</span>
+                <p>Add your project mockups or screenshots here</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Metrics -->
+    <section class="cs-metrics">
+        <div class="cs-container">
+            <div class="cs-metrics-grid">
+                <div class="cs-metric">
+                    <span class="cs-metric-value">+46%</span>
+                    <span class="cs-metric-label">User retention</span>
+                </div>
+                <div class="cs-metric">
+                    <span class="cs-metric-value">3x</span>
+                    <span class="cs-metric-label">Feature adoption</span>
+                </div>
+                <div class="cs-metric">
+                    <span class="cs-metric-value">+120%</span>
+                    <span class="cs-metric-label">Monthly active users</span>
+                </div>
+                <div class="cs-metric">
+                    <span class="cs-metric-value">8+</span>
+                    <span class="cs-metric-label">Services integrated</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="cs-section">
+        <div class="cs-container">
+            <div class="cs-section-header">
+                <span class="cs-section-number">01</span>
+                <h2>Overview</h2>
+            </div>
+            <div class="cs-content-grid">
+                <div class="cs-content-main">
+                    <h3>The challenge</h3>
+                    <p>
+                        Doctor Anywhere started as a telehealth consultation app, but as the company 
+                        expanded its services, the app became fragmented with multiple standalone features 
+                        that didn't work together cohesively.
+                    </p>
+                    <p>
+                        Users were confused about the full range of services available, leading to 
+                        low discovery of new features and missed opportunities for cross-selling.
+                    </p>
+                    
+                    <h3>The goal</h3>
+                    <p>
+                        Transform the app into a unified healthcare super app that seamlessly connects 
+                        all services—teleconsultation, pharmacy, insurance, wellness programs, and 
+                        corporate benefits—into one cohesive experience.
+                    </p>
+                </div>
+                <div class="cs-content-sidebar">
+                    <div class="cs-sidebar-card">
+                        <h4>Services integrated</h4>
+                        <ul>
+                            <li>Teleconsultation</li>
+                            <li>E-Pharmacy</li>
+                            <li>Health Insurance</li>
+                            <li>Wellness Programs</li>
+                            <li>Lab Tests</li>
+                            <li>Mental Health</li>
+                            <li>Corporate Benefits</li>
+                            <li>Health Records</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research -->
+    <section class="cs-section cs-section-alt">
+        <div class="cs-container">
+            <div class="cs-section-header">
+                <span class="cs-section-number">02</span>
+                <h2>Research & strategy</h2>
+            </div>
+            <div class="cs-content-full">
+                <h3>Competitive analysis</h3>
+                <p>
+                    I analyzed successful super apps across different industries (WeChat, Grab, Gojek) 
+                    to understand patterns that make super apps successful while maintaining usability.
+                </p>
+            </div>
+            
+            <div class="cs-insights-grid">
+                <div class="cs-insight-card">
+                    <div class="cs-insight-icon">🎯</div>
+                    <h4>Core insight #1</h4>
+                    <p>Users want a single app for related services, but with clear separation between them</p>
+                </div>
+                <div class="cs-insight-card">
+                    <div class="cs-insight-icon">🔗</div>
+                    <h4>Core insight #2</h4>
+                    <p>Smart cross-linking between services increases discovery without feeling intrusive</p>
+                </div>
+                <div class="cs-insight-card">
+                    <div class="cs-insight-icon">📱</div>
+                    <h4>Core insight #3</h4>
+                    <p>Personalization is key—show relevant services based on user history and context</p>
+                </div>
+            </div>
+            
+            <div class="cs-image-block">
+                <div class="cs-image-placeholder">
+                    <span>Competitive Analysis & User Journey Maps</span>
+                    <p>Research documentation and insights</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution -->
+    <section class="cs-section">
+        <div class="cs-container">
+            <div class="cs-section-header">
+                <span class="cs-section-number">03</span>
+                <h2>The solution</h2>
+            </div>
+            
+            <div class="cs-feature">
+                <div class="cs-feature-content">
+                    <h3>Unified home experience</h3>
+                    <p>
+                        Designed a new home screen that serves as a health dashboard, surfacing 
+                        all services while prioritizing based on user context and history.
+                    </p>
+                    <ul class="cs-feature-list">
+                        <li>Personalized service recommendations</li>
+                        <li>Quick actions for frequent tasks</li>
+                        <li>Health insights and reminders</li>
+                    </ul>
+                </div>
+                <div class="cs-feature-image">
+                    <div class="cs-image-placeholder">
+                        <span>Home Screen Design</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cs-feature cs-feature-reverse">
+                <div class="cs-feature-content">
+                    <h3>Connected service flows</h3>
+                    <p>
+                        Created seamless transitions between services. After a consultation, 
+                        users can easily order prescribed medications, book follow-up tests, 
+                        or file insurance claims.
+                    </p>
+                    <ul class="cs-feature-list">
+                        <li>Post-consultation action cards</li>
+                        <li>One-tap prescription ordering</li>
+                        <li>Integrated health records</li>
+                    </ul>
+                </div>
+                <div class="cs-feature-image">
+                    <div class="cs-image-placeholder">
+                        <span>Connected Flows</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cs-feature">
+                <div class="cs-feature-content">
+                    <h3>Smart navigation system</h3>
+                    <p>
+                        Developed a modular navigation that adapts based on user type 
+                        (individual vs. corporate) and most-used services.
+                    </p>
+                    <ul class="cs-feature-list">
+                        <li>Customizable bottom navigation</li>
+                        <li>Contextual shortcuts</li>
+                        <li>Universal search across all services</li>
+                    </ul>
+                </div>
+                <div class="cs-feature-image">
+                    <div class="cs-image-placeholder">
+                        <span>Navigation System</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section class="cs-section cs-section-alt">
+        <div class="cs-container">
+            <div class="cs-section-header">
+                <span class="cs-section-number">04</span>
+                <h2>Results & impact</h2>
+            </div>
+            
+            <div class="cs-results-grid">
+                <div class="cs-result-card">
+                    <span class="cs-result-value">+46%</span>
+                    <span class="cs-result-label">User retention</span>
+                    <p>30-day retention improved significantly post-launch</p>
+                </div>
+                <div class="cs-result-card">
+                    <span class="cs-result-value">3x</span>
+                    <span class="cs-result-label">Feature adoption</span>
+                    <p>Users now engage with 3x more services on average</p>
+                </div>
+                <div class="cs-result-card">
+                    <span class="cs-result-value">+120%</span>
+                    <span class="cs-result-label">MAU growth</span>
+                    <p>Monthly active users doubled within 6 months</p>
+                </div>
+            </div>
+            
+            <div class="cs-testimonial">
+                <blockquote>
+                    "The super app transformation has been a game-changer for our business. 
+                    Users are now discovering and using services they never knew we offered, 
+                    and our cross-sell metrics have exceeded all expectations."
+                </blockquote>
+                <cite>
+                    <strong>Chief Product Officer</strong>
+                    <span>Doctor Anywhere</span>
+                </cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learnings -->
+    <section class="cs-section">
+        <div class="cs-container">
+            <div class="cs-section-header">
+                <span class="cs-section-number">05</span>
+                <h2>Key learnings</h2>
+            </div>
+            <div class="cs-learnings-grid">
+                <div class="cs-learning-card">
+                    <h4>Progressive complexity</h4>
+                    <p>
+                        Super apps work best when they start simple and reveal complexity 
+                        progressively as users explore and engage more deeply.
+                    </p>
+                </div>
+                <div class="cs-learning-card">
+                    <h4>Connected, not cluttered</h4>
+                    <p>
+                        The key to super app success is smart connections between services, 
+                        not cramming everything onto one screen.
+                    </p>
+                </div>
+                <div class="cs-learning-card">
+                    <h4>Context is king</h4>
+                    <p>
+                        Showing the right service at the right time (like pharmacy after 
+                        consultation) drives adoption better than generic promotions.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Project -->
+    <section class="cs-next-project">
+        <div class="cs-container">
+            <span class="cs-next-label">Next Project</span>
+            <a href="case-study-3.html" class="cs-next-link">
+                <h2>Direct Apply — University applications</h2>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">VANI</a>
+                    <p class="footer-tagline">Crafting meaningful digital experiences with empathy and strategy.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <a href="index.html">Home</a>
+                        <a href="index.html#case-studies">Work</a>
+                        <a href="index.html#experience">Experience</a>
+                        <a href="ai-practices.html">AI Practices</a>
+                        <a href="about.html">About</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Case Studies</h4>
+                        <a href="case-study-1.html">Redesigning Onboarding to Improve Identity Accuracy</a>
+                        <a href="case-study-3.html">Direct Apply</a>
+                        <a href="case-study-4.html">Gravity Storybook</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+                        <a href="https://dribbble.com" target="_blank" rel="noopener">Dribbble</a>
+                        <a href="mailto:hello@vanidesign.com">Email</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Vani Balasundaram. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="https://dribbble.com" target="_blank" rel="noopener" aria-label="Dribbble">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 24C5.385 24 0 18.615 0 12S5.385 0 12 0s12 5.385 12 12-5.385 12-12 12zm10.12-10.358c-.35-.11-3.17-.953-6.384-.438 1.34 3.684 1.887 6.684 1.992 7.308 2.3-1.555 3.936-4.02 4.395-6.87zm-6.115 7.808c-.153-.9-.75-4.032-2.19-7.77l-.066.02c-5.79 2.015-7.86 6.025-8.04 6.4 1.73 1.358 3.92 2.166 6.29 2.166 1.42 0 2.77-.29 4-.814zm-11.62-2.58c.232-.4 3.045-5.055 8.332-6.765.135-.045.27-.084.405-.12-.26-.585-.54-1.167-.832-1.74C7.17 11.775 2.206 11.71 1.756 11.7l-.004.312c0 2.633.998 5.037 2.634 6.855zm-2.42-8.955c.46.008 4.683.026 9.477-1.248-1.698-3.018-3.53-5.558-3.8-5.928-2.868 1.35-5.01 3.99-5.676 7.17zM9.6 2.052c.282.38 2.145 2.914 3.822 6 3.645-1.365 5.19-3.44 5.373-3.702-1.81-1.61-4.19-2.586-6.795-2.586-.825 0-1.63.1-2.4.285zm10.335 3.483c-.218.29-1.935 2.493-5.724 4.04.24.49.47.985.68 1.486.08.18.15.36.22.53 3.41-.43 6.8.26 7.14.33-.02-2.42-.88-4.64-2.31-6.38z"/>
+                        </svg>
+                    </a>
+                    <a href="mailto:hello@vanidesign.com" aria-label="Email">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
