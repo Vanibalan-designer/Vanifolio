@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll();
     initCursor();
     initPasswordGate();
+    initImageLightbox();
 });
 
 // ===================================
@@ -119,12 +120,73 @@ function initSmoothScroll() {
 
             if (target) {
                 const offsetTop = target.offsetTop - 100;
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
+                const start = window.pageYOffset;
+                const distance = offsetTop - start;
+                const duration = 420;
+                let startTime = null;
+
+                const easeInOut = (t) =>
+                    t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+
+                const step = (timestamp) => {
+                    if (!startTime) startTime = timestamp;
+                    const progress = Math.min((timestamp - startTime) / duration, 1);
+                    window.scrollTo(0, start + distance * easeInOut(progress));
+                    if (progress < 1) requestAnimationFrame(step);
+                };
+
+                requestAnimationFrame(step);
             }
         });
+    });
+}
+
+// ===================================
+// Image Lightbox (Case Studies)
+// ===================================
+function initImageLightbox() {
+    const images = document.querySelectorAll(
+        '.cs-image-placeholder img, .cs-content-full img'
+    );
+
+    if (!images.length) return;
+
+    const lightbox = document.createElement('div');
+    lightbox.className = 'cs-lightbox';
+    lightbox.innerHTML = `
+        <button type="button" aria-label="Close image">×</button>
+        <img src="" alt="">
+    `;
+    document.body.appendChild(lightbox);
+
+    const lightboxImg = lightbox.querySelector('img');
+    const closeBtn = lightbox.querySelector('button');
+
+    const open = (img) => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt || '';
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
+
+    const close = () => {
+        lightbox.classList.remove('active');
+        lightboxImg.src = '';
+        document.body.style.overflow = '';
+    };
+
+    images.forEach((img) => {
+        img.addEventListener('click', () => open(img));
+    });
+
+    closeBtn.addEventListener('click', close);
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) close();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            close();
+        }
     });
 }
 

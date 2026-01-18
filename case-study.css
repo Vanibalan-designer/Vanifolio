@@ -114,6 +114,15 @@
     height: 100%;
     object-fit: contain;
     display: block;
+    cursor: zoom-in;
+}
+
+.cs-image-placeholder.is-wide {
+    min-height: 360px;
+}
+
+.cs-image-placeholder.is-wide img {
+    object-fit: cover;
 }
 
 .cs-placeholder-caption {
@@ -137,6 +146,115 @@
 .cs-placeholder-caption p {
     font-size: 0.9rem;
     color: var(--color-gray-600);
+}
+
+/* Quick Navigation */
+.cs-page {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--space-xl);
+    display: grid;
+    grid-template-columns: minmax(180px, 220px) 1fr;
+    gap: var(--space-3xl);
+    align-items: start;
+}
+
+.cs-quick-nav {
+    position: sticky;
+    top: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-100);
+    box-shadow: var(--shadow-sm);
+}
+
+.cs-quick-nav h3 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-gray-500);
+}
+
+.cs-quick-nav a {
+    font-size: 0.9rem;
+    color: var(--color-gray-700);
+    transition: color var(--transition-fast);
+}
+
+.cs-quick-nav a:hover {
+    color: var(--color-primary);
+}
+
+/* Lightbox */
+.cs-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-base);
+    z-index: 2000;
+    padding: var(--space-xl);
+}
+
+.cs-lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.cs-lightbox img {
+    max-width: 92vw;
+    max-height: 92vh;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+}
+
+.cs-lightbox button {
+    position: absolute;
+    top: var(--space-lg);
+    right: var(--space-lg);
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--color-white);
+    font-size: 1.5rem;
+    line-height: 1;
+    display: grid;
+    place-items: center;
+}
+
+.cs-lightbox button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 1024px) {
+    .cs-page {
+        grid-template-columns: 1fr;
+    }
+
+    .cs-quick-nav {
+        position: static;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 768px) {
+    .cs-quick-nav {
+        display: none;
+    }
+
+    .cs-image-placeholder.is-wide {
+        min-height: 220px;
+    }
 }
 
 /* Metrics Section */
