@@ -122,17 +122,8 @@
         <aside class="cs-quick-nav" aria-label="Case study quick navigation">
             <h3>Quick links</h3>
             <a href="#background">Background</a>
-            <a href="#problem">Core problem</a>
-            <a href="#phase-1">Phase 1</a>
-            <a href="#reframe">Reframing</a>
-            <a href="#role">My role</a>
-            <a href="#iterations">Iterations</a>
-            <a href="#phase-2">Phase 2</a>
-            <a href="#singpass">Why Singpass</a>
-            <a href="#outcomes">Outcomes</a>
-            <a href="#onboarding">Onboarding</a>
-            <a href="#impact">Impact</a>
-            <a href="#learnings">Key learnings</a>
+            <a href="#process">Process</a>
+            <a href="#outcome">Outcome</a>
         </aside>
         <div class="cs-content">
 
@@ -141,189 +132,62 @@
         <div class="cs-container">
             <div class="cs-section-header">
                 <span class="cs-section-number">01</span>
-                <h2>Background & context</h2>
+                <h2>Background</h2>
             </div>
-            <div class="cs-content-grid">
-                <div class="cs-content-main">
-                    <h3>Background & Context</h3>
-                    <p>
-                        When I joined Doctor Anywhere in 2023, the product ecosystem consisted of multiple apps serving
-                        different user groups: a core teleconsultation app for public users, multiple white-label apps
-                        for employee benefits users tied to insurers, and separate flows and identities across apps.
-                    </p>
-                    <p>
-                        As the business grew, maintaining many apps became inefficient. Product team chose to consolidate
-                        into a single app, making onboarding the mechanism to serve all user groups while meeting MOH
-                        compliance. This decision dramatically raised the responsibility of onboarding and it happened incrementally.
-                    </p>
-                    <div class="cs-image-block" style="margin-top: var(--space-lg);">
-                        <div class="cs-image-placeholder is-wide">
-                            <img src="images/Case study 1/Case_study_1_product eco system.jpg" alt="Product ecosystem overview" loading="lazy">
-                            <div class="cs-placeholder-caption">
-                                <span>Product ecosystem</span>
-                                <p>Where multiple user groups enter</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cs-content-sidebar">
-                    <div class="cs-sidebar-card">
-                        <h4>Project facts</h4>
-                        <ul>
-                            <li><strong>Company:</strong> Doctor Anywhere</li>
-                            <li><strong>Timeline:</strong> ~1 year</li>
-                            <li><strong>Role:</strong> Senior Product Designer</li>
-                            <li><strong>Scope:</strong> Onboarding, Login, Identity, KYC, Membership Linking</li>
-                            <li><strong>Teams:</strong> Onboarding, Patients, Engineering, Product, Compliance, Leadership</li>
-                        </ul>
+            <div class="cs-content-full">
+                <p>
+                    When I joined Doctor Anywhere in 2023, the product wasn’t a single app but an ecosystem. Public users accessed teleconsultations through the main app, while employee benefits users came in through multiple white-label apps tied to insurers. Identity, login methods, and memberships lived in different systems. As the business scaled, this setup became hard to maintain, and the decision was made to consolidate everything into one app. Onboarding became the critical layer responsible for serving public users, corporate members, and Direct VC users — while also meeting Singapore MOH compliance. This shift happened incrementally, and with each step, onboarding carried more responsibility than before.
+                </p>
+            </div>
+            <div class="cs-visuals">
+                <div class="cs-visual">
+                    <img src="images/Case study 1/Case_study_1_product eco system.jpg" alt="Product ecosystem overview" loading="lazy">
+                    <div class="cs-visual-caption">
+                        <span>Product ecosystem</span>
+                        <p>Where multiple user groups enter</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    
-
-    <!-- Problem Statement -->
-    <section id="problem" class="cs-section cs-section-alt">
+    <!-- Process -->
+    <section id="process" class="cs-section">
         <div class="cs-container">
             <div class="cs-section-header">
                 <span class="cs-section-number">02</span>
-                <h2>The core problem</h2>
+                <h2>Process</h2>
             </div>
             <div class="cs-content-full">
                 <p>
-                    Onboarding needed to handle multiple responsibilities at once: allow users to sign up and log in,
-                    identify user type (B2C, B2B employee benefits, Direct VC users), capture personal details
-                    accurately, ensure compliance with MOH requirements, and enable successful downstream experiences
-                    (consultations, benefits access). In practice, these responsibilities were closely linked and failures emerged late in the process.
-                    <img src="images/Case study 1/chatgpt users.png" alt="Phase 1 onboarding map" loading="lazy">
-                    
+                    Phase 1 focused on consolidation. We introduced separate entry points for different user types, added KYC before consultations, and shipped flows that were functionally complete. Usability tests passed and users moved forward, but real usage revealed deeper issues: users entered the wrong flows, benefits failed to appear, consultations broke due to incorrect personal details, and operations teams stepped in to fix identity gaps manually. The core issue wasn’t usability — it was confidence. We allowed users to progress before the system truly knew who they were. I reframed the problem from “how do we help users move faster” to “how can the system confidently understand identity early.” This led to an identity-first pivot: a single entry point for all users, earlier identity verification (with Singpass as a trusted source), and memberships or benefits attaching only after identity was confirmed. Much of the work involved aligning engineering, product, compliance, and insurers — balancing user experience with MOH standards, operational realities, and long-term scalability.
                 </p>
             </div>
-        </div>
-    </section>
-
-    <!-- Design Challenges -->
-    <section id="phase-1" class="cs-section">
-        <div class="cs-container">
-            <div class="cs-section-header">
-                <span class="cs-section-number">03</span>
-                <h2>Phase 1: Launched to consolidate the onboarding flow</h2>
-            </div>
-            <div class="cs-content-full">
-                <h3>What Phase 1 looked like</h3>
-                <p>
-                    In Phase 1, onboarding introduced separate entry points for public and corporate users, corporate
-                    sign-up flows requiring insurer-linked information, and KYC completion before first teleconsultation.
-                        From a UI perspective, the flows were complete and functional.
-                </p>
-                    <div class="cs-image-block" style="margin-top: var(--space-lg);">
-                        <div class="cs-image-placeholder is-wide">
-                            
-                            <img src="images/Case study 1/ChatGPT Image Jan 4, 2026, 10_03_46 AM.png" alt="Phase 1 onboarding map" loading="lazy">
-                            <div class="cs-placeholder-caption">
-                                <span>Phase 1 map</span>
-                                <p>Separate entry points before pivot</p>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-
-            <div class="cs-content-full" style="margin-top: var(--space-2xl);">
-                <h3>What we observed after launch</h3>
-                <p>
-                    After release, issues surfaced across multiple teams. One major signal: of 187K users, about 100K struggled to find or link their membership, revealing how the combined flows were confusing the majority of our base.
-                </p>
-                <ul class="cs-feature-list" style="margin-top: var(--space-md);">
-                    <li><strong>Onboarding:</strong> Public users accidentally using corporate flows; corporate users signing up via public flows; users unable to locate their benefits after login.</li>
-                    <li><strong>Patients:</strong> Consultations failing because personal details were incorrect; doctors unable to proceed due to mismatched identity information.</li>
-                    <li><strong>Compliance/Ops:</strong> Stored user data not meeting MOH standards; increased manual intervention and escalations.</li>
-                </ul>
-                <p style="margin-top: var(--space-lg);">
-                    Each team experienced the problem differently, but the root cause was the same: we allowed users to
-                    progress without being sure who they were. The onboarding flow was optimized for progress, not confidence.
-                    
-                </p>    
-            </div>
-        </div>
-    </section>
-
-    <!-- Research -->
-    <section id="reframe" class="cs-section cs-section-alt">
-        <div class="cs-container">
-            <div class="cs-section-header">
-                <span class="cs-section-number">04</span>
-                <h2>Reframing the problem</h2>
-            </div>
-            <div class="cs-content-full">
-                <h3>From speed to confidence</h3>
-                <div class="cs-insight-card" style="margin-bottom: var(--space-lg); text-align: center;">
-                    <h4>Key problem statement</h4>
-                    <p>As a senior product designer, I reframed the problem:</p>
-                    <div class="cs-highlight-block">
-                        <div><strong>Old focus:</strong> How do we help users sign up faster?</div>
-                        <div><strong>New focus:</strong> How can the system confidently understand who the user is early in the journey?</div>
+            <div class="cs-visuals">
+                <div class="cs-visual">
+                    <img src="images/Case study 1/ChatGPT Image Jan 4, 2026, 10_03_46 AM.png" alt="Phase 1 onboarding map" loading="lazy">
+                    <div class="cs-visual-caption">
+                        <span>Phase 1 map</span>
+                        <p>Separate entry points before pivot</p>
                     </div>
                 </div>
-                <h3 style="margin-top: var(--space-xl);">How we shifted the problem</h3>
-                <p>
-                    We untangled who was arriving: public users, corporate members, and direct consult users. In Phase 1, the flows shipped and usability tests passed, but real usage exposed identity gaps during consults and benefits—issues the tests missed.
-                </p>
-                <p>
-                    The pivot was identity-first: verify early so care and benefits rely on trusted data. Only after identity was confirmed did memberships or corporate access attach; sequence mattered more than polishing UI.
-                </p>
-                <p>
-                    The hardest part was alignment. Working with personal data meant meeting MOH standards with zero trial-and-error. We had to protect the experience while holding the line on data confidence for compliance, operations, and the business.
-                </p>
-                <div class="cs-image-block" style="margin-top: var(--space-xl);">
-                    <div class="cs-image-placeholder is-wide">
-                        <img src="images/Case study 1/Case_study_1_problem statement.jpg" alt="Identity-first pivot overview" loading="lazy">
-                       
-                        <div class="cs-placeholder-caption">
-                            <span>Pain points from phase 1</span>
-                        
-                        </div>
+                <div class="cs-visual">
+                    <img src="images/Case study 1/chatgpt users.png" alt="Onboarding map details" loading="lazy">
+                    <div class="cs-visual-caption">
+                        <span>Onboarding map</span>
+                        <p>Where identity gaps surfaced</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="role" class="cs-section cs-section-alt">
-        <div class="cs-container">
-            <div class="cs-section-header">
-                <span class="cs-section-number">05</span>
-                <h2>My role</h2>
-            </div>
-            <div class="cs-content-full">
-                <p>
-                    We identified where onboarding broke down across journeys and mapped failure points. I partnered with product managers, engineering, and compliance to address Singpass constraints and MOH data requirements. I led B2C, B2B, payer, and patient onboarding, driving the identity‑first strategy to ensure the experience was seamless, trusted, and compliant.
-                    <br>This work required balancing speed with correctness, protecting the experience while holding the line on data confidence, and ensuring the onboarding flow was scalable for future user groups.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process Glimpse -->
-    <section id="iterations" class="cs-section">
-        <div class="cs-container">
-            <div class="cs-section-header">
-                <span class="cs-section-number">Process</span>
-                <h2>Our iterations</h2>
-            </div>
-            <div class="cs-content-full">
-                <p>
-                    Taking ownership of each cycle, I worked closely with product managers, engineering, and compliance to navigate Singpass limitations and MOH data standards. The hardest part wasn’t the design itself, but convincing insurers to accept changes. Insurers are notoriously resistant to shifting processes, so alignment required persistence, framing the pivot as essential for compliance, operations, and long‑term business sustainability.
-
-Ultimately, the identity‑first approach became the backbone of onboarding across B2C, B2B, payer, and patient journeys — a strategy built not just on design, but on iteration, negotiation, and stakeholder trust.
-                </p>
-            </div>
-            <div class="cs-image-block">
-                <div class="cs-image-placeholder is-wide">
-                    <img src="images/Case study 1/Case_study_1_process.jpg" alt="Process snapshot placeholder" loading="lazy">
-                    <div class="cs-placeholder-caption">
-                        <span>Our decisions</span>
+                <div class="cs-visual">
+                    <img src="images/Case study 1/Case_study_1_problem statement.jpg" alt="Identity-first pivot overview" loading="lazy">
+                    <div class="cs-visual-caption">
+                        <span>Pain points from phase 1</span>
+                    </div>
+                </div>
+                <div class="cs-visual">
+                    <img src="images/Case study 1/Case_study_1_process.jpg" alt="Identity-first onboarding flow" loading="lazy">
+                    <div class="cs-visual-caption">
+                        <span>Process snapshot</span>
                         <p>Identity-first flow at a glance</p>
                     </div>
                 </div>
@@ -331,184 +195,18 @@ Ultimately, the identity‑first approach became the backbone of onboarding acro
         </div>
     </section>
 
-    <!-- Solution -->
-    <section id="phase-2" class="cs-section">
+    <!-- Outcome -->
+    <section id="outcome" class="cs-section">
         <div class="cs-container">
             <div class="cs-section-header">
-                <span class="cs-section-number">06</span>
-                <h2>Phase 2: identity-first onboarding</h2>
-            </div>
-            
-            <div class="cs-content-full">
-                <p>
-                    After carefully captured the user needs and constraints, We started of with Phase 2 which was guided by three principles: reduce early decision-making, verify identity earlier, and
-                    separate identity from access.
-                </p>
-            </div>
-            
-            <div class="cs-feature">
-                <div class="cs-feature-content">
-                    <h3>1. Single sign up entry</h3>
-                    <p>One sign-up entry point for all users. No one has to pick B2C, B2B, or Direct VC upfront.</p>
-                    <ul class="cs-feature-list">
-                        <li>One entry for B2C, B2B, and Direct VC users</li>
-                        <li>Removes early self-classification</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="cs-feature cs-feature-reverse">
-                <div class="cs-feature-content">
-                    <h3>2. Mandatory Identity Verification</h3>
-                    <p>Singpass is highly recommended; manual entry stays with clearer guidance. Verification moved earlier.</p>
-                    <ul class="cs-feature-list">
-                        <li>Government-verified personal data</li>
-                        <li>Manual entry available with guidance</li>
-                        <li>Verification before users use for consultation or benefits</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="cs-feature">
-                <div class="cs-feature-content">
-                    <h3>3. Contextual Membership Linking</h3>
-                    <p>Only after identity is confirmed do users link employee benefits, connect Direct VC, or continue as public.</p>
-                    <ul class="cs-feature-list">
-                        <li>Benefits and memberships attach post-verification</li>
-                        <li>Reduces accidental misuse of corporate flows</li>
-                        <li>Improves membership discovery</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Design System -->
-    <section id="singpass" class="cs-section" style="padding-bottom: var(--space-lg); margin-bottom: 0;">
-        <div class="cs-container">
-            <div class="cs-section-header">
-                <span class="cs-section-number">07</span>
-                <h2>Why Singpass</h2>
-            </div>
-            <div class="cs-content-full">
-                <h3>Why Singpass entered the solution space</h3>
-                <p>
-                    We chose Singpass for government-verified data to cut manual entry and satisfy MOH requirements. The design work focused on when to verify, how strongly to require it, and balancing speed with correctness without adding friction.
-                </p>
-            </div>
-        </div>
-    </section>
-            
-
-    <!-- Breaking Barriers -->
-    
-
-    <!-- Final Design -->
-    <section id="outcomes" class="cs-section">
-        <div class="cs-container">
-            <div class="cs-section-header">
-                <span class="cs-section-number">08</span>
-                <h2>Outcomes</h2>
-            </div>
-            <div class="cs-content-full">
-                <h3>Key outcome summary</h3>
-                <p>
-                    Phase 1 consolidated multiple apps into a single app but diluted the quality of personal details. Phase 2 adds verification so the right care reaches the right audience, with onboarding as the crucial moment that sets data quality and shapes the full app experience.
-                </p>
-                <h3>Outcomes (Qualitative)</h3>
-                <p>
-                    While metrics evolved over time, Phase 2 resulted in improved accuracy of stored personal data,
-                    fewer failed consultations due to identity issues, reduced confusion between user types, better
-                    alignment between onboarding and patient workflows, and a more scalable foundation for future user
-                    groups.
-                </p>
-                <ul class="cs-feature-list" style="margin-top: var(--space-md);">
-                    <li>Improved accuracy of stored personal data</li>
-                    <li>Fewer failed consultations due to identity issues</li>
-                    <li>Reduced confusion between user types</li>
-                    <li>Better alignment between onboarding and patient workflows</li>
-                    <li>A more scalable foundation for future user groups</li>
-                </ul>
-            </div>
-
-            <div class="cs-image-block">
-                <div class="cs-image-placeholder is-wide">
-                    <img src="images/Case study 1/Case_study_1_Outcome.jpg" alt="Identity states placeholder" loading="lazy">
-                    <div class="cs-placeholder-caption">
-                        <span>Identity states</span>
-                        <p>Clarity on verified vs manual paths</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cs-image-block">
-                <div class="cs-image-placeholder is-wide">
-                    <img src="images/Case study 1/Case_study_1_membershiplinking.jpg" alt="Onboarding shifts placeholder" loading="lazy">
-                    <div class="cs-placeholder-caption">
-                        <span>Onboarding shifts</span>
-                        <p>Earlier verification, later membership linking</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Mockups -->
-    <section id="onboarding" class="cs-section cs-section-alt">
-        <div class="cs-container">
-            <div class="cs-section-header">
-                <span class="cs-section-number"></span>
-                <h2>Onbaording Experience</h2>
+                <span class="cs-section-number">03</span>
+                <h2>Outcome</h2>
             </div>
             <div class="cs-content-full">
                 <p>
-                    Walkthrough: identity-first entry, verification, and benefits attachment.
+                    Phase 2 corrected the sequencing issues exposed in Phase 1. Identity is now established before care or benefits depend on it, reducing wrong-flow starts, failed consultations, and downstream confusion. Users no longer self-classify upfront, personal data quality improved, and onboarding aligns more closely with patient and operational workflows. The rollout brought 66,000 B2B users into the unified app while maintaining uninterrupted corporate onboarding. Identity verification started at 0% adoption and, within five months of launch, 76% of users verified via Singpass, with over 1M users verified overall. This demonstrated that an identity-first approach could scale across public and corporate use cases without blocking access. The biggest takeaway for me was that onboarding isn’t just a funnel — it’s a system boundary where trust, access, and compliance are set for everything that follows.
                 </p>
             </div>
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--space-xl);">
-                <div class="cs-image-placeholder is-wide">
-                    <img src="images/Case study 1/Case_study_1_Hero.jpg" alt="Identity-first entry mock" loading="lazy">
-                    <div class="cs-placeholder-caption">
-                        <span>Identity-first entry</span>
-                        <p>Actual entry screens</p>
-                    </div>
-                </div>
-                <div class="cs-image-placeholder is-wide">
-                    <img src="images/Case study 1/Case_study_1_process.jpg" alt="Verification flow mock" loading="lazy">
-                    <div class="cs-placeholder-caption">
-                        <span>Verification</span>
-                        <p>Process highlights</p>
-                    </div>
-                </div>
-                <div class="cs-image-placeholder is-wide">
-                    <img src="images/Case study 1/Case_study_1_membershiplinking.jpg" alt="Benefits attachment mock" loading="lazy">
-                    <div class="cs-placeholder-caption">
-                        <span>Benefits attachment</span>
-                        <p>Membership linking</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Results -->
-    <section id="impact" class="cs-section cs-section-alt">
-        <div class="cs-container">
-            <div class="cs-section-header">
-                <span class="cs-section-number">09</span>
-                <h2>Impact</h2>
-            </div>
-            <div class="cs-content-full">
-                <p>
-                    Identity is now established before benefits attach. Consult readiness improved because data quality
-                    is higher and visible earlier. Users no longer self-select the wrong path, and corporate/public
-                    confusion decreased with one entry and post-verification branching.
-                </p>
-                <p style="margin-top: var(--space-md);">
-                    So far, 1M+ users have verified via Singpass, the identity-first flow reduced friction and lowered consult drop-offs, and a single, scalable design lets multiple insurers run on one app instead of maintaining separate builds.
-                </p>
-            </div>
-            
             <div class="cs-results-grid">
                 <div class="cs-result-card">
                     <span class="cs-result-value">Identity clarity</span>
@@ -526,39 +224,20 @@ Ultimately, the identity‑first approach became the backbone of onboarding acro
                     <p>Reduced accidental misuse of corporate flows.</p>
                 </div>
             </div>
-            
-            <div class="cs-testimonial">
-                <blockquote>
-                    
-                    "The project showed the importance of close collaboration across teams. Designing within technical and regulatory constraints allowed us to solve current onboarding problems while building a foundation that could scale over time.
-                </blockquote>
-                <cite>
-                    <strong>Key insight</strong>
-                    <span>Onboarding is a system boundary, not just a funnel.</span>
-                </cite>
-            </div>
-        </div>
-    </section>
-
-    <!-- Key Takeaways -->
-    <section id="learnings" class="cs-section">
-        <div class="cs-container">
-            <div class="cs-section-header">
-                <span class="cs-section-number">10</span>
-                <h2>Key learnings</h2>
-            </div>
-            <div class="cs-learnings-grid">
-                <div class="cs-learning-card">
-                    <h4>Onboarding is a system boundary</h4>
-                    <p>It governs identity, access, and downstream trust.</p>
+            <div class="cs-visuals">
+                <div class="cs-visual">
+                    <img src="images/Case study 1/Case_study_1_Outcome.jpg" alt="Outcome states overview" loading="lazy">
+                    <div class="cs-visual-caption">
+                        <span>Outcome states</span>
+                        <p>Clarity on verified vs manual paths</p>
+                    </div>
                 </div>
-                <div class="cs-learning-card">
-                    <h4>Accuracy is a UX metric</h4>
-                    <p>Clean data matters as much as speed and delight.</p>
-                </div>
-                <div class="cs-learning-card">
-                    <h4>Identity and compliance are design work</h4>
-                    <p>Great UX includes verification, safeguards, and clarity.</p>
+                <div class="cs-visual">
+                    <img src="images/Case study 1/Case_study_1_membershiplinking.jpg" alt="Membership linking flow" loading="lazy">
+                    <div class="cs-visual-caption">
+                        <span>Membership linking</span>
+                        <p>Earlier verification, later attachment</p>
+                    </div>
                 </div>
             </div>
         </div>

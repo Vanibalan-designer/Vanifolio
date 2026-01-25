@@ -330,6 +330,8 @@ window.addEventListener('load', () => {
 // Password Gate for Case Studies
 // ===================================
 function initPasswordGate() {
+    // Password gate disabled for now (keep case studies open)
+    return;
     const PASSWORD = 'Cts-1990';
     const modal = document.getElementById('password-modal');
     const input = document.getElementById('password-input');
