@@ -3,6 +3,11 @@
    =================================== */
 
 /* Hero Section */
+.case-study-body,
+body {
+    background-color: var(--color-cream);
+}
+
 .cs-hero {
     padding: calc(var(--space-5xl) + 80px) 0 var(--space-4xl);
     background-color: var(--color-cream);
@@ -42,6 +47,17 @@
     flex-wrap: wrap;
     gap: var(--space-sm);
     margin-bottom: var(--space-lg);
+}
+
+.cs-tags .tag {
+    padding: 0.35rem 0.85rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--color-gray-700);
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-100);
+    border-radius: var(--radius-full);
 }
 
 .cs-hero h1 {
@@ -140,7 +156,7 @@
     border-radius: var(--radius-lg);
     overflow: hidden;
     border: 1px solid var(--color-gray-100);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
     background: var(--color-white);
 }
 
@@ -347,7 +363,7 @@
 }
 
 .cs-section-alt {
-    background-color: var(--color-gray-100);
+    background-color: #fbf7f1;
 }
 
 .cs-section-header {
@@ -370,7 +386,8 @@
 }
 
 .cs-section-header h2 {
-    font-size: 2rem;
+    font-size: clamp(2rem, 3.6vw, 2.75rem);
+    letter-spacing: -0.01em;
 }
 
 /* Content Grid */
@@ -407,8 +424,8 @@
 }
 
 .cs-content-full p {
-    font-size: 1rem;
-    line-height: 1.8;
+    font-size: 1.05rem;
+    line-height: 1.75;
     color: var(--color-gray-700);
     max-width: 800px;
 }
@@ -592,16 +609,17 @@
 }
 
 .cs-result-card {
-    background-color: var(--color-gray-100);
+    background-color: var(--color-white);
     border-radius: var(--radius-lg);
+    border: 1px solid var(--color-gray-100);
     padding: var(--space-xl);
-    text-align: center;
+    text-align: left;
 }
 
 .cs-result-value {
     display: block;
     font-family: var(--font-display);
-    font-size: 2.5rem;
+    font-size: 1.75rem;
     font-weight: 500;
     color: var(--color-primary);
     margin-bottom: var(--space-xs);
@@ -609,7 +627,7 @@
 
 .cs-result-label {
     display: block;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
     color: var(--color-black);
     margin-bottom: var(--space-sm);

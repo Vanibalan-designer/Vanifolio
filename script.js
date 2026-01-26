@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCursor();
     initPasswordGate();
     initImageLightbox();
+    initPortfolioSearch();
 });
 
 // ===================================
@@ -187,6 +188,228 @@ function initImageLightbox() {
         if (e.key === 'Escape' && lightbox.classList.contains('active')) {
             close();
         }
+    });
+}
+
+// ===================================
+// Portfolio Chatbot (Client-side FAQ)
+// ===================================
+function initPortfolioSearch() {
+    if (document.querySelector('.chatbot-widget')) return;
+
+    const knowledge = [
+        {
+            id: 'about',
+            title: 'About Vani',
+            keywords: ['background', 'about', 'bio', 'summary', 'who are you'],
+            answer:
+                `I'm Vani Balasundaram, a Senior Product Designer focused on clear, human-centered product experiences.`
+        },
+        {
+            id: 'availability',
+            title: 'Availability',
+            keywords: ['availability', 'open', 'role', 'hire', 'work'],
+            answer:
+                `I'm open to the right opportunities. You can reach me via the contact page or the email link in the footer.`
+        },
+        {
+            id: 'case-study-1',
+            title: 'Case Study 1 — Doctor Anywhere onboarding',
+            keywords: ['case study 1', 'doctor anywhere', 'onboarding', 'identity-first', 'singpass'],
+            answer:
+                `Case Study 1 covers identity-first onboarding at Doctor Anywhere, consolidating flows and improving data accuracy for B2C/B2B users while meeting MOH compliance.`
+        },
+        {
+            id: 'case-study-3',
+            title: 'Case Study 3 — Direct Apply',
+            keywords: ['case study 3', 'direct apply', 'benefits portal', 'soda'],
+            answer:
+                `Case Study 3 highlights Direct Apply, a self-serve benefits portal for HR/SMEs to set up plans, onboard employees, and maintain accounts.`
+        },
+        {
+            id: 'process',
+            title: 'Design process',
+            keywords: ['process', 'approach', 'methods', 'framework'],
+            answer:
+                `I focus on clarifying the problem, mapping user flows, prototyping quickly, and iterating with product, engineering, and compliance partners.`
+        },
+        {
+            id: 'contact',
+            title: 'Contact',
+            keywords: ['contact', 'email', 'reach', 'message'],
+            answer:
+                `You can contact me through the Contact page or via the email link in the footer.`
+        }
+    ];
+
+    const widget = document.createElement('div');
+    widget.className = 'chatbot-widget';
+    widget.innerHTML = `
+        <button class="chatbot-toggle" aria-expanded="false" aria-controls="chatbot-panel">
+            Ask me ✨
+        </button>
+        <div class="chatbot-panel" id="chatbot-panel" role="dialog" aria-label="Portfolio search">
+            <div class="chatbot-header">
+                <span>Portfolio Search <span class="chatbot-ai-badge">AI</span> <span class="chatbot-sparkle">✦</span></span>
+                <button class="chatbot-close" aria-label="Close search">×</button>
+            </div>
+            <form class="chatbot-input" autocomplete="off">
+                <input type="text" placeholder="Search projects, outcomes, or availability…" aria-label="AI search input">
+                <button type="submit">Search ✨</button>
+            </form>
+            <div class="chatbot-suggestions">
+                <span>Try:</span>
+                <button data-prompt="Doctor Anywhere onboarding">Doctor Anywhere onboarding</button>
+                <button data-prompt="Direct Apply">Direct Apply</button>
+                <button data-prompt="Availability">Availability</button>
+            </div>
+            <div class="chatbot-results" aria-live="polite"></div>
+        </div>
+    `;
+
+    document.body.appendChild(widget);
+
+    const toggle = widget.querySelector('.chatbot-toggle');
+    const panel = widget.querySelector('.chatbot-panel');
+    const closeBtn = widget.querySelector('.chatbot-close');
+    const results = widget.querySelector('.chatbot-results');
+    const form = widget.querySelector('.chatbot-input');
+    const input = form.querySelector('input');
+    const quickButtons = widget.querySelectorAll('.chatbot-suggestions button');
+
+    const scoreMatch = (query, item) => {
+        let score = 0;
+        item.keywords.forEach(keyword => {
+            if (query.includes(keyword)) score += 2;
+        });
+        if (query.includes(item.title.toLowerCase())) score += 3;
+        return score;
+    };
+
+    const contextualAnswer = (item) => {
+        const currentPage = window.location.pathname.replace('/', '') || 'index.html';
+        const context =
+            currentPage.includes('case-study-1') ? 'You are currently viewing Case Study 1.' :
+            currentPage.includes('case-study-3') ? 'You are currently viewing Case Study 3.' :
+            currentPage.includes('case-study') ? 'You are viewing a case study.' :
+            'You are on the portfolio home page.';
+        return `${item.answer} ${context}`;
+    };
+
+    const renderResults = (query) => {
+        const q = query.toLowerCase();
+        const ranked = knowledge
+            .map(item => ({ item, score: scoreMatch(q, item) }))
+            .filter(entry => entry.score > 0)
+            .sort((a, b) => b.score - a.score)
+            .slice(0, 3);
+
+        results.innerHTML = '';
+
+        if (!ranked.length) {
+            results.innerHTML = `
+                <div class="chatbot-result">
+                    <h4>No exact match</h4>
+                    <p>Try “Doctor Anywhere onboarding”, “Direct Apply”, or “Availability”.</p>
+                </div>
+            `;
+            knowledge.slice(0, 3).forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'chatbot-result';
+                const target = item.id === 'case-study-1' ? 'case-study-1.html' :
+                    item.id === 'case-study-3' ? 'case-study-3.html' :
+                    item.id === 'contact' ? 'contact.html' :
+                    item.id === 'about' ? 'about.html' : '';
+                if (target) {
+                    card.dataset.target = target;
+                    card.setAttribute('role', 'button');
+                    card.setAttribute('tabindex', '0');
+                }
+                card.innerHTML = `
+                    <h4>${item.title}</h4>
+                    <p>${contextualAnswer(item)}</p>
+                `;
+                results.appendChild(card);
+            });
+            return;
+        }
+
+        ranked.forEach(({ item }) => {
+            const card = document.createElement('div');
+            card.className = 'chatbot-result';
+            const target = item.id === 'case-study-1' ? 'case-study-1.html' :
+                item.id === 'case-study-3' ? 'case-study-3.html' :
+                item.id === 'contact' ? 'contact.html' :
+                item.id === 'about' ? 'about.html' : '';
+            if (target) {
+                card.dataset.target = target;
+                card.setAttribute('role', 'button');
+                card.setAttribute('tabindex', '0');
+            }
+            card.innerHTML = `
+                <h4>${item.title}</h4>
+                <p>${contextualAnswer(item)}</p>
+            `;
+            results.appendChild(card);
+        });
+    };
+
+    results.addEventListener('click', (e) => {
+        const card = e.target.closest('.chatbot-result');
+        if (!card || !card.dataset.target) return;
+        window.location.href = card.dataset.target;
+    });
+
+    results.addEventListener('keydown', (e) => {
+        if (e.key !== 'Enter') return;
+        const card = e.target.closest('.chatbot-result');
+        if (!card || !card.dataset.target) return;
+        window.location.href = card.dataset.target;
+    });
+
+    const showPanel = () => {
+        panel.classList.add('active');
+        toggle.setAttribute('aria-expanded', 'true');
+    };
+
+    const hidePanel = () => {
+        panel.classList.remove('active');
+        toggle.setAttribute('aria-expanded', 'false');
+    };
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const text = input.value.trim();
+        if (!text) return;
+        renderResults(text);
+        showPanel();
+        input.value = '';
+    });
+
+    quickButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const text = button.dataset.prompt;
+            renderResults(text);
+            showPanel();
+        });
+    });
+
+    toggle.addEventListener('click', () => {
+        if (panel.classList.contains('active')) {
+            hidePanel();
+        } else {
+            showPanel();
+            input.focus();
+            if (!results.children.length) {
+                renderResults('Doctor Anywhere onboarding');
+            }
+        }
+    });
+
+    closeBtn.addEventListener('click', hidePanel);
+
+    document.addEventListener('click', (e) => {
+        if (!widget.contains(e.target)) hidePanel();
     });
 }
 

@@ -191,6 +191,171 @@ strong {
 }
 
 /* ===================================
+   Floating AI Search
+   =================================== */
+.chatbot-widget {
+    position: fixed;
+    right: var(--space-xl);
+    bottom: var(--space-xl);
+    z-index: 1200;
+    font-family: var(--font-body);
+}
+
+.chatbot-toggle {
+    background: var(--color-black);
+    color: var(--color-white);
+    border-radius: var(--radius-full);
+    padding: 0.75rem 1.25rem;
+    box-shadow: var(--shadow-lg);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.chatbot-panel {
+    position: absolute;
+    right: 0;
+    bottom: 56px;
+    width: min(420px, 92vw);
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-100);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(8px);
+    transition: opacity var(--transition-base), transform var(--transition-base);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chatbot-panel.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.chatbot-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-md) var(--space-lg);
+    border-bottom: 1px solid var(--color-gray-100);
+    font-weight: 600;
+}
+
+.chatbot-input {
+    display: flex;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-lg);
+    border-bottom: 1px solid var(--color-gray-100);
+}
+
+.chatbot-input input {
+    flex: 1;
+    border: 1px solid var(--color-gray-300);
+    border-radius: 999px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+}
+
+.chatbot-input button {
+    background: var(--color-black);
+    color: var(--color-white);
+    padding: 0.5rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+}
+
+.chatbot-ai-badge {
+    display: inline-block;
+    margin-left: 0.25rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    background: var(--color-gray-100);
+    color: var(--color-gray-700);
+}
+
+.chatbot-sparkle {
+    margin-left: 0.25rem;
+    color: var(--color-primary);
+    animation: sparkle 1.6s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0.4; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(-1px); }
+}
+
+.chatbot-close {
+    font-size: 1.25rem;
+    color: var(--color-gray-500);
+}
+
+.chatbot-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    padding: 0 0 var(--space-md);
+    font-size: 0.8rem;
+    color: var(--color-gray-500);
+}
+
+.chatbot-suggestions span {
+    width: 100%;
+}
+
+.chatbot-suggestions button {
+    border: 1px solid var(--color-gray-300);
+    border-radius: var(--radius-full);
+    padding: 0.35rem 0.75rem;
+    font-size: 0.8rem;
+    color: var(--color-gray-700);
+}
+
+.chatbot-results {
+    padding: 0 0 var(--space-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    max-height: 260px;
+    overflow-y: auto;
+}
+
+.chatbot-result {
+    border: 1px solid var(--color-gray-100);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    background: var(--color-cream);
+    cursor: pointer;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.chatbot-result:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.chatbot-result h4 {
+    font-size: 0.95rem;
+    margin-bottom: var(--space-xs);
+}
+
+.chatbot-result p {
+    font-size: 0.85rem;
+    color: var(--color-gray-700);
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .chatbot-widget {
+        right: var(--space-lg);
+        bottom: var(--space-lg);
+    }
+}
+
+/* ===================================
    Navigation
    =================================== */
 .navbar {
@@ -215,9 +380,10 @@ strong {
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 var(--space-xl);
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
-    justify-content: space-between;
+    gap: var(--space-xl);
 }
 
 .nav-logo {
@@ -226,12 +392,16 @@ strong {
     font-weight: 600;
     color: var(--color-black);
     letter-spacing: 0.05em;
+    grid-column: 1;
+    justify-self: start;
 }
 
 .nav-links {
     display: flex;
     align-items: center;
     gap: var(--space-xl);
+    justify-self: end;
+    grid-column: 3;
 }
 
 .nav-links a {
