@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         .about-hero {
             padding: calc(var(--space-5xl) + 80px) 0 var(--space-4xl);
-            background-color: var(--color-cream);
+            background-color: var(--color-white);
         }
         
         .about-container {
@@ -34,7 +34,7 @@
         
         .about-image {
             aspect-ratio: 4/5;
-            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-white) 100%);
+            background: linear-gradient(145deg, var(--color-indigo-light) 0%, var(--color-blush-light) 100%);
             border-radius: var(--radius-2xl);
             overflow: hidden;
             box-shadow: var(--shadow-xl);
@@ -54,7 +54,7 @@
         .about-image-placeholder svg {
             width: 100px;
             height: 100px;
-            opacity: 0.4;
+            opacity: 0.3;
         }
         
         .about-content {
@@ -66,18 +66,19 @@
         }
         
         .about-intro h1 {
-            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-size: clamp(2.25rem, 4vw, 3.25rem);
             margin-bottom: var(--space-lg);
+            letter-spacing: -0.03em;
         }
         
         .about-intro h1 span {
-            color: var(--color-primary);
-            font-style: italic;
+            color: var(--color-accent);
+            font-style: normal;
         }
         
         .about-intro p {
-            font-size: 1.125rem;
-            line-height: 1.8;
+            font-size: 1.0625rem;
+            line-height: 1.75;
             color: var(--color-gray-700);
             margin-bottom: var(--space-lg);
         }
@@ -87,18 +88,22 @@
         }
         
         .about-section h2 {
-            font-size: 1.5rem;
+            font-size: 1.375rem;
+            font-weight: 600;
             margin-bottom: var(--space-lg);
             display: flex;
             align-items: center;
             gap: var(--space-md);
+            letter-spacing: -0.02em;
         }
         
         .about-section h2::before {
             content: '';
-            width: 24px;
+            width: 20px;
             height: 2px;
-            background-color: var(--color-primary);
+            background-color: var(--color-accent);
+            border-radius: 2px;
+            flex-shrink: 0;
         }
         
         .skills-grid {
@@ -109,11 +114,11 @@
         
         .skill-category h3 {
             font-family: var(--font-body);
-            font-size: 0.875rem;
+            font-size: 0.6875rem;
             font-weight: 600;
-            color: var(--color-primary);
+            color: var(--color-gray-500);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.12em;
             margin-bottom: var(--space-md);
         }
         
@@ -128,87 +133,102 @@
             color: var(--color-gray-700);
             padding-left: var(--space-md);
             position: relative;
+            line-height: 1.55;
         }
         
         .skill-category li::before {
-            content: '✦';
+            content: '';
             position: absolute;
-            left: 0;
-            color: var(--color-primary);
-            font-size: 0.625rem;
+            left: 4px;
+            top: 0.55em;
+            width: 4px;
+            height: 4px;
+            background-color: var(--color-accent);
+            border-radius: 50%;
         }
         
         .values-list {
             display: flex;
             flex-direction: column;
-            gap: var(--space-lg);
+            gap: var(--space-md);
         }
         
         .value-item {
             padding: var(--space-lg);
-            background-color: var(--color-white);
-            border-radius: var(--radius-lg);
-            border-left: 3px solid var(--color-primary);
+            background-color: var(--color-gray-100);
+            border-radius: var(--radius-xl);
+            border-left: none;
+            border-top: 3px solid var(--color-accent);
+            transition: transform var(--transition-base);
+        }
+        
+        .value-item:hover {
+            transform: translateY(-2px);
         }
         
         .value-item h3 {
             font-family: var(--font-body);
-            font-size: 1rem;
+            font-size: 0.9375rem;
             font-weight: 600;
             color: var(--color-black);
             margin-bottom: var(--space-sm);
+            letter-spacing: -0.01em;
         }
         
         .value-item p {
             font-size: 0.9375rem;
             color: var(--color-gray-700);
-            line-height: 1.6;
+            line-height: 1.65;
         }
         
         .personal-section {
             padding: var(--space-4xl) 0;
-            background-color: var(--color-white);
+            background-color: var(--color-gray-100);
         }
         
         .personal-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: var(--space-xl);
+            gap: var(--space-lg);
         }
         
         .personal-card {
             padding: var(--space-xl);
-            background-color: var(--color-gray-100);
+            background-color: var(--color-white);
             border-radius: var(--radius-xl);
             text-align: center;
             transition: all var(--transition-base);
+            border: 1px solid rgba(0,0,0,0.04);
         }
         
         .personal-card:hover {
             transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-md);
         }
         
         .personal-card-icon {
-            width: 60px;
-            height: 60px;
+            width: 56px;
+            height: 56px;
             margin: 0 auto var(--space-md);
-            background-color: var(--color-primary-light);
+            background-color: var(--color-indigo-light);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.375rem;
         }
         
         .personal-card h3 {
-            font-size: 1.125rem;
+            font-size: 1rem;
+            font-weight: 600;
             margin-bottom: var(--space-sm);
+            letter-spacing: -0.01em;
         }
         
         .personal-card p {
             font-size: 0.875rem;
             color: var(--color-gray-500);
+            line-height: 1.55;
         }
         
         @media (max-width: 1024px) {
@@ -271,13 +291,7 @@
             <div class="about-grid">
                 <div class="about-image-wrapper">
                     <div class="about-image">
-                        <div class="about-image-placeholder">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                                <circle cx="12" cy="7" r="4"/>
-                            </svg>
-                            <span>Your Photo</span>
-                        </div>
+                        <img src="images/image-hero.JPG" alt="Vani Balasundaram" style="width:100%;height:100%;object-fit:cover;display:block;">
                     </div>
                 </div>
                 
@@ -438,8 +452,8 @@
                     </div>
                     <div class="footer-column">
                         <h4>Case Studies</h4>
-                        <a href="case-study-1.html">Redesigning Onboarding to Improve Identity Accuracy</a>
-                        <a href="case-study-3.html">Direct Apply</a>
+                        <a href="identity-first-onboarding.html">Redesigning Onboarding to Improve Identity Accuracy</a>
+                        <a href="soda-hr-portal.html">SODA HR Portal</a>
                         <a href="case-study-4.html">Gravity Storybook</a>
                     </div>
                     <div class="footer-column">

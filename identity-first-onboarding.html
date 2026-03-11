@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="case-study.css">
 </head>
 <body>
@@ -80,6 +80,53 @@
         </div>
     </section>
     
+
+    <!-- At a Glance -->
+    <section class="cs-snapshot">
+        <div class="cs-snapshot-inner">
+            <p class="cs-snapshot-label">At a glance</p>
+            <div class="cs-snapshot-grid">
+                <div class="cs-snapshot-card">
+                    <p class="cs-snapshot-card-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
+                        Problem
+                    </p>
+                    <p class="cs-snapshot-card-title">Fragmented onboarding with identity blind spots</p>
+                    <p class="cs-snapshot-card-body">Multiple entry points across B2C, B2B, and Direct VC meant the system couldn't confirm who a user was — causing failed consultations, manual ops fixes, and corporate benefit misuse.</p>
+                </div>
+                <div class="cs-snapshot-card">
+                    <p class="cs-snapshot-card-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        My contribution
+                    </p>
+                    <p class="cs-snapshot-card-title">End-to-end redesign lead across 1 year, 2 phases</p>
+                    <p class="cs-snapshot-card-body">Led research, flow architecture, and design execution. Aligned Engineering, Product, Compliance, and insurers. Drove the pivot from flow-per-user-type to a single identity-first entry point with Singpass integration.</p>
+                </div>
+                <div class="cs-snapshot-card">
+                    <p class="cs-snapshot-card-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                        Key decisions
+                    </p>
+                    <p class="cs-snapshot-card-title">Verify identity before access, not after</p>
+                    <p class="cs-snapshot-card-body">Singpass as the trusted identity source. Single unified entry point (users no longer self-classify). Memberships and benefits attach only after identity is confirmed.</p>
+                    <div class="cs-snapshot-skills">
+                        <span class="cs-snapshot-pill">Systems thinking</span>
+                        <span class="cs-snapshot-pill">Compliance design</span>
+                        <span class="cs-snapshot-pill">Stakeholder alignment</span>
+                        <span class="cs-snapshot-pill">Flow architecture</span>
+                    </div>
+                </div>
+                <div class="cs-snapshot-card is-outcome">
+                    <p class="cs-snapshot-card-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                        Outcome
+                    </p>
+                    <p class="cs-snapshot-card-title">1M+ users verified. 76% Singpass in 5 months.</p>
+                    <p class="cs-snapshot-card-body">66K B2B users migrated with zero service disruption. Fewer wrong-flow starts, failed consults, and ops escalations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Hero Image -->
     <section class="cs-hero-image">
@@ -249,7 +296,7 @@
     <section class="cs-next-project">
         <div class="cs-container">
             <span class="cs-next-label">Next Project</span>
-            <a href="case-study-3.html" class="cs-next-link">
+            <a href="soda-hr-portal.html" class="cs-next-link">
                 <h2>Direct Apply — Make university applications easier</h2>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -293,7 +340,7 @@
                     </div>
                     <div class="footer-column">
                         <h4>Case Studies</h4>
-                        <a href="case-study-1.html">Redesigning Onboarding to Improve Identity Accuracy</a>
+                        <a href="identity-first-onboarding.html">Redesigning Onboarding to Improve Identity Accuracy</a>
                     </div>
                     <div class="footer-column">
                         <h4>Connect</h4>
@@ -314,7 +361,7 @@
                     </a>
                     <a href="https://dribbble.com" target="_blank" rel="noopener" aria-label="Dribbble">
                         <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 24C5.385 24 0 18.615 0 12S5.385 0 12 0s12 5.385 12 12-5.385 12-12 12zm10.12-10.358c-.35-.11-3.17-.953-6.384-.438 1.34 3.684 1.887 6.684 1.992 7.308 2.3-1.555 3.936-4.02 4.395-6.87zm-6.115 7.808c-.153-.9-.75-4.032-2.19-7.77l-.066.02c-5.79 2.015-7.86 6.025-8.04 6.4 1.73 1.358 3.92 2.166 6.29 2.166 1.42 0 2.77-.29 4-.814zm-11.62-2.58c.232-.4 3.045-5.055 8.332-6.765.135-.045.27-.084.405-.12-.26-.585-.54-1.167-.832-1.74C7.17 11.775 2.206 11.71 1.756 11.7l-.004.312c0 2.633.998 5.037 2.634 6.855zm-2.42-8.955c.46.008 4.683.026 9.477-1.248-1.698-3.018-3.53-5.558-3.8-5.928-2.868 1.35-5.01 3.99-5.676 7.17zM9.6 2.052c.282.38 2.145 2.914 3.822 6 3.645-1.365 5.19-3.44 5.373-3.702-1.81-1.61-4.19-2.586-6.795-2.586-.825 0-1.63.1-2.4.285zm10.335 3.483c-.218.29-1.935 2.493-5.724 4.04.24.49.47.985.68 1.486.08.18.15.36.22.53 3.41-.43 6.8.26 7.14.33-.02-2.42-.88-4.64-2.31-6.38z"/>
+                            <path d="M12 24C5.385 24 0 18.615 0 12S5.385 0 12 0s12 5.385 12 12-5.385 12-12 12zm10.12-10.358c-.35-.11-3.17-.953-6.384-.438 1.34 3.684 1.887 6.684 1.992 7.308 2.3-1.555 3.936-4.02 4.395-6.87zm-6.115 7.808c-.153-.9-.75-4.032-2.19-7.77l-.066.02c-5.79 2.015-7.86 6.025-8.04 6.4 1.73 1.358 3.92 2.166 6.29 2.166 1.42 0 2.77-.29 4-.814zm-11.62-2.58c.232-.4 3.045-5.055 8.332-6.765.135-.045.27-.084.405-.12-.26-.585-.54-1.167-.832-1.74C7.17 11.775 2.206 11.71 1.756 11.7l-.004.312c0 2.633.998 5.037 2.634 6.855zm-2.42-8.955c.46.008 4.683.026 9.477-1.248-1.698-3.018-3.53-5.558-3.8-5.928-2.868 1.35-5.01 3.99-5.676 7.17zM9.6 2.052c.282.38 2.145 2.914 3.822 6 3.645-1.365 5.19-3.44 5.373-3.702-1.81-1.61-4.19-2.586-6.795-2.586-.825 0-1.63.1-2.4.285zm10.335 3.483c-.218.29-1.935 2.493-5.724 4.04.24.49.978.985.68 1.486.08.18.15.36.20.53 3.41-.43 6.8.26 7.14.33-.02-2.42-.88-4.64-2.31-6.38z"/>
                         </svg>
                     </a>
                     <a href="mailto:hello@vanidesign.com" aria-label="Email">

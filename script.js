@@ -9,8 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll();
     initCursor();
     initPasswordGate();
+    initCaseStudyCarousels();   // before lightbox so lightbox picks up carousel imgs
     initImageLightbox();
     initPortfolioSearch();
+    initCaseStudyAnimations();
 });
 
 // ===================================
@@ -82,8 +84,8 @@ function initScrollReveal() {
     // Add initial styles
     revealElements.forEach((element, index) => {
         element.style.opacity = '0';
-        element.style.transform = 'translateY(40px)';
-        element.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = `opacity 0.28s ease ${index * 0.05}s, transform 0.28s ease ${index * 0.05}s`;
     });
 
     // Create intersection observer for better performance
@@ -96,8 +98,8 @@ function initScrollReveal() {
             }
         });
     }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
+        threshold: 0.05,
+        rootMargin: '0px 0px -40px 0px'
     });
 
     revealElements.forEach(element => {
@@ -213,18 +215,18 @@ function initPortfolioSearch() {
                 `I'm open to the right opportunities. You can reach me via the contact page or the email link in the footer.`
         },
         {
-            id: 'case-study-1',
+            id: 'identity-first-onboarding',
             title: 'Case Study 1 — Doctor Anywhere onboarding',
             keywords: ['case study 1', 'doctor anywhere', 'onboarding', 'identity-first', 'singpass'],
             answer:
                 `Case Study 1 covers identity-first onboarding at Doctor Anywhere, consolidating flows and improving data accuracy for B2C/B2B users while meeting MOH compliance.`
         },
         {
-            id: 'case-study-3',
-            title: 'Case Study 3 — Direct Apply',
-            keywords: ['case study 3', 'direct apply', 'benefits portal', 'soda'],
+            id: 'soda-hr-portal',
+            title: 'Case Study 3 — SODA HR Portal',
+            keywords: ['case study 3', 'soda', 'hr portal', 'benefits portal', 'sme', 'tpa'],
             answer:
-                `Case Study 3 highlights Direct Apply, a self-serve benefits portal for HR/SMEs to set up plans, onboard employees, and maintain accounts.`
+                `Case Study 3 highlights the SODA HR Portal, a self-serve benefits platform for SME owners and HR teams to set up plans and manage employees without intermediaries.`
         },
         {
             id: 'process',
@@ -289,8 +291,8 @@ function initPortfolioSearch() {
     const contextualAnswer = (item) => {
         const currentPage = window.location.pathname.replace('/', '') || 'index.html';
         const context =
-            currentPage.includes('case-study-1') ? 'You are currently viewing Case Study 1.' :
-            currentPage.includes('case-study-3') ? 'You are currently viewing Case Study 3.' :
+            currentPage.includes('identity-first-onboarding') ? 'You are currently viewing Case Study 1.' :
+            currentPage.includes('soda-hr-portal') ? 'You are currently viewing Case Study 3.' :
             currentPage.includes('case-study') ? 'You are viewing a case study.' :
             'You are on the portfolio home page.';
         return `${item.answer} ${context}`;
@@ -316,8 +318,8 @@ function initPortfolioSearch() {
             knowledge.slice(0, 3).forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'chatbot-result';
-                const target = item.id === 'case-study-1' ? 'case-study-1.html' :
-                    item.id === 'case-study-3' ? 'case-study-3.html' :
+                const target = item.id === 'identity-first-onboarding' ? 'identity-first-onboarding.html' :
+                    item.id === 'soda-hr-portal' ? 'soda-hr-portal.html' :
                     item.id === 'contact' ? 'contact.html' :
                     item.id === 'about' ? 'about.html' : '';
                 if (target) {
@@ -337,8 +339,8 @@ function initPortfolioSearch() {
         ranked.forEach(({ item }) => {
             const card = document.createElement('div');
             card.className = 'chatbot-result';
-            const target = item.id === 'case-study-1' ? 'case-study-1.html' :
-                item.id === 'case-study-3' ? 'case-study-3.html' :
+            const target = item.id === 'identity-first-onboarding' ? 'identity-first-onboarding.html' :
+                item.id === 'soda-hr-portal' ? 'soda-hr-portal.html' :
                 item.id === 'contact' ? 'contact.html' :
                 item.id === 'about' ? 'about.html' : '';
             if (target) {
@@ -532,22 +534,258 @@ document.querySelectorAll('a:not([href^="#"]):not([target="_blank"])').forEach(l
         
         e.preventDefault();
         document.body.style.opacity = '0';
-        document.body.style.transition = 'opacity 0.3s ease';
+        document.body.style.transition = 'opacity 0.15s ease';
         
         setTimeout(() => {
             window.location.href = href;
-        }, 300);
+        }, 150);
     });
 });
 
 // Fade in on page load
 window.addEventListener('load', () => {
     document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.5s ease';
+    document.body.style.transition = 'opacity 0.2s ease';
     requestAnimationFrame(() => {
         document.body.style.opacity = '1';
     });
 });
+
+// ===================================
+// Case Study Carousels
+// Converts every .cs-visuals with 2+ slides
+// into an Apple-style swipeable carousel
+// ===================================
+function initCaseStudyCarousels() {
+    document.querySelectorAll('.cs-visuals').forEach(visuals => {
+        const slides = Array.from(visuals.querySelectorAll('.cs-visual'));
+        if (slides.length < 2) return; // single image — leave as-is
+
+        // ── Build carousel DOM ──────────────────────────────────────────
+        const wrap  = document.createElement('div');
+        wrap.className = 'cs-carousel-wrap';
+
+        const carousel = document.createElement('div');
+        carousel.className = 'cs-carousel';
+        carousel.setAttribute('role', 'region');
+        carousel.setAttribute('aria-label', 'Image carousel');
+
+        const track = document.createElement('div');
+        track.className = 'cs-carousel-track';
+
+        const counter = document.createElement('div');
+        counter.className = 'cs-carousel-counter';
+
+        // Turn each .cs-visual into a carousel slide (no captions)
+        slides.forEach(visual => {
+            const slide = document.createElement('div');
+            slide.className = 'cs-carousel-slide';
+
+            const img = visual.querySelector('img');
+            if (img) slide.appendChild(img.cloneNode(true));
+
+            track.appendChild(slide);
+        });
+
+        // Prev / next buttons (go into nav bar, not carousel overlay)
+        const btnPrev = document.createElement('button');
+        btnPrev.className = 'cs-carousel-btn prev';
+        btnPrev.setAttribute('aria-label', 'Previous image');
+        btnPrev.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>`;
+
+        const btnNext = document.createElement('button');
+        btnNext.className = 'cs-carousel-btn next';
+        btnNext.setAttribute('aria-label', 'Next image');
+        btnNext.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>`;
+
+        carousel.appendChild(track);
+        carousel.appendChild(counter);
+        wrap.appendChild(carousel);
+
+        // Nav bar: [<prev]  [dots]  [next>]
+        const nav = document.createElement('div');
+        nav.className = 'cs-carousel-nav';
+
+        const dotGroup = document.createElement('div');
+        dotGroup.className = 'cs-carousel-dots';
+
+        const dots = slides.map((_, i) => {
+            const d = document.createElement('button');
+            d.className = 'cs-carousel-dot' + (i === 0 ? ' active' : '');
+            d.setAttribute('aria-label', `Go to slide ${i + 1}`);
+            dotGroup.appendChild(d);
+            return d;
+        });
+
+        nav.appendChild(btnPrev);
+        nav.appendChild(dotGroup);
+        nav.appendChild(btnNext);
+        wrap.appendChild(nav);
+
+        // Replace original .cs-visuals with the carousel
+        visuals.replaceWith(wrap);
+
+        // ── State & helpers ─────────────────────────────────────────────
+        let current = 0;
+        const total = slides.length;
+
+        const goTo = (idx) => {
+            current = (idx + total) % total;
+            track.style.transform = `translateX(-${current * 100}%)`;
+            dots.forEach((d, i) => d.classList.toggle('active', i === current));
+            counter.textContent = `${current + 1} / ${total}`;
+            btnPrev.disabled = current === 0;
+            btnNext.disabled = current === total - 1;
+        };
+
+        goTo(0);
+
+        // ── Button events ───────────────────────────────────────────────
+        btnPrev.addEventListener('click', () => goTo(current - 1));
+        btnNext.addEventListener('click', () => goTo(current + 1));
+        dots.forEach((d, i) => d.addEventListener('click', () => goTo(i)));
+
+        // ── Keyboard (when carousel is focused) ─────────────────────────
+        carousel.setAttribute('tabindex', '0');
+        carousel.addEventListener('keydown', e => {
+            if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(current - 1); }
+            if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); }
+        });
+
+        // ── Touch / swipe support ───────────────────────────────────────
+        let touchStartX = 0;
+        let touchDeltaX = 0;
+
+        carousel.addEventListener('touchstart', e => {
+            touchStartX = e.touches[0].clientX;
+            touchDeltaX = 0;
+        }, { passive: true });
+
+        carousel.addEventListener('touchmove', e => {
+            touchDeltaX = e.touches[0].clientX - touchStartX;
+            // Live drag feedback
+            const offset = -(current * 100) + (touchDeltaX / carousel.offsetWidth) * 100;
+            track.style.transition = 'none';
+            track.style.transform = `translateX(${offset}%)`;
+        }, { passive: true });
+
+        carousel.addEventListener('touchend', () => {
+            track.style.transition = '';
+            if (touchDeltaX < -50)      goTo(current + 1);
+            else if (touchDeltaX > 50)  goTo(current - 1);
+            else                         goTo(current); // snap back
+        });
+    });
+}
+
+// ===================================
+// Case Study Scroll Animations
+// ===================================
+function initCaseStudyAnimations() {
+    // Only run on case study pages
+    if (!document.querySelector('.cs-hero')) return;
+
+    // ── Helper: stagger siblings in a grid parent ──────────────────────
+    const applyStagger = (elements, baseDelay = 0, step = 90) => {
+        elements.forEach((el, i) => {
+            el.style.transitionDelay = `${baseDelay + i * step}ms`;
+        });
+    };
+
+    // ── 1. Image blocks — scale + fade ──────────────────────────────────
+    document.querySelectorAll('.cs-visual, .cs-image-placeholder.is-wide').forEach(el => {
+        el.classList.add('cs-anim-img');
+    });
+
+    // ── 2. Smaller image placeholders (non-hero) ────────────────────────
+    document.querySelectorAll('.cs-image-placeholder:not(.is-wide)').forEach(el => {
+        el.classList.add('cs-anim-img');
+    });
+
+    // ── 3. Snapshot cards — staggered ──────────────────────────────────
+    const snapshotCards = document.querySelectorAll('.cs-snapshot-card');
+    snapshotCards.forEach(el => el.classList.add('cs-anim'));
+    applyStagger(snapshotCards, 0, 80);
+
+    // ── 4. Metrics — staggered pop ─────────────────────────────────────
+    const metrics = document.querySelectorAll('.cs-metric');
+    metrics.forEach(el => el.classList.add('cs-anim'));
+    applyStagger(metrics, 0, 70);
+
+    // ── 5. Section headers ──────────────────────────────────────────────
+    document.querySelectorAll('.cs-section-header').forEach(el => {
+        el.classList.add('cs-anim');
+    });
+
+    // ── 6. Result / insight / learning cards — staggered per row ────────
+    ['cs-result-card', 'cs-insight-card', 'cs-learning-card'].forEach(cls => {
+        const groups = {};
+        document.querySelectorAll(`.${cls}`).forEach(el => {
+            const parent = el.parentElement;
+            if (!groups[parent]) groups[parent] = [];
+            groups[parent].push(el);
+        });
+        Object.values(groups).forEach(group => {
+            group.forEach(el => el.classList.add('cs-anim'));
+            applyStagger(group, 0, 80);
+        });
+    });
+
+    // ── 7. Feature blocks — alternating left / right ────────────────────
+    document.querySelectorAll('.cs-feature').forEach(feature => {
+        const content = feature.querySelector('.cs-feature-content');
+        const image   = feature.querySelector('.cs-feature-image');
+        const isReverse = feature.classList.contains('cs-feature-reverse');
+
+        if (content) content.classList.add(isReverse ? 'cs-anim-right' : 'cs-anim-left');
+        if (image)   image.classList.add(isReverse ? 'cs-anim-left' : 'cs-anim-right');
+    });
+
+    // ── 8. Sidebar cards ─────────────────────────────────────────────────
+    document.querySelectorAll('.cs-sidebar-card').forEach((el, i) => {
+        el.classList.add('cs-anim');
+        el.style.transitionDelay = `${i * 80}ms`;
+    });
+
+    // ── 9. Content paragraphs inside sections ───────────────────────────
+    document.querySelectorAll('.cs-content-main, .cs-content-full').forEach(el => {
+        el.classList.add('cs-anim');
+    });
+
+    // ── 10. Testimonial block ────────────────────────────────────────────
+    document.querySelectorAll('.cs-testimonial').forEach(el => {
+        el.classList.add('cs-anim-img'); // scale-fade for the quote card
+    });
+
+    // ── Intersection Observer ────────────────────────────────────────────
+    const allAnimated = document.querySelectorAll(
+        '.cs-anim, .cs-anim-img, .cs-anim-left, .cs-anim-right'
+    );
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+
+            const el = entry.target;
+            el.classList.add('is-visible');
+
+            // Pop animation for metric values
+            if (el.classList.contains('cs-metric')) {
+                const val = el.querySelector('.cs-metric-value');
+                if (val) {
+                    setTimeout(() => val.classList.add('is-popped'), 120);
+                }
+            }
+
+            observer.unobserve(el);
+        });
+    }, {
+        threshold: 0.08,
+        rootMargin: '0px 0px -60px 0px'
+    });
+
+    allAnimated.forEach(el => observer.observe(el));
+}
 
 // ===================================
 // Password Gate for Case Studies

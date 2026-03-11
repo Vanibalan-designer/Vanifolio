@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         .contact-page {
             min-height: 100vh;
@@ -17,7 +17,7 @@
         
         .contact-hero {
             padding: calc(var(--space-5xl) + 80px) 0 var(--space-4xl);
-            background-color: var(--color-cream);
+            background-color: var(--color-white);
             flex-grow: 1;
         }
         
@@ -35,13 +35,14 @@
         }
         
         .contact-info h1 {
-            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-size: clamp(2.25rem, 4vw, 3.25rem);
             margin-bottom: var(--space-lg);
+            letter-spacing: -0.03em;
         }
         
         .contact-info h1 span {
-            color: var(--color-primary);
-            font-style: italic;
+            color: var(--color-accent);
+            font-style: normal;
         }
         
         .contact-info > p {
@@ -63,20 +64,21 @@
             align-items: center;
             gap: var(--space-md);
             padding: var(--space-lg);
-            background-color: var(--color-white);
-            border-radius: var(--radius-lg);
+            background-color: var(--color-gray-100);
+            border-radius: var(--radius-xl);
             transition: all var(--transition-base);
         }
         
         .contact-method:hover {
-            transform: translateX(8px);
+            transform: translateX(6px);
             box-shadow: var(--shadow-md);
+            background-color: var(--color-white);
         }
         
         .contact-method-icon {
-            width: 48px;
-            height: 48px;
-            background-color: var(--color-primary-light);
+            width: 46px;
+            height: 46px;
+            background-color: var(--color-indigo-light);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -85,9 +87,9 @@
         }
         
         .contact-method-icon svg {
-            width: 24px;
-            height: 24px;
-            color: var(--color-primary);
+            width: 22px;
+            height: 22px;
+            color: var(--color-accent);
         }
         
         .contact-method-content h3 {
@@ -122,7 +124,7 @@
         }
         
         .social-link:hover {
-            background-color: var(--color-primary);
+            background-color: var(--color-black);
             color: var(--color-white);
             transform: translateY(-4px);
         }
@@ -134,10 +136,10 @@
         
         /* Contact Form */
         .contact-form-wrapper {
-            background-color: var(--color-white);
+            background-color: var(--color-gray-100);
             border-radius: var(--radius-2xl);
             padding: var(--space-2xl);
-            box-shadow: var(--shadow-lg);
+            box-shadow: none;
         }
         
         .contact-form-wrapper h2 {
@@ -175,8 +177,9 @@
         .form-group textarea:focus,
         .form-group select:focus {
             outline: none;
-            border-color: var(--color-primary);
+            border-color: var(--color-accent);
             background-color: var(--color-white);
+            box-shadow: 0 0 0 3px var(--color-indigo-light);
         }
         
         .form-group input::placeholder,
@@ -374,7 +377,7 @@
                     </div>
                     <div class="footer-column">
                         <h4>Case Studies</h4>
-                        <a href="case-study-1.html">Redesigning Onboarding to Improve Identity Accuracy</a>
+                        <a href="identity-first-onboarding.html">Redesigning Onboarding to Improve Identity Accuracy</a>
                     </div>
                     <div class="footer-column">
                         <h4>Connect</h4>
