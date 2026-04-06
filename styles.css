@@ -96,6 +96,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    padding-top: 37px;
 }
 
 img {
@@ -383,8 +384,11 @@ strong {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    position: relative;
-    z-index: 1001;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1002;
 }
 
 .announcement-icon {
