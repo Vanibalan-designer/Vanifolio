@@ -3,43 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Practices | Vani Balasundaram</title>
+    <title>Agentic Practices | Vani Balasundaram</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="case-study.css">
     <style>
-        .fun-blob {
-            position: absolute;
-            top: -30px;
-            right: -30px;
-            width: 120px;
-            height: 120px;
-            background: radial-gradient(circle at 30% 30%, #7cf, #6f8bff 45%, #5a3bff 70%);
-            filter: blur(12px);
-            opacity: 0.7;
-            animation: floaty 6s ease-in-out infinite;
-            z-index: 0;
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
+            margin-top: var(--space-xl);
         }
-        @keyframes floaty {
-            0%,100% { transform: translateY(0) scale(1); opacity: 0.7; }
-            50% { transform: translateY(-10px) scale(1.05); opacity: 0.9; }
-        }
-        .cs-hero-content { position: relative; overflow: hidden; }
-        .mini-gif {
-            width: 128px;
-            height: 128px;
+        .tool-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-300);
             border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
+            padding: var(--space-lg);
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
         }
-        .mini-gif img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .mini-gif.hero-gif { width: 96px; height: 96px; }
-        .mini-gif.large-gif { width: 160px; height: 160px; }
+        .tool-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        .tool-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--color-black);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tool-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .tool-use {
+            font-size: 0.875rem;
+            color: var(--color-gray-700);
+            line-height: 1.55;
+        }
+        .tool-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border-radius: 20px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <span class="announcement-icon">✦</span>
+        Built with Cursor, Claude &amp; a bit of my brain 🧠
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -80,18 +106,17 @@
             </a>
 
             <div class="cs-hero-content">
-                <div class="fun-blob" aria-hidden="true"></div>
                 <div class="cs-tags">
-                    <span class="tag">AI Practice</span>
+                    <span class="tag">Agentic Models</span>
                     <span class="tag">Workflow</span>
-                    <span class="tag">Cursor + GPT</span>
+                    <span class="tag">Productivity</span>
                 </div>
-                <h1>How I use AI to speed up design decisions (and ship with less rework)</h1>
+                <h1>How I use agentic models to work faster and think deeper</h1>
                 <p class="cs-hero-description">
-                    AI is part of my workflow from the first brief to handoff. I use it to quickly scan context, explore multiple directions, and prototype interactions early—so stakeholders can react to something real. I also use code-aware tools like Cursor to sanity-check feasibility in complex systems, even when I’m not the one merging code.
+                    Agentic models are embedded across my entire workflow — from the first brief to handoff. I use them to compress research, explore multiple directions early, and prototype interactions quickly so stakeholders can react to something real rather than a concept.
                 </p>
                 <p class="cs-hero-description" style="margin-top: var(--space-md);">
-                    AI supports my end-to-end design process: clarify requirements, frame the problem, run quick scans, prototype fast, iterate, align scope and intent, and hand off production-ready designs—all while keeping design rigor intact.
+                    The goal isn't to replace thinking — it's to spend less time on the mechanical and more time on the decisions that actually matter.
                 </p>
 
                 <div class="cs-meta">
@@ -101,19 +126,11 @@
                     </div>
                     <div class="cs-meta-item">
                         <span class="cs-meta-label">Stack</span>
-                        <span class="cs-meta-value">Cursor, GPT with browsing, Figma</span>
+                        <span class="cs-meta-value">Cursor, Claude, Gemini, ChatGPT, Figma Make</span>
                     </div>
                     <div class="cs-meta-item">
                         <span class="cs-meta-label">Impact</span>
                         <span class="cs-meta-value">~2–3x faster validation</span>
-                    </div>
-                </div>
-
-                <div style="margin-top: var(--space-xl); display: flex; gap: var(--space-md); flex-wrap: wrap;">
-                    <a href="case-study-1.html" class="btn btn-primary">See shipped work</a>
-                    <a href="case-study-4.html" class="btn btn-secondary">See AI-led build</a>
-                    <div class="mini-gif hero-gif" aria-hidden="true">
-                        <img src="https://media.giphy.com/media/11sBLVxNs7v6WA/giphy.gif" alt="">
                     </div>
                 </div>
             </div>
@@ -127,17 +144,17 @@
                 <div class="cs-metric">
                     <span class="cs-metric-value">3x</span>
                     <span class="cs-metric-label">Prototype throughput</span>
-                    <div style="font-size:0.85rem;color:var(--color-gray-600);">More variants early → fewer rounds later.</div>
+                    <div style="font-size:0.85rem;color:var(--color-gray-600);">More variants early → fewer revision rounds later.</div>
                 </div>
                 <div class="cs-metric">
                     <span class="cs-metric-value">60m</span>
                     <span class="cs-metric-label">Market scan</span>
-                    <div style="font-size:0.85rem;color:var(--color-gray-600);">Quick scan to frame scope and risks (then I verify sources).</div>
+                    <div style="font-size:0.85rem;color:var(--color-gray-600);">Quick scan to frame scope and risks before diving in.</div>
                 </div>
                 <div class="cs-metric">
-                    <span class="cs-metric-value">3+</span>
-                    <span class="cs-metric-label">Variants per flow</span>
-                    <div style="font-size:0.85rem;color:var(--color-gray-600);">I compare options before committing to one path.</div>
+                    <span class="cs-metric-value">9</span>
+                    <span class="cs-metric-label">Agentic tools in stack</span>
+                    <div style="font-size:0.85rem;color:var(--color-gray-600);">Each with a specific role — no overlap, no noise.</div>
                 </div>
                 <div class="cs-metric">
                     <span class="cs-metric-value">Fewer</span>
@@ -148,33 +165,33 @@
         </div>
     </section>
 
-    <!-- Why AI is embedded -->
+    <!-- Why agentic models -->
     <section class="cs-section">
         <div class="cs-container">
             <div class="cs-section-header">
                 <span class="cs-section-number">01</span>
-                <h2>Why AI stays in the loop</h2>
+                <h2>Why agentic models stay in the loop</h2>
             </div>
 
             <div class="cs-content-grid">
                 <div class="cs-content-main">
                     <h3>Faster learning loops</h3>
-                    <p>I use AI to compress the “figure it out” phase—summarising context, surfacing edge cases, and generating a few directions to discuss early.</p>
-                    <h3>Feasibility earlier</h3>
-                    <p>Legacy risk: clean designs that can’t ship. Cursor/code-aware checks validate constraints early—without pretending everything can be rebuilt.</p>
+                    <p>I use agentic models to compress the "figure it out" phase — summarising context, surfacing edge cases, and generating directions to discuss early rather than late.</p>
+                    <h3>Efficiency and productivity, not shortcuts</h3>
+                    <p>The goal is always efficiency and better output — not cutting corners. Agentic models help me do more with the same hours and stay in a higher-quality thinking mode longer.</p>
                     <h3>Human judgment stays central</h3>
-                    <p>AI drafts; I decide. What to prioritize, simplify, ship now, or leave for later still comes from me.</p>
+                    <p>Models draft; I decide. What to prioritise, simplify, ship now, or leave for later still comes from me — and that's exactly how it should be.</p>
                 </div>
                 <div class="cs-content-sidebar">
                     <div class="cs-sidebar-card">
-                        <h4>Guardrails</h4>
+                        <h4>How I keep it grounded</h4>
                         <ul>
-                            <li>Start with the brief: users, goals, constraints</li>
-                            <li>Treat AI output as a draft, not truth</li>
-                            <li>Cross-check critical claims (esp. compliance)</li>
+                            <li>Start with users, goals, and constraints</li>
+                            <li>Treat model output as a draft, not truth</li>
+                            <li>Cross-check critical claims (especially compliance)</li>
                             <li>Explore multiple options before converging</li>
-                            <li>Keep feasibility in mind (design for the system you have)</li>
-                            <li>Document decisions + rationale for handoff</li>
+                            <li>Design for the system you actually have</li>
+                            <li>Document decisions and rationale for handoff</li>
                         </ul>
                     </div>
                 </div>
@@ -190,130 +207,127 @@
                 <h2>Workflow at a glance</h2>
             </div>
 
-        
-
             <div class="cs-insights-grid">
                 <div class="cs-insight-card">
                     <div class="cs-insight-icon">1️⃣</div>
-                    <h4>Frame & constrain</h4>
-                    <p>Define problem, success metrics, risks, constraints. If scope isn’t clear, AI won’t help.</p>
+                    <h4>Frame &amp; constrain</h4>
+                    <p>Define problem, success metrics, risks, constraints. If scope isn't clear, agentic models won't help.</p>
                 </div>
                 <div class="cs-insight-card">
                     <div class="cs-insight-icon">2️⃣</div>
-                    <h4>Scan & seed concepts</h4>
-                    <p>Use AI to scan patterns, regulations, comparables; translate into 2–3 directions that fit scope.</p>
+                    <h4>Scan &amp; seed concepts</h4>
+                    <p>Use models to scan patterns, regulations, and comparables; translate into 2–3 directions that fit scope.</p>
                 </div>
                 <div class="cs-insight-card">
                     <div class="cs-insight-icon">3️⃣</div>
-                    <h4>Prototype in Cursor</h4>
-                    <p>Prototype interactions fast. Use Cursor to check components/APIs/states so concepts stay real.</p>
+                    <h4>Prototype fast</h4>
+                    <p>Prototype interactions quickly with Cursor and Figma Make. Check components and states so concepts stay real.</p>
                 </div>
                 <div class="cs-insight-card">
                     <div class="cs-insight-icon">4️⃣</div>
-                    <h4>Validate & decide</h4>
-                    <p>Walkthroughs with stakeholders/eng; keep the winner, tighten, hand off cleanly.</p>
+                    <h4>Validate &amp; decide</h4>
+                    <p>Walkthroughs with stakeholders and eng; keep the winner, tighten, hand off cleanly.</p>
                 </div>
             </div>
-            <p style="margin-top: var(--space-lg); text-align:center; color: var(--color-gray-700);">
-                Important: In complex legacy systems, being code-aware reduces risk. I use tooling to stay realistic, not to skip design.
-            </p>
         </div>
     </section>
 
-    <!-- How I use GPT + Cursor -->
+    <!-- Tools -->
     <section class="cs-section">
         <div class="cs-container">
             <div class="cs-section-header">
                 <span class="cs-section-number">03</span>
-                <h2>How I use GPT and Cursor</h2>
+                <h2>Tools in my stack</h2>
             </div>
+            <p style="color: var(--color-gray-700); max-width: 600px;">Each tool has a specific job. I try not to use the same model for everything — different strengths, different contexts.</p>
 
-            <div class="cs-feature">
-                <div class="cs-feature-content">
-                    <h3>Market signals in minutes</h3>
-                    <p>I use GPT (with browsing) to scan patterns, competitor moves, and rules—then distill a one-pager: what matters, what’s risky, what to test first.</p>
-                </div>
-            </div>
+            <div class="tools-grid">
 
-            <div class="cs-feature cs-feature-reverse">
-                <div class="cs-feature-content">
-                    <h3>Feasibility inside code</h3>
-                    <p>Cursor helps me see how the product is built today—components, data models, constraints—so designs stay realistic in a legacy environment.</p>
+                <div class="tool-card">
+                    <div class="tool-name">
+                        <span class="tool-dot" style="background: #4285F4;"></span>
+                        Gemini
+                    </div>
+                    <div class="tool-use">Thinking and reasoning through complex problems. Good for multi-step analysis and longer-context tasks.</div>
+                    <span class="tool-badge" style="background: #EEF3FF; color: #4285F4;">Reasoning</span>
                 </div>
-            </div>
 
-            <div class="cs-feature">
-                <div class="cs-feature-content">
-                    <h3>Variants and microcopy</h3>
-                    <p>AI generates flow options, empty/error states, and microcopy so we can choose the clearest approach before polishing.</p>
+                <div class="tool-card">
+                    <div class="tool-name">
+                        <span class="tool-dot" style="background: #10A37F;"></span>
+                        ChatGPT
+                    </div>
+                    <div class="tool-use">Copy process and refining language. Used biweekly for writing, editing, and polishing content across docs and UI.</div>
+                    <span class="tool-badge" style="background: #EDFAF5; color: #10A37F;">Copy &amp; Writing</span>
                 </div>
+
+                <div class="tool-card">
+                    <div class="tool-name">
+                        <span class="tool-dot" style="background: #5856D6;"></span>
+                        Cursor
+                    </div>
+                    <div class="tool-use">Thinking, reasoning, and documentation using agents. My primary environment for building prototypes and working directly in code.</div>
+                    <span class="tool-badge" style="background: #EEEEFF; color: #5856D6;">Agentic Build</span>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-name">
+                        <span class="tool-dot" style="background: #FF6B35;"></span>
+                        Airtable (Super Agent)
+                    </div>
+                    <div class="tool-use">Market research automation. Runs structured research tasks as an agent so I can focus on synthesis rather than data gathering.</div>
+                    <span class="tool-badge" style="background: #FFF2EE; color: #FF6B35;">Market Research</span>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-name">
+                        <span class="tool-dot" style="background: #CC785C;"></span>
+                        Claude
+                    </div>
+                    <div class="tool-use">Documentation, generating quick prototypes, and market research. Great for structured writing and nuanced reasoning tasks.</div>
+                    <span class="tool-badge" style="background: #FFF5F0; color: #CC785C;">Docs &amp; Prototypes</span>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-name">
+                        <span class="tool-dot" style="background: #9B59B6;"></span>
+                        Claude Code
+                    </div>
+                    <div class="tool-use">Agentic model for specific build tasks — co-working and designing together. Handles longer autonomous coding sessions.</div>
+                    <span class="tool-badge" style="background: #F5EEFF; color: #9B59B6;">Agentic Coding</span>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-name">
+                        <span class="tool-dot" style="background: #1A73E8;"></span>
+                        Google AI Studio
+                    </div>
+                    <div class="tool-use">Recently replaced N8N with this for workflow automation. Tried it and it worked well — cleaner setup, better model access.</div>
+                    <span class="tool-badge" style="background: #EEF5FF; color: #1A73E8;">Automation</span>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-name">
+                        <span class="tool-dot" style="background: #E74C3C;"></span>
+                        NotebookLM
+                    </div>
+                    <div class="tool-use">Market research, slide and infographic creation, and flashcards. Brilliant for turning dense sources into digestible formats.</div>
+                    <span class="tool-badge" style="background: #FFF0EE; color: #E74C3C;">Research &amp; Synthesis</span>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-name">
+                        <span class="tool-dot" style="background: #F24E1E;"></span>
+                        Figma Make
+                    </div>
+                    <div class="tool-use">Visualising ideas and generating quick prototypes. Bridges the gap between concept and something tangible to share with stakeholders.</div>
+                    <span class="tool-badge" style="background: #FFF1EE; color: #F24E1E;">Prototyping</span>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Practices in action -->
-    <section class="cs-section cs-section-alt">
-        <div class="cs-container">
-            <div class="cs-section-header">
-                <span class="cs-section-number">04</span>
-                <h2>Practices in action</h2>
-            </div>
-
-            <div class="cs-learnings-grid">
-                <div class="cs-learning-card">
-                    <h4>Storybook built with Cursor</h4>
-                    <p>AI sped up setup, docs drafts, and repetitive component notes—so engineering time focused on building and aligning the system properly.</p>
-                </div>
-                <div class="cs-learning-card">
-                    <h4>Configurable care flows</h4>
-                    <p>Used AI to compare models and generate early flow options; refined through stakeholder reviews and feasibility checks, especially edge cases and ops workflows.</p>
-                </div>
-                <div class="cs-learning-card">
-                    <h4>Data-aware prompts</h4>
-                    <p>For data/compliance work, I use prompt guardrails and source-checking—AI speeds me up, but trust comes from validation.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Shipped with AI -->
-    <section class="cs-section">
-        <div class="cs-container">
-            <div class="cs-section-header">
-                <span class="cs-section-number">05</span>
-                <h2>Shipped with AI</h2>
-            </div>
-            <div class="cs-learnings-grid">
-                <div class="cs-learning-card">
-                    <h4>Product wiki (internal)</h4>
-                    <p>
-                        Built an internal product wiki that centralised updates, FAQs, and intake requests. AI sped up structure and first drafts; I curated and edited for clarity and accuracy. <a href="https://plasma-slept-33331547.figma.site/" target="_blank" rel="noopener">View wiki</a>
-                    </p>
-                </div>
-                <div class="cs-learning-card">
-                    <h4>Storybook (in progress)</h4>
-                    <p>
-                        Building Storybook with a Figma-to-code focus. AI supports documentation and consistency checks while the team expands coverage in a maintainable way. <a href="https://plasma-slept-33331547.figma.site/" target="_blank" rel="noopener">View Storybook preview</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cs-section">
-        <div class="cs-container" style="text-align: center;">
-            <h2 style="margin-bottom: var(--space-lg);">Designing, building, shipping</h2>
-            <p style="max-width: 640px; margin: 0 auto var(--space-xl); color: var(--color-gray-700);">
-                I pair design judgment with AI speed: fast market scans, multiple variants, code-aware prototypes, and shipped outcomes—not just concepts.
-            </p>
-            <div style="display: flex; justify-content: center; gap: var(--space-md); flex-wrap: wrap;">
-                <a href="identity-first-onboarding.html" class="btn btn-primary btn-large">See shipped work</a>
-                <a href="case-study-4.html" class="btn btn-secondary">See AI-led build</a>
-            </div>
-        </div>
-    </section>
-    
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
@@ -333,28 +347,24 @@
                     </div>
                     <div class="footer-column">
                         <h4>Case Studies</h4>
-                        <a href="identity-first-onboarding.html">Redesigning Onboarding to Improve Identity Accuracy</a>
+                        <a href="identity-first-onboarding.html">Identity-First Onboarding</a>
+                        <a href="soda-hr-portal.html">SODA HR Portal</a>
+                        <a href="case-study-4.html">Gravity Design System</a>
                     </div>
                     <div class="footer-column">
                         <h4>Connect</h4>
                         <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
                         <a href="https://dribbble.com" target="_blank" rel="noopener">Dribbble</a>
-                        <a href="mailto:hello@vanidesign.com">Email</a>
                         <a href="contact.html">Contact</a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2024 Vani Balasundaram. All rights reserved.</p>
+                <p>© 2026 Vani Balasundaram. All rights reserved.</p>
                 <div class="footer-social">
                     <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
                         <svg viewBox="0 0 24 24" fill="currentColor">
                             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                    </a>
-                    <a href="https://dribbble.com" target="_blank" rel="noopener" aria-label="Dribbble">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 24C5.385 24 0 18.615 0 12S5.385 0 12 0s12 5.385 12 12-5.385 12-12 12zm10.12-10.358c-.35-.11-3.17-.953-6.384-.438 1.34 3.684 1.887 6.684 1.992 7.308 2.3-1.555 3.936-4.02 4.395-6.87zm-6.115 7.808c-.153-.9-.75-4.032-2.19-7.77l-.066.02c-5.79 2.015-7.86 6.025-8.04 6.4 1.73 1.358 3.92 2.166 6.29 2.166 1.42 0 2.77-.29 4-.814zm-11.62-2.58c.232-.4 3.045-5.055 8.332-6.765.135-.045.27-.084.405-.12-.26-.585-.54-1.167-.832-1.74C7.17 11.775 2.206 11.71 1.756 11.7l-.004.312c0 2.633.998 5.037 2.634 6.855zm-2.42-8.955c.46.008 4.683.026 9.477-1.248-1.698-3.018-3.53-5.558-3.8-5.928-2.868 1.35-5.01 3.99-5.676 7.17zM9.6 2.052c.282.38 2.145 2.914 3.822 6 3.645-1.365 5.19-3.44 5.373-3.702-1.81-1.61-4.19-2.586-6.795-2.586-.825 0-1.63.1-2.4.285zm10.335 3.483c-.218.29-1.935 2.493-5.724 4.04.24.49.47.985.68 1.486.08.18.15.36.22.53 3.41-.43 6.8.26 7.14.33-.02-2.42-.88-4.64-2.31-6.38z"/>
                         </svg>
                     </a>
                     <a href="mailto:hello@vanidesign.com" aria-label="Email">
