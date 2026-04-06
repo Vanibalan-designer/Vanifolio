@@ -634,22 +634,42 @@ function initCaseStudyCarousels() {
             track.style.transform = `translateX(-${current * 100}%)`;
             dots.forEach((d, i) => d.classList.toggle('active', i === current));
             counter.textContent = `${current + 1} / ${total}`;
-            btnPrev.disabled = current === 0;
-            btnNext.disabled = current === total - 1;
+            // Only disable at edges when user is manually navigating
+            btnPrev.disabled = false;
+            btnNext.disabled = false;
         };
 
         goTo(0);
 
+        // ── Auto-play (loops every 4 s, pauses on hover) ────────────────
+        const AUTOPLAY_MS = 4000;
+        let autoTimer = null;
+
+        const startAuto = () => {
+            stopAuto();
+            autoTimer = setInterval(() => {
+                goTo((current + 1) % total);
+            }, AUTOPLAY_MS);
+        };
+
+        const stopAuto = () => {
+            if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+        };
+
+        startAuto();
+        wrap.addEventListener('mouseenter', stopAuto);
+        wrap.addEventListener('mouseleave', startAuto);
+
         // ── Button events ───────────────────────────────────────────────
-        btnPrev.addEventListener('click', () => goTo(current - 1));
-        btnNext.addEventListener('click', () => goTo(current + 1));
-        dots.forEach((d, i) => d.addEventListener('click', () => goTo(i)));
+        btnPrev.addEventListener('click', () => { stopAuto(); goTo(current - 1); startAuto(); });
+        btnNext.addEventListener('click', () => { stopAuto(); goTo(current + 1); startAuto(); });
+        dots.forEach((d, i) => d.addEventListener('click', () => { stopAuto(); goTo(i); startAuto(); }));
 
         // ── Keyboard (when carousel is focused) ─────────────────────────
         carousel.setAttribute('tabindex', '0');
         carousel.addEventListener('keydown', e => {
-            if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(current - 1); }
-            if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); }
+            if (e.key === 'ArrowLeft')  { e.preventDefault(); stopAuto(); goTo(current - 1); startAuto(); }
+            if (e.key === 'ArrowRight') { e.preventDefault(); stopAuto(); goTo(current + 1); startAuto(); }
         });
 
         // ── Touch / swipe support ───────────────────────────────────────
@@ -659,6 +679,7 @@ function initCaseStudyCarousels() {
         carousel.addEventListener('touchstart', e => {
             touchStartX = e.touches[0].clientX;
             touchDeltaX = 0;
+            stopAuto();
         }, { passive: true });
 
         carousel.addEventListener('touchmove', e => {
@@ -674,6 +695,7 @@ function initCaseStudyCarousels() {
             if (touchDeltaX < -50)      goTo(current + 1);
             else if (touchDeltaX > 50)  goTo(current - 1);
             else                         goTo(current); // snap back
+            startAuto();
         });
     });
 }
