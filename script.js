@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initImageLightbox();
     initPortfolioSearch();
     initCaseStudyAnimations();
+    initCaseStudyScrollFX();
 });
 
 // ===================================
@@ -20,7 +21,21 @@ document.addEventListener('DOMContentLoaded', () => {
 // ===================================
 function initNavbar() {
     const navbar = document.querySelector('.navbar');
-    let lastScroll = 0;
+    if (!navbar) return;
+
+    const siteHeader = document.querySelector('.site-header');
+
+    const syncSiteHeaderHeight = () => {
+        if (!siteHeader) return;
+        const h = Math.ceil(siteHeader.getBoundingClientRect().height);
+        document.documentElement.style.setProperty('--site-header-height', `${h}px`);
+    };
+
+    syncSiteHeaderHeight();
+    window.addEventListener('resize', syncSiteHeaderHeight);
+    if (siteHeader && 'ResizeObserver' in window) {
+        new ResizeObserver(syncSiteHeaderHeight).observe(siteHeader);
+    }
 
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
@@ -30,8 +45,7 @@ function initNavbar() {
         } else {
             navbar.classList.remove('scrolled');
         }
-
-        lastScroll = currentScroll;
+        syncSiteHeaderHeight();
     });
 }
 
@@ -724,19 +738,19 @@ function initCaseStudyAnimations() {
         el.classList.add('cs-anim-img');
     });
 
-    // ── 3. Snapshot cards — staggered ──────────────────────────────────
+    // ── 3. Snapshot cards — staggered fade (no translate bleed into hero image)
     const snapshotCards = document.querySelectorAll('.cs-snapshot-card');
-    snapshotCards.forEach(el => el.classList.add('cs-anim'));
+    snapshotCards.forEach(el => el.classList.add('cs-anim-fade'));
     applyStagger(snapshotCards, 0, 80);
 
-    // ── 4. Metrics — staggered pop ─────────────────────────────────────
+    // ── 4. Metrics — fade only (translateY on metrics painted over the next section)
     const metrics = document.querySelectorAll('.cs-metric');
-    metrics.forEach(el => el.classList.add('cs-anim'));
+    metrics.forEach(el => el.classList.add('cs-anim-fade'));
     applyStagger(metrics, 0, 70);
 
-    // ── 5. Section headers ──────────────────────────────────────────────
-    document.querySelectorAll('.cs-section-header').forEach(el => {
-        el.classList.add('cs-anim');
+    // ── 5. Section headers — fade only (same bleed issue as metrics when stacked)
+    document.querySelectorAll('.cs-section-header, .cs-pego-section-title').forEach(el => {
+        el.classList.add('cs-anim-fade');
     });
 
     // ── 6. Result / insight / learning cards — staggered per row ────────
@@ -769,9 +783,9 @@ function initCaseStudyAnimations() {
         el.style.transitionDelay = `${i * 80}ms`;
     });
 
-    // ── 9. Content paragraphs inside sections ───────────────────────────
+    // ── 9. Content blocks — fade only (avoid translate bleed across stacked sections)
     document.querySelectorAll('.cs-content-main, .cs-content-full').forEach(el => {
-        el.classList.add('cs-anim');
+        el.classList.add('cs-anim-fade');
     });
 
     // ── 10. Testimonial block ────────────────────────────────────────────
@@ -781,7 +795,7 @@ function initCaseStudyAnimations() {
 
     // ── Intersection Observer ────────────────────────────────────────────
     const allAnimated = document.querySelectorAll(
-        '.cs-anim, .cs-anim-img, .cs-anim-left, .cs-anim-right'
+        '.cs-anim, .cs-anim-fade, .cs-anim-img, .cs-anim-left, .cs-anim-right'
     );
 
     const observer = new IntersectionObserver((entries) => {
@@ -807,6 +821,45 @@ function initCaseStudyAnimations() {
     });
 
     allAnimated.forEach(el => observer.observe(el));
+}
+
+// ===================================
+// Case study scroll-linked parallax (optional [data-parallax-strength])
+// ===================================
+function initCaseStudyScrollFX() {
+    if (!document.querySelector('.cs-hero')) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;
+
+    const parallaxNodes = document.querySelectorAll('[data-parallax-strength]');
+    if (!parallaxNodes.length) return;
+
+    let scheduled = false;
+
+    const tick = () => {
+        scheduled = false;
+
+        parallaxNodes.forEach((el) => {
+            const strength = parseFloat(el.getAttribute('data-parallax-strength') || '0.12', 10) || 0.12;
+            const rect = el.getBoundingClientRect();
+            const vh = window.innerHeight || 1;
+            const center = (rect.top + rect.height / 2 - vh / 2) / vh;
+            const y = center * Math.min(rect.height, vh) * strength;
+            el.style.transform = `translate3d(0, ${y}px, 0)`;
+        });
+    };
+
+    const onScroll = () => {
+        if (!scheduled) {
+            scheduled = true;
+            requestAnimationFrame(tick);
+        }
+    };
+
+    tick();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
 }
 
 // ===================================

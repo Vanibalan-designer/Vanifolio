@@ -2,34 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redesigning a onboarding to a connected healthcare ecosystem at Doctor Anywhere | Vani Balasundaram</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Identity-first onboarding | Doctor Anywhere | Vani Balasundaram</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="case-study.css">
 </head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">VANI</a>
-            <div class="nav-links">
-                <a href="index.html#case-studies">Work</a>
-                <a href="index.html#experience">Experience</a>
-                <a href="ai-practices.html">AI Practices</a>
-                <a href="about.html">About</a>
-                <a href="contact.html" class="nav-cta">Let's Talk</a>
+<body class="cs-pego-identity">
+    <header class="site-header" role="banner">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="nav-logo">VANI</a>
+                <div class="nav-links">
+                    <a href="index.html#case-studies">Work</a>
+                    <a href="index.html#experience">Experience</a>
+                    <a href="ai-practices.html">AI Practices</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html" class="nav-cta">Let's Talk</a>
+                </div>
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
-            <button class="mobile-menu-btn" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <!-- Mobile Menu -->
     <div class="mobile-menu">
         <div class="mobile-menu-links">
             <a href="index.html#case-studies">Work</a>
@@ -40,331 +40,204 @@
         </div>
     </div>
 
-    <!-- Case Study Hero -->
-    <section class="cs-hero">
-        <div class="cs-hero-container">
-            <a href="index.html#case-studies" class="cs-back-link">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M19 12H5M12 19l-7-7 7-7"/>
-                </svg>
-                Back to Work
-            </a>
-            
-            <div class="cs-hero-content">
-                <div class="cs-tags">
-                    <span class="tag">Mobile App</span>
-                    <span class="tag">Healthcare</span>
-                    <span class="tag">B2B & B2C</span>
-                    <span class="tag">White Label</span>
+    <article class="cs-pego-article">
+        <header class="cs-pego-hero cs-hero">
+            <div class="cs-pego-hero-inner">
+                <div class="cs-pego-hero-copy">
+                    <a href="index.html#case-studies" class="cs-back-link cs-pego-back">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Back to Work
+                    </a>
+                    <p class="cs-pego-eyebrow">Doctor Anywhere · Healthcare · Mobile</p>
+                    <h1 class="cs-pego-title">Identity-first onboarding</h1>
+                    <p class="cs-pego-subtitle">Establishing who the user is before the system routes them</p>
+                    <div class="cs-pego-lead">
+                        <p>Doctor Anywhere merged its B2C and B2B apps into one. Underneath that sat a database split: public and corporate users lived in two systems that did not talk to each other. Two sign-up entry points looked like the fix; in production, people still landed in the wrong place. I owned this end to end — problem framing, workshops, flow design, prototyping, phased delivery — and worked with engineering and CS to validate outcomes.</p>
+                        <p>We collapsed the entry points into one identity-first flow: verify early, let the system match and route, and keep fallbacks so nobody gets blocked. This is the story of building trust infrastructure, not just a better sign-up screen.</p>
+                    </div>
+                    <dl class="cs-pego-meta">
+                        <div><dt>Role</dt><dd>Senior Product Designer</dd></div>
+                        <div><dt>Company</dt><dd>Doctor Anywhere</dd></div>
+                        <div><dt>Scope</dt><dd>Onboarding · Identity · Verification · Phased delivery</dd></div>
+                    </dl>
+                    <a class="cs-pego-hero-cta" href="https://www.figma.com/proto/lsPUFyY4FKqIVzADRtfiC5/Identity-Verification?team_id=1235077050686888389&node-id=1-2&page-id=0%3A1&scaling=contain&content-scaling=fixed&t=ODWIhTSpeBNf16hT-1" target="_blank" rel="noopener noreferrer">
+                        View full case study here
+                    </a>
                 </div>
-                <h1>Redesigning onboarding to improve identity accuracy at Doctor Anywhere</h1>
-                <p class="cs-hero-description">
-                    Redesigned Doctor Anywhere’s onboarding end to end — from fragmented, multi-flow entry points to a single, identity-first experience. The work focused on simplifying entry, improving data accuracy, and delivering a scalable onboarding foundation across B2C, B2B, and direct consult users and as a result we have verified identity data for 1M+ users.
-                </p>
+                <figure class="cs-pego-hero-embed">
+                    <img src="images/Case study 1/Nini images/Woman_Rotates_With_iPhone-ezgif.com-video-to-gif-converter.gif" alt="Hero visual for identity-first onboarding" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="cs-pego-embed-fallback">HERO IMG SRC: <code>images/Case study 1/Nini images/Woman_Rotates_With_iPhone-ezgif.com-video-to-gif-converter.gif</code></div>
+                </figure>
+            </div>
+        </header>
+
+        <section class="cs-metrics cs-pego-metrics" aria-label="Outcomes at a glance">
+            <div class="cs-container">
+                <div class="cs-metrics-grid">
+                    <div class="cs-metric">
+                        <span class="cs-metric-value">1M+</span>
+                        <span class="cs-metric-label">Users verified through the new identity flow</span>
+                    </div>
+                    <div class="cs-metric">
+                        <span class="cs-metric-value">26% → 10%</span>
+                        <span class="cs-metric-label">Share of CS tickets that were onboarding-related</span>
+                    </div>
+                    <div class="cs-metric">
+                        <span class="cs-metric-value">Cashless</span>
+                        <span class="cs-metric-label">B2B users get correct benefits from day one</span>
+                    </div>
+                    <div class="cs-metric">
+                        <span class="cs-metric-value">NEHR</span>
+                        <span class="cs-metric-label">Cleaner data feeding the national health record</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="cs-pego-body">
+            <section id="problem" class="cs-pego-section">
+                <h2 class="cs-pego-section-title">Problem</h2>
+                <div class="cs-pego-prose cs-content-full">
+                    <p>We had been running multiple whitelabel apps and merged everything under one DA app. Public (B2C) and corporate (B2B) users sat in two separate databases. The response was two sign-up entry points — one for public, one for corporate. It seemed logical; it did not hold up in the real world.</p>
+                    <p>Users were still getting created in the wrong database. A B2B user who signed up through the wrong entry landed in B2C — corporate benefits never matched, the coverage tab stayed empty, cashless consultation did not work. They paid out of pocket and filed claims; those claims hit the payers team for manual processing. That cost users, us, and insurers.</p>
+                    <p><strong>26% of CS tickets were onboarding-related.</strong> That was not an edge case; it was systemic. Existing users from before the merge lived with mismatched accounts, missing benefits, and broken histories. We fixed that with manual backend mapping — it worked but carried real tech debt. Not a proud solution, but the right call at the time.</p>
+                    <p>Two entry points on a sign-up page were a symptom. <strong>The real problem: identity was not established early enough for the system to know who the user was.</strong> Without that, you cannot match benefits, route to the right database, or trust that consultation records and reports belong to the right person. Downstream that meant wrong benefit matching, CS load, manual payer work, wrong profiles, and dirty data feeding into NEHR.</p>
+                </div>
+            </section>
+
+            <section id="solution" class="cs-pego-section">
+                <h2 class="cs-pego-section-title">Solution</h2>
+                <div class="cs-pego-prose cs-content-full">
+                    <p>We collapsed the two entry points into one. Instead of asking people to self-identify as B2B or B2C and hoping they got it right, we let the system figure it out after identity was established.</p>
+                    <p><strong>How it works</strong></p>
+                    <ol class="cs-pego-list cs-pego-list-numbered">
+                        <li>User signs up with any email.</li>
+                        <li>Early in the flow we verify identity — via Singpass, which pulls NRIC, passport data, and date of birth.</li>
+                        <li>We use DOB and ID data to match against the B2B database. If there is a match, they are routed to corporate and benefits load. If not, they go to B2C.</li>
+                        <li>Regardless of Singpass outcome, every user is asked for a photo ID and a selfie — an extra layer of confidence that the right person is behind the account.</li>
+                        <li>Once verified, a verified tick appears on the profile — visible to the user and to providers.</li>
+                    </ol>
+                    <p><strong>Three fallback paths</strong></p>
+                    <ul class="cs-pego-list">
+                        <li>Singpass success → still collect ID upload and selfie.</li>
+                        <li>Singpass fails → manual KYC at sign-up (ID upload and selfie).</li>
+                        <li>User skips entirely → prompted again at first consultation; can still opt out and complete manual KYC then.</li>
+                    </ul>
+                    <p>We could not block people who could not complete Singpass. We also could not leave the system unsure who they were.</p>
+                    <p><strong>Why ID upload and selfie after Singpass</strong></p>
+                    <p>Singpass tells us who the user claims to be. ID and selfie tell us the right person is present behind that account. Together they give the system — and providers — enough confidence to trust the record. Before, providers re-checked identity at appointments; with the verified tick, that step is largely done.</p>
+                    <p><strong>Phased delivery</strong></p>
+                    <ul class="cs-pego-list">
+                        <li><strong>Phase 1</strong> — Collapsed entry points; identity-first flow with Singpass and fallbacks.</li>
+                        <li><strong>Phase 2</strong> — Existing users handled through manual backend mapping (tech debt, not a design win — but the pragmatic call).</li>
+                        <li><strong>Phase 3</strong> — Verified tick on profile as a provider-side trust signal.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="in-practice" class="cs-pego-section">
+                <h2 class="cs-pego-section-title">In practice</h2>
+                <div class="cs-pego-prose cs-content-full">
+                    <p>We did not jump straight into UI. Workshops with product, engineering, CS, and business mapped the problem in one room.</p>
+                    <p>We did not run primary user research for this. CS tickets, backend mismatch reports, and metrics already told the story. Secondary research, metrics analysis, and team synthesis were the right tools.</p>
+                    <p>We shipped in phases — the problem was too layered for a single release. Each phase was validated with metrics before the next.</p>
+                </div>
+            </section>
+
+            <section id="case-study-scroll" class="cs-pego-section cs-pego-scroll">
+                <div class="cs-pego-scroll-track">
+                    <div class="cs-pego-row cs-pego-row-two">
+                        <figure class="cs-pego-embed-container">
+                            <img src="images/Case study 1/Nini images/Slide 04.png" alt="Case study visual 04" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="cs-pego-embed-fallback">IMG SRC: <code>images/Case study 1/Nini images/Slide 04.png</code></div>
+                        </figure>
+                        <figure class="cs-pego-embed-container">
+                            <img src="images/Case study 1/Nini images/Slide 07.png" alt="Case study visual 05" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="cs-pego-embed-fallback">IMG SRC: <code>images/Case study 1/Nini images/Slide 07.png</code></div>
+                        </figure>
+                    </div>
+
+                    <div class="cs-pego-row cs-pego-row-single">
+                        <figure class="cs-pego-embed-container cs-pego-embed-scroll">
+                            <img src="images/Case study 1/Nini images/Slide - 17.png" alt="Case study visual 06" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="cs-pego-embed-fallback">IMG SRC: <code>images/Case study 1/Nini images/Slide - 17.png</code></div>
+                        </figure>
+                    </div>
+
+
+                    <div class="cs-pego-row cs-pego-row-single">
+                        <figure class="cs-pego-embed-container">
+                            <img src="images/Case study 1/Nini images/Slide - 18.png" alt="Case study visual 06" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="cs-pego-embed-fallback">IMG SRC: <code>images/Case study 1/Nini images/Slide - 18.png</code></div>
+                        </figure>
+                    </div>
+
+                    <div class="cs-pego-row cs-pego-row-single">
+                        <figure class="cs-pego-embed-container">
+                            <img src="images/Case study 1/Nini images/Slide - 21.png" alt="Case study visual 06" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="cs-pego-embed-fallback">IMG SRC: <code>images/Case study 1/Nini images/Slide - 21.png</code></div>
+                        </figure>
+                    </div>
+
                 
-                <div class="cs-meta">
-                    <div class="cs-meta-item">
-                        <span class="cs-meta-label">Role</span>
-                        <span class="cs-meta-value">Product Designer</span>
-                    </div>
-                    <div class="cs-meta-item">
-                        <span class="cs-meta-label">Company</span>
-                        <span class="cs-meta-value">Doctor Anywhere</span>
-                    </div>
-                    <div class="cs-meta-item">
-                        <span class="cs-meta-label">Duration & scope</span>
-                        <span class="cs-meta-value">~1 year · Onboarding, login, identity, verification</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
 
-    <!-- At a Glance -->
-    <section class="cs-snapshot">
-        <div class="cs-snapshot-inner">
-            <p class="cs-snapshot-label">At a glance</p>
-            <div class="cs-snapshot-grid">
-                <div class="cs-snapshot-card">
-                    <p class="cs-snapshot-card-label">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
-                        Problem
-                    </p>
-                    <p class="cs-snapshot-card-title">Fragmented onboarding with identity blind spots</p>
-                    <p class="cs-snapshot-card-body">Multiple entry points across B2C, B2B, and Direct VC meant the system couldn't confirm who a user was — causing failed consultations, manual ops fixes, and corporate benefit misuse.</p>
-                </div>
-                <div class="cs-snapshot-card">
-                    <p class="cs-snapshot-card-label">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                        My contribution
-                    </p>
-                    <p class="cs-snapshot-card-title">End-to-end redesign lead across 1 year, 2 phases</p>
-                    <p class="cs-snapshot-card-body">Led research, flow architecture, and design execution. Aligned Engineering, Product, Compliance, and insurers. Drove the pivot from flow-per-user-type to a single identity-first entry point with Singpass integration.</p>
-                </div>
-                <div class="cs-snapshot-card">
-                    <p class="cs-snapshot-card-label">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-                        Key decisions
-                    </p>
-                    <p class="cs-snapshot-card-title">Verify identity before access, not after</p>
-                    <p class="cs-snapshot-card-body">Singpass as the trusted identity source. Single unified entry point (users no longer self-classify). Memberships and benefits attach only after identity is confirmed.</p>
-                    <div class="cs-snapshot-skills">
-                        <span class="cs-snapshot-pill">Systems thinking</span>
-                        <span class="cs-snapshot-pill">Compliance design</span>
-                        <span class="cs-snapshot-pill">Stakeholder alignment</span>
-                        <span class="cs-snapshot-pill">Flow architecture</span>
+                    <div class="cs-pego-row cs-pego-row-two">
+                        <figure class="cs-pego-embed-container">
+                            <img src="images/Case study 1/Nini images/Slide - 24.png?v=202604282040" alt="Case study visual 24" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="cs-pego-embed-fallback">IMG SRC: <code>images/Case study 1/Nini images/Slide - 24.png</code></div>
+                        </figure>
+                        <figure class="cs-pego-embed-container">
+                            <img src="images/Case study 1/Nini images/Slide - 25.png?v=202604282040" alt="Case study visual 25" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="cs-pego-embed-fallback">IMG SRC: <code>images/Case study 1/Nini images/Slide - 25.png</code></div>
+                        </figure>
+                        
                     </div>
                 </div>
-                <div class="cs-snapshot-card is-outcome">
-                    <p class="cs-snapshot-card-label">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                        Outcome
-                    </p>
-                    <p class="cs-snapshot-card-title">1M+ users verified. 76% Singpass in 5 months.</p>
-                    <p class="cs-snapshot-card-body">66K B2B users migrated with zero service disruption. Fewer wrong-flow starts, failed consults, and ops escalations.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Hero Image -->
-    <section class="cs-hero-image">
-        <div class="cs-image-container">
-            <div class="cs-image-placeholder is-wide">
-                <img src="images/Case study 1/Case_study_1_Hero.jpg" alt="Identity-first onboarding hero mockups" loading="eager">
-                <div class="cs-placeholder-caption">
-                    <span>Identity first approach</span>
-                
+            <section id="impact" class="cs-pego-section">
+                <h2 class="cs-pego-section-title">Impact</h2>
+                <div class="cs-pego-prose cs-content-full">
+                    <ul class="cs-pego-list">
+                        <li><strong>1M+ users verified</strong> through the new identity flow.</li>
+                        <li><strong>Onboarding CS tickets</strong> reduced from 26% to 10%.</li>
+                        <li>Cashless consultation works correctly for B2B users from day one; benefit matching happens at sign-up.</li>
+                        <li>Providers no longer need to re-verify patients at every consultation.</li>
+                        <li>Cleaner data feeding into NEHR.</li>
+                    </ul>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Impact Metrics -->
-    <section class="cs-metrics">
+            <section id="reflection" class="cs-pego-section">
+                <h2 class="cs-pego-section-title">What I'd do differently</h2>
+                <div class="cs-pego-prose cs-content-full">
+                    <p>The existing-user fix was manual at the backend. It worked but it does not scale. Ideally we would ship a self-serve re-verification path so people could run through identity themselves instead of waiting on backend mapping. That gap is still there.</p>
+                    <p>Identity at sign-up was the first half of the problem. Accuracy at consultation, prescription, and report generation is still in progress — this case study only covers the first half.</p>
+                </div>
+            </section>
+
+            <div class="cs-pego-row cs-pego-row-single">
+                <figure class="cs-pego-embed-container">
+                    <img src="images/Case study 1/Nini images/Slide -26.png" alt="Case study visual 06" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="cs-pego-embed-fallback">IMG SRC: <code>images/Case study 1/Nini images/Slide -26.png</code></div>
+                </figure>
+            </div>
+
+            <section class="cs-pego-section cs-pego-closing">
+                <div class="cs-pego-prose cs-content-full">
+                    <p>This was not a sign-up redesign. It was trust infrastructure for the platform. When identity is right from the start, benefits, records, reports, CS load, and national health data line up downstream.</p>
+                    <p class="cs-pego-signoff">That's the story.</p>
+                </div>
+            </section>
+
+        </div>
+    </article>
+
+    <section class="cs-next-project cs-pego-next">
         <div class="cs-container">
-            <div class="cs-metrics-grid">
-                <div class="cs-metric">
-                    <span class="cs-metric-value">Identity clarity</span>
-                    <span class="cs-metric-label">Earlier verification reduced wrong-flow starts.</span>
-                </div>
-                <div class="cs-metric">
-                    <span class="cs-metric-value">Lower error rate</span>
-                    <span class="cs-metric-label">Fewer live consult failures from incorrect KYC data.</span>
-                </div>
-                <div class="cs-metric">
-                    <span class="cs-metric-value">Link coverage</span>
-                    <span class="cs-metric-label">Corporate memberships linked after identity, lowering misuse.</span>
-                </div>
-                <div class="cs-metric">
-                    <span class="cs-metric-value">Scalable onboarding</span>
-                    <span class="cs-metric-label">Onboarding now flexes for B2C, B2B, and direct consult users.</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="cs-page">
-        <aside class="cs-quick-nav" aria-label="Case study quick navigation">
-            <h3>Quick links</h3>
-            <a href="#background">Background</a>
-            <a href="#process">Process</a>
-            <a href="#outcome">Outcome</a>
-        </aside>
-        <div class="cs-content">
-
-    <!-- Background -->
-    <section id="background" class="cs-section">
-        <div class="cs-container">
-            <div class="cs-section-header">
-                <span class="cs-section-number">01</span>
-                <h2>Background</h2>
-            </div>
-            <div class="cs-content-full">
-                <p>
-                    When I joined Doctor Anywhere in 2023, the product wasn’t a single app but an ecosystem. Public users accessed teleconsultations through the main app, while employee benefits users came in through multiple white-label apps tied to insurers. Identity, login methods, and memberships lived in different systems. As the business scaled, this setup became hard to maintain, and the decision was made to consolidate everything into one app. Onboarding became the critical layer responsible for serving public users, corporate members, and Direct VC users — while also meeting Singapore MOH compliance. This shift happened incrementally, and with each step, onboarding carried more responsibility than before.
-                </p>
-            </div>
-            <div class="cs-visuals">
-                <div class="cs-visual">
-                    <img src="images/Case study 1/Case_study_1_product eco system.jpg" alt="Product ecosystem overview" loading="lazy">
-                    <div class="cs-visual-caption">
-                        <span>Product ecosystem</span>
-                        <p>Where multiple user groups enter</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process -->
-    <section id="process" class="cs-section">
-        <div class="cs-container">
-            <div class="cs-section-header">
-                <span class="cs-section-number">02</span>
-                <h2>Process</h2>
-            </div>
-            <div class="cs-content-full">
-                <p>
-                    Phase 1 focused on consolidation. We introduced separate entry points for different user types, added KYC before consultations, and shipped flows that were functionally complete. Usability tests passed and users moved forward, but real usage revealed deeper issues: users entered the wrong flows, benefits failed to appear, consultations broke due to incorrect personal details, and operations teams stepped in to fix identity gaps manually. The core issue wasn’t usability — it was confidence. We allowed users to progress before the system truly knew who they were. I reframed the problem from “how do we help users move faster” to “how can the system confidently understand identity early.” This led to an identity-first pivot: a single entry point for all users, earlier identity verification (with Singpass as a trusted source), and memberships or benefits attaching only after identity was confirmed. Much of the work involved aligning engineering, product, compliance, and insurers — balancing user experience with MOH standards, operational realities, and long-term scalability.
-                </p>
-            </div>
-            <div class="cs-visuals">
-                <div class="cs-visual">
-                    <img src="images/Case study 1/ChatGPT Image Jan 4, 2026, 10_03_46 AM.png" alt="Phase 1 onboarding map" loading="lazy">
-                    <div class="cs-visual-caption">
-                        <span>Phase 1 map</span>
-                        <p>Separate entry points before pivot</p>
-                    </div>
-                </div>
-                <div class="cs-visual">
-                    <img src="images/Case study 1/chatgpt users.png" alt="Onboarding map details" loading="lazy">
-                    <div class="cs-visual-caption">
-                        <span>Onboarding map</span>
-                        <p>Where identity gaps surfaced</p>
-                    </div>
-                </div>
-                <div class="cs-visual">
-                    <img src="images/Case study 1/Case_study_1_problem statement.jpg" alt="Identity-first pivot overview" loading="lazy">
-                    <div class="cs-visual-caption">
-                        <span>Pain points from phase 1</span>
-                    </div>
-                </div>
-                <div class="cs-visual">
-                    <img src="images/Case study 1/Case_study_1_process.jpg" alt="Identity-first onboarding flow" loading="lazy">
-                    <div class="cs-visual-caption">
-                        <span>Process snapshot</span>
-                        <p>Identity-first flow at a glance</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Design Decisions -->
-    <section class="cs-section cs-section-alt">
-        <div class="cs-container">
-            <div class="cs-section-header">
-                <span class="cs-section-number">03</span>
-                <h2>Key design decisions</h2>
-            </div>
-            <div class="cs-content-full">
-                <h3>Why Singpass over manual KYC</h3>
-                <p>
-                    We evaluated three options: self-declared identity (name + NRIC), third-party KYC providers, and Singpass.
-                    Self-declared was fast but unreliable. Third-party KYC increased friction with document uploads and verification delays.
-                    Singpass gave us trusted, government-verified identity in under 30 seconds for Singapore users. The tradeoff
-                    was support for non-Singpass users, so we designed a manual fallback path.
-                </p>
-
-                <h3 style="margin-top: var(--space-xl);">Why a single entry point instead of separate user flows</h3>
-                <p>
-                    I explored improved branching first, but usability sessions showed the root issue: users do not naturally
-                    self-classify as B2B or B2C at the start. They only know they need care. We moved to a single entry
-                    point so the system determines user type from verified identity data instead of user guesswork.
-                </p>
-
-                <h3 style="margin-top: var(--space-xl);">Why identity before benefits, not alongside</h3>
-                <p>
-                    We tested sequencing identity and benefit-linking in parallel to reduce time-to-value, but this drove
-                    downstream failures when membership attached to inaccurate profiles. Sequencing identity first added one
-                    step, but removed an entire class of avoidable errors.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Research -->
-    <section class="cs-section">
-        <div class="cs-container">
-            <div class="cs-section-header">
-                <span class="cs-section-number">04</span>
-                <h2>Research and what users told us</h2>
-            </div>
-            <div class="cs-content-full">
-                <p>
-                    Early usability sessions looked positive, but post-launch data showed identity-related escalations.
-                    We ran targeted follow-up interviews and reviewed support patterns with Ops. Three insights were
-                    consistent: users assumed registration meant benefits were already active, B2B users expected invitation
-                    context to carry through automatically, and users who hit KYC errors often abandoned because the error
-                    felt like rejection instead of a recoverable step.
-                </p>
-                <p style="margin-top: var(--space-md);">
-                    These findings directly shaped Phase 2: identity established before benefits depend on it, invitation context
-                    preserved through onboarding, and error states rewritten to communicate recovery clearly.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Outcome -->
-    <section id="outcome" class="cs-section">
-        <div class="cs-container">
-            <div class="cs-section-header">
-                <span class="cs-section-number">05</span>
-                <h2>Outcome</h2>
-            </div>
-            <div class="cs-content-full">
-                <p>
-                    Phase 2 corrected the sequencing issues exposed in Phase 1. Identity is now established before care or benefits depend on it, reducing wrong-flow starts, failed consultations, and downstream confusion. Users no longer self-classify upfront, personal data quality improved, and onboarding aligns more closely with patient and operational workflows. The rollout brought 66,000 B2B users into the unified app while maintaining uninterrupted corporate onboarding. Identity verification started at 0% adoption and, within five months of launch, 76% of users verified via Singpass, with over 1M users verified overall. This demonstrated that an identity-first approach could scale across public and corporate use cases without blocking access. The biggest takeaway for me was that onboarding isn’t just a funnel — it’s a system boundary where trust, access, and compliance are set for everything that follows.
-                </p>
-                <h3 style="margin-top: var(--space-xl);">What I'd do differently</h3>
-                <p>
-                    If I were redesigning this again, I would test Singpass-first account creation from step one rather than
-                    email-first followed by verification. The current sequence was the most practical decision at the time:
-                    email is universal, lower-cost, and faster to implement. But it creates a two-step mental model where users
-                    feel "registered" before identity is actually trusted.
-                </p>
-                <p style="margin-top: var(--space-md);">
-                    The cleaner experience would be identity as account creation, with email used primarily for communication.
-                    The constraint was real: deeper integration effort, ongoing cost, and mixed eligibility across user groups.
-                    In hindsight, I would push earlier for a phased model - Singpass-first where eligible, with email fallback
-                    for everyone else - to get closer to the right UX without overcommitting infrastructure.
-                </p>
-            </div>
-            <div class="cs-results-grid">
-                <div class="cs-result-card">
-                    <span class="cs-result-value">Identity clarity</span>
-                    <span class="cs-result-label">Earlier verification reduced wrong-flow starts.</span>
-                    <p>Clearer identity states shared with downstream teams.</p>
-                </div>
-                <div class="cs-result-card">
-                    <span class="cs-result-value">Consult reliability</span>
-                    <span class="cs-result-label">Fewer consult failures from bad data.</span>
-                    <p>Errors surface before users rely on the product.</p>
-                </div>
-                <div class="cs-result-card">
-                    <span class="cs-result-value">Benefit confidence</span>
-                    <span class="cs-result-label">Memberships link after verification.</span>
-                    <p>Reduced accidental misuse of corporate flows.</p>
-                </div>
-            </div>
-            <div class="cs-visuals">
-                <div class="cs-visual">
-                    <img src="images/Case study 1/Case_study_1_Outcome.jpg" alt="Outcome states overview" loading="lazy">
-                    <div class="cs-visual-caption">
-                        <span>Outcome states</span>
-                        <p>Clarity on verified vs manual paths</p>
-                    </div>
-                </div>
-                <div class="cs-visual">
-                    <img src="images/Case study 1/Case_study_1_membershiplinking.jpg" alt="Membership linking flow" loading="lazy">
-                    <div class="cs-visual-caption">
-                        <span>Membership linking</span>
-                        <p>Earlier verification, later attachment</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-        </div>
-    </div>
-
-    <!-- Next Project -->
-    <section class="cs-next-project">
-        <div class="cs-container">
-            <span class="cs-next-label">Next Project</span>
+            <span class="cs-next-label">Next project</span>
             <a href="soda-hr-portal.html" class="cs-next-link">
                 <h2>SODA HR Portal — Employee benefits made self-serve</h2>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -374,7 +247,6 @@
         </div>
     </section>
 
-    <!-- Password Modal -->
     <div class="password-modal" id="password-modal" aria-hidden="true">
         <div class="modal-card">
             <div>
@@ -390,7 +262,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-main">
@@ -409,7 +280,7 @@
                     </div>
                     <div class="footer-column">
                         <h4>Case Studies</h4>
-                        <a href="identity-first-onboarding.html">Redesigning Onboarding to Improve Identity Accuracy</a>
+                        <a href="identity-first-onboarding.html">Identity-first onboarding</a>
                     </div>
                     <div class="footer-column">
                         <h4>Connect</h4>

@@ -17,6 +17,17 @@
     will-change: opacity, transform;
 }
 
+/* Fade only — avoids translateY paint bleeding past section bounds (e.g. metrics over Background) */
+.cs-anim-fade {
+    opacity: 0;
+    transition: opacity 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: opacity;
+}
+
+.cs-anim-fade.is-visible {
+    opacity: 1;
+}
+
 /* Image blocks — subtle scale lift */
 .cs-anim-img {
     opacity: 0;
@@ -84,14 +95,14 @@
 .cs-snapshot {
     background: linear-gradient(135deg, #F5F5F7 0%, #EEEEFF 100%);
     border-bottom: 1px solid rgba(88, 86, 214, 0.1);
-    padding: var(--space-2xl) 0;
+    padding: var(--space-xl) 0 var(--space-2xl);
 
     opacity: 0;
     animation: fadeInUp 0.7s ease 0.85s forwards;
 }
 
 .cs-snapshot-inner {
-    max-width: 1000px;
+    max-width: var(--cs-layout-max, 1320px);
     margin: 0 auto;
     padding: 0 var(--space-xl);
 }
@@ -127,7 +138,7 @@
     background: var(--color-white);
     border-radius: var(--radius-xl);
     padding: var(--space-lg);
-    border: 1px solid rgba(0,0,0,0.04);
+    border: 1px solid rgba(0, 0, 0, 0.07);
     transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
@@ -165,9 +176,9 @@
 }
 
 .cs-snapshot-card-body {
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
     color: var(--color-gray-700);
-    line-height: 1.55;
+    line-height: 1.58;
 }
 
 .cs-snapshot-skills {
@@ -210,9 +221,82 @@
     color: rgba(255,255,255,0.65);
 }
 
+/* ===================================
+   Problem Journey Infographic
+   =================================== */
+.cs-journey {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+}
+
+.cs-journey-step {
+    background: var(--color-white);
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    border-radius: var(--radius-xl);
+    padding: var(--space-md) var(--space-lg);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.cs-journey-step::after {
+    content: "→";
+    position: absolute;
+    right: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-gray-300);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.cs-journey-step:last-child::after {
+    display: none;
+}
+
+.cs-journey-kicker {
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-accent);
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+}
+
+.cs-journey-step h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: var(--space-sm);
+}
+
+.cs-journey-step p {
+    font-size: 0.875rem;
+    color: var(--color-gray-700);
+    line-height: 1.62;
+}
+
+.cs-journey-summary {
+    margin-top: var(--space-lg);
+    background: var(--color-indigo-light);
+    color: var(--color-black);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md) var(--space-lg);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
 @media (max-width: 1024px) {
     .cs-snapshot-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cs-journey {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cs-journey-step::after {
+        display: none;
     }
 }
 
@@ -223,6 +307,10 @@
     .cs-snapshot-card.is-outcome {
         grid-column: span 1;
     }
+
+    .cs-journey {
+        grid-template-columns: 1fr;
+    }
 }
 
 .case-study-body,
@@ -230,14 +318,20 @@ body {
     background-color: var(--color-white);
 }
 
+/* Wider editorial layout (full-width band, copy grows with viewport) */
+body:has(.cs-hero) {
+    --cs-layout-max: min(96vw, 1680px);
+    --cs-text-measure: min(90ch, 100%);
+}
+
 /* Hero Section */
 .cs-hero {
-    padding: calc(var(--space-5xl) + 80px) 0 var(--space-4xl);
+    padding: calc(var(--space-5xl) + var(--site-header-height, 80px)) 0 var(--space-3xl);
     background-color: var(--color-white);
 }
 
 .cs-hero-container {
-    max-width: 1000px;
+    max-width: var(--cs-layout-max, 1320px);
     margin: 0 auto;
     padding: 0 var(--space-xl);
 }
@@ -267,7 +361,8 @@ body {
 }
 
 .cs-hero-content {
-    max-width: 800px;
+    max-width: none;
+    width: 100%;
 }
 
 .cs-tags {
@@ -303,11 +398,11 @@ body {
 }
 
 .cs-hero-description {
-    font-size: 1.125rem;
-    line-height: 1.7;
+    font-size: 1.0625rem;
+    line-height: 1.65;
     color: var(--color-gray-700);
     margin-bottom: var(--space-2xl);
-    max-width: 700px;
+    max-width: var(--cs-text-measure, min(72ch, 100%));
 
     opacity: 0;
     animation: fadeInUp 0.8s ease 0.44s forwards;
@@ -352,7 +447,7 @@ body {
 }
 
 .cs-image-container {
-    max-width: 1280px;
+    max-width: var(--cs-layout-max, 1320px);
     margin: 0 auto;
     padding: 0 var(--space-xl);
 }
@@ -367,16 +462,43 @@ body {
     color: var(--color-gray-700);
     position: relative;
     overflow: hidden;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    align-items: center;
+    justify-items: center;
+}
+
+.cs-image-placeholder .cs-parallax-inner {
+    grid-row: 1;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    will-change: transform;
+}
+
+.cs-image-placeholder > img {
+    grid-row: 1;
 }
 
 .cs-image-placeholder img {
     position: relative;
-    inset: auto;
     width: 100%;
     height: 100%;
+    min-height: 0;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
+    object-position: center;
     display: block;
     cursor: zoom-in;
+}
+
+.cs-image-placeholder .cs-placeholder-caption {
+    grid-row: 2;
+    width: 100%;
 }
 
 .cs-image-placeholder.is-wide {
@@ -384,7 +506,13 @@ body {
 }
 
 .cs-image-placeholder.is-wide img {
-    object-fit: cover;
+    object-fit: contain;
+    background: var(--color-white);
+}
+
+.cs-image-placeholder.is-contain img {
+    object-fit: contain;
+    background: var(--color-white);
 }
 
 /* Case Study Visuals — stacked (single image) */
@@ -402,13 +530,19 @@ body {
     border: none;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.07);
     background: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .cs-visual img {
     width: 100%;
     height: auto;
+    max-width: 100%;
+    max-height: min(72vh, 900px);
     display: block;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center;
     cursor: zoom-in;
     transition: transform var(--transition-base);
 }
@@ -468,8 +602,9 @@ body {
     height: auto;
     display: block;
     object-fit: contain;
+    object-position: center;
     cursor: zoom-in;
-    max-height: 580px;
+    max-height: min(72vh, 900px);
 }
 
 /* No captions on carousel slides */
@@ -598,18 +733,18 @@ body {
 
 /* Quick Navigation */
 .cs-page {
-    max-width: 1280px;
+    max-width: min(98vw, 1760px);
     margin: 0 auto;
-    padding: 0 var(--space-xl);
+    padding: 0 clamp(var(--space-md), 3vw, var(--space-2xl));
     display: grid;
-    grid-template-columns: minmax(160px, 200px) 1fr;
-    gap: var(--space-4xl);
+    grid-template-columns: minmax(160px, 220px) 1fr;
+    gap: clamp(var(--space-2xl), 4vw, var(--space-4xl));
     align-items: start;
 }
 
 .cs-quick-nav {
     position: sticky;
-    top: 120px;
+    top: calc(var(--site-header-height, 72px) + 12px);
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
@@ -711,10 +846,12 @@ body {
     background-color: var(--color-gray-100);
     padding: var(--space-3xl) 0;
     border-bottom: none;
+    position: relative;
+    z-index: 0;
 }
 
 .cs-container {
-    max-width: 1000px;
+    max-width: var(--cs-layout-max, 1320px);
     margin: 0 auto;
     padding: 0 var(--space-xl);
 }
@@ -747,7 +884,7 @@ body {
 
 /* Content Sections */
 .cs-section {
-    padding: var(--space-4xl) 0;
+    padding: var(--space-3xl) 0;
     background-color: var(--color-white);
 }
 
@@ -768,11 +905,6 @@ body {
     color: var(--color-gray-500);
     font-weight: 600;
     margin-bottom: var(--space-sm);
-}
-
-.cs-content-full {
-    max-width: 760px;
-    margin: 0 auto;
 }
 
 .cs-section-header h2 {
@@ -808,21 +940,30 @@ body {
 }
 
 .cs-content-full {
-    margin-bottom: var(--space-2xl);
+    width: 100%;
+    max-width: none;
+    margin: 0 0 var(--space-2xl);
 }
 
 .cs-content-full h3 {
-    font-size: 1.25rem;
-    margin-bottom: var(--space-md);
+    font-size: 1.125rem;
+    margin-bottom: var(--space-sm);
+    margin-top: var(--space-xl);
     letter-spacing: -0.02em;
     font-weight: 600;
+    color: var(--color-black);
+}
+
+.cs-content-full h3:first-child {
+    margin-top: 0;
 }
 
 .cs-content-full p {
-    font-size: 1.0625rem;
-    line-height: 1.75;
+    font-size: 1rem;
+    line-height: 1.68;
     color: var(--color-gray-700);
-    max-width: 800px;
+    max-width: var(--cs-text-measure, min(90ch, 100%));
+    margin-bottom: var(--space-md);
 }
 
 /* Sidebar */
@@ -1231,5 +1372,558 @@ body {
 
     .cs-testimonial blockquote {
         font-size: 1.25rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cs-parallax-inner {
+        transform: none !important;
+    }
+
+    .cs-anim-fade {
+        opacity: 1;
+        transition: none;
+    }
+}
+
+/* ===================================
+   Pego-style layout — identity case only
+   Editorial rhythm inspired by pego.work/projects/by-unico
+   =================================== */
+
+.cs-pego-identity {
+    background-color: var(--color-white);
+}
+
+body.cs-pego-identity,
+html:has(body.cs-pego-identity) {
+    background: #fff;
+}
+
+.cs-pego-identity .cs-pego-article {
+    background-color: var(--color-white);
+    padding-left: clamp(20px, 3.5vw, 52px);
+    padding-right: clamp(20px, 3.5vw, 52px);
+}
+
+/* Hero: override shared .cs-hero band */
+.cs-pego-identity .cs-pego-hero.cs-hero {
+    padding: calc(var(--space-3xl) + var(--site-header-height, 72px)) 0 var(--space-2xl);
+    background-color: var(--color-white);
+}
+
+.cs-pego-hero-inner {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(420px, 0.9fr);
+    gap: clamp(24px, 3vw, 48px);
+    align-items: start;
+}
+
+.cs-pego-hero-copy {
+    min-width: 0;
+}
+
+.cs-pego-identity .cs-pego-back {
+    margin-bottom: var(--space-xl);
+}
+
+.cs-pego-eyebrow {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--color-gray-500);
+    margin-bottom: var(--space-md);
+}
+
+.cs-pego-title {
+    font-size: clamp(2rem, 5.5vw, 3.25rem);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.08;
+    color: var(--color-black);
+    margin-bottom: var(--space-md);
+}
+
+.cs-pego-subtitle {
+    font-size: clamp(1.125rem, 2.2vw, 1.375rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.35;
+    color: var(--color-gray-900);
+    margin-bottom: var(--space-xl);
+    max-width: 42rem;
+}
+
+.cs-pego-lead {
+    margin-bottom: var(--space-2xl);
+}
+
+.cs-pego-lead p {
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    color: var(--color-gray-700);
+    max-width: 42rem;
+    margin-bottom: var(--space-md);
+}
+
+.cs-pego-lead p:last-child {
+    margin-bottom: 0;
+}
+
+.cs-pego-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xl) var(--space-2xl);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-gray-300);
+    max-width: 42rem;
+}
+
+.cs-pego-meta div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.cs-pego-meta dt {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-gray-500);
+}
+
+.cs-pego-meta dd {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-black);
+    margin: 0;
+}
+
+.cs-pego-hero-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: var(--space-lg);
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: var(--color-black);
+    color: var(--color-white);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.cs-pego-hero-cta:hover {
+    opacity: 0.82;
+}
+
+.cs-pego-hero-embed {
+    width: 100%;
+    aspect-ratio: 1280 / 900;
+    margin: 0;
+    border: 1px dashed rgba(16, 24, 40, 0.28);
+    border-radius: 14px;
+    overflow: hidden;
+    background: #f8fafc;
+    position: relative;
+}
+
+.cs-pego-hero-embed img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Hero media — white frame, light border (Pego-like restraint) */
+.cs-pego-identity .cs-pego-figure-hero {
+    max-width: min(96vw, 1100px);
+    margin: 0 auto var(--space-2xl);
+    padding: 0 var(--space-xl);
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: none;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.cs-pego-identity .cs-pego-figure-hero img {
+    max-height: min(78vh, 880px);
+    margin: 0 auto;
+}
+
+.cs-pego-identity .cs-pego-figure-hero .cs-visual-caption {
+    padding-bottom: var(--space-lg);
+}
+
+/* Metrics row — white, hairline separators */
+.cs-pego-identity .cs-pego-metrics {
+    background-color: var(--color-white);
+    padding: var(--space-2xl) 0 var(--space-3xl);
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.cs-pego-identity .cs-pego-metrics .cs-metric-value {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+}
+
+.cs-pego-identity .cs-pego-metrics .cs-metric-label {
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    color: var(--color-gray-500);
+    max-width: 14rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Body column */
+.cs-pego-body {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: var(--space-3xl) 0 var(--space-4xl);
+}
+
+.cs-pego-section {
+    padding-bottom: var(--space-3xl);
+}
+
+.cs-pego-section-title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 0.01em;
+    color: var(--color-black);
+    margin: 0 0 var(--space-lg);
+    padding: 0;
+    border: none;
+}
+
+/* Pego uses H3-sized section labels — slightly larger than eyebrow */
+.cs-pego-identity .cs-pego-section-title {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--color-black);
+}
+
+.cs-pego-prose p {
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    color: var(--color-gray-700);
+    margin-bottom: var(--space-md);
+    max-width: none;
+    text-align: justify;
+}
+
+.cs-pego-prose p:last-child {
+    margin-bottom: 0;
+}
+
+.cs-pego-prose strong {
+    color: var(--color-black);
+    font-weight: 600;
+}
+
+.cs-pego-list {
+    margin: var(--space-md) 0 var(--space-lg);
+    padding-left: 0;
+    list-style: none;
+    max-width: none;
+}
+
+.cs-pego-list li {
+    position: relative;
+    padding-left: 1.125rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--color-gray-700);
+}
+
+.cs-pego-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--color-black);
+    opacity: 0.35;
+}
+
+.cs-pego-list-numbered {
+    counter-reset: pego;
+    list-style: none;
+}
+
+.cs-pego-list-numbered li {
+    counter-increment: pego;
+    padding-left: 2rem;
+}
+
+.cs-pego-list-numbered li::before {
+    content: counter(pego) '.';
+    width: auto;
+    height: auto;
+    background: none;
+    border-radius: 0;
+    opacity: 1;
+    font-size: 1.0625rem;
+    font-weight: 500;
+    color: var(--color-gray-500);
+    left: 0;
+    top: 0;
+}
+
+.cs-pego-visuals {
+    margin-top: var(--space-2xl);
+    max-width: min(96vw, 900px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cs-pego-visuals-final {
+    margin-top: var(--space-2xl);
+    padding-bottom: var(--space-2xl);
+}
+
+.cs-pego-identity .cs-pego-visuals .cs-visual {
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: none;
+    border-radius: var(--radius-md);
+}
+
+/* Scrollable visual case study rail (Wall-of-Portfolios inspired) */
+.cs-pego-scroll {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.cs-pego-scroll .cs-pego-section-title {
+    margin-bottom: var(--space-sm);
+}
+
+.cs-pego-scroll-intro {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-gray-600);
+    max-width: 44rem;
+    margin: 0 0 var(--space-xl);
+}
+
+.cs-pego-scroll-track {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+}
+
+.cs-pego-row {
+    display: grid;
+    gap: var(--space-lg);
+}
+
+.cs-pego-row-two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cs-pego-row-three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.cs-pego-row-single {
+    grid-template-columns: 1fr;
+}
+
+.cs-pego-scroll-item {
+    margin: 0;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(16, 24, 40, 0.1);
+    box-shadow: 0 10px 34px rgba(16, 24, 40, 0.08);
+    background: #f8fafc;
+}
+
+.cs-pego-scroll-item img {
+    width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+    display: block;
+}
+
+.cs-pego-empty-state {
+    border: 1px dashed rgba(16, 24, 40, 0.25);
+    border-radius: 14px;
+    padding: var(--space-lg);
+    color: var(--color-gray-600);
+    background: #fcfcfd;
+    font-size: 0.95rem;
+}
+
+.cs-pego-embed-container {
+    width: 100%;
+    aspect-ratio: auto;
+    margin: 0 auto;
+    border: 1px dashed rgba(16, 24, 40, 0.28);
+    border-radius: 14px;
+    background: #f8fafc;
+    display: block;
+    color: var(--color-gray-600);
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
+    position: relative;
+    overflow: hidden;
+}
+
+.cs-pego-embed-container img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.cs-pego-embed-scroll {
+    overflow: auto;
+}
+
+.cs-pego-embed-scroll img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.cs-pego-embed-fallback {
+    position: absolute;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+}
+
+.cs-pego-closing {
+    padding-top: var(--space-lg);
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.cs-pego-signoff {
+    font-weight: 500;
+    color: var(--color-black);
+    margin-top: var(--space-md) !important;
+}
+
+/* Next project — white band, inline link (closer to Pego) */
+.cs-pego-identity .cs-next-project.cs-pego-next {
+    background-color: var(--color-white);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    padding: var(--space-3xl) var(--space-xl);
+    text-align: left;
+}
+
+.cs-pego-identity .cs-pego-next .cs-container {
+    max-width: min(96vw, 720px);
+    margin: 0 auto;
+}
+
+.cs-pego-identity .cs-pego-next .cs-next-label {
+    color: var(--color-gray-500);
+}
+
+.cs-pego-identity .cs-pego-next .cs-next-link {
+    color: var(--color-black);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.cs-pego-identity .cs-pego-next .cs-next-link h2 {
+    color: var(--color-black);
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+    font-weight: 600;
+}
+
+.cs-pego-identity .cs-pego-next .cs-next-link svg {
+    color: var(--color-black);
+}
+
+.cs-pego-identity .cs-pego-next .cs-next-link:hover {
+    opacity: 0.55;
+}
+
+/* Hero entrance — align with existing case study keyframes */
+.cs-pego-identity .cs-pego-hero .cs-back-link,
+.cs-pego-identity .cs-pego-hero .cs-pego-eyebrow,
+.cs-pego-identity .cs-pego-hero .cs-pego-title,
+.cs-pego-identity .cs-pego-hero .cs-pego-subtitle,
+.cs-pego-identity .cs-pego-hero .cs-pego-lead,
+.cs-pego-identity .cs-pego-hero .cs-pego-meta {
+    opacity: 0;
+    animation: fadeInUp 0.75s ease forwards;
+}
+
+.cs-pego-identity .cs-pego-hero .cs-back-link { animation-delay: 0.05s; }
+.cs-pego-identity .cs-pego-hero .cs-pego-eyebrow { animation-delay: 0.12s; }
+.cs-pego-identity .cs-pego-hero .cs-pego-title { animation-delay: 0.2s; }
+.cs-pego-identity .cs-pego-hero .cs-pego-subtitle { animation-delay: 0.28s; }
+.cs-pego-identity .cs-pego-hero .cs-pego-lead { animation-delay: 0.38s; }
+.cs-pego-identity .cs-pego-hero .cs-pego-meta { animation-delay: 0.48s; }
+
+@media (max-width: 768px) {
+    .cs-pego-identity .cs-pego-article {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .cs-pego-identity .cs-metrics-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+
+    .cs-pego-identity .cs-pego-metrics .cs-metric-label {
+        max-width: none;
+    }
+
+    .cs-pego-scroll {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .cs-pego-scroll-track {
+        gap: var(--space-md);
+    }
+
+    .cs-pego-row,
+    .cs-pego-row-two,
+    .cs-pego-row-three,
+    .cs-pego-row-single {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+
+    .cs-pego-prose p {
+        text-align: left;
+    }
+
+    .cs-pego-hero-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .cs-pego-hero-embed {
+        margin-top: var(--space-lg);
     }
 }

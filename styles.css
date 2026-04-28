@@ -3,6 +3,8 @@
    Apple Neo — Clean, minimal, vibrant
    =================================== */
 :root {
+    /* Measured from .site-header (announcement + nav when present) */
+    --site-header-height: 72px;
     /* Core — Apple Neo palette */
     --color-primary: #1D1D1F;
     --color-primary-hover: #000000;
@@ -85,9 +87,12 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    margin: 0;
+    padding: 0;
 }
 
 body {
+    margin: 0;
     font-family: var(--font-body);
     font-size: 1rem;
     line-height: 1.6;
@@ -96,7 +101,6 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
-    padding-top: 37px;
 }
 
 img {
@@ -369,10 +373,31 @@ strong {
 }
 
 /* ===================================
+   Site header — fixed to viewport top (no gap)
+   Announcement + navbar stack in one column; safe area on the wrapper.
+   =================================== */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding-top: env(safe-area-inset-top, 0px);
+    /* Opaque bar so content scrolling underneath does not read as a “gap” above the nav */
+    background-color: var(--color-white);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* ===================================
    Announcement Bar
    =================================== */
 .announcement-bar {
     width: 100%;
+    flex-shrink: 0;
     background: var(--color-black);
     color: var(--color-white);
     text-align: center;
@@ -384,11 +409,7 @@ strong {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1002;
+    position: relative;
 }
 
 .announcement-icon {
@@ -399,12 +420,18 @@ strong {
 /* ===================================
    Navigation — Apple style
    =================================== */
+.site-header .navbar {
+    position: relative;
+    flex-shrink: 0;
+    top: auto;
+    left: auto;
+    right: auto;
+    z-index: auto;
+}
+
+/* Nav bar only appears inside .site-header on this site */
 .navbar {
-    position: fixed;
-    top: 37px;
-    left: 0;
-    right: 0;
-    z-index: 1000;
+    width: 100%;
     padding: 1rem 0;
     background-color: rgba(255, 255, 255, 0.82);
     backdrop-filter: saturate(180%) blur(20px);
@@ -418,7 +445,7 @@ strong {
 }
 
 .nav-container {
-    max-width: 1280px;
+    max-width: min(96vw, 1680px);
     margin: 0 auto;
     padding: 0 var(--space-xl);
     display: grid;
@@ -500,7 +527,7 @@ strong {
     bottom: 0;
     background-color: rgba(255, 255, 255, 0.97);
     backdrop-filter: blur(20px);
-    z-index: 999;
+    z-index: 1100;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -537,7 +564,7 @@ strong {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: var(--space-5xl) 0 var(--space-3xl);
+    padding: calc(var(--space-5xl) + var(--site-header-height, 72px)) 0 var(--space-3xl);
     position: relative;
     overflow: hidden;
     background-color: var(--color-white);
@@ -707,7 +734,8 @@ strong {
 .hero-photo {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    background: var(--color-white);
     display: block;
 }
 
@@ -894,12 +922,30 @@ strong {
     position: relative;
     aspect-ratio: 16/10;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-white);
+}
+
+.project-image > img {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
 }
 
 .project-thumb {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center;
+    background: var(--color-white);
     display: block;
     transition: transform var(--transition-slow);
 }
@@ -1285,9 +1331,9 @@ strong {
 }
 
 .footer-container {
-    max-width: 1280px;
+    max-width: 100%;
     margin: 0 auto;
-    padding: 0 var(--space-xl);
+    padding: 0 clamp(20px, 3vw, 48px);
 }
 
 .footer-main {
@@ -1515,7 +1561,7 @@ strong {
     .hero {
         min-height: auto;
         padding: var(--space-4xl) 0 var(--space-3xl);
-        padding-top: calc(var(--space-4xl) + 60px);
+        padding-top: calc(var(--space-4xl) + var(--site-header-height, 72px));
     }
 
     .hero-container {
