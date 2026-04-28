@@ -1826,6 +1826,38 @@ html:has(body.cs-pego-identity) {
     margin-top: var(--space-md) !important;
 }
 
+.cs-pego-context-card {
+    background: #f3f1e7;
+    border: 1px solid #ebe6d4;
+    border-radius: 20px;
+    padding: clamp(20px, 3vw, 32px);
+}
+
+.cs-pego-context-label {
+    margin: 0 0 var(--space-sm);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #4c4a3d;
+}
+
+.cs-pego-context-title {
+    margin: 0 0 var(--space-md);
+    font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: #1f2937;
+}
+
+.cs-pego-context-copy {
+    margin: 0;
+    font-size: 1.08rem;
+    line-height: 1.7;
+    color: #374151;
+    text-align: left !important;
+}
+
 /* Next project — white band, inline link (closer to Pego) */
 .cs-pego-identity .cs-next-project.cs-pego-next {
     background-color: var(--color-white);
