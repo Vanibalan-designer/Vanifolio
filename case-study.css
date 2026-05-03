@@ -1387,27 +1387,32 @@ body:has(.cs-hero) {
 }
 
 /* ===================================
-   Pego-style layout — identity case only
+   Pego-style layout — identity + SODA case studies
    Editorial rhythm inspired by pego.work/projects/by-unico
    =================================== */
 
-.cs-pego-identity {
+.cs-pego-identity,
+.cs-pego-soda {
     background-color: var(--color-white);
 }
 
 body.cs-pego-identity,
-html:has(body.cs-pego-identity) {
+body.cs-pego-soda,
+html:has(body.cs-pego-identity),
+html:has(body.cs-pego-soda) {
     background: #fff;
 }
 
-.cs-pego-identity .cs-pego-article {
+.cs-pego-identity .cs-pego-article,
+.cs-pego-soda .cs-pego-article {
     background-color: var(--color-white);
     padding-left: clamp(20px, 3.5vw, 52px);
     padding-right: clamp(20px, 3.5vw, 52px);
 }
 
 /* Hero: override shared .cs-hero band */
-.cs-pego-identity .cs-pego-hero.cs-hero {
+.cs-pego-identity .cs-pego-hero.cs-hero,
+.cs-pego-soda .cs-pego-hero.cs-hero {
     padding: calc(var(--space-3xl) + var(--site-header-height, 72px)) 0 var(--space-2xl);
     background-color: var(--color-white);
 }
@@ -1423,11 +1428,28 @@ html:has(body.cs-pego-identity) {
     align-items: start;
 }
 
+/* Identity: copy column stacks in-hero sections; GIF is sibling column (right) */
+.cs-pego-identity .cs-pego-hero-copy > .cs-pego-section,
+.cs-pego-soda .cs-pego-hero-copy > .cs-pego-section {
+    padding-top: 0;
+    padding-bottom: var(--space-2xl);
+}
+
+.cs-pego-identity #solution > .cs-pego-row,
+.cs-pego-soda #solution > .cs-pego-row {
+    margin-top: var(--space-2xl);
+}
+
+.cs-pego-scroll-track-lead {
+    margin-bottom: var(--space-2xl);
+}
+
 .cs-pego-hero-copy {
     min-width: 0;
 }
 
-.cs-pego-identity .cs-pego-back {
+.cs-pego-identity .cs-pego-back,
+.cs-pego-soda .cs-pego-back {
     margin-bottom: var(--space-xl);
 }
 
@@ -1525,6 +1547,7 @@ html:has(body.cs-pego-identity) {
 
 .cs-pego-hero-embed {
     width: 100%;
+    min-width: 0;
     aspect-ratio: 1280 / 900;
     margin: 0;
     border: 1px dashed rgba(16, 24, 40, 0.28);
@@ -1532,6 +1555,15 @@ html:has(body.cs-pego-identity) {
     overflow: hidden;
     background: #f8fafc;
     position: relative;
+    align-self: start;
+}
+
+@media (min-width: 769px) {
+    .cs-pego-identity .cs-pego-hero-embed,
+    .cs-pego-soda .cs-pego-hero-embed {
+        position: sticky;
+        top: calc(var(--site-header-height, 72px) + var(--space-md));
+    }
 }
 
 .cs-pego-hero-embed img {
@@ -1542,7 +1574,8 @@ html:has(body.cs-pego-identity) {
 }
 
 /* Hero media — white frame, light border (Pego-like restraint) */
-.cs-pego-identity .cs-pego-figure-hero {
+.cs-pego-identity .cs-pego-figure-hero,
+.cs-pego-soda .cs-pego-figure-hero {
     max-width: min(96vw, 1100px);
     margin: 0 auto var(--space-2xl);
     padding: 0 var(--space-xl);
@@ -1552,36 +1585,89 @@ html:has(body.cs-pego-identity) {
     border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-.cs-pego-identity .cs-pego-figure-hero img {
+.cs-pego-identity .cs-pego-figure-hero img,
+.cs-pego-soda .cs-pego-figure-hero img {
     max-height: min(78vh, 880px);
     margin: 0 auto;
 }
 
-.cs-pego-identity .cs-pego-figure-hero .cs-visual-caption {
+.cs-pego-identity .cs-pego-figure-hero .cs-visual-caption,
+.cs-pego-soda .cs-pego-figure-hero .cs-visual-caption {
     padding-bottom: var(--space-lg);
 }
 
 /* Metrics row — white, hairline separators */
-.cs-pego-identity .cs-pego-metrics {
+.cs-pego-identity .cs-pego-metrics,
+.cs-pego-soda .cs-pego-metrics {
     background-color: var(--color-white);
-    padding: var(--space-2xl) 0 var(--space-3xl);
+    padding: var(--space-2xl) 0 var(--space-4xl);
     border-top: 1px solid rgba(0, 0, 0, 0.06);
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-.cs-pego-identity .cs-pego-metrics .cs-metric-value {
+.cs-pego-identity .cs-pego-metrics .cs-metric-value,
+.cs-pego-soda .cs-pego-metrics .cs-metric-value {
     font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 600;
     letter-spacing: -0.03em;
 }
 
-.cs-pego-identity .cs-pego-metrics .cs-metric-label {
+.cs-pego-identity .cs-pego-metrics .cs-metric-label,
+.cs-pego-soda .cs-pego-metrics .cs-metric-label {
     font-size: 0.8125rem;
     line-height: 1.45;
     color: var(--color-gray-500);
     max-width: 14rem;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* Problem: readable measure + slides in a second column */
+.cs-pego-identity .cs-pego-problem-layout,
+.cs-pego-soda .cs-pego-problem-layout {
+    width: 100%;
+    max-width: 1280px;
+    margin: var(--space-xl) auto 0;
+    padding-bottom: var(--space-3xl);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, min(48%, 520px));
+    gap: clamp(1.25rem, 4vw, 2.75rem);
+    align-items: start;
+}
+
+.cs-pego-identity .cs-pego-problem-section,
+.cs-pego-soda .cs-pego-problem-section {
+    padding-bottom: 0;
+    min-width: 0;
+}
+
+.cs-pego-identity .cs-pego-problem-layout .cs-pego-prose p,
+.cs-pego-soda .cs-pego-problem-layout .cs-pego-prose p {
+    max-width: 42rem;
+    text-align: left;
+}
+
+.cs-pego-identity .cs-pego-problem-visuals,
+.cs-pego-soda .cs-pego-problem-visuals {
+    min-width: 0;
+}
+
+.cs-pego-identity .cs-pego-problem-visuals .cs-pego-scroll-track-lead,
+.cs-pego-soda .cs-pego-problem-visuals .cs-pego-scroll-track-lead {
+    margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+    .cs-pego-identity .cs-pego-problem-layout,
+    .cs-pego-soda .cs-pego-problem-layout {
+        grid-template-columns: 1fr;
+        gap: var(--space-2xl);
+    }
+
+    .cs-pego-identity .cs-pego-problem-layout .cs-pego-prose p,
+    .cs-pego-soda .cs-pego-problem-layout .cs-pego-prose p {
+        max-width: none;
+    }
 }
 
 /* Body column */
@@ -1608,7 +1694,8 @@ html:has(body.cs-pego-identity) {
 }
 
 /* Pego uses H3-sized section labels — slightly larger than eyebrow */
-.cs-pego-identity .cs-pego-section-title {
+.cs-pego-identity .cs-pego-section-title,
+.cs-pego-soda .cs-pego-section-title {
     font-size: 1.0625rem;
     font-weight: 600;
     letter-spacing: -0.015em;
@@ -1697,7 +1784,8 @@ html:has(body.cs-pego-identity) {
     padding-bottom: var(--space-2xl);
 }
 
-.cs-pego-identity .cs-pego-visuals .cs-visual {
+.cs-pego-identity .cs-pego-visuals .cs-visual,
+.cs-pego-soda .cs-pego-visuals .cs-visual {
     border: 1px solid rgba(0, 0, 0, 0.06);
     box-shadow: none;
     border-radius: var(--radius-md);
@@ -1859,23 +1947,27 @@ html:has(body.cs-pego-identity) {
 }
 
 /* Next project — white band, inline link (closer to Pego) */
-.cs-pego-identity .cs-next-project.cs-pego-next {
+.cs-pego-identity .cs-next-project.cs-pego-next,
+.cs-pego-soda .cs-next-project.cs-pego-next {
     background-color: var(--color-white);
     border-top: 1px solid rgba(0, 0, 0, 0.08);
     padding: var(--space-3xl) var(--space-xl);
     text-align: left;
 }
 
-.cs-pego-identity .cs-pego-next .cs-container {
+.cs-pego-identity .cs-pego-next .cs-container,
+.cs-pego-soda .cs-pego-next .cs-container {
     max-width: min(96vw, 720px);
     margin: 0 auto;
 }
 
-.cs-pego-identity .cs-pego-next .cs-next-label {
+.cs-pego-identity .cs-pego-next .cs-next-label,
+.cs-pego-soda .cs-pego-next .cs-next-label {
     color: var(--color-gray-500);
 }
 
-.cs-pego-identity .cs-pego-next .cs-next-link {
+.cs-pego-identity .cs-pego-next .cs-next-link,
+.cs-pego-soda .cs-pego-next .cs-next-link {
     color: var(--color-black);
     display: flex;
     align-items: center;
@@ -1883,50 +1975,80 @@ html:has(body.cs-pego-identity) {
     text-align: left;
 }
 
-.cs-pego-identity .cs-pego-next .cs-next-link h2 {
+.cs-pego-identity .cs-pego-next .cs-next-link h2,
+.cs-pego-soda .cs-pego-next .cs-next-link h2 {
     color: var(--color-black);
     font-size: clamp(1.25rem, 2.5vw, 1.5rem);
     font-weight: 600;
 }
 
-.cs-pego-identity .cs-pego-next .cs-next-link svg {
+.cs-pego-identity .cs-pego-next .cs-next-link svg,
+.cs-pego-soda .cs-pego-next .cs-next-link svg {
     color: var(--color-black);
 }
 
-.cs-pego-identity .cs-pego-next .cs-next-link:hover {
+.cs-pego-identity .cs-pego-next .cs-next-link:hover,
+.cs-pego-soda .cs-pego-next .cs-next-link:hover {
     opacity: 0.55;
 }
 
 /* Hero entrance — align with existing case study keyframes */
 .cs-pego-identity .cs-pego-hero .cs-back-link,
+.cs-pego-soda .cs-pego-hero .cs-back-link,
 .cs-pego-identity .cs-pego-hero .cs-pego-eyebrow,
+.cs-pego-soda .cs-pego-hero .cs-pego-eyebrow,
 .cs-pego-identity .cs-pego-hero .cs-pego-title,
+.cs-pego-soda .cs-pego-hero .cs-pego-title,
 .cs-pego-identity .cs-pego-hero .cs-pego-subtitle,
+.cs-pego-soda .cs-pego-hero .cs-pego-subtitle,
+.cs-pego-identity .cs-pego-hero .cs-pego-hero-embed,
+.cs-pego-soda .cs-pego-hero .cs-pego-hero-embed,
+.cs-pego-identity .cs-pego-hero .cs-pego-hero-copy > .cs-pego-section,
+.cs-pego-soda .cs-pego-hero .cs-pego-hero-copy > .cs-pego-section,
 .cs-pego-identity .cs-pego-hero .cs-pego-lead,
-.cs-pego-identity .cs-pego-hero .cs-pego-meta {
+.cs-pego-soda .cs-pego-hero .cs-pego-lead,
+.cs-pego-identity .cs-pego-hero .cs-pego-meta,
+.cs-pego-soda .cs-pego-hero .cs-pego-meta,
+.cs-pego-identity .cs-pego-hero .cs-pego-hero-cta,
+.cs-pego-soda .cs-pego-hero .cs-pego-hero-cta {
     opacity: 0;
     animation: fadeInUp 0.75s ease forwards;
 }
 
-.cs-pego-identity .cs-pego-hero .cs-back-link { animation-delay: 0.05s; }
-.cs-pego-identity .cs-pego-hero .cs-pego-eyebrow { animation-delay: 0.12s; }
-.cs-pego-identity .cs-pego-hero .cs-pego-title { animation-delay: 0.2s; }
-.cs-pego-identity .cs-pego-hero .cs-pego-subtitle { animation-delay: 0.28s; }
-.cs-pego-identity .cs-pego-hero .cs-pego-lead { animation-delay: 0.38s; }
-.cs-pego-identity .cs-pego-hero .cs-pego-meta { animation-delay: 0.48s; }
+.cs-pego-identity .cs-pego-hero .cs-back-link,
+.cs-pego-soda .cs-pego-hero .cs-back-link { animation-delay: 0.05s; }
+.cs-pego-identity .cs-pego-hero .cs-pego-eyebrow,
+.cs-pego-soda .cs-pego-hero .cs-pego-eyebrow { animation-delay: 0.12s; }
+.cs-pego-identity .cs-pego-hero .cs-pego-title,
+.cs-pego-soda .cs-pego-hero .cs-pego-title { animation-delay: 0.2s; }
+.cs-pego-identity .cs-pego-hero .cs-pego-subtitle,
+.cs-pego-soda .cs-pego-hero .cs-pego-subtitle { animation-delay: 0.28s; }
+.cs-pego-identity .cs-pego-hero .cs-pego-hero-embed,
+.cs-pego-soda .cs-pego-hero .cs-pego-hero-embed { animation-delay: 0.32s; }
+.cs-pego-identity .cs-pego-hero .cs-pego-hero-copy > .cs-pego-section,
+.cs-pego-soda .cs-pego-hero .cs-pego-hero-copy > .cs-pego-section { animation-delay: 0.36s; }
+.cs-pego-identity .cs-pego-hero .cs-pego-lead,
+.cs-pego-soda .cs-pego-hero .cs-pego-lead { animation-delay: 0.42s; }
+.cs-pego-identity .cs-pego-hero .cs-pego-meta,
+.cs-pego-soda .cs-pego-hero .cs-pego-meta { animation-delay: 0.52s; }
+.cs-pego-identity .cs-pego-hero .cs-pego-hero-cta,
+.cs-pego-soda .cs-pego-hero .cs-pego-hero-cta { animation-delay: 0.58s; }
 
 @media (max-width: 768px) {
-    .cs-pego-identity .cs-pego-article {
+    .cs-pego-identity .cs-pego-article,
+    .cs-pego-soda .cs-pego-article {
         padding-left: 16px;
         padding-right: 16px;
     }
 
-    .cs-pego-identity .cs-metrics-grid {
+    .cs-pego-identity .cs-metrics-grid,
+    .cs-pego-soda .cs-metrics-grid {
         grid-template-columns: 1fr;
         gap: var(--space-lg);
     }
 
-    .cs-pego-identity .cs-pego-metrics .cs-metric-label {
+    .cs-pego-identity .cs-pego-metrics .cs-metric-label,
+    .cs-pego-soda .cs-pego-metrics .cs-metric-label {
         max-width: none;
     }
 
@@ -1951,11 +2073,106 @@ html:has(body.cs-pego-identity) {
         text-align: left;
     }
 
-    .cs-pego-hero-inner {
+    .cs-pego-identity .cs-pego-hero-inner,
+    .cs-pego-soda .cs-pego-hero-inner {
         grid-template-columns: 1fr;
     }
 
-    .cs-pego-hero-embed {
+    .cs-pego-identity .cs-pego-hero-embed,
+    .cs-pego-soda .cs-pego-hero-embed {
         margin-top: var(--space-lg);
+        margin-bottom: 0;
     }
+
+    .cs-pego-soda .cs-pego-hero-embed {
+        min-height: 240px;
+        max-height: none;
+    }
+}
+
+/* ===================================
+   SODA HR portal — spacing + UI imagery
+   =================================== */
+
+/* Hero: full UI frames, no aggressive crop */
+.cs-pego-soda .cs-pego-hero-embed {
+    aspect-ratio: 4 / 3;
+    min-height: min(48vw, 400px);
+    max-height: min(70vh, 560px);
+}
+
+.cs-pego-soda .cs-pego-hero-embed img {
+    object-fit: contain;
+    object-position: center bottom;
+    background: linear-gradient(180deg, #fafafa 0%, #eef2f6 100%);
+}
+
+/* At a glance: match article gutters + clearer band separation */
+.cs-pego-soda .cs-snapshot {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-3xl);
+    padding-bottom: var(--space-3xl);
+}
+
+.cs-pego-soda .cs-snapshot-inner {
+    max-width: 1280px;
+    padding-left: clamp(20px, 3.5vw, 52px);
+    padding-right: clamp(20px, 3.5vw, 52px);
+}
+
+/* Tighter stack inside hero before lead paragraphs */
+.cs-pego-soda .cs-pego-hero-copy #product-context.cs-pego-section {
+    padding-bottom: var(--space-md);
+}
+
+.cs-pego-soda .cs-pego-lead {
+    margin-top: var(--space-md);
+}
+
+/* Main column: more space between sections */
+.cs-pego-soda .cs-pego-body {
+    padding-top: var(--space-2xl);
+    padding-bottom: var(--space-4xl);
+}
+
+.cs-pego-soda .cs-pego-body > .cs-pego-section {
+    padding-bottom: clamp(2.75rem, 5vw, 4.75rem);
+}
+
+.cs-pego-soda .cs-pego-body > .cs-pego-section:last-child {
+    padding-bottom: 0;
+}
+
+/* Prose → gallery */
+.cs-pego-soda .cs-pego-visuals-process,
+.cs-pego-soda .cs-pego-visuals-solution {
+    margin-top: clamp(2.25rem, 4.5vw, 3.25rem);
+}
+
+/* Process: wider gutter between the two-up tiles + clear band above full-width frame */
+.cs-pego-soda .cs-pego-visuals-process .cs-pego-scroll-track {
+    gap: clamp(2rem, 4.5vw, 3rem);
+}
+
+.cs-pego-soda .cs-pego-visuals-process .cs-pego-row-two {
+    gap: clamp(1.5rem, 3.25vw, 2.5rem);
+}
+
+.cs-pego-soda .cs-pego-visuals-solution .cs-pego-row + .cs-pego-row {
+    margin-top: var(--space-xl);
+}
+
+.cs-pego-soda #solution > .cs-pego-visuals-solution + .cs-pego-prose {
+    margin-top: clamp(2.25rem, 4.5vw, 3.25rem);
+}
+
+/* Screenshot tiles: solid hairline, neutral canvas */
+.cs-pego-soda .cs-pego-embed-container {
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.06);
+    background: #fafafa;
+}
+
+.cs-pego-soda .cs-pego-embed-container img {
+    object-fit: contain;
 }
