@@ -1,0 +1,62 @@
+{
+  "caseStudies": [
+    {
+      "id": "identity-first-onboarding",
+      "href": "identity-first-onboarding.html",
+      "featured": true,
+      "protected": false,
+      "thumbnail": {
+        "src": "images/index/Case_study_1_Hero.jpg",
+        "alt": "Doctor Anywhere onboarding preview"
+      },
+      "tags": ["Mobile App", "Healthcare", "B2B & B2C"],
+      "title": "Redesigning onboarding to improve identity accuracy",
+      "description": "The work focused on simplifying entry, improving data accuracy, and delivering a scalable onboarding foundation across B2C, B2B, and direct consult users so people land in the right place without guessing",
+      "metrics": [
+        { "value": "Faster", "label": "Identify user groups" },
+        { "value": "1M+", "label": "Identity verified" }
+      ],
+      "chatbot": {
+        "title": "Case Study 1 — Doctor Anywhere onboarding",
+        "keywords": ["case study 1", "doctor anywhere", "onboarding", "identity-first", "singpass"],
+        "answer": "Case Study 1 covers identity-first onboarding at Doctor Anywhere, consolidating flows and improving data accuracy for B2C/B2B users while meeting MOH compliance."
+      }
+    },
+    {
+      "id": "soda-hr-portal",
+      "href": "soda-hr-portal.html",
+      "featured": false,
+      "protected": false,
+      "thumbnail": {
+        "src": "images/Case study SODA/4.png",
+        "alt": "SODA HR Portal dashboard"
+      },
+      "tags": ["Benefits", "Web Platform"],
+      "title": "SODA HR Portal — Self-serve employee benefits",
+      "description": "Built a self-serve HR portal so SME owners and HR teams can set up policies, create plans, and manage employees without brokers.",
+      "chatbot": {
+        "title": "Case Study 3 — SODA HR Portal",
+        "keywords": ["case study 3", "soda", "hr portal", "benefits portal", "sme", "tpa"],
+        "answer": "Case Study 3 highlights the SODA HR Portal, a self-serve benefits platform for SME owners and HR teams to set up plans and manage employees without intermediaries."
+      }
+    },
+    {
+      "id": "gravity-storybook",
+      "href": "case-study-4.html",
+      "featured": false,
+      "protected": false,
+      "thumbnail": {
+        "src": "images/Case study 4/1 - Storybook.jpg",
+        "alt": "Gravity Design System Storybook"
+      },
+      "tags": ["Design System", "Storybook", "AI"],
+      "title": "Building design system using Cursor",
+      "description": "Built a functional Storybook from scratch using Cursor AI to bridge design and engineering — enabling engineers to access production-ready code from Figma components.",
+      "chatbot": {
+        "title": "Case Study 4 — Gravity Storybook",
+        "keywords": ["case study 4", "gravity", "storybook", "design system", "cursor"],
+        "answer": "Case Study 4 covers building the Gravity Design System Storybook from scratch using Cursor AI — a functional code reference for engineers alongside Figma."
+      }
+    }
+  ]
+}

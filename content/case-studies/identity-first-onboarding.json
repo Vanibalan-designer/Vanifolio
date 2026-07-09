@@ -1,0 +1,162 @@
+{
+  "id": "identity-first-onboarding",
+  "layout": "pego",
+  "bodyClass": "cs-pego-identity",
+  "pageTitle": "Identity-first onboarding | Doctor Anywhere | Vani Balasundaram",
+  "eyebrow": "Doctor Anywhere · Healthcare · Mobile",
+  "title": "Identity-first onboarding",
+  "subtitle": "Establishing who the user is before the system routes them",
+  "productContext": {
+    "label": "Product Context",
+    "title": "🩺 Doctor Anywhere",
+    "body": "Doctor Anywhere is a digital-first healthcare platform offering telehealth consultations, medicine delivery, and corporate health benefits across Southeast Asia. The platform serves both individual users (B2C) through the DA consumer app and corporate employees (B2B) through the SODA HR portal — connecting patients, providers, insurers, and employers under one ecosystem."
+  },
+  "tags": ["Healthcare", "Mobile", "Identity & Verification", "Onboarding"],
+  "lead": [
+    "26% of CS tickets were onboarding errors — B2B users landing in the wrong database, benefits never loading, claims processed manually. I collapsed two broken entry points into one identity-first flow using Singpass + KYC. Result: 1M+ users correctly verified, onboarding tickets dropped from 26% to 10%."
+  ],
+  "meta": [
+    { "label": "Role", "value": "Senior Product Designer" },
+    { "label": "Company", "value": "Doctor Anywhere" },
+    { "label": "Scope", "value": "Identity · Onboarding · Verification" },
+    { "label": "Status", "value": "Shipped · Live" }
+  ],
+  "heroCta": {
+    "label": "View full case study here",
+    "href": "https://www.figma.com/proto/lsPUFyY4FKqIVzADRtfiC5/Identity-Verification?team_id=1235077050686888389&node-id=1-2&page-id=0%3A1&scaling=contain&content-scaling=fixed&t=ODWIhTSpeBNf16hT-1"
+  },
+  "heroImage": {
+    "src": "images/Case study 1/Nini images/Woman_Rotates_With_iPhone-ezgif.com-video-to-gif-converter.gif",
+    "alt": "Person holding a phone for identity verification",
+    "cacheBust": "20260503"
+  },
+  "metrics": [
+    { "value": "1M+", "label": "Users verified through the new identity flow" },
+    { "value": "26% → 10%", "label": "Share of CS tickets that were onboarding-related" },
+    { "value": "Cashless", "label": "B2B users get correct benefits from day one" },
+    { "value": "NEHR", "label": "Cleaner data feeding the national health record" }
+  ],
+  "blocks": [
+    {
+      "type": "section",
+      "id": "problem",
+      "title": "Problem",
+      "body": "<p>We had been running multiple whitelabel apps and merged everything under one DA app. Public (B2C) and corporate (B2B) users sat in two separate databases. The response was two sign-up entry points — one for public, one for corporate. It seemed logical; it did not hold up in the real world.</p><p>Users were still getting created in the wrong database. A B2B user who signed up through the wrong entry landed in B2C — corporate benefits never matched, the coverage tab stayed empty, cashless consultation did not work. They paid out of pocket and filed claims; those claims hit the payers team for manual processing. That cost users, us, and insurers.</p><p><strong>26% of CS tickets were onboarding-related.</strong> That was not an edge case; it was systemic. Existing users from before the merge lived with mismatched accounts, missing benefits, and broken histories. We fixed that with manual backend mapping — it worked but carried real tech debt. Not a proud solution, but the right call at the time.</p><p>Two entry points on a sign-up page were a symptom. <strong>The real problem: identity was not established early enough for the system to know who the user was.</strong> Without that, you cannot match benefits, route to the right database, or trust that consultation records and reports belong to the right person. Downstream that meant wrong benefit matching, CS load, manual payer work, wrong profiles, and dirty data feeding into NEHR.</p>"
+    },
+    {
+      "type": "visuals",
+      "wrapperClass": "cs-pego-problem-visuals",
+      "scrollTrack": true,
+      "rows": [
+        {
+          "layout": "row-single",
+          "images": [
+            { "src": "images/Case study 1/Nini images/Context.png", "alt": "HMW eliminate manual verification friction so doctors get the right patient instantly?", "cacheBust": "20260708" }
+          ]
+        },
+        {
+          "layout": "row-two",
+          "images": [
+            { "src": "images/Case study 1/Nini images/Context 2.gif", "alt": "HMW context image 2", "cacheBust": "20260708" },
+            { "src": "images/Case study 1/Nini images/Context 3.gif", "alt": "HMW context image 3", "cacheBust": "20260708" }
+          ]
+        },
+        {
+          "layout": "row-two",
+          "images": [
+            { "src": "images/Case study 1/Nini images/Slide 04.png", "alt": "Case study visual 04", "cacheBust": "20260503" },
+            { "src": "images/Case study 1/Nini images/Slide 07.png", "alt": "Case study visual 05", "cacheBust": "20260503" }
+          ]
+        },
+        {
+          "layout": "row-single",
+          "images": [
+            { "src": "images/Case study 1/Nini images/Slide - 17.png", "alt": "Case study visual 06", "cacheBust": "20260503", "scroll": true }
+          ]
+        },
+        {
+          "layout": "row-single",
+          "images": [
+            { "src": "images/Case study 1/Nini images/Slide - 18.png", "alt": "Case study visual 07", "cacheBust": "20260503" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "pullquote",
+      "text": "At first we thought two different entry points on a sign-up screen is a issue. Research led us - The real problem: identity was not established early enough for the system to know who the user was."
+    },
+    {
+      "type": "section",
+      "id": "solution",
+      "title": "Solution",
+      "body": "<p>We collapsed the two entry points into one. Instead of asking people to self-identify as B2B or B2C and hoping they got it right, we let the system figure it out after identity was established.</p><p><strong>How it works</strong></p><ol class=\"cs-pego-list cs-pego-list-numbered\"><li>User signs up with any email.</li><li>Early in the flow we verify identity — via Singpass, which pulls NRIC, passport data, and date of birth.</li><li>We use DOB and ID data to match against the B2B database. If there is a match, they are routed to corporate and benefits load. If not, they go to B2C.</li><li>Regardless of Singpass outcome, every user is asked for a photo ID and a selfie — an extra layer of confidence that the right person is behind the account.</li><li>Once verified, a verified tick appears on the profile — visible to the user and to providers.</li></ol><p><strong>Three fallback paths</strong></p><ul class=\"cs-pego-list\"><li>Singpass success → still collect ID upload and selfie.</li><li>Singpass fails → manual KYC at sign-up (ID upload and selfie).</li><li>User skips entirely → prompted again at first consultation; can still opt out and complete manual KYC then.</li></ul><p>We could not block people who could not complete Singpass. We also could not leave the system unsure who they were.</p><p><strong>Why ID upload and selfie after Singpass</strong></p><p>Singpass tells us who the user claims to be. ID and selfie tell us the right person is present behind that account. Together they give the system — and providers — enough confidence to trust the record. Before, providers re-checked identity at appointments; with the verified tick, that step is largely done.</p><p><strong>Phased delivery</strong></p><ul class=\"cs-pego-list\"><li><strong>Phase 1</strong> — Collapsed entry points; identity-first flow with Singpass and fallbacks.</li><li><strong>Phase 2</strong> — Existing users handled through manual backend mapping (tech debt, not a design win — but the pragmatic call).</li><li><strong>Phase 3</strong> — Verified tick on profile as a provider-side trust signal.</li></ul>",
+      "children": [
+        {
+          "type": "section",
+          "id": "in-practice",
+          "title": "In practice",
+          "body": "<p>We did not jump straight into UI. Workshops with product, engineering, CS, and business mapped the problem in one room.</p><p>We did not run primary user research for this. CS tickets, backend mismatch reports, and metrics already told the story. Secondary research, metrics analysis, and team synthesis were the right tools.</p><p>We shipped in phases — the problem was too layered for a single release. Each phase was validated with metrics before the next.</p>"
+        },
+        {
+          "type": "visuals",
+          "rows": [
+            {
+              "layout": "row-single",
+              "images": [
+                { "src": "images/Case study 1/Nini images/Slide - 21.png", "alt": "Case study visual 08", "cacheBust": "202605031318", "zoom": true, "wide": true }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "impact",
+      "title": "Impact",
+      "body": "<ul class=\"cs-pego-list\"><li><strong>1M+ users verified</strong> through the new identity flow.</li><li><strong>Onboarding CS tickets</strong> reduced from 26% to 10%.</li><li>Cashless consultation works correctly for B2B users from day one; benefit matching happens at sign-up.</li><li>Providers no longer need to re-verify patients at every consultation.</li><li>Cleaner data feeding into NEHR.</li></ul>"
+    },
+    {
+      "type": "visuals",
+      "sectionId": "case-study-scroll",
+      "sectionClass": "cs-pego-scroll",
+      "scrollTrack": true,
+      "rows": [
+        {
+          "layout": "row-two",
+          "images": [
+            { "src": "images/Case study 1/Nini images/Slide - 24.png", "alt": "Case study visual 24", "cacheBust": "20260503" },
+            { "src": "images/Case study 1/Nini images/Slide - 25.png", "alt": "Case study visual 25", "cacheBust": "20260503" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "reflection",
+      "title": "What I'd do differently",
+      "body": "<p>The existing-user fix was manual at the backend. It worked but it does not scale. Ideally we would ship a self-serve re-verification path so people could run through identity themselves instead of waiting on backend mapping. That gap is still there.</p><p>Identity at sign-up was the first half of the problem. Accuracy at consultation, prescription, and report generation is still in progress — this case study only covers the first half.</p>"
+    },
+    {
+      "type": "visuals",
+      "rows": [
+        {
+          "layout": "row-single",
+          "images": [
+            { "src": "images/Case study 1/Nini images/Slide -26.png", "alt": "Case study closing visual", "cacheBust": "202605031312" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "closing",
+      "body": "<p>This was not a sign-up redesign. It was trust infrastructure for the platform. When identity is right from the start, benefits, records, reports, CS load, and national health data line up downstream.</p>",
+      "signoff": "That's the story."
+    }
+  ],
+  "nextProject": {
+    "title": "SODA HR Portal — Employee benefits made self-serve",
+    "href": "soda-hr-portal.html"
+  }
+}

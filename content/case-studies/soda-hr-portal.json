@@ -1,0 +1,154 @@
+{
+  "id": "soda-hr-portal",
+  "layout": "pego",
+  "bodyClass": "cs-pego-soda",
+  "pageTitle": "SODA HR Portal — Self-serve employee benefits | Vani Balasundaram",
+  "eyebrow": "SODA · Healthcare · Web · SaaS",
+  "title": "Self serve HR Portal — Employee benefits made easier",
+  "subtitle": "A self-serve HR portal for SME owners and HR teams to onboard employees for medical and flex benefits without relying on brokers or middlemen.",
+  "productContext": {
+    "label": "Product context",
+    "title": "Doctor Anywhere",
+    "body": "SODA is one of the key product from Doctor Anywhere and sits in the TPA market where benefits setup is complex and often broker-led. The portal lets teams set up policies, create plans, and manage employees end to end — one policy, unlimited plans and member groups — so HR can own benefits without a middleman. When I joined, the product didn’t exist. The founders needed something concrete to show investors, a foundation for backend development, and a platform that felt credible in a space dominated by insurance players."
+  },
+  "tags": ["Healthcare SaaS", "HR Tech", "Benefits Platform", "Web"],
+  "lead": [
+    "SME owners had no way to self-serve benefits setup — it required brokers, manual back-and-forth, and was error-prone at every step. I designed SODA's HR portal from zero: one policy, unlimited plans, full self-serve. 40+ companies onboarded in 3 months. 10k+ employees covered."
+  ],
+  "meta": [
+    { "label": "Role", "value": "Senior Product Designer" },
+    { "label": "Company", "value": "SODA (DA Group)" },
+    { "label": "Scope", "value": "HR portal · Policy setup · 0→1" },
+    { "label": "Status", "value": "Launched Jun 2025" }
+  ],
+  "heroCta": {
+    "label": "Visit soda.insure",
+    "href": "https://soda.insure/"
+  },
+  "heroImage": {
+    "src": "images/Case study SODA/cover.png",
+    "alt": "SODA HR Portal — product cover",
+    "cacheBust": "20260503"
+  },
+  "snapshot": {
+    "label": "At a glance",
+    "cards": [
+      {
+        "icon": "info",
+        "label": "Problem",
+        "title": "Benefits setup was broker-dependent and manual",
+        "body": "SME owners had no way to self-serve. Setting up employee medical and flex benefit plans required brokers, manual back-and-forth, and was error-prone at every step."
+      },
+      {
+        "icon": "user",
+        "label": "My contribution",
+        "title": "HR portal design owner — 0→1 through to launch",
+        "body": "Fully owned the HR portal experience end-to-end: IA, policy creation flows, plan setup, employee management, and admin controls. Head of Design ran in parallel on the marketing site and incoming user acquisition experience."
+      },
+      {
+        "icon": "music",
+        "label": "Key decisions",
+        "title": "Policy-first IA — rules before people",
+        "body": "Structured the portal so HR teams define benefit policies first, then assign members — not the other way. Used progressive disclosure to keep complex insurance rules accessible to non-expert users.",
+        "pills": ["0→1 product design", "Complex forms", "B2B SaaS", "IA design"]
+      },
+      {
+        "icon": "activity",
+        "label": "Outcome & pipeline",
+        "title": "10k+ employees onboarded. 40+ companies in 3 months.",
+        "body": "Full self-serve — no broker required. Actively working on user acquisition improvements and experience fixes to strengthen the end-to-end journey from first touch to active use.",
+        "outcome": true
+      }
+    ]
+  },
+  "metrics": [
+    { "value": "10k+", "label": "Employees onboarded after launch" },
+    { "value": "Self‑serve", "label": "No broker dependency for setup" },
+    { "value": "1 policy", "label": "Unlimited plans and member groups" },
+    { "value": "40+", "label": "Companies onboarded in 3 months" }
+  ],
+  "blocks": [
+    {
+      "type": "section",
+      "id": "overview",
+      "title": "Overview",
+      "body": "<p>In the TPA market, benefits setup is complex. HR teams often rely on brokers or sales teams to configure policies, onboard employees, and manage changes. Insurance terms and policy rules are not always clear to HR, which slows setup and increases errors.</p><p>SODA removes the middleman by letting SME owners and HR teams create their own policies and plans, onboard or deactivate employees, and maintain benefits directly.</p><p><strong>Customization challenge.</strong> Most companies needed plan flexibility without maintaining multiple policies. SODA enables one policy, one price, and unlimited plans with member groups inside — solving customization at scale.</p><p><strong>Scope.</strong> HR portal journey; onboarding and offboarding; plan creation and management; people and dashboard pages; submit claim feature. <strong>Design system.</strong> Gravity design system with new UI patterns for HR workflows and self-serve guidance.</p>"
+    },
+    {
+      "type": "section",
+      "id": "process",
+      "title": "Process",
+      "body": "<p>We started from the existing HR portal thread in DA and rebuilt the flow for self‑serve. Through trial and error, we simplified insurance concepts into guided steps so HR teams could complete setup without broker support.</p><ul class=\"cs-pego-list\"><li>Mapped HR onboarding, deactivation, and plan setup journeys.</li><li>Prototyped multiple flows to remove broker dependency.</li><li>Iterated with product, compliance, and engineering to simplify insurance language.</li></ul><p><strong>Research and what HR teams told us</strong></p><p>I spoke with SME HR contacts and brokers early in the process. The biggest insight was that most teams were not lacking admin effort — they lacked confidence in making the right policy choices. They feared mistakes in benefit setup more than complexity itself.</p><p>That changed how I designed the flow: progressive disclosure, explicit confirmations before committing, and clearer language around consequences. The goal was not just completion — it was confidence.</p>",
+      "visuals": {
+        "wrapperClass": "cs-pego-visuals-process",
+        "scrollTrack": true,
+        "rows": [
+          {
+            "layout": "row-two",
+            "images": [
+              { "src": "images/Case study SODA/5.png", "alt": "SODA HR Portal — sign up", "cacheBust": "20260503" },
+              { "src": "images/Case study SODA/1.png", "alt": "SODA HR Portal — welcome onboarding", "cacheBust": "20260503" }
+            ]
+          },
+          {
+            "layout": "row-single",
+            "images": [
+              { "src": "images/Case study SODA/2.png", "alt": "SODA HR Portal — add plans flow", "cacheBust": "20260503" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "pullquote",
+      "text": "Teams feared getting policy choices wrong more than they feared complexity. That one insight changed everything about how the flow was designed."
+    },
+    {
+      "type": "section",
+      "id": "solution",
+      "title": "Solution",
+      "body": "<p>The product we shipped works. HR teams can self-serve — set up policies, create plans, onboard employees, and manage benefits without a broker in the loop. That part landed well. But launching is only half the story.</p><p>What we learned quickly is that the harder problem is not the product — it is reaching the right people. Sales struggled not because the tool falls short, but because client acquisition in insurance is deeply relationship-driven. SME owners do not Google for benefits portals. They hear about it from brokers, peers, or through channels we had not fully cracked yet. The product was ready before the pipeline was.</p><p>As a designer, that shifted my focus. I started working more closely with sales and growth — not just on the portal UX, but on how the product tells its own story. How onboarding becomes a sales tool. How the quote flow on the marketing site convinces an HR lead to try self-serve instead of calling a broker. Design became less about features and more about reducing friction at the point of acquisition.</p>",
+      "visuals": {
+        "wrapperClass": "cs-pego-visuals-solution",
+        "rows": [
+          {
+            "layout": "row-two",
+            "images": [
+              { "src": "images/Case study SODA/3.png", "alt": "SODA HR Portal — dashboard overview", "cacheBust": "20260503" },
+              { "src": "images/Case study SODA/4.png", "alt": "SODA HR Portal — health plan utilisation", "cacheBust": "20260503" }
+            ]
+          },
+          {
+            "layout": "row-two",
+            "images": [
+              { "src": "images/Case study SODA/6.png", "alt": "SODA HR Portal — configure benefits for your plan", "cacheBust": "20260503" },
+              { "src": "images/Case study SODA/7.png", "alt": "SODA HR Portal — benefit options and plan settings", "cacheBust": "20260503" }
+            ]
+          },
+          {
+            "layout": "row-single",
+            "images": [
+              { "src": "images/Case study SODA/8.png", "alt": "SODA HR Portal — additional product screen", "cacheBust": "20260503" }
+            ]
+          }
+        ]
+      },
+      "bodyAfter": "<p><strong>One policy, unlimited plans.</strong> Companies no longer maintain multiple policies. One policy, one price — with unlimited plans and member groups inside. This simplification was a key selling point, but it also needed to be immediately obvious to first-time visitors.</p><p><strong>Self‑serve onboarding and offboarding.</strong> HR teams can onboard or deactivate employees directly. No middleman, no waiting. Making this feel trustworthy for companies used to broker-led processes required guided steps, clear confirmation states, and a tone that felt professional, not overwhelming.</p><p><strong>Scaling beyond SMEs.</strong> The initial product was built for small and mid-size businesses, but we are now evolving the portal to serve larger companies with more complex group structures, tiered plan needs, and higher compliance expectations. The architecture supports it — the experience needs to grow with it.</p>"
+    },
+    {
+      "type": "section",
+      "id": "impact",
+      "title": "Impact and what is next",
+      "body": "<ul class=\"cs-pego-list\"><li><strong>10k+ employees</strong> onboarded after launch.</li><li><strong>40+ companies</strong> signed up within the first 3 months.</li><li>HR and SME owners now own their benefits setup end-to-end — no broker in the loop.</li><li>Customisation no longer requires multiple policies per company.</li></ul><p><strong>What is in the pipeline.</strong> The portal is live. Focus has shifted to improving user acquisition and fixing experience gaps as more companies onboard. On acquisition, the Head of Design and I are working together — I am looking at how the portal first-run experience can convert more leads, while the Head of Design works on the marketing site and quote flow. On the product side, real usage has surfaced friction in plan setup, policy change communication, and moments where HR loses confidence mid-flow.</p><p><strong>The bigger lesson.</strong> Shipping a working product is not the finish line. In a market where trust is built through brokers and relationships, getting companies to try self-serve is a design problem as much as a sales one.</p><p><strong>What I would do differently.</strong> I would run discovery interviews focused specifically on how SME owners discover and switch benefits vendors before finalizing the core onboarding strategy. We built a capable portal quickly, but the acquisition journey matured later. Earlier discovery on buying behavior would have improved how we designed onboarding as a conversion surface from day one.</p><p><strong>What we learned.</strong> Product-market fit exists — the gap is in reach, not capability. Insurance acquisition is relationship-first; the product has to earn trust before features matter. Real usage reveals flows that felt fine in testing but break under edge cases. Designing for growth means working across the full funnel — not just inside the portal.</p>"
+    },
+    {
+      "type": "closing",
+      "body": "<p>The portal is the operational core; the story now is how strongly it connects to how companies find and trust SODA. That is the work ahead.</p>",
+      "signoff": "That is the story."
+    }
+  ],
+  "nextProject": {
+    "title": "Gravity Design System Storybook",
+    "href": "case-study-4.html"
+  }
+}

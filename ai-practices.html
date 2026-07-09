@@ -4,11 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Agentic Practices | Vani Balasundaram</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="case-study.css">
+    <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="case-study.css">
     <style>
         .tools-grid {
             display: grid;
@@ -21,11 +17,6 @@
             border: 1px solid var(--color-gray-300);
             border-radius: var(--radius-lg);
             padding: var(--space-lg);
-            transition: box-shadow 0.2s ease, transform 0.2s ease;
-        }
-        .tool-card:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-2px);
         }
         .tool-name {
             font-size: 0.95rem;
@@ -61,10 +52,6 @@
 </head>
 <body>
     <header class="site-header" role="banner">
-        <div class="announcement-bar">
-            <span class="announcement-icon">✦</span>
-            Built with Cursor, Claude &amp; a bit of my brain 🧠
-        </div>
         <nav class="navbar">
             <div class="nav-container">
                 <a href="index.html" class="nav-logo">VANI</a>
@@ -242,7 +229,7 @@
 
             <div class="tools-grid">
 
-                <div class="tool-card">
+                <div class="tool-card ds-interactive-card">
                     <div class="tool-name">
                         <span class="tool-dot" style="background: #4285F4;"></span>
                         Gemini
@@ -251,7 +238,7 @@
                     <span class="tool-badge" style="background: #EEF3FF; color: #4285F4;">Reasoning</span>
                 </div>
 
-                <div class="tool-card">
+                <div class="tool-card ds-interactive-card">
                     <div class="tool-name">
                         <span class="tool-dot" style="background: #10A37F;"></span>
                         ChatGPT
@@ -260,16 +247,16 @@
                     <span class="tool-badge" style="background: #EDFAF5; color: #10A37F;">Copy &amp; Writing</span>
                 </div>
 
-                <div class="tool-card">
+                <div class="tool-card ds-interactive-card">
                     <div class="tool-name">
-                        <span class="tool-dot" style="background: #5856D6;"></span>
+                        <span class="tool-dot" style="background: var(--color-accent);"></span>
                         Cursor
                     </div>
                     <div class="tool-use">Thinking, reasoning, and documentation using agents. My primary environment for building prototypes and working directly in code.</div>
-                    <span class="tool-badge" style="background: #EEEEFF; color: #5856D6;">Agentic Build</span>
+                    <span class="tool-badge" style="background: var(--color-accent-tint); color: var(--color-accent);">Agentic Build</span>
                 </div>
 
-                <div class="tool-card">
+                <div class="tool-card ds-interactive-card">
                     <div class="tool-name">
                         <span class="tool-dot" style="background: #FF6B35;"></span>
                         Airtable (Super Agent)
@@ -278,7 +265,7 @@
                     <span class="tool-badge" style="background: #FFF2EE; color: #FF6B35;">Market Research</span>
                 </div>
 
-                <div class="tool-card">
+                <div class="tool-card ds-interactive-card">
                     <div class="tool-name">
                         <span class="tool-dot" style="background: #CC785C;"></span>
                         Claude
@@ -287,7 +274,7 @@
                     <span class="tool-badge" style="background: #FFF5F0; color: #CC785C;">Docs &amp; Prototypes</span>
                 </div>
 
-                <div class="tool-card">
+                <div class="tool-card ds-interactive-card">
                     <div class="tool-name">
                         <span class="tool-dot" style="background: #9B59B6;"></span>
                         Claude Code
@@ -296,7 +283,7 @@
                     <span class="tool-badge" style="background: #F5EEFF; color: #9B59B6;">Agentic Coding</span>
                 </div>
 
-                <div class="tool-card">
+                <div class="tool-card ds-interactive-card">
                     <div class="tool-name">
                         <span class="tool-dot" style="background: #1A73E8;"></span>
                         Google AI Studio
@@ -305,7 +292,7 @@
                     <span class="tool-badge" style="background: #EEF5FF; color: #1A73E8;">Automation</span>
                 </div>
 
-                <div class="tool-card">
+                <div class="tool-card ds-interactive-card">
                     <div class="tool-name">
                         <span class="tool-dot" style="background: #E74C3C;"></span>
                         NotebookLM
@@ -314,7 +301,7 @@
                     <span class="tool-badge" style="background: #FFF0EE; color: #E74C3C;">Research &amp; Synthesis</span>
                 </div>
 
-                <div class="tool-card">
+                <div class="tool-card ds-interactive-card">
                     <div class="tool-name">
                         <span class="tool-dot" style="background: #F24E1E;"></span>
                         Figma Make

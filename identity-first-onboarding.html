@@ -4,13 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Identity-first onboarding | Doctor Anywhere | Vani Balasundaram</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="case-study.css?v=202605031320">
+    <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="case-study.css?v=20260716">
 </head>
-<body class="cs-pego-identity">
+<body data-cms-case-study="identity-first-onboarding">
     <header class="site-header" role="banner">
         <nav class="navbar">
             <div class="nav-container">
@@ -40,228 +36,7 @@
         </div>
     </div>
 
-    <article class="cs-pego-article">
-        <header class="cs-pego-hero cs-hero">
-            <div class="cs-pego-hero-inner">
-                <div class="cs-pego-hero-copy">
-                    <a href="index.html#case-studies" class="cs-back-link cs-pego-back">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M19 12H5M12 19l-7-7 7-7"/>
-                        </svg>
-                        Back to Work
-                    </a>
-                
-                    <p class="cs-pego-eyebrow">Doctor Anywhere · Healthcare · Mobile</p>
-                    <h1 class="cs-pego-title">Identity-first onboarding</h1>
-                    <p class="cs-pego-subtitle">Establishing who the user is before the system routes them</p>
-                    <section id="product-context" class="cs-pego-section">
-                        <div class="cs-pego-context-card">
-                            <p class="cs-pego-context-label">Product Context</p>
-                            <h2 class="cs-pego-context-title">🩺 Doctor Anywhere</h2>
-                            <p class="cs-pego-context-copy">Doctor Anywhere is a digital-first healthcare platform offering telehealth consultations, medicine delivery, and corporate health benefits across Southeast Asia. The platform serves both individual users (B2C) through the DA consumer app and corporate employees (B2B) through the SODA HR portal — connecting patients, providers, insurers, and employers under one ecosystem.</p>
-                        </div>
-                    </section>
-
-                    <div class="cs-pego-lead">
-                        <p>Doctor Anywhere merged its B2C and B2B apps into one. Underneath that sat a database split: public and corporate users lived in two systems that did not talk to each other. Two sign-up entry points looked like the fix; in production, people still landed in the wrong place. I owned this end to end — problem framing, workshops, flow design, prototyping, phased delivery — and worked with engineering and CS to validate outcomes.</p>
-                        <p>We collapsed the entry points into one identity-first flow: verify early, let the system match and route, and keep fallbacks so nobody gets blocked. This is the story of building trust infrastructure, not just a better sign-up screen.</p>
-                    </div>
-                    <dl class="cs-pego-meta">
-                        <div><dt>Role</dt><dd>Senior Product Designer</dd></div>
-                        <div><dt>Company</dt><dd>Doctor Anywhere</dd></div>
-                        <div><dt>Scope</dt><dd>Onboarding · Identity · Verification · Phased delivery</dd></div>
-                    </dl>
-                    <a class="cs-pego-hero-cta" href="https://www.figma.com/proto/lsPUFyY4FKqIVzADRtfiC5/Identity-Verification?team_id=1235077050686888389&node-id=1-2&page-id=0%3A1&scaling=contain&content-scaling=fixed&t=ODWIhTSpeBNf16hT-1" target="_blank" rel="noopener noreferrer">
-                        View full case study here
-                    </a>
-                </div>
-                <figure class="cs-pego-hero-embed">
-                    <img src="images/Case study 1/Nini images/Woman_Rotates_With_iPhone-ezgif.com-video-to-gif-converter.gif?v=20260503" alt="Person holding a phone for identity verification" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="cs-pego-embed-fallback">HERO IMG SRC: <code>images/Case study 1/Nini images/Woman_Rotates_With_iPhone-ezgif.com-video-to-gif-converter.gif</code></div>
-                </figure>
-            </div>
-        </header>
-
-        <section class="cs-metrics cs-pego-metrics" aria-label="Outcomes at a glance">
-            <div class="cs-container">
-                <div class="cs-metrics-grid">
-                    <div class="cs-metric">
-                        <span class="cs-metric-value">1M+</span>
-                        <span class="cs-metric-label">Users verified through the new identity flow</span>
-                    </div>
-                    <div class="cs-metric">
-                        <span class="cs-metric-value">26% → 10%</span>
-                        <span class="cs-metric-label">Share of CS tickets that were onboarding-related</span>
-                    </div>
-                    <div class="cs-metric">
-                        <span class="cs-metric-value">Cashless</span>
-                        <span class="cs-metric-label">B2B users get correct benefits from day one</span>
-                    </div>
-                    <div class="cs-metric">
-                        <span class="cs-metric-value">NEHR</span>
-                        <span class="cs-metric-label">Cleaner data feeding the national health record</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="cs-pego-body">
-            <section id="problem" class="cs-pego-section cs-pego-problem-section">
-                <h2 class="cs-pego-section-title">Problem</h2>
-                <div class="cs-pego-prose cs-content-full">
-                    <p>We had been running multiple whitelabel apps and merged everything under one DA app. Public (B2C) and corporate (B2B) users sat in two separate databases. The response was two sign-up entry points — one for public, one for corporate. It seemed logical; it did not hold up in the real world.</p>
-                    <p>Users were still getting created in the wrong database. A B2B user who signed up through the wrong entry landed in B2C — corporate benefits never matched, the coverage tab stayed empty, cashless consultation did not work. They paid out of pocket and filed claims; those claims hit the payers team for manual processing. That cost users, us, and insurers.</p>
-                    <p><strong>26% of CS tickets were onboarding-related.</strong> That was not an edge case; it was systemic. Existing users from before the merge lived with mismatched accounts, missing benefits, and broken histories. We fixed that with manual backend mapping — it worked but carried real tech debt. Not a proud solution, but the right call at the time.</p>
-                    <p>Two entry points on a sign-up page were a symptom. <strong>The real problem: identity was not established early enough for the system to know who the user was.</strong> Without that, you cannot match benefits, route to the right database, or trust that consultation records and reports belong to the right person. Downstream that meant wrong benefit matching, CS load, manual payer work, wrong profiles, and dirty data feeding into NEHR.</p>
-                </div>
-            </section>
-
-            <div class="cs-pego-problem-visuals">
-                <div class="cs-pego-scroll-track cs-pego-scroll-track-lead">
-                    <div class="cs-pego-row cs-pego-row-two">
-                        <figure class="cs-pego-embed-container">
-                            <img src="images/Case study 1/Nini images/Slide 04.png?v=20260503" alt="Case study visual 04" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="cs-pego-embed-fallback">IMG SRC: <code>images/Case study 1/Nini images/Slide 04.png</code></div>
-                        </figure>
-                        <figure class="cs-pego-embed-container">
-                            <img src="images/Case study 1/Nini images/Slide 07.png?v=20260503" alt="Case study visual 05" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="cs-pego-embed-fallback">IMG SRC: <code>images/Case study 1/Nini images/Slide 07.png</code></div>
-                        </figure>
-                    </div>
-
-                    <div class="cs-pego-row cs-pego-row-single">
-                        <figure class="cs-pego-embed-container cs-pego-embed-scroll">
-                            <img src="images/Case study 1/Nini images/Slide - 17.png?v=20260503" alt="Case study visual 06" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="cs-pego-embed-fallback">IMG SRC: <code>images/Case study 1/Nini images/Slide - 17.png</code></div>
-                        </figure>
-                    </div>
-
-                    <div class="cs-pego-row cs-pego-row-single">
-                        <figure class="cs-pego-embed-container">
-                            <img src="images/Case study 1/Nini images/Slide - 18.png?v=20260503" alt="Case study visual 07" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="cs-pego-embed-fallback">IMG SRC: <code>images/Case study 1/Nini images/Slide - 18.png</code></div>
-                        </figure>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-
-
-        <div class="cs-pego-body">
-            <section id="solution" class="cs-pego-section">
-                <h2 class="cs-pego-section-title">Solution</h2>
-                <div class="cs-pego-prose cs-content-full">
-                    <p>We collapsed the two entry points into one. Instead of asking people to self-identify as B2B or B2C and hoping they got it right, we let the system figure it out after identity was established.</p>
-                    <p><strong>How it works</strong></p>
-                    <ol class="cs-pego-list cs-pego-list-numbered">
-                        <li>User signs up with any email.</li>
-                        <li>Early in the flow we verify identity — via Singpass, which pulls NRIC, passport data, and date of birth.</li>
-                        <li>We use DOB and ID data to match against the B2B database. If there is a match, they are routed to corporate and benefits load. If not, they go to B2C.</li>
-                        <li>Regardless of Singpass outcome, every user is asked for a photo ID and a selfie — an extra layer of confidence that the right person is behind the account.</li>
-                        <li>Once verified, a verified tick appears on the profile — visible to the user and to providers.</li>
-                    </ol>
-                    <p><strong>Three fallback paths</strong></p>
-                    <ul class="cs-pego-list">
-                        <li>Singpass success → still collect ID upload and selfie.</li>
-                        <li>Singpass fails → manual KYC at sign-up (ID upload and selfie).</li>
-                        <li>User skips entirely → prompted again at first consultation; can still opt out and complete manual KYC then.</li>
-                    </ul>
-                    <p>We could not block people who could not complete Singpass. We also could not leave the system unsure who they were.</p>
-                    <p><strong>Why ID upload and selfie after Singpass</strong></p>
-                    <p>Singpass tells us who the user claims to be. ID and selfie tell us the right person is present behind that account. Together they give the system — and providers — enough confidence to trust the record. Before, providers re-checked identity at appointments; with the verified tick, that step is largely done.</p>
-                    <p><strong>Phased delivery</strong></p>
-                    <ul class="cs-pego-list">
-                        <li><strong>Phase 1</strong> — Collapsed entry points; identity-first flow with Singpass and fallbacks.</li>
-                        <li><strong>Phase 2</strong> — Existing users handled through manual backend mapping (tech debt, not a design win — but the pragmatic call).</li>
-                        <li><strong>Phase 3</strong> — Verified tick on profile as a provider-side trust signal.</li>
-                    </ul>
-                </div>
-                <section id="in-practice" class="cs-pego-section">
-                    <h2 class="cs-pego-section-title">In practice</h2>
-                    <div class="cs-pego-prose cs-content-full">
-                        <p>We did not jump straight into UI. Workshops with product, engineering, CS, and business mapped the problem in one room.</p>
-                        <p>We did not run primary user research for this. CS tickets, backend mismatch reports, and metrics already told the story. Secondary research, metrics analysis, and team synthesis were the right tools.</p>
-                        <p>We shipped in phases — the problem was too layered for a single release. Each phase was validated with metrics before the next.</p>
-                    </div>
-                </section>
-
-                <div class="cs-pego-row cs-pego-row-single">
-                    <figure class="cs-pego-embed-container">
-                        <img src="images/Case study 1/Nini images/Slide - 21.png?v=202605031318" alt="Case study visual 08" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="cs-pego-embed-fallback">IMG SRC: <code>images/Case study 1/Nini images/Slide - 21.png</code></div>
-                    </figure>
-                </div>
-            </section>
-
-         
-
-
-            <section id="impact" class="cs-pego-section">
-                <h2 class="cs-pego-section-title">Impact</h2>
-                <div class="cs-pego-prose cs-content-full">
-                    <ul class="cs-pego-list">
-                        <li><strong>1M+ users verified</strong> through the new identity flow.</li>
-                        <li><strong>Onboarding CS tickets</strong> reduced from 26% to 10%.</li>
-                        <li>Cashless consultation works correctly for B2B users from day one; benefit matching happens at sign-up.</li>
-                        <li>Providers no longer need to re-verify patients at every consultation.</li>
-                        <li>Cleaner data feeding into NEHR.</li>
-                    </ul>
-                </div>
-            </section>
-
-
-            <section id="case-study-scroll" class="cs-pego-section cs-pego-scroll">
-                <div class="cs-pego-scroll-track">
-                    <div class="cs-pego-row cs-pego-row-two">
-                        <figure class="cs-pego-embed-container">
-                            <img src="images/Case study 1/Nini images/Slide - 24.png?v=20260503" alt="Case study visual 24" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="cs-pego-embed-fallback">IMG SRC: <code>images/Case study 1/Nini images/Slide - 24.png</code></div>
-                        </figure>
-                        <figure class="cs-pego-embed-container">
-                            <img src="images/Case study 1/Nini images/Slide - 25.png?v=20260503" alt="Case study visual 25" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="cs-pego-embed-fallback">IMG SRC: <code>images/Case study 1/Nini images/Slide - 25.png</code></div>
-                        </figure>
-                    </div>
-                </div>
-            </section>
-
-            <section id="reflection" class="cs-pego-section">
-                <h2 class="cs-pego-section-title">What I'd do differently</h2>
-                <div class="cs-pego-prose cs-content-full">
-                    <p>The existing-user fix was manual at the backend. It worked but it does not scale. Ideally we would ship a self-serve re-verification path so people could run through identity themselves instead of waiting on backend mapping. That gap is still there.</p>
-                    <p>Identity at sign-up was the first half of the problem. Accuracy at consultation, prescription, and report generation is still in progress — this case study only covers the first half.</p>
-                </div>
-            </section>
-
-            <div class="cs-pego-row cs-pego-row-single">
-                <figure class="cs-pego-embed-container">
-                    <img src="images/Case study 1/Nini images/Slide -26.png?v=202605031312" alt="Case study closing visual" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="cs-pego-embed-fallback">IMG SRC: <code>images/Case study 1/Nini images/Slide -26.png</code></div>
-                </figure>
-            </div>
-
-            <section class="cs-pego-section cs-pego-closing">
-                <div class="cs-pego-prose cs-content-full">
-                    <p>This was not a sign-up redesign. It was trust infrastructure for the platform. When identity is right from the start, benefits, records, reports, CS load, and national health data line up downstream.</p>
-                    <p class="cs-pego-signoff">That's the story.</p>
-                </div>
-            </section>
-
-        </div>
-    </article>
-
-    <section class="cs-next-project cs-pego-next">
-        <div class="cs-container">
-            <span class="cs-next-label">Next project</span>
-            <a href="soda-hr-portal.html" class="cs-next-link">
-                <h2>SODA HR Portal — Employee benefits made self-serve</h2>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-            </a>
-        </div>
-    </section>
+    <div id="cms-case-study" class="cms-loading" aria-live="polite"></div>
 
     <div class="password-modal" id="password-modal" aria-hidden="true">
         <div class="modal-card">
@@ -317,7 +92,7 @@
                     </a>
                     <a href="https://dribbble.com" target="_blank" rel="noopener" aria-label="Dribbble">
                         <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 24C5.385 24 0 18.615 0 12S5.385 0 12 0s12 5.385 12 12-5.385 12-12 12zm10.12-10.358c-.35-.11-3.17-.953-6.384-.438 1.34 3.684 1.887 6.684 1.992 7.308 2.3-1.555 3.936-4.02 4.395-6.87zm-6.115 7.808c-.153-.9-.75-4.032-2.19-7.77l-.066.02c-5.79 2.015-7.86 6.025-8.04 6.4 1.73 1.358 3.92 2.166 6.29 2.166 1.42 0 2.77-.29 4-.814zm-11.62-2.58c.232-.4 3.045-5.055 8.332-6.765.135-.045.27-.084.405-.12-.26-.585-.54-1.167-.832-1.74C7.17 11.775 2.206 11.71 1.756 11.7l-.004.312c0 2.633.998 5.037 2.634 6.855zm-2.42-8.955c.46.008 4.683.026 9.477-1.248-1.698-3.018-3.53-5.558-3.8-5.928-2.868 1.35-5.01 3.99-5.676 7.17zM9.6 2.052c.282.38 2.145 2.914 3.822 6 3.645-1.365 5.19-3.44 5.373-3.702-1.81-1.61-4.19-2.586-6.795-2.586-.825 0-1.63.1-2.4.285zm10.335 3.483c-.218.29-1.935 2.493-5.724 4.04.24.49.978.985.68 1.486.08.18.15.36.20.53 3.41-.43 6.8.26 7.14.33-.02-2.42-.88-4.64-2.31-6.38z"/>
+                            <path d="M12 24C5.385 24 0 18.615 0 12S5.385 0 12 0s12 5.385 12 12-5.385 12-12 12zm10.12-10.358c-.35-.11-3.17-.953-6.384-.438 1.34 3.684 1.887 6.684 1.992 7.308 2.3-1.555 3.936-4.02 4.395-6.87zm-6.115 7.808c-.153-.9-.75-4.032-2.19-7.77l-.066.02c-5.79 2.015-7.86 6.025-8.04 6.4 1.73 1.358 3.92 2.166 6.29 2.166 1.42 0 2.77-.29 4-.814zm-11.62-2.58c.232-.4 3.045-5.055 8.332-6.765.135-.045.27-.084.405-.12-.26-.585-.54-1.167-.832-1.74C7.17 11.775 2.206 11.71 1.756 11.7l-.004.312c0 2.633.998 5.037 2.634 6.855zm-2.42-8.955c.46.008 4.683.026 9.477-1.248-1.698-3.018-3.53-5.558-3.8-5.928-2.868 1.35-5.01 3.99-5.676 7.17zM9.6 2.052c.282.38 2.145 2.914 3.822 6 3.645-1.365 5.19-3.44 5.373-3.702-1.81-1.61-4.19-2.586-6.795-2.586-.825 0-1.63.1-2.4.285zm10.335 3.483c-.218.29-1.935 2.493-5.724 4.04.24.49.47.985.68 1.486.08.18.15.36.20.53 3.41-.43 6.8.26 7.14.33-.02-2.42-.88-4.64-2.31-6.38z"/>
                         </svg>
                     </a>
                     <a href="mailto:balasundaramvani2012@gmail.com" aria-label="Email">
@@ -331,6 +106,7 @@
         </div>
     </footer>
 
+    <script src="content-render.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -5,15 +5,33 @@
 document.addEventListener('DOMContentLoaded', () => {
     initNavbar();
     initMobileMenu();
+    initHeroBackgroundVideo();
+    initHeroEntrance();
     initScrollReveal();
     initSmoothScroll();
     initCursor();
     initPasswordGate();
-    initCaseStudyCarousels();   // before lightbox so lightbox picks up carousel imgs
-    initImageLightbox();
     initPortfolioSearch();
+
+    const isCmsCaseStudy = document.body.dataset.cmsCaseStudy;
+    if (!isCmsCaseStudy) {
+        initCaseStudyCarousels();
+        initImageLightbox();
+        initCaseStudyAnimations();
+        initCaseStudyScrollFX();
+    }
+});
+
+document.addEventListener('cms:content-loaded', () => {
+    const root = document.getElementById('cms-case-study');
+    if (root) root.classList.remove('cms-loading');
+    initCaseStudyCarousels();
+    initImageLightbox();
     initCaseStudyAnimations();
     initCaseStudyScrollFX();
+    initScrollProgress();
+    initMetricCountUp();
+    initZoomImages();
 });
 
 // ===================================
@@ -75,50 +93,140 @@ function initMobileMenu() {
 }
 
 // ===================================
-// Scroll Reveal Animation
+// Hero background scenario animation (Mux HLS)
 // ===================================
-function initScrollReveal() {
-    const revealElements = document.querySelectorAll(
-        '.section-header, .project-card, .timeline-item, .cta-content'
-    );
+const HERO_BG_VIDEO_SRC = 'https://stream.mux.com/E3rAKyTB54G02a702jKVDAsRnWoRXwUss6mjjctaODp8w.m3u8';
 
-    const revealOnScroll = () => {
-        const windowHeight = window.innerHeight;
-        const revealPoint = 150;
+function initHeroBackgroundVideo() {
+    const hero = document.querySelector('.hero');
+    const video = document.querySelector('.hero-bg-video');
+    if (!hero || !video) return;
 
-        revealElements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;
 
-            if (elementTop < windowHeight - revealPoint) {
-                element.classList.add('revealed');
-            }
-        });
+    const playVideo = () => {
+        const playPromise = video.play();
+        if (playPromise && typeof playPromise.catch === 'function') {
+            playPromise.catch(() => {});
+        }
     };
 
-    // Add initial styles
-    revealElements.forEach((element, index) => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(20px)';
-        element.style.transition = `opacity 0.28s ease ${index * 0.05}s, transform 0.28s ease ${index * 0.05}s`;
-    });
+    if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = HERO_BG_VIDEO_SRC;
+        video.addEventListener('loadedmetadata', playVideo, { once: true });
+        hero.classList.add('has-bg-video');
+        return;
+    }
 
-    // Create intersection observer for better performance
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                observer.unobserve(entry.target);
-            }
+    if (typeof Hls !== 'undefined' && Hls.isSupported()) {
+        const hls = new Hls({ enableWorker: true });
+        hls.loadSource(HERO_BG_VIDEO_SRC);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, () => {
+            hero.classList.add('has-bg-video');
+            playVideo();
         });
-    }, {
-        threshold: 0.05,
-        rootMargin: '0px 0px -40px 0px'
+        hls.on(Hls.Events.ERROR, (_event, data) => {
+            if (data.fatal) hls.destroy();
+        });
+    }
+}
+
+// ===================================
+// Hero Entrance — staggered blur-fade
+// ===================================
+function initHeroEntrance() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+
+    const greeting  = hero.querySelector('.hero-greeting');
+    const headline  = hero.querySelector('.hero-headline');
+    const current   = hero.querySelector('.hero-current');
+
+    const items = [
+        { el: greeting,  delay: 0 },
+        { el: headline,  delay: 120 },
+        { el: current,   delay: 320 },
+    ].filter(({ el }) => el);
+
+    items.forEach(({ el }) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.filter = 'blur(8px)';
+        el.style.transition = 'none';
     });
 
-    revealElements.forEach(element => {
-        observer.observe(element);
+    requestAnimationFrame(() => {
+        items.forEach(({ el, delay }) => {
+            setTimeout(() => {
+                el.style.transition = `opacity 700ms cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms,
+                                       transform 700ms cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms,
+                                       filter 700ms cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`;
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+                el.style.filter = 'blur(0)';
+            }, 60);
+        });
     });
+}
+
+// ===================================
+// Scroll Reveal — Hyperframes-style
+// ===================================
+function initScrollReveal() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const EASING = 'cubic-bezier(0.16, 1, 0.3, 1)';
+    const DURATION = '700ms';
+    const ROOT_MARGIN = '0px 0px -60px 0px';
+    const THRESHOLD = 0.06;
+
+    // Elements that slide up + blur
+    const slideTargets = document.querySelectorAll(
+        '.section-header, .section-title, .section-subtitle, .section-number, ' +
+        '.timeline-item, .cta-content, .cta-title, .cta-description, ' +
+        '.footer-brand, .footer-column, ' +
+        '.hf-reveal'
+    );
+
+    // Cards scale + fade
+    const scaleTargets = document.querySelectorAll(
+        '.project-card, .hf-reveal-scale'
+    );
+
+    const applyReveal = (el, i, mode) => {
+        el.style.transition = 'none';
+        el.style.opacity = '0';
+        el.style.filter = 'blur(6px)';
+        if (mode === 'scale') {
+            el.style.transform = 'scale(0.96)';
+        } else {
+            el.style.transform = 'translateY(18px)';
+        }
+
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const stagger = i * 60;
+                el.style.transition =
+                    `opacity ${DURATION} ${EASING} ${stagger}ms,
+                     transform ${DURATION} ${EASING} ${stagger}ms,
+                     filter ${DURATION} ${EASING} ${stagger}ms`;
+                el.style.opacity = '1';
+                el.style.transform = mode === 'scale' ? 'scale(1)' : 'translateY(0)';
+                el.style.filter = 'blur(0)';
+                obs.unobserve(el);
+            });
+        }, { threshold: THRESHOLD, rootMargin: ROOT_MARGIN });
+
+        obs.observe(el);
+    };
+
+    slideTargets.forEach((el, i) => applyReveal(el, i % 4, 'slide'));
+    scaleTargets.forEach((el, i) => applyReveal(el, i % 3, 'scale'));
 }
 
 // ===================================
@@ -213,50 +321,48 @@ function initImageLightbox() {
 function initPortfolioSearch() {
     if (document.querySelector('.chatbot-widget')) return;
 
-    const knowledge = [
+    const currentPage = window.location.pathname.replace('/', '') || 'index.html';
+    if (currentPage === 'index.html' || currentPage === '') return;
+
+    const fallbackKnowledge = [
         {
             id: 'about',
             title: 'About Vani',
             keywords: ['background', 'about', 'bio', 'summary', 'who are you'],
-            answer:
-                `I'm Vani Balasundaram, a Senior Product Designer focused on clear, human-centered product experiences.`
+            answer: `I'm Vani Balasundaram, a Senior Product Designer focused on clear, human-centered product experiences.`
         },
         {
             id: 'availability',
             title: 'Availability',
             keywords: ['availability', 'open', 'role', 'hire', 'work'],
-            answer:
-                `I'm open to the right opportunities. You can reach me via the contact page or the email link in the footer.`
-        },
-        {
-            id: 'identity-first-onboarding',
-            title: 'Case Study 1 — Doctor Anywhere onboarding',
-            keywords: ['case study 1', 'doctor anywhere', 'onboarding', 'identity-first', 'singpass'],
-            answer:
-                `Case Study 1 covers identity-first onboarding at Doctor Anywhere, consolidating flows and improving data accuracy for B2C/B2B users while meeting MOH compliance.`
-        },
-        {
-            id: 'soda-hr-portal',
-            title: 'Case Study 3 — SODA HR Portal',
-            keywords: ['case study 3', 'soda', 'hr portal', 'benefits portal', 'sme', 'tpa'],
-            answer:
-                `Case Study 3 highlights the SODA HR Portal, a self-serve benefits platform for SME owners and HR teams to set up plans and manage employees without intermediaries.`
+            answer: `I'm open to the right opportunities. You can reach me via the contact page or the email link in the footer.`
         },
         {
             id: 'process',
             title: 'Design process',
             keywords: ['process', 'approach', 'methods', 'framework'],
-            answer:
-                `I focus on clarifying the problem, mapping user flows, prototyping quickly, and iterating with product, engineering, and compliance partners.`
+            answer: `I focus on clarifying the problem, mapping user flows, prototyping quickly, and iterating with product, engineering, and compliance partners.`
         },
         {
             id: 'contact',
             title: 'Contact',
             keywords: ['contact', 'email', 'reach', 'message'],
-            answer:
-                `You can contact me through the Contact page or via the email link in the footer.`
+            answer: `You can contact me through the Contact page or via the email link in the footer.`,
+            href: 'contact.html'
         }
     ];
+
+    const getKnowledge = () => window.__cmsKnowledge || fallbackKnowledge;
+
+    const resolveHref = (item) => {
+        if (item.href) return item.href;
+        if (item.id === 'identity-first-onboarding') return 'identity-first-onboarding.html';
+        if (item.id === 'soda-hr-portal') return 'soda-hr-portal.html';
+        if (item.id === 'gravity-storybook') return 'case-study-4.html';
+        if (item.id === 'contact') return 'contact.html';
+        if (item.id === 'about') return 'about.html';
+        return '';
+    };
 
     const widget = document.createElement('div');
     widget.className = 'chatbot-widget';
@@ -313,6 +419,7 @@ function initPortfolioSearch() {
     };
 
     const renderResults = (query) => {
+        const knowledge = getKnowledge();
         const q = query.toLowerCase();
         const ranked = knowledge
             .map(item => ({ item, score: scoreMatch(q, item) }))
@@ -332,10 +439,7 @@ function initPortfolioSearch() {
             knowledge.slice(0, 3).forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'chatbot-result';
-                const target = item.id === 'identity-first-onboarding' ? 'identity-first-onboarding.html' :
-                    item.id === 'soda-hr-portal' ? 'soda-hr-portal.html' :
-                    item.id === 'contact' ? 'contact.html' :
-                    item.id === 'about' ? 'about.html' : '';
+                const target = resolveHref(item);
                 if (target) {
                     card.dataset.target = target;
                     card.setAttribute('role', 'button');
@@ -353,10 +457,7 @@ function initPortfolioSearch() {
         ranked.forEach(({ item }) => {
             const card = document.createElement('div');
             card.className = 'chatbot-result';
-            const target = item.id === 'identity-first-onboarding' ? 'identity-first-onboarding.html' :
-                item.id === 'soda-hr-portal' ? 'soda-hr-portal.html' :
-                item.id === 'contact' ? 'contact.html' :
-                item.id === 'about' ? 'about.html' : '';
+            const target = resolveHref(item);
             if (target) {
                 card.dataset.target = target;
                 card.setAttribute('role', 'button');
@@ -447,7 +548,6 @@ function initCursor() {
     let mouseX = 0, mouseY = 0;
     let outlineX = 0, outlineY = 0;
 
-    // Add cursor styles
     const style = document.createElement('style');
     style.textContent = `
         .custom-cursor {
@@ -456,33 +556,34 @@ function initCursor() {
             top: 0;
             left: 0;
             z-index: 9999;
-            mix-blend-mode: difference;
         }
         .cursor-dot {
             position: fixed;
-            width: 8px;
-            height: 8px;
-            background-color: #E8836B;
+            width: 7px;
+            height: 7px;
+            background-color: #C4622A;
             border-radius: 50%;
             transform: translate(-50%, -50%);
-            transition: transform 0.1s ease;
+            transition: transform 120ms cubic-bezier(0.16,1,0.3,1);
         }
         .cursor-outline {
             position: fixed;
-            width: 40px;
-            height: 40px;
-            border: 1px solid rgba(232, 131, 107, 0.5);
+            width: 36px;
+            height: 36px;
+            border: 1.5px solid rgba(196, 98, 42, 0.4);
             border-radius: 50%;
             transform: translate(-50%, -50%);
-            transition: transform 0.15s ease, width 0.2s ease, height 0.2s ease;
+            transition: width 280ms cubic-bezier(0.16,1,0.3,1),
+                        height 280ms cubic-bezier(0.16,1,0.3,1),
+                        border-color 200ms ease;
         }
         .custom-cursor.hover .cursor-dot {
-            transform: translate(-50%, -50%) scale(1.5);
+            transform: translate(-50%, -50%) scale(1.6);
         }
         .custom-cursor.hover .cursor-outline {
-            width: 60px;
-            height: 60px;
-            border-color: rgba(232, 131, 107, 0.8);
+            width: 56px;
+            height: 56px;
+            border-color: rgba(196, 98, 42, 0.65);
         }
         @media (pointer: coarse) {
             .custom-cursor { display: none; }
@@ -539,29 +640,33 @@ document.querySelectorAll('.project-card').forEach(card => {
 });
 
 // ===================================
-// Page Transition
+// Page Transition — blur-fade
 // ===================================
 document.querySelectorAll('a:not([href^="#"]):not([target="_blank"])').forEach(link => {
     link.addEventListener('click', (e) => {
         const href = link.getAttribute('href');
         if (!href || href.startsWith('mailto:') || href.startsWith('tel:')) return;
-        
+
         e.preventDefault();
+        document.body.style.transition = 'opacity 200ms cubic-bezier(0.4,0,1,1), filter 200ms cubic-bezier(0.4,0,1,1)';
         document.body.style.opacity = '0';
-        document.body.style.transition = 'opacity 0.15s ease';
-        
-        setTimeout(() => {
-            window.location.href = href;
-        }, 150);
+        document.body.style.filter = 'blur(4px)';
+
+        setTimeout(() => { window.location.href = href; }, 200);
     });
 });
 
 // Fade in on page load
 window.addEventListener('load', () => {
     document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.2s ease';
+    document.body.style.filter = 'blur(4px)';
+    document.body.style.transition = 'none';
     requestAnimationFrame(() => {
-        document.body.style.opacity = '1';
+        requestAnimationFrame(() => {
+            document.body.style.transition = 'opacity 500ms cubic-bezier(0.16,1,0.3,1), filter 500ms cubic-bezier(0.16,1,0.3,1)';
+            document.body.style.opacity = '1';
+            document.body.style.filter = 'blur(0)';
+        });
     });
 });
 
@@ -572,6 +677,8 @@ window.addEventListener('load', () => {
 // ===================================
 function initCaseStudyCarousels() {
     document.querySelectorAll('.cs-visuals').forEach(visuals => {
+        if (visuals.dataset.carouselInit) return;
+        visuals.dataset.carouselInit = 'true';
         const slides = Array.from(visuals.querySelectorAll('.cs-visual'));
         if (slides.length < 2) return; // single image — leave as-is
 
@@ -963,4 +1070,86 @@ function initPasswordGate() {
     });
 }
 
+// ===================================
+// Case Study Scroll Progress Bar
+// ===================================
+function initScrollProgress() {
+    if (!document.body.dataset.cmsCaseStudy) return;
+
+    const bar = document.createElement('div');
+    bar.className = 'cs-scroll-progress';
+    document.body.prepend(bar);
+
+    const update = () => {
+        const scrolled = window.scrollY;
+        const total = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = total > 0 ? `${(scrolled / total) * 100}%` : '0%';
+    };
+
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+}
+
+// ===================================
+// Metric Count-Up
+// ===================================
+function initMetricCountUp() {
+    const metricValues = document.querySelectorAll('.cs-metric-value');
+    if (!metricValues.length) return;
+
+    const easeOutQuart = (t) => 1 - Math.pow(1 - t, 4);
+
+    const animateCount = (el, target, duration) => {
+        const start = performance.now();
+        const step = (now) => {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = easeOutQuart(progress);
+            el.textContent = Math.round(eased * target).toLocaleString();
+            if (progress < 1) requestAnimationFrame(step);
+            else el.textContent = el.dataset.displayValue || el.textContent;
+        };
+        requestAnimationFrame(step);
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            const raw = el.textContent.trim();
+
+            // Extract a leading number (handles "1M+", "26%", plain digits)
+            const match = raw.match(/^([\d,]+)/);
+            if (!match) return;
+
+            const numericTarget = parseInt(match[1].replace(/,/g, ''), 10);
+            if (!numericTarget || numericTarget < 2) return;
+
+            el.dataset.displayValue = raw;
+            animateCount(el, numericTarget, 1200);
+            observer.unobserve(el);
+        });
+    }, { threshold: 0.5 });
+
+    metricValues.forEach(el => observer.observe(el));
+}
+
+// ===================================
+// Scroll Zoom Reveal
+// ===================================
+function initZoomImages() {
+    const els = document.querySelectorAll('.cs-pego-zoom-img');
+    if (!els.length) return;
+
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('is-zoomed');
+                obs.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+    els.forEach(el => obs.observe(el));
+}
 

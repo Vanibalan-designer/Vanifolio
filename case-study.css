@@ -1,7 +1,22 @@
 /* ===================================
    Case Study Page Styles
-   Apple Neo — Clean & minimal
    =================================== */
+
+/* ===================================
+   Scroll Progress Bar
+   =================================== */
+.cs-scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 0%;
+    background: var(--color-accent);
+    z-index: 10000;
+    transform-origin: left;
+    transition: width 0.1s linear;
+    pointer-events: none;
+}
 
 /* ===================================
    Scroll Animations
@@ -11,16 +26,14 @@
 .cs-anim {
     opacity: 0;
     transform: translateY(36px);
-    transition:
-        opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-        transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: var(--transition-reveal);
     will-change: opacity, transform;
 }
 
 /* Fade only — avoids translateY paint bleeding past section bounds (e.g. metrics over Background) */
 .cs-anim-fade {
     opacity: 0;
-    transition: opacity 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: var(--transition-fade);
     will-change: opacity;
 }
 
@@ -32,9 +45,7 @@
 .cs-anim-img {
     opacity: 0;
     transform: translateY(40px) scale(0.97);
-    transition:
-        opacity 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-        transform 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: var(--transition-image);
     will-change: opacity, transform;
 }
 
@@ -42,9 +53,7 @@
 .cs-anim-left {
     opacity: 0;
     transform: translateX(-40px);
-    transition:
-        opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-        transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: var(--transition-reveal);
     will-change: opacity, transform;
 }
 
@@ -52,9 +61,7 @@
 .cs-anim-right {
     opacity: 0;
     transform: translateX(40px);
-    transition:
-        opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-        transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: var(--transition-reveal);
     will-change: opacity, transform;
 }
 
@@ -73,32 +80,21 @@
 }
 
 .cs-visual img {
-    transition:
-        transform 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-        clip-path 0s;
+    transition: transform var(--duration-image) var(--ease-out), clip-path 0s;
 }
 
-/* Counter number pop */
-@keyframes cs-pop {
-    0%   { transform: scale(0.85); opacity: 0; }
-    60%  { transform: scale(1.06); }
-    100% { transform: scale(1);    opacity: 1; }
-}
-
+/* Counter number pop — keyframes in design-system.css */
 .cs-metric-value.is-popped {
-    animation: cs-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    animation: cs-pop 0.5s var(--ease-bounce) both;
 }
 
 /* ===================================
    At a Glance — Quick Snapshot for HMs
    =================================== */
 .cs-snapshot {
-    background: linear-gradient(135deg, #F5F5F7 0%, #EEEEFF 100%);
-    border-bottom: 1px solid rgba(88, 86, 214, 0.1);
+    background: var(--gradient-snapshot);
+    border-bottom: 1px solid var(--color-border);
     padding: var(--space-xl) 0 var(--space-2xl);
-
-    opacity: 0;
-    animation: fadeInUp 0.7s ease 0.85s forwards;
 }
 
 .cs-snapshot-inner {
@@ -139,11 +135,11 @@
     border-radius: var(--radius-xl);
     padding: var(--space-lg);
     border: 1px solid rgba(0, 0, 0, 0.07);
-    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    transition: var(--transition-lift);
 }
 
 .cs-snapshot-card:hover {
-    transform: translateY(-2px);
+    transform: translateY(var(--lift-sm));
     box-shadow: var(--shadow-md);
 }
 
@@ -190,7 +186,7 @@
 
 .cs-snapshot-pill {
     padding: 0.25rem 0.625rem;
-    background: var(--color-indigo-light);
+    background: var(--color-accent-tint);
     color: var(--color-accent);
     border-radius: var(--radius-full);
     font-size: 0.75rem;
@@ -235,7 +231,7 @@
     border: 1px solid rgba(0, 0, 0, 0.07);
     border-radius: var(--radius-xl);
     padding: var(--space-md) var(--space-lg);
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow-journey);
     position: relative;
 }
 
@@ -278,7 +274,7 @@
 
 .cs-journey-summary {
     margin-top: var(--space-lg);
-    background: var(--color-indigo-light);
+    background: var(--color-accent-tint);
     color: var(--color-black);
     border-radius: var(--radius-lg);
     padding: var(--space-md) var(--space-lg);
@@ -344,7 +340,7 @@ body:has(.cs-hero) {
     font-size: 0.875rem;
     color: var(--color-gray-500);
     margin-bottom: var(--space-2xl);
-    transition: color var(--transition-fast);
+    transition: var(--transition-color);
     font-weight: 400;
 
     opacity: 0;
@@ -528,7 +524,7 @@ body:has(.cs-hero) {
     border-radius: var(--radius-xl);
     overflow: hidden;
     border: none;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.07);
+    box-shadow: var(--shadow-visual);
     background: var(--color-white);
     display: flex;
     align-items: center;
@@ -548,7 +544,7 @@ body:has(.cs-hero) {
 }
 
 .cs-visual img:hover {
-    transform: scale(1.01);
+    transform: scale(var(--scale-hover-subtle));
 }
 
 .cs-visual-caption {
@@ -582,12 +578,12 @@ body:has(.cs-hero) {
     border-radius: var(--radius-2xl);
     overflow: hidden;
     background: var(--color-gray-100);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.07);
+    box-shadow: var(--shadow-visual);
 }
 
 .cs-carousel-track {
     display: flex;
-    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: var(--transition-carousel);
     will-change: transform;
 }
 
@@ -631,9 +627,8 @@ body:has(.cs-hero) {
     justify-content: center;
     cursor: pointer;
     flex-shrink: 0;
-    transition: background 0.18s ease, border-color 0.18s ease,
-                box-shadow 0.18s ease, transform 0.18s ease;
-    box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+    transition: var(--transition-control);
+    box-shadow: var(--shadow-carousel-btn);
 }
 
 .cs-carousel-btn svg {
@@ -646,8 +641,8 @@ body:has(.cs-hero) {
 .cs-carousel-btn:hover:not(:disabled) {
     background: var(--color-black);
     border-color: var(--color-black);
-    box-shadow: 0 3px 12px rgba(0,0,0,0.18);
-    transform: scale(1.08);
+    box-shadow: var(--shadow-carousel-btn-hover);
+    transform: scale(var(--scale-hover-btn));
 }
 
 .cs-carousel-btn:hover:not(:disabled) svg {
@@ -673,8 +668,7 @@ body:has(.cs-hero) {
     border-radius: var(--radius-full);
     background: var(--color-gray-300);
     cursor: pointer;
-    transition: width 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
-                background 0.22s ease;
+    transition: var(--transition-dot), background var(--duration-base) var(--ease-default);
     border: none;
     padding: 0;
     flex-shrink: 0;
@@ -764,7 +758,7 @@ body:has(.cs-hero) {
 .cs-quick-nav a {
     font-size: 0.875rem;
     color: var(--color-gray-700);
-    transition: color var(--transition-fast);
+    transition: var(--transition-color);
     line-height: 1.6;
 }
 
@@ -959,9 +953,9 @@ body:has(.cs-hero) {
 }
 
 .cs-content-full p {
-    font-size: 1rem;
-    line-height: 1.68;
-    color: var(--color-gray-700);
+    font-size: 1.125rem;
+    line-height: 1.82;
+    color: #1f2937;
     max-width: var(--cs-text-measure, min(90ch, 100%));
     margin-bottom: var(--space-md);
 }
@@ -1057,7 +1051,7 @@ body:has(.cs-hero) {
 }
 
 .cs-highlight-block {
-    background-color: var(--color-indigo-light);
+    background-color: var(--color-accent-tint);
     border-radius: var(--radius-lg);
     padding: var(--space-lg);
     display: grid;
@@ -1166,7 +1160,7 @@ body:has(.cs-hero) {
     padding: var(--space-xl);
     text-align: left;
     box-shadow: var(--shadow-sm);
-    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    transition: var(--transition-lift);
 }
 
 .cs-result-card:hover {
@@ -1201,7 +1195,7 @@ body:has(.cs-hero) {
 
 /* Testimonial */
 .cs-testimonial {
-    background: linear-gradient(140deg, var(--color-indigo-light) 0%, var(--color-blush-light) 100%);
+    background: var(--gradient-photo-frame);
     border-radius: var(--radius-2xl);
     padding: var(--space-2xl) var(--space-3xl);
     text-align: center;
@@ -1413,26 +1407,109 @@ html:has(body.cs-pego-soda) {
 /* Hero: override shared .cs-hero band */
 .cs-pego-identity .cs-pego-hero.cs-hero,
 .cs-pego-soda .cs-pego-hero.cs-hero {
-    padding: calc(var(--space-3xl) + var(--site-header-height, 72px)) 0 var(--space-2xl);
+    padding: calc(var(--space-4xl) + var(--site-header-height, 72px)) 0 var(--space-3xl);
     background-color: var(--color-white);
 }
 
 .cs-pego-hero-inner {
     width: 100%;
-    max-width: 1280px;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0;
     padding: 0;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(420px, 0.9fr);
-    gap: clamp(24px, 3vw, 48px);
-    align-items: start;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-/* Identity: copy column stacks in-hero sections; GIF is sibling column (right) */
-.cs-pego-identity .cs-pego-hero-copy > .cs-pego-section,
-.cs-pego-soda .cs-pego-hero-copy > .cs-pego-section {
-    padding-top: 0;
-    padding-bottom: var(--space-2xl);
+.cs-pego-hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: var(--space-lg);
+}
+
+.cs-pego-hero-tag {
+    display: inline-block;
+    padding: 6px 16px;
+    background: var(--color-gray-100);
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--color-gray-700);
+    letter-spacing: 0;
+    line-height: 1.4;
+}
+
+.cs-pego-hero-meta-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xl) var(--space-4xl);
+    margin: var(--space-2xl) 0 var(--space-xl);
+    padding-top: var(--space-xl);
+    border-top: 1px solid var(--color-border);
+    width: 100%;
+}
+
+.cs-pego-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.cs-pego-meta-item dt {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-gray-400);
+}
+
+.cs-pego-meta-item dd {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-black);
+    margin: 0;
+    letter-spacing: -0.01em;
+    line-height: 1.35;
+}
+
+/* ── Identity: hide the GIF hero embed ── */
+.cs-pego-identity .cs-pego-hero-embed {
+    display: none;
+}
+
+/* ── SODA: hero embed becomes full-width image below the text ── */
+.cs-pego-soda .cs-pego-hero-embed {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+}
+
+/* Title fills left column naturally */
+.cs-pego-identity .cs-pego-title,
+.cs-pego-soda .cs-pego-title {
+    max-width: 100%;
+}
+
+/* Context card fills the aside column */
+.cs-pego-identity .cs-pego-context-card,
+.cs-pego-soda .cs-pego-context-card {
+    max-width: 100%;
+}
+
+/* Mobile: stack aside below copy */
+@media (max-width: 900px) {
+    .cs-pego-hero-inner {
+        grid-template-columns: 1fr;
+    }
+    .cs-pego-hero-aside {
+        padding-top: 0;
+    }
 }
 
 .cs-pego-identity #solution > .cs-pego-row,
@@ -1450,34 +1527,36 @@ html:has(body.cs-pego-soda) {
 
 .cs-pego-identity .cs-pego-back,
 .cs-pego-soda .cs-pego-back {
-    margin-bottom: var(--space-xl);
+    margin-bottom: var(--space-2xl);
 }
 
 .cs-pego-eyebrow {
-    font-size: 0.8125rem;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    color: var(--color-gray-500);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
     margin-bottom: var(--space-md);
 }
 
 .cs-pego-title {
-    font-size: clamp(2rem, 5.5vw, 3.25rem);
-    font-weight: 600;
-    letter-spacing: -0.035em;
-    line-height: 1.08;
+    font-size: clamp(2.75rem, 7.5vw, 6.5rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.02;
     color: var(--color-black);
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-xl);
+    max-width: 100%;
 }
 
 .cs-pego-subtitle {
     font-size: clamp(1.125rem, 2.2vw, 1.375rem);
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    line-height: 1.35;
-    color: var(--color-gray-900);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.45;
+    color: var(--color-gray-700);
     margin-bottom: var(--space-xl);
-    max-width: 42rem;
+    max-width: min(62rem, 100%);
 }
 
 .cs-pego-lead {
@@ -1485,10 +1564,10 @@ html:has(body.cs-pego-soda) {
 }
 
 .cs-pego-lead p {
-    font-size: 1.0625rem;
+    font-size: 1.125rem;
     line-height: 1.65;
-    color: var(--color-gray-700);
-    max-width: 42rem;
+    color: var(--color-gray-600);
+    max-width: min(72ch, 100%);
     margin-bottom: var(--space-md);
 }
 
@@ -1531,18 +1610,57 @@ html:has(body.cs-pego-soda) {
     align-items: center;
     justify-content: center;
     margin-top: var(--space-lg);
-    padding: 10px 16px;
+    padding: 10px 22px;
     border-radius: 999px;
     background: var(--color-black);
     color: var(--color-white);
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     font-weight: 600;
     text-decoration: none;
-    transition: opacity 0.2s ease;
+    transition: background var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+    letter-spacing: -0.01em;
 }
 
 .cs-pego-hero-cta:hover {
-    opacity: 0.82;
+    background: #2D2420;
+    transform: translateY(-1px);
+}
+
+.cs-pego-cta-arrow {
+    width: 14px;
+    height: 14px;
+    margin-left: 8px;
+    flex-shrink: 0;
+    transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.cs-pego-hero-cta:hover .cs-pego-cta-arrow {
+    transform: translateX(3px);
+}
+
+.cs-pego-ownership-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    background: var(--color-accent-tint);
+    border: 1px solid var(--color-accent-light);
+    border-radius: var(--radius-full);
+    padding: 4px 14px;
+    margin-bottom: var(--space-lg);
+}
+
+.cs-pego-hero-cred {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-gray-600);
+    letter-spacing: -0.015em;
+    margin-top: calc(var(--space-sm) * -1);
+    margin-bottom: var(--space-xl);
+    line-height: 1.4;
 }
 
 .cs-pego-hero-embed {
@@ -1550,10 +1668,10 @@ html:has(body.cs-pego-soda) {
     min-width: 0;
     aspect-ratio: 1280 / 900;
     margin: 0;
-    border: 1px dashed rgba(16, 24, 40, 0.28);
-    border-radius: 14px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
     overflow: hidden;
-    background: #f8fafc;
+    background: var(--color-surface);
     position: relative;
     align-self: start;
 }
@@ -1573,6 +1691,23 @@ html:has(body.cs-pego-soda) {
     display: block;
 }
 
+/* Hero visual — full-width image/GIF below the hero header */
+.cs-pego-hero-visual {
+    width: 100%;
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    margin-bottom: var(--space-2xl);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+}
+.cs-pego-hero-visual img {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    display: block;
+    object-fit: contain;
+}
+
 /* Hero media — white frame, light border (Pego-like restraint) */
 .cs-pego-identity .cs-pego-figure-hero,
 .cs-pego-soda .cs-pego-figure-hero {
@@ -1581,7 +1716,7 @@ html:has(body.cs-pego-soda) {
     padding: 0 var(--space-xl);
     background: var(--color-white);
     border-radius: var(--radius-lg);
-    box-shadow: none;
+    box-shadow: var(--shadow-none);
     border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
@@ -1599,17 +1734,18 @@ html:has(body.cs-pego-soda) {
 /* Metrics row — white, hairline separators */
 .cs-pego-identity .cs-pego-metrics,
 .cs-pego-soda .cs-pego-metrics {
-    background-color: var(--color-white);
-    padding: var(--space-2xl) 0 var(--space-4xl);
-    border-top: 1px solid rgba(0, 0, 0, 0.06);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    background-color: var(--color-surface);
+    padding: var(--space-3xl) 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
 }
 
 .cs-pego-identity .cs-pego-metrics .cs-metric-value,
 .cs-pego-soda .cs-pego-metrics .cs-metric-value {
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    font-weight: 600;
-    letter-spacing: -0.03em;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    color: var(--color-accent);
 }
 
 .cs-pego-identity .cs-pego-metrics .cs-metric-label,
@@ -1679,7 +1815,7 @@ html:has(body.cs-pego-soda) {
 }
 
 .cs-pego-section {
-    padding-bottom: var(--space-3xl);
+    padding-bottom: var(--space-4xl);
 }
 
 .cs-pego-section-title {
@@ -1696,19 +1832,23 @@ html:has(body.cs-pego-soda) {
 /* Pego uses H3-sized section labels — slightly larger than eyebrow */
 .cs-pego-identity .cs-pego-section-title,
 .cs-pego-soda .cs-pego-section-title {
-    font-size: 1.0625rem;
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
     font-weight: 600;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.03em;
+    line-height: 1.12;
     color: var(--color-black);
+    margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--color-border);
 }
 
 .cs-pego-prose p {
-    font-size: 1.0625rem;
-    line-height: 1.65;
-    color: var(--color-gray-700);
-    margin-bottom: var(--space-md);
-    max-width: none;
-    text-align: justify;
+    font-size: 1.125rem;
+    line-height: 1.82;
+    color: #1f2937;
+    margin-bottom: var(--space-lg);
+    max-width: min(68ch, 100%);
+    text-align: left;
 }
 
 .cs-pego-prose p:last-child {
@@ -1721,7 +1861,7 @@ html:has(body.cs-pego-soda) {
 }
 
 .cs-pego-list {
-    margin: var(--space-md) 0 var(--space-lg);
+    margin: var(--space-lg) 0 var(--space-xl);
     padding-left: 0;
     list-style: none;
     max-width: none;
@@ -1729,23 +1869,25 @@ html:has(body.cs-pego-soda) {
 
 .cs-pego-list li {
     position: relative;
-    padding-left: 1.125rem;
-    margin-bottom: 0.5rem;
-    font-size: 1.0625rem;
-    line-height: 1.6;
-    color: var(--color-gray-700);
+    padding-left: 1.5rem;
+    margin-bottom: 0.875rem;
+    font-size: 1.125rem;
+    line-height: 1.78;
+    color: #1f2937;
+    max-width: min(68ch, 100%);
 }
 
 .cs-pego-list li::before {
     content: '';
     position: absolute;
     left: 0;
-    top: 0.55em;
-    width: 5px;
-    height: 5px;
+    top: 0.6em;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
-    background: var(--color-black);
-    opacity: 0.35;
+    background: var(--color-accent);
+    opacity: 1;
+    flex-shrink: 0;
 }
 
 .cs-pego-list-numbered {
@@ -1755,7 +1897,7 @@ html:has(body.cs-pego-soda) {
 
 .cs-pego-list-numbered li {
     counter-increment: pego;
-    padding-left: 2rem;
+    padding-left: 2.25rem;
 }
 
 .cs-pego-list-numbered li::before {
@@ -1765,9 +1907,9 @@ html:has(body.cs-pego-soda) {
     background: none;
     border-radius: 0;
     opacity: 1;
-    font-size: 1.0625rem;
-    font-weight: 500;
-    color: var(--color-gray-500);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-accent);
     left: 0;
     top: 0;
 }
@@ -1787,7 +1929,7 @@ html:has(body.cs-pego-soda) {
 .cs-pego-identity .cs-pego-visuals .cs-visual,
 .cs-pego-soda .cs-pego-visuals .cs-visual {
     border: 1px solid rgba(0, 0, 0, 0.06);
-    box-shadow: none;
+    box-shadow: var(--shadow-none);
     border-radius: var(--radius-md);
 }
 
@@ -1840,8 +1982,8 @@ html:has(body.cs-pego-soda) {
     border-radius: 18px;
     overflow: hidden;
     border: 1px solid rgba(16, 24, 40, 0.1);
-    box-shadow: 0 10px 34px rgba(16, 24, 40, 0.08);
-    background: #f8fafc;
+    box-shadow: var(--shadow-pego);
+    background: var(--color-bg);
 }
 
 .cs-pego-scroll-item img {
@@ -1853,11 +1995,11 @@ html:has(body.cs-pego-soda) {
 }
 
 .cs-pego-empty-state {
-    border: 1px dashed rgba(16, 24, 40, 0.25);
-    border-radius: 14px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
     padding: var(--space-lg);
-    color: var(--color-gray-600);
-    background: #fcfcfd;
+    color: var(--color-gray-700);
+    background: var(--color-surface);
     font-size: 0.95rem;
 }
 
@@ -1865,11 +2007,11 @@ html:has(body.cs-pego-soda) {
     width: 100%;
     aspect-ratio: auto;
     margin: 0 auto;
-    border: 1px dashed rgba(16, 24, 40, 0.28);
-    border-radius: 14px;
-    background: #f8fafc;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
     display: block;
-    color: var(--color-gray-600);
+    color: var(--color-gray-700);
     font-size: 0.95rem;
     letter-spacing: 0.01em;
     position: relative;
@@ -1903,9 +2045,38 @@ html:has(body.cs-pego-soda) {
     padding: 24px;
 }
 
+/* Scroll zoom reveal — image starts pulled back, grows to full size on entry */
+.cs-pego-zoom-img {
+    overflow: hidden;
+}
+
+.cs-pego-zoom-img img {
+    transform: scale(1.08);
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+}
+
+.cs-pego-zoom-img.is-zoomed img {
+    transform: scale(1);
+}
+
+/* Wide breakout — extends image beyond the text column */
+.cs-pego-wide-img {
+    width: calc(100% + 8vw);
+    margin-left: -4vw;
+    border-radius: var(--radius-xl);
+}
+
+@media (max-width: 900px) {
+    .cs-pego-wide-img {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
 .cs-pego-closing {
-    padding-top: var(--space-lg);
-    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    padding-top: var(--space-2xl);
+    border-top: 1px solid var(--color-border);
 }
 
 .cs-pego-signoff {
@@ -1915,35 +2086,35 @@ html:has(body.cs-pego-soda) {
 }
 
 .cs-pego-context-card {
-    background: #f3f1e7;
-    border: 1px solid #ebe6d4;
-    border-radius: 20px;
+    background: var(--color-accent-tint);
+    border: 1px solid var(--color-accent-light);
+    border-radius: var(--radius-xl);
     padding: clamp(20px, 3vw, 32px);
 }
 
 .cs-pego-context-label {
     margin: 0 0 var(--space-sm);
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 700;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #4c4a3d;
+    color: var(--color-accent);
 }
 
 .cs-pego-context-title {
     margin: 0 0 var(--space-md);
-    font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
     font-weight: 600;
-    letter-spacing: -0.02em;
-    color: #1f2937;
+    letter-spacing: -0.025em;
+    color: var(--color-black);
 }
 
 .cs-pego-context-copy {
     margin: 0;
-    font-size: 1.08rem;
+    font-size: 1rem;
     line-height: 1.7;
-    color: #374151;
-    text-align: left !important;
+    color: var(--color-gray-700);
+    text-align: left;
 }
 
 /* Next project — white band, inline link (closer to Pego) */
@@ -1995,20 +2166,14 @@ html:has(body.cs-pego-soda) {
 /* Hero entrance — align with existing case study keyframes */
 .cs-pego-identity .cs-pego-hero .cs-back-link,
 .cs-pego-soda .cs-pego-hero .cs-back-link,
-.cs-pego-identity .cs-pego-hero .cs-pego-eyebrow,
-.cs-pego-soda .cs-pego-hero .cs-pego-eyebrow,
+.cs-pego-identity .cs-pego-hero .cs-pego-hero-tags,
+.cs-pego-soda .cs-pego-hero .cs-pego-hero-tags,
 .cs-pego-identity .cs-pego-hero .cs-pego-title,
 .cs-pego-soda .cs-pego-hero .cs-pego-title,
-.cs-pego-identity .cs-pego-hero .cs-pego-subtitle,
-.cs-pego-soda .cs-pego-hero .cs-pego-subtitle,
-.cs-pego-identity .cs-pego-hero .cs-pego-hero-embed,
-.cs-pego-soda .cs-pego-hero .cs-pego-hero-embed,
-.cs-pego-identity .cs-pego-hero .cs-pego-hero-copy > .cs-pego-section,
-.cs-pego-soda .cs-pego-hero .cs-pego-hero-copy > .cs-pego-section,
 .cs-pego-identity .cs-pego-hero .cs-pego-lead,
 .cs-pego-soda .cs-pego-hero .cs-pego-lead,
-.cs-pego-identity .cs-pego-hero .cs-pego-meta,
-.cs-pego-soda .cs-pego-hero .cs-pego-meta,
+.cs-pego-identity .cs-pego-hero .cs-pego-hero-meta-grid,
+.cs-pego-soda .cs-pego-hero .cs-pego-hero-meta-grid,
 .cs-pego-identity .cs-pego-hero .cs-pego-hero-cta,
 .cs-pego-soda .cs-pego-hero .cs-pego-hero-cta {
     opacity: 0;
@@ -2017,22 +2182,16 @@ html:has(body.cs-pego-soda) {
 
 .cs-pego-identity .cs-pego-hero .cs-back-link,
 .cs-pego-soda .cs-pego-hero .cs-back-link { animation-delay: 0.05s; }
-.cs-pego-identity .cs-pego-hero .cs-pego-eyebrow,
-.cs-pego-soda .cs-pego-hero .cs-pego-eyebrow { animation-delay: 0.12s; }
+.cs-pego-identity .cs-pego-hero .cs-pego-hero-tags,
+.cs-pego-soda .cs-pego-hero .cs-pego-hero-tags { animation-delay: 0.12s; }
 .cs-pego-identity .cs-pego-hero .cs-pego-title,
-.cs-pego-soda .cs-pego-hero .cs-pego-title { animation-delay: 0.2s; }
-.cs-pego-identity .cs-pego-hero .cs-pego-subtitle,
-.cs-pego-soda .cs-pego-hero .cs-pego-subtitle { animation-delay: 0.28s; }
-.cs-pego-identity .cs-pego-hero .cs-pego-hero-embed,
-.cs-pego-soda .cs-pego-hero .cs-pego-hero-embed { animation-delay: 0.32s; }
-.cs-pego-identity .cs-pego-hero .cs-pego-hero-copy > .cs-pego-section,
-.cs-pego-soda .cs-pego-hero .cs-pego-hero-copy > .cs-pego-section { animation-delay: 0.36s; }
+.cs-pego-soda .cs-pego-hero .cs-pego-title { animation-delay: 0.22s; }
 .cs-pego-identity .cs-pego-hero .cs-pego-lead,
-.cs-pego-soda .cs-pego-hero .cs-pego-lead { animation-delay: 0.42s; }
-.cs-pego-identity .cs-pego-hero .cs-pego-meta,
-.cs-pego-soda .cs-pego-hero .cs-pego-meta { animation-delay: 0.52s; }
+.cs-pego-soda .cs-pego-hero .cs-pego-lead { animation-delay: 0.34s; }
+.cs-pego-identity .cs-pego-hero .cs-pego-hero-meta-grid,
+.cs-pego-soda .cs-pego-hero .cs-pego-hero-meta-grid { animation-delay: 0.46s; }
 .cs-pego-identity .cs-pego-hero .cs-pego-hero-cta,
-.cs-pego-soda .cs-pego-hero .cs-pego-hero-cta { animation-delay: 0.58s; }
+.cs-pego-soda .cs-pego-hero .cs-pego-hero-cta { animation-delay: 0.56s; }
 
 @media (max-width: 768px) {
     .cs-pego-identity .cs-pego-article,
@@ -2069,10 +2228,6 @@ html:has(body.cs-pego-soda) {
         gap: var(--space-md);
     }
 
-    .cs-pego-prose p {
-        text-align: left;
-    }
-
     .cs-pego-identity .cs-pego-hero-inner,
     .cs-pego-soda .cs-pego-hero-inner {
         grid-template-columns: 1fr;
@@ -2104,7 +2259,7 @@ html:has(body.cs-pego-soda) {
 .cs-pego-soda .cs-pego-hero-embed img {
     object-fit: contain;
     object-position: center bottom;
-    background: linear-gradient(180deg, #fafafa 0%, #eef2f6 100%);
+    background: linear-gradient(180deg, var(--color-cream) 0%, var(--color-surface) 100%);
 }
 
 /* At a glance: match article gutters + clearer band separation */
@@ -2168,11 +2323,88 @@ html:has(body.cs-pego-soda) {
 
 /* Screenshot tiles: solid hairline, neutral canvas */
 .cs-pego-soda .cs-pego-embed-container {
-    border-style: solid;
-    border-color: rgba(0, 0, 0, 0.06);
-    background: #fafafa;
+    border-color: var(--color-border);
+    background: var(--color-surface);
 }
 
 .cs-pego-soda .cs-pego-embed-container img {
     object-fit: contain;
+}
+
+/* ===================================
+   Chapter Numbers (editorial ghost)
+   =================================== */
+.cs-pego-article {
+    counter-reset: cs-chapter;
+}
+
+.cs-pego-body > .cs-pego-section {
+    counter-increment: cs-chapter;
+}
+
+.cs-pego-identity .cs-pego-section-title,
+.cs-pego-soda .cs-pego-section-title {
+    position: relative;
+    overflow: visible;
+}
+
+.cs-pego-identity .cs-pego-body > .cs-pego-section > .cs-pego-section-title::after,
+.cs-pego-soda .cs-pego-body > .cs-pego-section > .cs-pego-section-title::after {
+    content: counter(cs-chapter, decimal-leading-zero);
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-display);
+    font-size: clamp(5rem, 13vw, 9rem);
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    line-height: 1;
+    color: var(--color-border);
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+}
+
+/* Keep title text above the ghost number */
+.cs-pego-identity .cs-pego-body > .cs-pego-section > .cs-pego-section-title > *,
+.cs-pego-soda .cs-pego-body > .cs-pego-section > .cs-pego-section-title > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* ===================================
+   Pull Quote Block
+   =================================== */
+.cs-pego-pullquote {
+    margin: var(--space-2xl) 0;
+    padding: var(--space-xl) var(--space-2xl);
+    border-left: 3px solid var(--color-accent);
+    background: var(--color-surface);
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+}
+
+.cs-pego-pullquote p {
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 2.5vw, 1.625rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.4;
+    color: var(--color-black);
+    margin: 0;
+    max-width: 100%;
+    text-align: left;
+}
+
+/* ===================================
+   Metric Count-Up Animation
+   =================================== */
+.cs-metric-value[data-count-target] {
+    display: inline-block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cs-pego-body > .cs-pego-section > .cs-pego-section-title::after {
+        display: none;
+    }
 }

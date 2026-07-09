@@ -1,0 +1,27 @@
+[
+  {
+    "id": "about",
+    "title": "About Vani",
+    "keywords": ["background", "about", "bio", "summary", "who are you"],
+    "answer": "I'm Vani Balasundaram, a Senior Product Designer focused on clear, human-centered product experiences."
+  },
+  {
+    "id": "availability",
+    "title": "Availability",
+    "keywords": ["availability", "open", "role", "hire", "work"],
+    "answer": "I'm open to the right opportunities. You can reach me via the contact page or the email link in the footer."
+  },
+  {
+    "id": "process",
+    "title": "Design process",
+    "keywords": ["process", "approach", "methods", "framework"],
+    "answer": "I focus on clarifying the problem, mapping user flows, prototyping quickly, and iterating with product, engineering, and compliance partners."
+  },
+  {
+    "id": "contact",
+    "title": "Contact",
+    "keywords": ["contact", "email", "reach", "message"],
+    "answer": "You can contact me through the Contact page or via the email link in the footer.",
+    "href": "contact.html"
+  }
+]

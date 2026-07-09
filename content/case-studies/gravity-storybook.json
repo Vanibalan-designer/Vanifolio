@@ -1,0 +1,180 @@
+{
+  "id": "gravity-storybook",
+  "layout": "classic",
+  "pageTitle": "Gravity Design System Storybook | Vani Balasundaram",
+  "hero": {
+    "tags": ["Design System", "Storybook", "Developer Tools"],
+    "title": "Building Gravity Design System Storybook from Scratch",
+    "description": "How I built a functional Storybook documentation using Cursor AI to bridge the gap between design and engineering — enabling engineers to quickly access production-ready code from our Figma-based design system.",
+    "meta": [
+      { "label": "Role", "value": "Product Designer & Builder" },
+      { "label": "Company", "value": "Doctor Anywhere" },
+      { "label": "Tools", "value": "Cursor AI, Storybook, Figma" },
+      { "label": "Status", "value": "Live on Bitbucket" }
+    ],
+    "cta": {
+      "label": "View Live Storybook",
+      "href": "https://gravity-design-system.bitbucket.io/storybook-static/index.html?path=/story/welcome--welcome"
+    }
+  },
+  "heroImage": {
+    "src": "images/Case study 4/1 - Storybook.jpg",
+    "alt": "Gravity Design System Storybook overview"
+  },
+  "metrics": [
+    { "value": "100%", "label": "Built from Scratch" },
+    { "value": "↓", "label": "Cost Savings" },
+    { "value": "Live", "label": "On Bitbucket" },
+    { "value": "Cross", "label": "Platform Support" }
+  ],
+  "heroVisual": {
+    "src": "images/Case study 4/1 - Storybook.jpg",
+    "alt": "Gravity Design System Storybook overview"
+  },
+  "blocks": [
+    {
+      "type": "section",
+      "number": "01",
+      "title": "The Challenge",
+      "variant": "content-grid",
+      "main": {
+        "heading": "Bridging Design & Engineering",
+        "paragraphs": [
+          "At Doctor Anywhere, we had a comprehensive design system called <strong>Gravity</strong> built in Figma. While Figma served as our source of truth for design, engineers often struggled to translate designs into code efficiently.",
+          "The gap between design specifications and production code was causing delays, inconsistencies, and frustration across teams. Engineers needed a functional documentation where they could directly access and copy code snippets."
+        ],
+        "subheading": "The Goal",
+        "subparagraphs": [
+          "Build a Storybook documentation from scratch that would serve as a living, functional reference for engineers — complementing Figma as the design source of truth while providing production-ready code for implementation."
+        ]
+      },
+      "sidebar": {
+        "title": "Key Objectives",
+        "items": [
+          "Functional code documentation",
+          "Support white label portal",
+          "Cross-platform compatibility",
+          "Cost-effective solution",
+          "Easy maintenance"
+        ]
+      }
+    },
+    {
+      "type": "section",
+      "number": "02",
+      "title": "Why Storybook?",
+      "alt": true,
+      "variant": "insights",
+      "insights": [
+        { "icon": "📋", "title": "Figma Limitations", "body": "Figma is great for design but engineers need actual code, not just visual specs." },
+        { "icon": "🔄", "title": "Inconsistent Implementation", "body": "Without code reference, engineers interpreted designs differently across platforms." },
+        { "icon": "⏱️", "title": "Time Consuming", "body": "Engineers spent too much time figuring out how to implement components from scratch." },
+        { "icon": "🏷️", "title": "White Label Needs", "body": "Our white label portal needed consistent, reusable components across different brands." }
+      ]
+    },
+    {
+      "type": "section",
+      "number": "03",
+      "title": "The Process",
+      "variant": "process",
+      "intro": {
+        "heading": "Trying Multiple Methods",
+        "body": "Building a Storybook from scratch wasn't straightforward. I explored multiple approaches to find the most efficient and cost-effective solution that would work for our team."
+      },
+      "features": [
+        {
+          "title": "Using Cursor AI as My Co-Pilot",
+          "body": "I leveraged Cursor AI to accelerate the development process. As a designer building something technical, Cursor helped me write functional code, debug issues, and implement best practices — all while learning along the way.",
+          "list": ["AI-assisted code generation", "Real-time debugging support", "Learning while building", "Rapid iteration cycles"]
+        },
+        {
+          "title": "Figma as Source of Truth",
+          "body": "While Storybook became the code reference, Figma remained our design source of truth. I ensured that every component in Storybook matched its Figma counterpart exactly — creating a seamless bridge between design and development.",
+          "list": ["1:1 mapping with Figma components", "Design token synchronization", "Visual consistency checks", "Documentation alignment"],
+          "reverse": true
+        },
+        {
+          "title": "Cross-Team Collaboration",
+          "body": "Working with cross-functional teams helped us find cost-saving methods for launching and hosting the Storybook. We ultimately deployed it on Bitbucket's static hosting, which was both free and integrated with our existing workflow.",
+          "list": ["Engineering team input on code structure", "DevOps support for deployment", "Cost-effective Bitbucket hosting", "Integrated CI/CD pipeline"]
+        }
+      ],
+      "visuals": [
+        { "src": "images/Case study 4/2 - Storybook.jpg", "alt": "Circle Button component documentation" },
+        { "src": "images/Case study 4/3 - Storybook.jpg", "alt": "Button component documentation" },
+        { "src": "images/Case study 4/4 - Storybook.jpg", "alt": "Checkbox component in Storybook sidebar" },
+        { "src": "images/Case study 4/5 - Storybook.jpg", "alt": "Storybook component tree with Forms and Foundation" }
+      ]
+    },
+    {
+      "type": "section",
+      "number": "04",
+      "title": "The Solution",
+      "alt": true,
+      "variant": "solution",
+      "intro": {
+        "heading": "A Functional Storybook for Engineers",
+        "body": "The final Storybook is a comprehensive, functional documentation that engineers can use to quickly understand and implement Gravity design system components. It's not just documentation — it's a working code reference."
+      },
+      "visuals": [
+        { "src": "images/Case study 4/1 - Storybook.jpg", "alt": "Gravity Design System Storybook overview" },
+        { "src": "images/Case study 4/2 - Storybook.jpg", "alt": "Circle Button component documentation" },
+        { "src": "images/Case study 4/3 - Storybook.jpg", "alt": "Button component documentation" },
+        { "src": "images/Case study 4/4 - Storybook.jpg", "alt": "Checkbox component in Storybook sidebar" },
+        { "src": "images/Case study 4/5 - Storybook.jpg", "alt": "Storybook component tree with Forms and Foundation" }
+      ],
+      "cards": [
+        { "title": "📦 Component Library", "body": "All Gravity design system components documented with interactive examples and copy-ready code snippets." },
+        { "title": "🎨 Design Tokens", "body": "Colors, typography, spacing, and other tokens documented and ready for implementation." },
+        { "title": "📱 Responsive Preview", "body": "Components can be previewed at different viewport sizes to ensure responsive implementation." },
+        { "title": "🔧 Props Documentation", "body": "Clear documentation of component props, variants, and usage guidelines for engineers." }
+      ],
+      "imageBlock": {
+        "src": "images/Case study 4/1 - Storybook.jpg",
+        "alt": "Gravity Design System Storybook overview"
+      }
+    },
+    {
+      "type": "section",
+      "number": "05",
+      "title": "Impact & Benefits",
+      "variant": "impact",
+      "results": [
+        { "value": "✓", "label": "White Label Support", "body": "Enables consistent component implementation across white label portal variants" },
+        { "value": "✓", "label": "Cross-Platform", "body": "Components documented for use across web, mobile, and other platforms" },
+        { "value": "$0", "label": "Hosting Cost", "body": "Deployed on Bitbucket static hosting — completely free infrastructure" }
+      ],
+      "testimonial": {
+        "quote": "Building this Storybook taught me that designers can bridge the gap between design and engineering. With the right tools like Cursor AI, we can create functional solutions that truly help our engineering partners ship faster and more consistently.",
+        "cite": "Personal Reflection",
+        "subcite": "On this project"
+      }
+    },
+    {
+      "type": "section",
+      "number": "06",
+      "title": "Key Learnings",
+      "alt": true,
+      "variant": "learnings",
+      "cards": [
+        { "title": "Designers Can Build", "body": "With AI tools like Cursor, designers can create functional technical solutions without being full-stack developers. It's about problem-solving, not just coding." },
+        { "title": "Cross-Team Value", "body": "Collaborating with engineering and DevOps early helped find cost-effective solutions and ensured the final product actually met their needs." },
+        { "title": "Documentation is Product", "body": "Good documentation is a product in itself. It needs UX thinking, iteration, and user feedback — just like any other product we design." },
+        { "title": "Start Scrappy, Iterate", "body": "Trying multiple methods before finding the right approach is part of the process. The key is to start, learn, and iterate quickly." }
+      ]
+    },
+    {
+      "type": "cta",
+      "title": "See It Live",
+      "body": "The Gravity Design System Storybook is live and being used by engineers at Doctor Anywhere. Check it out to see how design systems can be documented for maximum engineering efficiency.",
+      "button": {
+        "label": "View Live Storybook",
+        "href": "https://gravity-design-system.bitbucket.io/storybook-static/index.html?path=/story/welcome--welcome"
+      }
+    }
+  ],
+  "nextProject": {
+    "title": "Identity-first onboarding",
+    "href": "identity-first-onboarding.html"
+  }
+}
