@@ -1135,21 +1135,39 @@ function initMetricCountUp() {
 }
 
 // ===================================
-// Scroll Zoom Reveal
+// Scroll Zoom Reveal — scroll-driven
 // ===================================
 function initZoomImages() {
-    const els = document.querySelectorAll('.cs-pego-zoom-img');
+    const els = Array.from(document.querySelectorAll('.cs-pego-zoom-img'));
     if (!els.length) return;
 
-    const obs = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                e.target.classList.add('is-zoomed');
-                obs.unobserve(e.target);
-            }
-        });
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    const MAX_SCALE = 1.2;
+    const last = els.length - 1;
+    const prevScale = [1, 1];
 
-    els.forEach(el => obs.observe(el));
+    function updateZoom() {
+        const vh = window.innerHeight;
+        [els[0], els[last]].forEach((el, i) => {
+            const img = el.querySelector('img');
+            if (!img) return;
+            const rect = el.getBoundingClientRect();
+            const elCenter = rect.top + rect.height / 2;
+            const maxDist = vh / 2 + rect.height / 2;
+            const dist = Math.abs(elCenter - vh / 2);
+            const progress = Math.max(0, Math.min(1, 1 - dist / maxDist));
+            const newScale = 1 + (MAX_SCALE - 1) * progress;
+
+            img.style.transition = newScale < prevScale[i]
+                ? 'transform 0.3s ease-out'
+                : 'none';
+
+            img.style.transform = `scale(${newScale})`;
+            prevScale[i] = newScale;
+        });
+    }
+
+    window.addEventListener('scroll', updateZoom, { passive: true });
+    window.addEventListener('resize', updateZoom, { passive: true });
+    updateZoom();
 }
 

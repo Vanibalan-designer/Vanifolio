@@ -51,7 +51,7 @@
         {
           "layout": "row-single",
           "images": [
-            { "src": "images/Case study 1/Nini images/Context.png", "alt": "HMW eliminate manual verification friction so doctors get the right patient instantly?", "cacheBust": "20260708" }
+            { "src": "images/Case study 1/Nini images/Context.png", "alt": "HMW eliminate manual verification friction so doctors get the right patient instantly?", "cacheBust": "20260708", "wide": true }
           ]
         },
         {
@@ -62,22 +62,27 @@
           ]
         },
         {
-          "layout": "row-two",
+          "layout": "row-single",
           "images": [
-            { "src": "images/Case study 1/Nini images/Slide 04.png", "alt": "Case study visual 04", "cacheBust": "20260503" },
-            { "src": "images/Case study 1/Nini images/Slide 07.png", "alt": "Case study visual 05", "cacheBust": "20260503" }
+            { "src": "images/Case study 1/Nini images/Slide 04.png", "alt": "Case study visual 04", "cacheBust": "20260503", "wide": true }
           ]
         },
         {
           "layout": "row-single",
           "images": [
-            { "src": "images/Case study 1/Nini images/Slide - 17.png", "alt": "Case study visual 06", "cacheBust": "20260503", "scroll": true }
+            { "src": "images/Case study 1/Nini images/Slide 07.png", "alt": "Case study visual 05", "cacheBust": "20260503", "wide": true }
           ]
         },
         {
           "layout": "row-single",
           "images": [
-            { "src": "images/Case study 1/Nini images/Slide - 18.png", "alt": "Case study visual 07", "cacheBust": "20260503" }
+            { "src": "images/Case study 1/Nini images/Slide - 17.png", "alt": "Case study visual 06", "cacheBust": "20260503", "wide": true, "scroll": true }
+          ]
+        },
+        {
+          "layout": "row-single",
+          "images": [
+            { "src": "images/Case study 1/Nini images/Slide - 18.png", "alt": "Case study visual 07", "cacheBust": "20260503", "wide": true }
           ]
         }
       ]
@@ -100,7 +105,14 @@
         },
         {
           "type": "visuals",
+          "scrollTrack": true,
           "rows": [
+            {
+              "layout": "row-single",
+              "images": [
+                { "src": "images/User Journey + Audit.png", "alt": "User journey and audit mapping the current onboarding flow", "cacheBust": "20260709", "wide": true, "zoom": true }
+              ]
+            },
             {
               "layout": "row-single",
               "images": [
@@ -113,9 +125,9 @@
     },
     {
       "type": "section",
-      "id": "impact",
-      "title": "Impact",
-      "body": "<ul class=\"cs-pego-list\"><li><strong>1M+ users verified</strong> through the new identity flow.</li><li><strong>Onboarding CS tickets</strong> reduced from 26% to 10%.</li><li>Cashless consultation works correctly for B2B users from day one; benefit matching happens at sign-up.</li><li>Providers no longer need to re-verify patients at every consultation.</li><li>Cleaner data feeding into NEHR.</li></ul>"
+      "id": "reflection",
+      "title": "What I'd do differently",
+      "body": "<p>The existing-user fix was manual at the backend. It worked but it does not scale. Ideally we would ship a self-serve re-verification path so people could run through identity themselves instead of waiting on backend mapping. That gap is still there.</p><p>Identity at sign-up was the first half of the problem. Accuracy at consultation, prescription, and report generation is still in progress — this case study only covers the first half.</p>"
     },
     {
       "type": "visuals",
@@ -134,9 +146,9 @@
     },
     {
       "type": "section",
-      "id": "reflection",
-      "title": "What I'd do differently",
-      "body": "<p>The existing-user fix was manual at the backend. It worked but it does not scale. Ideally we would ship a self-serve re-verification path so people could run through identity themselves instead of waiting on backend mapping. That gap is still there.</p><p>Identity at sign-up was the first half of the problem. Accuracy at consultation, prescription, and report generation is still in progress — this case study only covers the first half.</p>"
+      "id": "impact",
+      "title": "Impact",
+      "body": "<ul class=\"cs-pego-list\"><li><strong>1M+ users verified</strong> through the new identity flow.</li><li><strong>Onboarding CS tickets</strong> reduced from 26% to 10%.</li><li>Cashless consultation works correctly for B2B users from day one; benefit matching happens at sign-up.</li><li>Providers no longer need to re-verify patients at every consultation.</li><li>Cleaner data feeding into NEHR.</li></ul>"
     },
     {
       "type": "visuals",

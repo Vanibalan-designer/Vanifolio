@@ -86,14 +86,14 @@
           {
             "layout": "row-two",
             "images": [
-              { "src": "images/Case study SODA/5.png", "alt": "SODA HR Portal — sign up", "cacheBust": "20260503" },
-              { "src": "images/Case study SODA/1.png", "alt": "SODA HR Portal — welcome onboarding", "cacheBust": "20260503" }
+              { "src": "images/Case study SODA/5.png", "alt": "SODA HR Portal — sign up", "cacheBust": "20260503", "zoom": true },
+              { "src": "images/Case study SODA/1.png", "alt": "SODA HR Portal — welcome onboarding", "cacheBust": "20260503", "zoom": true }
             ]
           },
           {
             "layout": "row-single",
             "images": [
-              { "src": "images/Case study SODA/2.png", "alt": "SODA HR Portal — add plans flow", "cacheBust": "20260503" }
+              { "src": "images/Case study SODA/2.png", "alt": "SODA HR Portal — add plans flow", "cacheBust": "20260503", "zoom": true, "wide": true }
             ]
           }
         ]
@@ -114,21 +114,21 @@
           {
             "layout": "row-two",
             "images": [
-              { "src": "images/Case study SODA/3.png", "alt": "SODA HR Portal — dashboard overview", "cacheBust": "20260503" },
-              { "src": "images/Case study SODA/4.png", "alt": "SODA HR Portal — health plan utilisation", "cacheBust": "20260503" }
+              { "src": "images/Case study SODA/3.png", "alt": "SODA HR Portal — dashboard overview", "cacheBust": "20260503", "zoom": true },
+              { "src": "images/Case study SODA/4.png", "alt": "SODA HR Portal — health plan utilisation", "cacheBust": "20260503", "zoom": true }
             ]
           },
           {
             "layout": "row-two",
             "images": [
-              { "src": "images/Case study SODA/6.png", "alt": "SODA HR Portal — configure benefits for your plan", "cacheBust": "20260503" },
-              { "src": "images/Case study SODA/7.png", "alt": "SODA HR Portal — benefit options and plan settings", "cacheBust": "20260503" }
+              { "src": "images/Case study SODA/6.png", "alt": "SODA HR Portal — configure benefits for your plan", "cacheBust": "20260503", "zoom": true },
+              { "src": "images/Case study SODA/7.png", "alt": "SODA HR Portal — benefit options and plan settings", "cacheBust": "20260503", "zoom": true }
             ]
           },
           {
             "layout": "row-single",
             "images": [
-              { "src": "images/Case study SODA/8.png", "alt": "SODA HR Portal — additional product screen", "cacheBust": "20260503" }
+              { "src": "images/Case study SODA/8.png", "alt": "SODA HR Portal — additional product screen", "cacheBust": "20260503", "zoom": true, "wide": true }
             ]
           }
         ]

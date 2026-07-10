@@ -2045,19 +2045,10 @@ html:has(body.cs-pego-soda) {
     padding: 24px;
 }
 
-/* Scroll zoom reveal — image starts pulled back, grows to full size on entry */
-.cs-pego-zoom-img {
-    overflow: hidden;
-}
-
+/* Scroll-driven zoom — scale set directly by JS, no CSS transition needed */
 .cs-pego-zoom-img img {
-    transform: scale(1.08);
-    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: transform;
-}
-
-.cs-pego-zoom-img.is-zoomed img {
     transform: scale(1);
+    will-change: transform;
 }
 
 /* Wide breakout — extends image beyond the text column */
@@ -2394,6 +2385,16 @@ html:has(body.cs-pego-soda) {
     margin: 0;
     max-width: 100%;
     text-align: left;
+}
+
+/* Tighten gap between "in practice" body text and the visuals that follow */
+.cs-pego-identity #in-practice {
+    padding-bottom: var(--space-lg);
+}
+
+.cs-pego-identity #in-practice + .cs-pego-visuals {
+    margin-top: var(--space-lg);
+    max-width: 100%;
 }
 
 /* ===================================
