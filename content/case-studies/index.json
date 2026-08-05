@@ -40,8 +40,7 @@
     },
     {
       "id": "medication-platform-oms-ims",
-      "href": "https://claude.ai/code/artifact/8c661649-eeca-42e4-9852-b34a44ef285b",
-      "external": true,
+      "href": "medquest-oms.html",
       "featured": true,
       "protected": false,
       "thumbnail": {
