@@ -183,6 +183,13 @@
 
   footer { padding: 40px 0 80px; font-size: 13px; color: var(--muted); }
   footer .credit-row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; border-top: 1px solid var(--line); padding-top: 20px; margin-top: 40px; }
+
+  /* ---------- Business impact ---------- */
+  .impact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 26px; }
+  @media (max-width: 780px) { .impact-grid { grid-template-columns: repeat(2, 1fr); } }
+  .impact-card { border-top: 1px solid var(--line-strong); padding-top: 12px; }
+  .impact-n { font-family: var(--mono); font-size: 26px; color: var(--violet); font-weight: 700; display: block; font-variant-numeric: tabular-nums; }
+  .impact-l { font-size: 13px; color: var(--muted); }
 </style>
 </head>
 <body>
@@ -204,14 +211,14 @@
 
 <header class="hero">
   <div class="wrap">
-    <div class="eyebrow">Design case study · Part two of two</div>
+    <div class="eyebrow">Design case study · Part two of two · Now in engineering build</div>
     <h1 class="title">One record, every pharmacy</h1>
     <p class="dek">Designing IMS — the system that ends 1-drug-equals-8-records, and becomes the single source of truth that Provider Web, the patient app, Plato, and OMS all read from.</p>
     <div class="stat-row">
       <div class="stat"><span class="n">13</span><span class="l">locations on one hub-and-spoke network</span></div>
       <div class="stat"><span class="n">400+</span><span class="l">SKUs currently living in Edward's head</span></div>
       <div class="stat"><span class="n">8→1</span><span class="l">edits to change one drug's price</span></div>
-      <div class="stat"><span class="n">Q3 2026</span><span class="l">target for Phase 1</span></div>
+      <div class="stat"><span class="n">Q3 2026</span><span class="l">Phase 1 · in engineering build</span></div>
     </div>
   </div>
 </header>
@@ -237,9 +244,22 @@
 </section>
 
 <section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">02 — My role, and why this follows OMS</div>
+      <h2>The same designer, a longer runway</h2>
+    </div>
+    <div class="prose">
+      <p class="lede">I own IMS the same way I own OMS — end to end, from the first shadowing session at Marina Health through to the module designs shipping into engineering now. The difference is sequencing, not ownership: <a href="medquest-oms.html">OMS shipped first</a> because its scope could be isolated to one team and one event contract; IMS had to retire four systems across two teams before it could ship anything at all.</p>
+      <p class="muted">That's why IMS reads less like a trial-and-fix story and more like an information-architecture one. The research discipline is the same — shadowing, stakeholder interviews, a design audit — applied to a much wider blast radius: 13 locations, two teams, and a data model everything downstream depends on.</p>
+    </div>
+  </div>
+</section>
+
+<section>
   <div class="wide">
     <div class="section-head">
-      <div class="section-num">02 — Field research</div>
+      <div class="section-num">03 — Field research</div>
       <h2>Shadowing the four systems in the wild</h2>
     </div>
     <p>Before a single screen, the work was to see the mess first-hand — shadowing Edward's Friday cycle, photographing the Marina Health warehouse, capturing AP1 and Plato mid-use, and transcribing it all into notebook flows. This is the raw observation board: real screens, real shelves, real handwriting.</p>
@@ -267,7 +287,7 @@
 <section>
   <div class="wide">
     <div class="section-head">
-      <div class="section-num">03 — Service map</div>
+      <div class="section-num">04 — Service map</div>
       <h2>Where IMS sits in the medication supply chain</h2>
     </div>
     <p>Six actors, seven phases, one blueprint. This is the full path a medication takes — from Marina Health raising a purchase order, to a patient signing for delivery — mapped lane by lane so it's visible exactly where IMS's writes and reads land, and where today it's still a manual handoff.</p>
@@ -512,7 +532,7 @@ body{font-family:var(--font-sans)}
 <section>
   <div class="wide">
     <div class="section-head">
-      <div class="section-num">04 — Who IMS has to satisfy</div>
+      <div class="section-num">05 — Who IMS has to satisfy</div>
       <h2>Three people, three very different relationships to the same record</h2>
     </div>
     <p>IMS has exactly one data model but three audiences who touch it differently: one who configures everything, one who has to trust what's configured before it reaches patients, and one who mostly just needs to know it isn't broken.</p>
@@ -543,7 +563,7 @@ body{font-family:var(--font-sans)}
 <section>
   <div class="wide">
     <div class="section-head">
-      <div class="section-num">05 — Final UI</div>
+      <div class="section-num">06 — Final UI</div>
       <h2>Item Master, the flagship module</h2>
     </div>
     <p>Item Master is 90% designed and carries the whole thesis: one record, referenced everywhere. Six screens from the working Figma file, at production fidelity.</p>
@@ -598,7 +618,7 @@ body{font-family:var(--font-sans)}
 <section>
   <div class="wrap">
     <div class="section-head">
-      <div class="section-num">06 — A scaling problem, solved on the page</div>
+      <div class="section-num">07 — A scaling problem, solved on the page</div>
       <h2>What happens when "pharmacy" stops meaning 9</h2>
     </div>
     <p>The very first pharmacy-availability design used a dot matrix of 9 fixed entities — fine when Marina Health, PFC, and a handful of clinics were the whole network. Then the real number arrived: <strong>up to 50 pharmacies</strong>. The 9-dot pattern couldn't scale, and neither could its first replacement.</p>
@@ -631,7 +651,7 @@ Prudential Care Elite ×  Manulife Flex ×  … ×47 more</span>
 <section>
   <div class="wide">
     <div class="section-head">
-      <div class="section-num">07 — Coverage scoreboard</div>
+      <div class="section-num">08 — Coverage scoreboard</div>
       <h2>16 pain points, tracked one by one</h2>
     </div>
     <p>Every pain point traces back to a named person and a Friday-afternoon workaround. Here's where design coverage actually stands against each one.</p>
@@ -667,7 +687,7 @@ Prudential Care Elite ×  Manulife Flex ×  … ×47 more</span>
 <section>
   <div class="wrap">
     <div class="section-head">
-      <div class="section-num">08 — Decisions worth knowing</div>
+      <div class="section-num">09 — Decisions worth knowing</div>
       <h2>A few calls that shaped the model</h2>
     </div>
     <div class="decision"><div class="d-date">Audit architecture</div><div class="d-title">The audit log lives on the item, not the module</div><div class="d-body">Pricing Scheme and Pharmacy each keep their own module-level log, but every change touching a specific item — pricing, availability, status, clinical details — also lands on that item's own Audit log tab. Edward should open one drug and see its entire history without checking three places.</div></div>
@@ -680,7 +700,24 @@ Prudential Care Elite ×  Manulife Flex ×  … ×47 more</span>
 <section>
   <div class="wrap">
     <div class="section-head">
-      <div class="section-num">09 — Where things stand</div>
+      <div class="section-num">10 — Business impact</div>
+      <h2>What one record actually buys</h2>
+    </div>
+    <p>Translated out of UX metrics: IMS turns a single person's Friday afternoon into infrastructure. Every pharmacy DA opens, every price change a scheme owner makes, and every SKU Edward retires stops being a manual multi-system sweep and becomes one auditable edit — the same edit whether it's pharmacy 1 or pharmacy 50.</p>
+    <div class="impact-grid">
+      <div class="impact-card"><span class="impact-n">8→1</span><span class="impact-l">edits per price change — the ceiling on how fast Marina Health can react to a formulary decision, removed</span></div>
+      <div class="impact-card"><span class="impact-n">13</span><span class="impact-l">locations IMS can onboard without adding linear admin overhead per pharmacy</span></div>
+      <div class="impact-card"><span class="impact-n">1</span><span class="impact-l">person no longer a single point of failure for 400+ SKUs of clinical and pricing data</span></div>
+      <div class="impact-card"><span class="impact-n">0→1</span><span class="impact-l">audit trails — from none, across 4 systems, to one, on every item</span></div>
+    </div>
+    <p class="muted" style="margin-top:20px">IMS is now in engineering build, not live yet — so this is the value the design is built to unlock, traced line for line back to the pain points in the coverage scoreboard above, not a hypothetical.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num">11 — Where things stand</div>
       <h2>Module status</h2>
     </div>
     <table class="status-table">
