@@ -298,6 +298,15 @@
   .ba-card.works .ba-tag { color: var(--teal); }
   .ba-card.breaks.violet { border-color: var(--violet); }
 
+  /* ---------- How Might We ---------- */
+  .hmw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+  @media (max-width: 700px) { .hmw-grid { grid-template-columns: 1fr; } }
+  .hmw-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; background: var(--paper-raised); }
+  .hmw-card .hmw-tag { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--amber); display: block; margin-bottom: 8px; }
+  .hmw-card .hmw-q { font-family: var(--serif); font-size: 15.5px; font-weight: 600; margin-bottom: 8px; color: var(--ink); }
+  .hmw-card .hmw-a { font-size: 13px; color: var(--muted); }
+  .hmw-card .hmw-a b { color: var(--teal); font-weight: 600; }
+
   /* ---------- Prioritization framework ---------- */
   .priority-framework { display: flex; flex-direction: column; margin-top: 22px; }
   .pf-row { display: grid; grid-template-columns: 96px 1fr; gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--line); align-items: start; }
@@ -377,9 +386,57 @@
 </section>
 
 <section>
+  <div class="wide">
+    <div class="section-head">
+      <div class="section-num">02 — How Might We</div>
+      <h2>Turning pain points into decisions</h2>
+    </div>
+    <p>Before any screen got designed, the pain points from the floor walkthrough got reframed as questions — not a workshop exercise for its own sake, but the seven reframes that still show up, unattributed, in most of the decisions below.</p>
+
+    <div class="hmw-grid">
+      <div class="hmw-card">
+        <span class="hmw-tag">HMW</span>
+        <div class="hmw-q">…replace a 9-step manual relay with one digital pipeline, without asking PFC to change how they physically pack?</div>
+        <div class="hmw-a">→ <b>Decision:</b> the before/after mapping — one digital equivalent per paper step, not a floor redesign.</div>
+      </div>
+      <div class="hmw-card">
+        <span class="hmw-tag">HMW</span>
+        <div class="hmw-q">…cut 10 clicks down to 1 for an address label, without new hardware?</div>
+        <div class="hmw-a">→ <b>Decision:</b> one-click print — consolidated and individual lists generated straight from the order record.</div>
+      </div>
+      <div class="hmw-card">
+        <span class="hmw-tag">HMW</span>
+        <div class="hmw-q">…give IMS a reliable stock signal, without OMS having to know anything about inventory itself?</div>
+        <div class="hmw-a">→ <b>Decision:</b> the single VALIDATED event contract — IMS owns the physical, OMS owns the order.</div>
+      </div>
+      <div class="hmw-card">
+        <span class="hmw-tag">HMW</span>
+        <div class="hmw-q">…let a Checker verify a packed order against something more trustworthy than a printout?</div>
+        <div class="hmw-a">→ <b>Decision:</b> Order Details as the single record of truth — verified against the screen, not paper.</div>
+      </div>
+      <div class="hmw-card">
+        <span class="hmw-tag">HMW</span>
+        <div class="hmw-q">…handle an exception — stock issue, prescription issue, patient request — without freezing the rest of the queue?</div>
+        <div class="hmw-a">→ <b>Decision:</b> Pending Clarification as the one exception state every interruption routes through.</div>
+      </div>
+      <div class="hmw-card">
+        <span class="hmw-tag">HMW</span>
+        <div class="hmw-q">…make sure a clinical-record sync failure is never silently missed?</div>
+        <div class="hmw-a">→ <b>Decision:</b> flagged the in-app Plato sync-failure indicator — still open, but the reframe is why it's on the backlog at all.</div>
+      </div>
+      <div class="hmw-card">
+        <span class="hmw-tag">HMW</span>
+        <div class="hmw-q">…find out if any of this actually works, before it reaches every patient in Singapore?</div>
+        <div class="hmw-a">→ <b>Decision:</b> three live trial runs — 30 June, 23 July, 1 August — instead of shipping straight to full rollout.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
   <div class="wrap">
     <div class="section-head">
-      <div class="section-num">02 — My role</div>
+      <div class="section-num">03 — My role</div>
       <h2>Senior Product Designer, owning both ends</h2>
     </div>
     <p class="lede">I joined mid-refinement, after the previous designer had left — and inherited two systems at once: OMS already in flight toward a July trial, IMS still being scoped out of four disconnected legacy tools. My job was making sure neither one drifted from the reality of the PFC floor or the Marina Health warehouse.</p>
@@ -397,7 +454,7 @@
 <section>
   <div class="wide">
     <div class="section-head">
-      <div class="section-num">03 — Sequencing</div>
+      <div class="section-num">04 — Sequencing</div>
       <h2>Why OMS shipped first, and IMS follows</h2>
     </div>
     <p>Both systems were needed. Only one could go first, and the choice wasn't arbitrary — it followed from where the pain was most acute and how cleanly each system's scope could be isolated from the other.</p>
@@ -420,7 +477,7 @@
 <section>
   <div class="wide">
     <div class="section-head">
-      <div class="section-num">04 — Research</div>
+      <div class="section-num">05 — Research</div>
       <h2>Five ways in, and what each one found</h2>
     </div>
     <p>None of the backlog in this case study came out of a workshop. Every line traces back to a specific method — most of them physical, not a survey.</p>
@@ -438,7 +495,7 @@
 <section>
   <div class="wrap">
     <div class="section-head">
-      <div class="section-num">05 — Prioritization</div>
+      <div class="section-num">06 — Prioritization</div>
       <h2>What made the cut, and why</h2>
     </div>
     <p>Every open item across both systems gets ranked against the same four questions — not a workshop exercise, the actual filter used on the backlogs in this case study.</p>
@@ -466,7 +523,7 @@
 <section>
   <div class="wide">
     <div class="section-head">
-      <div class="section-num">06 — What's at stake</div>
+      <div class="section-num">07 — What's at stake</div>
       <h2>What happens if we don't build either one</h2>
     </div>
     <p>Neither system is a nice-to-have. Here's what stays true if OMS and IMS don't ship.</p>
@@ -494,7 +551,7 @@
 <section>
   <div class="wide">
     <div class="section-head">
-      <div class="section-num">07 — The patient's view</div>
+      <div class="section-num">08 — The patient's view</div>
       <h2>One journey, and the silence in the middle</h2>
     </div>
     <p>OMS never renders a screen a patient sees — but everything it does happens inside their experience. Mapping the journey from the end of the video consult to the medicine at the door made one thing obvious: the longest, most anxious stretch is "PFC packing," where the patient has zero visibility. That's precisely the stretch OMS governs.</p>
@@ -673,7 +730,7 @@
 <section>
   <div class="wide">
     <div class="section-head">
-      <div class="section-num">08 — Before &amp; after</div>
+      <div class="section-num">09 — Before &amp; after</div>
       <h2>The manual line OMS replaces, step for step</h2>
     </div>
     <p>The current fulfilment process is a nine-step relay of email, PDF, printouts, Plato, and a shared Excel file — documented station by station during onboarding. OMS doesn't reinvent the physical floor; it replaces each manual ritual with one digital equivalent.</p>
@@ -715,7 +772,7 @@
 <section>
   <div class="wide">
     <div class="section-head">
-      <div class="section-num">09 — The three systems</div>
+      <div class="section-num">10 — The three systems</div>
       <h2>One order, three owners, one handshake</h2>
     </div>
     <p>The cleanest way the team found to talk about scope: <strong>IMS owns the physical. OMS owns the order.</strong> They meet exactly once, at the moment a Checker validates a packed order.</p>
@@ -804,7 +861,7 @@
 <section>
   <div class="wide">
     <div class="section-head">
-      <div class="section-num">10 — The physical floor</div>
+      <div class="section-num">11 — The physical floor</div>
       <h2>A day at the PFC, station by station</h2>
     </div>
     <p>Before any of this is a screen, it's a conveyor belt of people. Orders move left to right across four roles, and OMS's job at each station is to replace one specific paper-and-Excel ritual — not to redesign the floor.</p>
@@ -839,7 +896,7 @@
 <section>
   <div class="wide">
     <div class="section-head">
-      <div class="section-num">11 — Order lifecycle</div>
+      <div class="section-num">12 — Order lifecycle</div>
       <h2>Every order's path, and its one detour</h2>
     </div>
     <p>OMS models the order as a small state machine. Five states are the happy path; one, <strong>Pending Clarification</strong>, is the escape hatch every exception routes through — and the <em>only</em> state where an order can be edited, cancelled, or split.</p>
@@ -877,7 +934,7 @@
 <section>
   <div class="wide">
     <div class="section-head">
-      <div class="section-num">12 — The screens</div>
+      <div class="section-num">13 — The screens</div>
       <h2>What replaced the spreadsheet</h2>
     </div>
     <p>Five core surfaces from the working Figma file, at production fidelity. Each is a direct replacement for a specific paper ritual from the floor walkthrough above. (The delivery-list slot view is still WIP and deliberately left out here.)</p>
@@ -929,7 +986,7 @@
 <section>
   <div class="wide">
     <div class="section-head">
-      <div class="section-num">13 — Contact with reality</div>
+      <div class="section-num">14 — Contact with reality</div>
       <h2>Three trial runs, June to August 2026</h2>
     </div>
     <p>Design survives exactly until it meets a real pharmacy floor. OMS went into live production trials at the PFC three times over six weeks — and the honest scorecard is two successes bracketing one hard failure, which is a better outcome than either a clean streak or a pattern of failures would have been. A clean streak would mean no one had tested it hard enough yet.</p>
@@ -1071,7 +1128,7 @@
 <section>
   <div class="wrap">
     <div class="section-head">
-      <div class="section-num">14 — Business impact</div>
+      <div class="section-num">15 — Business impact</div>
       <h2>What this actually buys the business</h2>
     </div>
     <p>Translated out of UX metrics: OMS removes the operational ceiling on how many orders the PFC can fulfil without adding headcount, and turns every dispensing error the trial run caught into a caught bug instead of a patient incident. IMS removes the Marina Health config admin as the single point of failure for the medication catalogue the entire patient app depends on, and cuts the time to add or reprice a drug from a multi-day manual sweep down to one edit.</p>
@@ -1088,7 +1145,7 @@
 <section>
   <div class="wide">
     <div class="section-head">
-      <div class="section-num">15 — The cross-team seam</div>
+      <div class="section-num">16 — The cross-team seam</div>
       <h2>The trust gap between OMS and IMS</h2>
     </div>
     <p>IMS and OMS are built by two different teams that have never had to fully agree on a contract. Today the entire handshake rests on one editable text field.</p>

@@ -161,6 +161,15 @@
   .decision .d-title { font-family: var(--serif); font-weight: 600; font-size: 17px; margin: 4px 0 8px; }
   .decision .d-body { font-size: 14px; color: var(--muted); }
 
+  /* ---------- How Might We ---------- */
+  .hmw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+  @media (max-width: 700px) { .hmw-grid { grid-template-columns: 1fr; } }
+  .hmw-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; background: var(--paper-raised); }
+  .hmw-card .hmw-tag { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--amber); display: block; margin-bottom: 8px; }
+  .hmw-card .hmw-q { font-family: var(--serif); font-size: 15.5px; font-weight: 600; margin-bottom: 8px; color: var(--ink); }
+  .hmw-card .hmw-a { font-size: 13px; color: var(--muted); }
+  .hmw-card .hmw-a b { color: var(--violet); font-weight: 600; }
+
   /* Status */
   table.status-table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
   table.status-table td { padding: 11px 4px; border-bottom: 1px solid var(--line); }
@@ -244,9 +253,62 @@
 </section>
 
 <section>
+  <div class="wide">
+    <div class="section-head">
+      <div class="section-num">02 — How Might We</div>
+      <h2>Turning pain points into decisions</h2>
+    </div>
+    <p>Before any module got designed, the pain points from the problem-space workshop got reframed as questions — the same eight reframes that still show up, unattributed, in most of the decisions below.</p>
+
+    <div class="hmw-grid">
+      <div class="hmw-card">
+        <span class="hmw-tag">HMW</span>
+        <div class="hmw-q">…let the config admin add or update a SKU once and have it apply across all pharmacies, without duplicating 8 records?</div>
+        <div class="hmw-a">→ <b>Decision:</b> the core ITEM_MASTER model — one record, referenced everywhere. This is IMS's entire premise.</div>
+      </div>
+      <div class="hmw-card">
+        <span class="hmw-tag">HMW</span>
+        <div class="hmw-q">…prevent a medication order from being accepted when the physical stock doesn't exist?</div>
+        <div class="hmw-a">→ <b>Decision:</b> a Prescribable status separate from Formulary status, so PFC can flag "temporarily unavailable" without deactivating the drug.</div>
+      </div>
+      <div class="hmw-card">
+        <span class="hmw-tag">HMW</span>
+        <div class="hmw-q">…distribute config knowledge that currently lives only in one person's head?</div>
+        <div class="hmw-a">→ <b>Decision:</b> the universal audit trail — every edit traceable by user, timestamp, and before/after, not tribal knowledge.</div>
+      </div>
+      <div class="hmw-card">
+        <span class="hmw-tag">HMW</span>
+        <div class="hmw-q">…support SG, MY, TH, PH — each with a different fulfilment model — from one shared data architecture?</div>
+        <div class="hmw-a">→ <b>Decision:</b> pharmacy decoupled from pricing. Different price = a different scheme, never a per-pharmacy override — fixing the regional model that broke for MY/TH.</div>
+      </div>
+      <div class="hmw-card">
+        <span class="hmw-tag">HMW</span>
+        <div class="hmw-q">…manage ~400 package instances without manually updating 8 copies every time a template changes?</div>
+        <div class="hmw-a">→ <b>Decision:</b> Templates scoped to region, not per-pharmacy — still on the backlog, but scoped correctly because of this reframe.</div>
+      </div>
+      <div class="hmw-card">
+        <span class="hmw-tag">HMW</span>
+        <div class="hmw-q">…receive a weekly stock delivery without manually re-entering ~50 invoice rows into a system?</div>
+        <div class="hmw-a">→ <b>Decision:</b> CSV import across Pharmacies and Pricing Schemes — bulk operations as a first-class pattern, not an edge case.</div>
+      </div>
+      <div class="hmw-card">
+        <span class="hmw-tag">HMW</span>
+        <div class="hmw-q">…give ops a real-time, accurate stock-on-hand view by SKU and batch, without reconstructing from logs?</div>
+        <div class="hmw-a">→ <b>Decision:</b> real-time stock-on-hand, deliberately scoped to Phase 1B — deferred, not dropped, because of this reframe.</div>
+      </div>
+      <div class="hmw-card">
+        <span class="hmw-tag">HMW</span>
+        <div class="hmw-q">…ensure stock deductions always match what was physically dispensed, without a daily manual reconciliation?</div>
+        <div class="hmw-a">→ <b>Decision:</b> FEFO batch deduction, Phase 1B — the reframe that keeps this on the roadmap despite being out of scope now.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
   <div class="wrap">
     <div class="section-head">
-      <div class="section-num">02 — My role, and why this follows OMS</div>
+      <div class="section-num">03 — My role, and why this follows OMS</div>
       <h2>The same designer, a longer runway</h2>
     </div>
     <div class="prose">
@@ -259,7 +321,7 @@
 <section>
   <div class="wide">
     <div class="section-head">
-      <div class="section-num">03 — Field research</div>
+      <div class="section-num">04 — Field research</div>
       <h2>Shadowing the four systems in the wild</h2>
     </div>
     <p>Before a single screen, the work was to see the mess first-hand — shadowing the Marina Health config admin's Friday cycle, photographing the Marina Health warehouse, capturing AP1 and Plato mid-use, and transcribing it all into notebook flows. This is the raw observation board: real screens, real shelves, real handwriting.</p>
@@ -287,7 +349,7 @@
 <section>
   <div class="wide">
     <div class="section-head">
-      <div class="section-num">04 — Service map</div>
+      <div class="section-num">05 — Service map</div>
       <h2>Where IMS sits in the medication supply chain</h2>
     </div>
     <p>Six actors, seven phases, one blueprint. This is the full path a medication takes — from Marina Health raising a purchase order, to a patient signing for delivery — mapped lane by lane so it's visible exactly where IMS's writes and reads land, and where today it's still a manual handoff.</p>
@@ -532,7 +594,7 @@ body{font-family:var(--font-sans)}
 <section>
   <div class="wide">
     <div class="section-head">
-      <div class="section-num">05 — Who IMS has to satisfy</div>
+      <div class="section-num">06 — Who IMS has to satisfy</div>
       <h2>Three people, three very different relationships to the same record</h2>
     </div>
     <p>IMS has exactly one data model but three audiences who touch it differently: one who configures everything, one who has to trust what's configured before it reaches patients, and one who mostly just needs to know it isn't broken.</p>
@@ -563,7 +625,7 @@ body{font-family:var(--font-sans)}
 <section>
   <div class="wide">
     <div class="section-head">
-      <div class="section-num">06 — Final UI</div>
+      <div class="section-num">07 — Final UI</div>
       <h2>Item Master, the flagship module</h2>
     </div>
     <p>Item Master is 90% designed and carries the whole thesis: one record, referenced everywhere. Six screens from the working Figma file, at production fidelity.</p>
@@ -618,7 +680,7 @@ body{font-family:var(--font-sans)}
 <section>
   <div class="wrap">
     <div class="section-head">
-      <div class="section-num">07 — A scaling problem, solved on the page</div>
+      <div class="section-num">08 — A scaling problem, solved on the page</div>
       <h2>What happens when "pharmacy" stops meaning 9</h2>
     </div>
     <p>The very first pharmacy-availability design used a dot matrix of 9 fixed entities — fine when Marina Health, PFC, and a handful of clinics were the whole network. Then the real number arrived: <strong>up to 50 pharmacies</strong>. The 9-dot pattern couldn't scale, and neither could its first replacement.</p>
@@ -651,7 +713,7 @@ Prudential Care Elite ×  Manulife Flex ×  … ×47 more</span>
 <section>
   <div class="wrap">
     <div class="section-head">
-      <div class="section-num">08 — Decisions worth knowing</div>
+      <div class="section-num">09 — Decisions worth knowing</div>
       <h2>A few calls that shaped the model</h2>
     </div>
     <div class="decision"><div class="d-date">Audit architecture</div><div class="d-title">The audit log lives on the item, not the module</div><div class="d-body">Pricing Scheme and Pharmacy each keep their own module-level log, but every change touching a specific item — pricing, availability, status, clinical details — also lands on that item's own Audit log tab. The Marina Health config admin should open one drug and see its entire history without checking three places.</div></div>
@@ -664,7 +726,7 @@ Prudential Care Elite ×  Manulife Flex ×  … ×47 more</span>
 <section>
   <div class="wrap">
     <div class="section-head">
-      <div class="section-num">09 — Business impact</div>
+      <div class="section-num">10 — Business impact</div>
       <h2>What one record actually buys</h2>
     </div>
     <p>Translated out of UX metrics: IMS turns a single person's Friday afternoon into infrastructure. Every pharmacy DA opens, every price change a scheme owner makes, and every SKU the Marina Health config admin retires stops being a manual multi-system sweep and becomes one auditable edit — the same edit whether it's pharmacy 1 or pharmacy 50.</p>
@@ -681,7 +743,7 @@ Prudential Care Elite ×  Manulife Flex ×  … ×47 more</span>
 <section>
   <div class="wrap">
     <div class="section-head">
-      <div class="section-num">10 — Where things stand</div>
+      <div class="section-num">11 — Where things stand</div>
       <h2>Module status</h2>
     </div>
     <table class="status-table">
