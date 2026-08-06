@@ -649,45 +649,9 @@ Prudential Care Elite ×  Manulife Flex ×  … ×47 more</span>
 </section>
 
 <section>
-  <div class="wide">
-    <div class="section-head">
-      <div class="section-num">08 — Coverage scoreboard</div>
-      <h2>16 pain points, tracked one by one</h2>
-    </div>
-    <p>Every pain point traces back to a specific role and a Friday-afternoon workaround. Here's where design coverage actually stands against each one.</p>
-
-    <div class="cov-group-label">Marina Health Admin</div>
-    <div class="cov-row"><span class="icon">✅</span><span>One ITEM_MASTER record — edit once, reflects everywhere</span><span class="who">Designed</span></div>
-    <div class="cov-row"><span class="icon">✅</span><span>Pricing Schemes — one edit per scheme × SKU instead of 8 AP1 edits</span><span class="who">Designed</span></div>
-    <div class="cov-row"><span class="icon">✅</span><span>Universal audit trail — user, timestamp, before/after</span><span class="who">Designed</span></div>
-    <div class="cov-row"><span class="icon">✅</span><span>Deactivate a drug in one action, not 8 manual steps + a Slack ping</span><span class="who">Designed</span></div>
-    <div class="cov-row"><span class="icon">✅</span><span>Item Master list — formulary status visible for all 400+ SKUs</span><span class="who">Designed</span></div>
-    <div class="cov-row"><span class="icon">✅</span><span>Add pharmacy — clone availability copies every row atomically</span><span class="who">Designed</span></div>
-    <div class="cov-row"><span class="icon">⚠️</span><span>Templates — 50 templates × 8 pharmacies today; needs to become region-scoped</span><span class="who">Not designed</span></div>
-    <div class="cov-row"><span class="icon">🔶</span><span>Config knowledge no longer lives in one head — change history plus role access</span><span class="who">Partial</span></div>
-
-    <div class="cov-group-label">PFC Ops Lead</div>
-    <div class="cov-row"><span class="icon">🔵</span><span>FEFO batch deduction to end the daily FIFO/FEFO reconciliation</span><span class="who">Phase 1B</span></div>
-    <div class="cov-row"><span class="icon">✅</span><span>Deliberate formulary activation — the PFC Ops lead reviews before a drug goes live</span><span class="who">Designed</span></div>
-    <div class="cov-row"><span class="icon">✅</span><span>Validation at point of entry instead of catching errors at audit</span><span class="who">Designed</span></div>
-
-    <div class="cov-group-label">Clinic Admin</div>
-    <div class="cov-row"><span class="icon">🔵</span><span>Real-time stock-on-hand view per clinic</span><span class="who">Phase 1B</span></div>
-    <div class="cov-row"><span class="icon">✅</span><span>Formulary status visible to every role — no more guessing pending vs. gone</span><span class="who">Designed</span></div>
-
-    <div class="cov-group-label">System-level</div>
-    <div class="cov-row"><span class="icon">✅</span><span>Single source of truth replacing 4 disconnected systems</span><span class="who">Designed</span></div>
-    <div class="cov-row"><span class="icon">⚠️</span><span>Admin vs Ops role separation, region-scoped</span><span class="who">Not designed</span></div>
-    <div class="cov-row" style="border-bottom:none"><span class="icon">✅</span><span>Pharmacy decoupled from pricing — fixes the AP1 regional model breaking for MY/TH</span><span class="who">Designed</span></div>
-
-    <p class="muted" style="margin-top:24px">10 of 16 fully designed · 2 not yet started · 2 partial · 2 deliberately deferred to Phase 1B.</p>
-  </div>
-</section>
-
-<section>
   <div class="wrap">
     <div class="section-head">
-      <div class="section-num">09 — Decisions worth knowing</div>
+      <div class="section-num">08 — Decisions worth knowing</div>
       <h2>A few calls that shaped the model</h2>
     </div>
     <div class="decision"><div class="d-date">Audit architecture</div><div class="d-title">The audit log lives on the item, not the module</div><div class="d-body">Pricing Scheme and Pharmacy each keep their own module-level log, but every change touching a specific item — pricing, availability, status, clinical details — also lands on that item's own Audit log tab. The Marina Health config admin should open one drug and see its entire history without checking three places.</div></div>
@@ -700,7 +664,7 @@ Prudential Care Elite ×  Manulife Flex ×  … ×47 more</span>
 <section>
   <div class="wrap">
     <div class="section-head">
-      <div class="section-num">10 — Business impact</div>
+      <div class="section-num">09 — Business impact</div>
       <h2>What one record actually buys</h2>
     </div>
     <p>Translated out of UX metrics: IMS turns a single person's Friday afternoon into infrastructure. Every pharmacy DA opens, every price change a scheme owner makes, and every SKU the Marina Health config admin retires stops being a manual multi-system sweep and becomes one auditable edit — the same edit whether it's pharmacy 1 or pharmacy 50.</p>
@@ -717,7 +681,7 @@ Prudential Care Elite ×  Manulife Flex ×  … ×47 more</span>
 <section>
   <div class="wrap">
     <div class="section-head">
-      <div class="section-num">11 — Where things stand</div>
+      <div class="section-num">10 — Where things stand</div>
       <h2>Module status</h2>
     </div>
     <table class="status-table">
