@@ -2,7 +2,7 @@
   "caseStudies": [
     {
       "id": "identity-first-onboarding",
-      "href": "identity-first-onboarding.html",
+      "href": "identity-onboarding.html",
       "featured": true,
       "protected": false,
       "thumbnail": {
@@ -82,7 +82,7 @@
     },
     {
       "id": "soda-hr-portal",
-      "href": "soda-hr-portal.html",
+      "href": "soda-hr.html",
       "featured": false,
       "protected": false,
       "thumbnail": {

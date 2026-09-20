@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Identity-first onboarding | Doctor Anywhere | Vani Balasundaram</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="case-study-template.css">
+</head>
+<body>
+<header class="site-header" role="banner">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">VANI</a>
+            <div class="nav-links">
+                <a href="index.html#case-studies">Work</a>
+                <a href="index.html#experience">Experience</a>
+                <a href="ai-practices.html">AI Practices</a>
+                <a href="about.html">About</a>
+                <a href="contact.html" class="nav-cta nav-cta-secondary">Let's Talk</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+</header>
+
+<div class="mobile-menu">
+    <div class="mobile-menu-links">
+        <a href="index.html#case-studies">Work</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="ai-practices.html">AI Practices</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="nav-cta nav-cta-secondary">Let's Talk</a>
+    </div>
+</div>
+
+<main class="identity-page">
+  <article class="case-study">
+    <section class="case-hero section-wrap">
+      <div class="case-hero-image">
+        <span class="phone-case case-hero-phone">
+          <span class="phone-island" aria-hidden="true"></span>
+          <span class="phone-screen"><video src="images/identity-v2/full-onboarding.mp4" autoplay loop muted playsinline aria-label="Doctor Anywhere full identity onboarding flow"></video></span>
+          <span class="phone-button phone-button--one" aria-hidden="true"></span>
+          <span class="phone-button phone-button--two" aria-hidden="true"></span>
+        </span>
+      </div>
+      <div class="case-hero-copy">
+        <p class="eyebrow">Doctor Anywhere</p>
+        <h1>Identity-first onboarding</h1>
+        <p>Making sure the right person reaches the right care.</p>
+        <div><span>Patient experience · Identity · Healthcare</span><span>Senior Product Designer · 8 months · Shipped</span></div>
+        <a class="detailed-cs-link" href="identity-first-onboarding.html">
+          View detailed case study
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <section class="story-beat late-beat section-wrap">
+      <div class="story-copy">
+        <p class="eyebrow">01 · What was happening</p>
+        <h2>Identity was happening too late.</h2>
+        <p>We were establishing identity after other parts of the experience already depended on it.</p>
+      </div>
+      <div class="journey" id="journeyBefore"></div>
+    </section>
+
+    <section class="story-beat shift-beat section-wrap" id="moveIdentitySection">
+      <div class="story-copy">
+        <p class="eyebrow">02 · What changed</p>
+        <h2>Move identity upstream.</h2>
+        <p>Once identity became the first trusted input, account creation, coverage matching and care could resolve from the same foundation.</p>
+      </div>
+      <div class="journey" id="journeyAfter"></div>
+    </section>
+
+    <section class="adaptive section-wrap">
+      <div class="story-copy">
+        <p class="eyebrow">03 · System behaviour</p>
+        <h2>Different people shouldn't experience system complexity.</h2>
+        <p>Entry conditions change behind the interface. The patient still sees one understandable journey.</p>
+      </div>
+      <div class="adaptive-stage">
+        <div class="entry-choices" id="entryChoices" role="group" aria-label="Patient entry condition"></div>
+        <div class="system-path">
+          <span id="entryPathLabel">Singpass</span><i></i><strong>Verified identity</strong><i></i><span>Relevant coverage</span><i></i><span>Care</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="walkthrough section-wrap">
+      <div class="story-copy">
+        <p class="eyebrow">04 · The designed experience</p>
+        <h2>One interface. Every meaningful state.</h2>
+        <p id="walkthroughBody"></p>
+      </div>
+      <div class="walkthrough-stage">
+        <div class="step-tabs" id="stepTabs" role="group" aria-label="Onboarding product states"></div>
+        <div class="product-device">
+          <span class="phone-case">
+            <span class="phone-island" aria-hidden="true"></span>
+            <span class="phone-screen" id="walkthroughScreen"></span>
+            <span class="phone-button phone-button--one" aria-hidden="true"></span>
+            <span class="phone-button phone-button--two" aria-hidden="true"></span>
+          </span>
+          <div>
+            <span id="walkthroughCounter">01 / 07</span>
+            <strong id="walkthroughTitle"></strong>
+            <button type="button" id="walkthroughNext">
+              <span id="walkthroughNextLabel">Next state</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="craft section-wrap">
+      <header class="story-copy">
+        <p class="eyebrow">05 · Interaction craft</p>
+        <h2>Details that made the journey feel easier.</h2>
+      </header>
+      <div class="craft-list" id="craftList"></div>
+    </section>
+
+    <section class="recovery section-wrap">
+      <div class="story-copy">
+        <p class="eyebrow">06 · Recovery</p>
+        <h2>Failure states are product states.</h2>
+        <p>A failed selfie or ID scan is both high-friction and emotionally sensitive. Feedback explains what happened and offers a practical next step.</p>
+      </div>
+      <figure>
+        <img src="images/identity-v2/error-states.png" alt="Error-state scenarios covering clear feedback, practical recovery and real-device testing">
+        <figcaption>Slide 26 · Error-state scenarios tested on a real device.</figcaption>
+      </figure>
+    </section>
+
+    <section class="outcomes section-wrap">
+      <p class="eyebrow">07 · What happened afterward</p>
+      <h2>Identity became trust infrastructure—not another onboarding step.</h2>
+      <div class="outcome-line"><strong>1M+</strong><span>people verified through the identity flow</span></div>
+      <div class="outcome-line"><strong>26% → 10%</strong><span>onboarding-related customer-support tickets</span></div>
+      <p class="outcome-note">For patients, benefits and care appear with less friction. For the product, identity, account, coverage and records now align downstream. Operationally, correctly matched B2B coverage no longer needs manual re-linking.</p>
+    </section>
+
+    <footer class="case-footer">
+      <p>Identity-first onboarding · Doctor Anywhere</p>
+      <button type="button" id="returnBtn">
+        Return to selected work
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+    </footer>
+  </article>
+</main>
+<script src="identity-onboarding.js"></script>
+</body>
+</html>

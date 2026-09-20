@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SODA HR Portal | Doctor Anywhere | Vani Balasundaram</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="case-study-template.css">
+</head>
+<body>
+<header class="site-header" role="banner">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">VANI</a>
+            <div class="nav-links">
+                <a href="index.html#case-studies">Work</a>
+                <a href="index.html#experience">Experience</a>
+                <a href="ai-practices.html">AI Practices</a>
+                <a href="about.html">About</a>
+                <a href="contact.html" class="nav-cta nav-cta-secondary">Let's Talk</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+</header>
+
+<div class="mobile-menu">
+    <div class="mobile-menu-links">
+        <a href="index.html#case-studies">Work</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="ai-practices.html">AI Practices</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="nav-cta nav-cta-secondary">Let's Talk</a>
+    </div>
+</div>
+
+<main class="identity-page">
+  <article class="case-study">
+    <section class="case-hero section-wrap">
+      <div class="case-hero-image">
+        <span class="browser-case case-hero-browser">
+          <span class="browser-chrome" aria-hidden="true"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span></span>
+          <span class="browser-screen"><img src="images/Case study SODA/cover.png" alt="SODA HR Portal product cover"></span>
+        </span>
+      </div>
+      <div class="case-hero-copy">
+        <p class="eyebrow">SODA · Doctor Anywhere Group</p>
+        <h1>Self-serve HR Portal</h1>
+        <p>Employee benefits, without the broker.</p>
+        <div><span>HR Tech · Benefits Platform · Web SaaS</span><span>Senior Product Designer · 0→1 · Launched Jun 2025</span></div>
+        <a class="detailed-cs-link" href="soda-hr-portal.html">
+          View detailed case study
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <section class="story-beat late-beat section-wrap">
+      <div class="story-copy">
+        <p class="eyebrow">01 · What was happening</p>
+        <h2>Benefits setup ran through brokers.</h2>
+        <p>SME owners had no way to self-serve. Setting up medical and flex benefit plans meant manual back-and-forth with a broker, and it was error-prone at every step.</p>
+      </div>
+      <div class="journey" id="journeyBefore"></div>
+    </section>
+
+    <section class="story-beat shift-beat section-wrap" id="moveIdentitySection">
+      <div class="story-copy">
+        <p class="eyebrow">02 · What changed</p>
+        <h2>One policy, fully self-serve.</h2>
+        <p>SODA lets HR teams define policies, create plans and manage employees directly — one policy, one price, unlimited plans and member groups inside.</p>
+      </div>
+      <div class="journey" id="journeyAfter"></div>
+    </section>
+
+    <section class="adaptive section-wrap">
+      <div class="story-copy">
+        <p class="eyebrow">03 · System behaviour</p>
+        <h2>Every company starts somewhere different.</h2>
+        <p>New signups, teams switching off a broker, and companies with several member groups all move through the same guided, policy-first setup.</p>
+      </div>
+      <div class="adaptive-stage">
+        <div class="entry-choices" id="entryChoices" role="group" aria-label="Company starting point"></div>
+        <div class="system-path">
+          <span id="entryPathLabel">New company</span><i></i><strong>Guided policy setup</strong><i></i><span>One policy, unlimited plans</span><i></i><span>Team live</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="walkthrough section-wrap">
+      <div class="story-copy">
+        <p class="eyebrow">04 · The designed experience</p>
+        <h2>One portal. Every step HR needs.</h2>
+        <p id="walkthroughBody"></p>
+      </div>
+      <div class="walkthrough-stage">
+        <div class="step-tabs" id="stepTabs" role="group" aria-label="Portal setup steps"></div>
+        <div class="product-device product-device--browser">
+          <span class="browser-case">
+            <span class="browser-chrome" aria-hidden="true"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span></span>
+            <span class="browser-screen" id="walkthroughScreen"></span>
+          </span>
+          <div>
+            <span id="walkthroughCounter">01 / 07</span>
+            <strong id="walkthroughTitle"></strong>
+            <button type="button" id="walkthroughNext">
+              <span id="walkthroughNextLabel">Next state</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="craft section-wrap">
+      <header class="story-copy">
+        <p class="eyebrow">05 · Interaction craft</p>
+        <h2>Details that built confidence, not just completion.</h2>
+      </header>
+      <div class="craft-list" id="craftList"></div>
+    </section>
+
+    <section class="recovery section-wrap">
+      <div class="story-copy">
+        <p class="eyebrow">06 · Friction as data</p>
+        <h2>Real usage found what testing didn't.</h2>
+        <p>Live usage surfaced friction in plan setup, policy-change communication, and moments where HR loses confidence mid-flow — each one now feeds the next iteration, not a support ticket.</p>
+      </div>
+      <figure>
+        <img src="images/Case study SODA/7.png" alt="SODA HR Portal — benefit options and plan settings, one of the surfaces refined after real usage">
+        <figcaption>Benefit options and plan settings — refined after watching real HR teams use it.</figcaption>
+      </figure>
+    </section>
+
+    <section class="outcomes section-wrap">
+      <p class="eyebrow">07 · What happened afterward</p>
+      <h2>Product-market fit exists — the gap was reach, not capability.</h2>
+      <div class="outcome-line"><strong>10k+</strong><span>employees onboarded through the portal</span></div>
+      <div class="outcome-line"><strong>40+</strong><span>companies onboarded in the first 3 months</span></div>
+      <p class="outcome-note">The portal is the operational core; the work now is connecting it to how companies find and trust SODA — insurance acquisition is relationship-first, and the product has to earn that trust before features matter.</p>
+    </section>
+
+    <footer class="case-footer">
+      <p>Self-serve HR Portal · SODA, Doctor Anywhere Group</p>
+      <button type="button" id="returnBtn">
+        Return to selected work
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+    </footer>
+  </article>
+</main>
+<script src="soda-hr.js"></script>
+</body>
+</html>

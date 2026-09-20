@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initNavbar();
     initMobileMenu();
     initHeroBackgroundVideo();
+    if (typeof initHeroGridReveal === 'function') initHeroGridReveal();
+    if (typeof initStickerPlayground === 'function') initStickerPlayground();
     initHeroEntrance();
     initScrollReveal();
     initSmoothScroll();
