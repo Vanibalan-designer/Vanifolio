@@ -76,64 +76,33 @@
         </div>
     </section>
 
-    <!-- Cover image -->
-    <section class="cs-hero-image">
-        <div class="cs-image-container">
-            <img src="images/Board Sync/cover.png" alt="Board Sync: an agent that reads my biweekly update and reconciles it against my Jira board, illustrated as a fox sorting a messy pile of update cards into an organized Jira board with To Do, In Progress, and Done columns." style="width:100%; display:block; border-radius: var(--radius-lg);">
-        </div>
-    </section>
-
     <!-- Problem -->
     <section class="cs-section">
         <div class="cs-container">
-            <div class="cs-section-header">
-                <span class="cs-section-number">01</span>
-                <h2>Problem</h2>
-            </div>
-            <div class="cs-content-grid">
-                <div class="cs-content-main">
-                    <p>Every two weeks I wrote a biweekly update by hand, then separately went into Jira to update tickets, fix statuses that had drifted, link them to the roadmap, and cross-check what other teams shipped that touched my work.</p>
-                    <p>Four disconnected chores that all described the same two weeks of work — done manually, from memory, usually a day late.</p>
+            <div class="cs-insights-grid">
+                <div class="cs-insight-card">
+                    <h4>Problem</h4>
+                    <p>Every two weeks I wrote a biweekly update by hand, then went into Jira separately to fix drifted statuses, link tickets to the roadmap, and cross-check other teams' work. Four disconnected chores for the same two weeks.</p>
+                </div>
+                <div class="cs-insight-card">
+                    <h4>What I worked on</h4>
+                    <p>The same manual reconciliation, every cycle — read my update, find the ticket, fix what drifted, link the roadmap. Done by hand, it happened late or not at all, and small things slipped through.</p>
+                </div>
+                <div class="cs-insight-card">
+                    <h4>Solution</h4>
+                    <p>A skill that reads my Gmail update, matches it to the right ticket, posts progress, fixes the status, links the roadmap, and flags what needs my judgment. I still decide — it proposes.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why I needed it -->
+    <!-- Video -->
     <section class="cs-section cs-section-alt">
         <div class="cs-container">
-            <div class="cs-section-header">
-                <span class="cs-section-number">02</span>
-                <h2>Why I needed it</h2>
-            </div>
-            <div class="cs-content-grid">
-                <div class="cs-content-main">
-                    <p>Every cycle it was the same reconciliation, done by hand: read my own update, find the right ticket, fix whatever had drifted, link it to the roadmap. Doing it manually meant it happened late, or not at all — and small things slipped through, like a teammate's update flagging a delay risk to a ticket I owned, simply because nobody was reading closely enough, every single time.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Solution -->
-    <section class="cs-section">
-        <div class="cs-container">
-            <div class="cs-section-header">
-                <span class="cs-section-number">03</span>
-                <h2>Solution</h2>
-            </div>
-
-            <div class="cs-feature">
-                <div class="cs-feature-content">
-                    <p>Board Sync is a skill that does that reconciliation directly: it reads my biweekly update from Gmail, matches each line to the right Jira ticket, posts the update, fixes the status if it's lying, links it to the roadmap, and flags what still needs my judgment.</p>
-                    <p>I still make every call — what ticket a vague line belongs to, whether to create a new one. The agent proposes and asks; I decide.</p>
-                </div>
-                <div class="cs-feature-image">
-                    <div class="cs-image-placeholder" style="aspect-ratio: 4/3; overflow: hidden; border-radius: var(--radius-lg);">
-                        <video autoplay loop muted playsinline preload="auto" aria-label="Board Sync motion demo: a scattered board resolving into an organized grid" style="width:100%; height:100%; object-fit: cover; display:block;">
-                            <source src="images/Board Sync/demo.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                </div>
+            <div class="cs-visual" style="max-width: 640px; margin: 0 auto; border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-visual); aspect-ratio: 16/9;">
+                <video autoplay loop muted playsinline preload="auto" aria-label="Board Sync motion demo: a scattered board resolving into an organized grid" style="width:100%; height:100%; object-fit: cover; display:block;">
+                    <source src="images/Board Sync/demo.mp4" type="video/mp4">
+                </video>
             </div>
         </div>
     </section>

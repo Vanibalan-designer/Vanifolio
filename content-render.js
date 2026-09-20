@@ -449,14 +449,12 @@
                     </div>`).join('')}
             </div>` : '';
         const tags = project.tags.map(t => `<span class="tag">${t}</span>`).join('');
-        const thumbClass = project.featured ? ' class="project-thumb"' : '';
-        const thumbStyle = project.featured ? '' : ' style="width:100%; height:100%; object-fit:contain; background:#fff; display:block;"';
         const externalAttrs = project.external ? ' target="_blank" rel="noopener"' : '';
 
         return `
             <a href="${project.href}"${externalAttrs} class="project-card${featured}">
                 <div class="project-image">
-                    <img${thumbClass} src="${project.thumbnail.src}" alt="${project.thumbnail.alt}"${thumbStyle}>
+                    <img class="project-thumb" src="${project.thumbnail.src}" alt="${project.thumbnail.alt}">
                     ${project.featured ? '<div class="project-overlay"></div>' : ''}
                 </div>
                 <div class="project-content">
