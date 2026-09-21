@@ -7,16 +7,16 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Google+Sans+Flex:opsz,wght@6..144,100..700&display=swap');
   :root {
-    --paper: #f4f6f5; --paper-raised: #ffffff; --ink: #17221f; --muted: #55655f;
-    --line: #d9e0dc; --line-strong: #b9c4bf;
-    --teal: #2b6f62; --teal-soft: #e4efec;
-    --amber: #c97a2b; --amber-soft: #f7e9d7;
-    --rose: #a8483d; --rose-soft: #f3e2df;
-    --violet: #5a4fb0; --violet-soft: #ecebf9;
+    --paper: #FAFAF9; --paper-raised: #ffffff; --ink: #111827; --muted: #6B7280;
+    --line: #E7E5E4; --line-strong: #D1D5DB;
+    --teal: #1F2937; --teal-soft: #F3F4F6;
+    --amber: #F59E0B; --amber-soft: #FFFBEB;
+    --rose: #9B4A5A; --rose-soft: #F7ECEE;
+    --violet: #374151; --violet-soft: #F5F5F4;
     --radius: 6px;
-    --serif: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    --mono: 'Google Sans Flex', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --serif: 'Google Sans Flex', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --sans: 'Google Sans Flex', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono: 'SF Mono', 'Fira Code', Menlo, Consolas, monospace;
     --code-mono: 'SF Mono', 'Fira Code', Menlo, Consolas, monospace;
     --font-sans: var(--sans);
     --surface-0: var(--paper); --surface-1: var(--paper-raised);
@@ -24,17 +24,17 @@
     --text-primary: var(--ink); --text-secondary: var(--muted); --text-muted: var(--muted);
   }
   :root[data-theme="dark"] {
-    --paper: #12181a; --paper-raised: #182120; --ink: #e9eeec; --muted: #94a39d;
-    --line: #29332f; --line-strong: #3a4642; --teal: #5aad9a; --teal-soft: #1c2b28;
-    --amber: #e5a458; --amber-soft: #33291b; --rose: #e08a7c; --rose-soft: #3a2521;
-    --violet: #9b91d8; --violet-soft: #241f38;
+    --paper: #1F2937; --paper-raised: #374151; --ink: #FAFAF9; --muted: #9CA3AF;
+    --line: rgba(255,255,255,.12); --line-strong: rgba(255,255,255,.20); --teal: #D1D5DB; --teal-soft: rgba(255,255,255,.06);
+    --amber: #F59E0B; --amber-soft: rgba(245,158,11,.14); --rose: #E3AEB6; --rose-soft: rgba(155,74,90,.18);
+    --violet: #F3F4F6; --violet-soft: rgba(255,255,255,.06);
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --paper: #12181a; --paper-raised: #182120; --ink: #e9eeec; --muted: #94a39d;
-      --line: #29332f; --line-strong: #3a4642; --teal: #5aad9a; --teal-soft: #1c2b28;
-      --amber: #e5a458; --amber-soft: #33291b; --rose: #e08a7c; --rose-soft: #3a2521;
-      --violet: #9b91d8; --violet-soft: #241f38;
+      --paper: #1F2937; --paper-raised: #374151; --ink: #FAFAF9; --muted: #9CA3AF;
+      --line: rgba(255,255,255,.12); --line-strong: rgba(255,255,255,.20); --teal: #D1D5DB; --teal-soft: rgba(255,255,255,.06);
+      --amber: #F59E0B; --amber-soft: rgba(245,158,11,.14); --rose: #E3AEB6; --rose-soft: rgba(155,74,90,.18);
+      --violet: #F3F4F6; --violet-soft: rgba(255,255,255,.06);
     }
   }
 
