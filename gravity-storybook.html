@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gravity Design System Storybook | Doctor Anywhere | Vani Balasundaram</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="case-study-template.css">
+</head>
+<body>
+<header class="site-header" role="banner">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">VANI</a>
+            <div class="nav-links">
+                <a href="index.html#case-studies">Work</a>
+                <a href="index.html#experience">Experience</a>
+                <a href="ai-practices.html">AI Practices</a>
+                <a href="about.html">About</a>
+                <a href="contact.html" class="nav-cta nav-cta-secondary">Let's Talk</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+</header>
+
+<div class="mobile-menu">
+    <div class="mobile-menu-links">
+        <a href="index.html#case-studies">Work</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="ai-practices.html">AI Practices</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="nav-cta nav-cta-secondary">Let's Talk</a>
+    </div>
+</div>
+
+<main class="identity-page">
+  <article class="case-study">
+    <section class="case-hero section-wrap">
+      <div class="case-hero-image">
+        <span class="browser-case case-hero-browser">
+          <span class="browser-chrome" aria-hidden="true"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span></span>
+          <span class="browser-screen"><img src="images/gravity-v2/overview.jpg" alt="Gravity Design System Storybook welcome page listing Foundation and Components sections"></span>
+        </span>
+      </div>
+      <div class="case-hero-copy">
+        <p class="eyebrow">Gravity Design System · Doctor Anywhere</p>
+        <h1>A Storybook, built solo</h1>
+        <p>Figma was the design source of truth. Engineers needed working code — so I built it myself.</p>
+        <div><span>Design Systems · Developer Tooling</span><span>Product Designer &amp; Builder · Built with Cursor AI · Live on Bitbucket</span></div>
+        <div class="detailed-cs-links">
+          <a class="detailed-cs-link detailed-cs-link--solid" href="https://gravity-design-system.bitbucket.io/storybook-static/index.html?path=/story/welcome--welcome" target="_blank" rel="noopener">
+            View live Storybook
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+          <a class="detailed-cs-link" href="case-study-4.html">
+            Read full breakdown
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-beat section-wrap">
+      <div class="story-copy">
+        <p class="eyebrow">01 · The problem</p>
+        <h2>A source of truth engineers couldn't copy from.</h2>
+        <p>Gravity, our Figma design system, was thorough — but Figma only shows engineers what a component looks like, not how it's built. Every team re-interpreted the same component slightly differently, and the white label portal needed one consistent implementation, not several.</p>
+      </div>
+    </section>
+
+    <section class="walkthrough section-wrap">
+      <div class="story-copy">
+        <p class="eyebrow">02 · The build</p>
+        <h2>Working code, mapped 1:1 to Figma.</h2>
+        <p id="walkthroughBody"></p>
+      </div>
+      <div class="walkthrough-stage">
+        <div class="step-tabs" id="stepTabs" role="group" aria-label="Storybook build steps"></div>
+        <div class="product-device product-device--browser">
+          <span class="browser-case">
+            <span class="browser-chrome" aria-hidden="true"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span></span>
+            <span class="browser-screen" id="walkthroughScreen"></span>
+          </span>
+          <div>
+            <span id="walkthroughCounter">01 / 02</span>
+            <strong id="walkthroughTitle"></strong>
+            <button type="button" id="walkthroughNext">
+              <span id="walkthroughNextLabel">Next</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="outcomes section-wrap">
+      <p class="eyebrow">03 · What it changed</p>
+      <h2>A free, functional bridge between design and code.</h2>
+      <div class="outcome-line"><strong>100%</strong><span>built from scratch, solo, with Cursor AI as co-pilot</span></div>
+      <div class="outcome-line"><strong>$0</strong><span>hosting cost — deployed free on Bitbucket static hosting</span></div>
+      <div class="outcome-line"><strong>Live</strong><span>and in daily use by engineers implementing Gravity components</span></div>
+      <p class="outcome-note">The bigger finding wasn't technical: with the right AI tooling, a designer can build the thing engineers actually needed — not another spec, but working code they could copy straight from.</p>
+    </section>
+
+    <footer class="case-footer">
+      <p>Gravity Design System Storybook · Doctor Anywhere</p>
+      <button type="button" id="returnBtn">
+        Return to selected work
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+    </footer>
+  </article>
+</main>
+<script src="gravity-storybook.js"></script>
+</body>
+</html>
