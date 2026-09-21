@@ -50,9 +50,9 @@
 .browser-screen img, .browser-screen video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
 
 .case-hero { padding-top: clamp(34px, 5vw, 72px); padding-bottom: clamp(100px, 12vw, 180px); animation: case-enter 620ms cubic-bezier(.2,.75,.2,1) both; }
-.case-hero-image { height: min(72vh, 780px); min-height: 580px; overflow: hidden; border-bottom: 1px solid var(--identity-ink-11); background: var(--identity-accent-08); display: grid; place-items: end center; }
-.case-hero-phone { width: clamp(270px, 21vw, 330px); transform: translateY(-3%); }
-.case-hero-browser { width: clamp(480px, 60vw, 920px); transform: translateY(9%); }
+.case-hero-image { height: min(72vh, 780px); min-height: 740px; overflow: hidden; border-bottom: 1px solid var(--identity-ink-11); background: var(--identity-accent-08); display: grid; place-items: end center; padding-bottom: 24px; }
+.case-hero-phone { width: clamp(270px, 21vw, 330px); }
+.case-hero-browser { width: clamp(480px, 60vw, 920px); }
 .case-hero-copy { padding-top: 48px; display: grid; grid-template-columns: .45fr 1.2fr .8fr; gap: 36px; align-items: start; }
 .case-hero-copy h1 { margin: 0; font-size: clamp(3.1rem, 6vw, 6.6rem); line-height: .92; letter-spacing: -.06em; font-weight: 560; }
 .case-hero-copy > p:not(.eyebrow) { margin: 4px 0 0; font-size: clamp(1.3rem, 2vw, 2rem); line-height: 1.25; letter-spacing: -.02em; }
@@ -113,9 +113,9 @@
 @keyframes product-state { from { opacity: 0; transform: translateX(18px); } }
 
 .craft-list { margin-top: clamp(70px, 9vw, 130px); border-top: 1px solid var(--identity-ink-22); }
-.craft-list article { min-height: 430px; padding: 36px 0; border-bottom: 1px solid var(--identity-ink-22); display: grid; grid-template-columns: minmax(320px,.9fr) 58px minmax(250px,1fr); grid-template-rows: auto 1fr; gap: 14px clamp(24px, 5vw, 80px); align-items: start; }
-.craft-list article > div { grid-row: 1 / 3; height: 390px; overflow: hidden; background: var(--identity-accent-08); display: grid; place-items: end center; }
-.craft-list article .phone-case { width: 180px; transform: translateY(8%); box-shadow: 0 18px 44px rgba(28,26,24,.18), inset 0 0 0 2px #3d3d3d; }
+.craft-list article { min-height: 440px; padding: 36px 0; border-bottom: 1px solid var(--identity-ink-22); display: grid; grid-template-columns: minmax(320px,.9fr) 58px minmax(250px,1fr); grid-template-rows: auto 1fr; gap: 14px clamp(24px, 5vw, 80px); align-items: start; }
+.craft-list article > div { grid-row: 1 / 3; height: 440px; overflow: hidden; background: var(--identity-accent-08); display: grid; place-items: end center; padding-bottom: 12px; }
+.craft-list article .phone-case { width: 180px; box-shadow: 0 18px 44px rgba(28,26,24,.18), inset 0 0 0 2px #3d3d3d; }
 .craft-list article > span { color: var(--identity-accent); font-size: .78rem; }
 .craft-list h3 { margin: 0; font-size: clamp(1.7rem, 2.7vw, 3rem); line-height: 1.05; letter-spacing: -.035em; font-weight: 530; }
 .craft-list p { grid-column: 3; max-width: 590px; margin: 0; color: var(--identity-ink-72); font-size: 1.08rem; line-height: 1.6; }
@@ -189,7 +189,7 @@
   .case-nav > a { justify-self: end; }
   .case-nav > a span:last-child, .case-nav > span { display: none; }
   .section-wrap { padding-inline: 18px; }
-  .case-hero-image { min-height: 500px; height: 64vh; }
+  .case-hero-image { min-height: 640px; height: 64vh; padding-bottom: 20px; }
   .case-hero-phone { width: 265px; }
   .case-hero-browser { width: 92%; }
   .product-device--browser { padding: 20px; }
@@ -213,7 +213,7 @@
   .product-device strong { margin: 0; }
   .product-device button { grid-column: 2; }
   .craft-list article { display: block; min-height: 0; padding: 28px 0 40px; }
-  .craft-list article > div { height: 360px; margin-bottom: 25px; }
+  .craft-list article > div { height: 400px; margin-bottom: 25px; padding-bottom: 10px; }
   .craft-list article .phone-case { width: 165px; }
   .craft-list h3 { margin: 12px 0 16px; font-size: 2rem; }
   .recovery { display: flex; flex-direction: column; align-items: stretch; }
