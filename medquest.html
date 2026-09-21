@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MedQuest | Doctor Anywhere | Vani Balasundaram</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="case-study-template.css">
+</head>
+<body>
+<header class="site-header" role="banner">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">VANI</a>
+            <div class="nav-links">
+                <a href="index.html#case-studies">Work</a>
+                <a href="index.html#experience">Experience</a>
+                <a href="ai-practices.html">AI Practices</a>
+                <a href="about.html">About</a>
+                <a href="contact.html" class="nav-cta nav-cta-secondary">Let's Talk</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+</header>
+
+<div class="mobile-menu">
+    <div class="mobile-menu-links">
+        <a href="index.html#case-studies">Work</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="ai-practices.html">AI Practices</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="nav-cta nav-cta-secondary">Let's Talk</a>
+    </div>
+</div>
+
+<main class="identity-page">
+  <article class="case-study">
+
+    <section class="dual-hero section-wrap">
+      <p class="eyebrow">MedQuest · Doctor Anywhere Group</p>
+      <h1>One medicine, two systems that have to agree.</h1>
+      <p>OMS moves the order from payment to doorstep. IMS holds the one truth about what's in stock, where. Two builds, one service — designed end to end by one person.</p>
+      <div class="dual-hero-meta">
+        <span>Healthcare Logistics · Order &amp; Inventory Platform</span>
+        <span>Senior Product Designer · Both systems, end to end · OMS live, IMS in engineering build</span>
+      </div>
+      <div class="entry-points" role="group" aria-label="Choose a track">
+        <a class="entry-card" href="#track-section" data-enter-track="oms">
+          <span>Enter via →</span>
+          <strong>Order Fulfillment (OMS)</strong>
+          <p>A prescription payment becomes a tracked order, packed and validated on a live pharmacy floor.</p>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a class="entry-card" href="#track-section" data-enter-track="ims">
+          <span>Enter via →</span>
+          <strong>Inventory Management (IMS)</strong>
+          <p>One record per drug, referenced everywhere, replacing a warehouse run from one person's memory.</p>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <section class="story-beat section-wrap">
+      <div class="story-copy">
+        <p class="eyebrow">01 · Where the two systems meet</p>
+        <h2>Two networks, one handshake.</h2>
+        <p>OMS owns the order. IMS owns the physical stock behind it. They're built, staffed and shipped separately — but a service only works if they agree at the one point they touch.</p>
+      </div>
+      <div class="service-map">
+        <div class="service-lane">
+          <strong>The order</strong>
+          <span class="lane-node">Patient app · payment</span>
+          <span class="lane-arrow">→</span>
+          <span class="lane-node lane-node--accent">OMS · order lifecycle</span>
+          <span class="lane-arrow">→</span>
+          <span class="lane-node">PFC floor · pack &amp; deliver</span>
+        </div>
+        <div class="service-lane">
+          <strong>The stock</strong>
+          <span class="lane-node">Marina Health warehouse</span>
+          <span class="lane-arrow">→</span>
+          <span class="lane-node lane-node--accent">IMS · single record</span>
+          <span class="lane-arrow">→</span>
+          <span class="lane-node">13 locations</span>
+        </div>
+        <p class="meet-badge">"IMS owns the physical. OMS owns the order. They meet exactly once — at the moment a Checker validates a packed order."</p>
+      </div>
+    </section>
+
+    <section class="adaptive section-wrap" id="track-section">
+      <div class="story-copy">
+        <p class="eyebrow">02 · Two entry points, two tracks</p>
+        <h2>Pick a track — or read both.</h2>
+        <p>Different pain, different pace: OMS was scoped tight and shipped first; IMS carries a wider blast radius and is now in engineering build.</p>
+      </div>
+      <div class="track-toggle" id="trackToggle" role="group" aria-label="Choose a system"></div>
+      <div class="track-panel" id="trackPanel"></div>
+    </section>
+
+    <section class="recovery section-wrap">
+      <div class="story-copy">
+        <p class="eyebrow">03 · What both share</p>
+        <h2>Sequencing was a design decision, not a scheduling one.</h2>
+        <p>Both systems were needed — only one could go first. OMS's pain was immediate and its scope isolable to one team; IMS has to retire four legacy systems across 13 locations and two teams that had never shared a record before. The dependency was scoped deliberately: OMS's own spec marks the IMS deduction story "FYI US — NOT TO DO." OMS only fires the event and shows a batch-number field — that one cut is what let OMS ship without waiting on IMS.</p>
+      </div>
+      <figure>
+        <img src="images/medquest-v2/oms-sequencing-whiteboard.jpg" alt="Whiteboard mapping the PFC physical workflow, station by station, used to scope what OMS would and wouldn't own">
+        <figcaption>The actual scoping artifact: the PFC floor mapped station by station, before either system was designed.</figcaption>
+      </figure>
+    </section>
+
+    <footer class="case-footer case-footer--dual">
+      <p>MedQuest · Doctor Anywhere Group</p>
+      <div class="case-footer-links">
+        <a href="medquest-oms.html">
+          Full OMS case study
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="medquest-ims.html">
+          Full IMS case study
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+      <button type="button" id="returnBtn">
+        Return to selected work
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+    </footer>
+  </article>
+</main>
+<script src="medquest.js"></script>
+</body>
+</html>
