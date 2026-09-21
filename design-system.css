@@ -9,12 +9,12 @@
     /* ── Layout ── */
     --site-header-height: 72px;
 
-    /* ── Accent — warm terracotta ── */
-    --color-accent: #C4622A;
-    --color-accent-hover: #A8521F;
-    --color-accent-mid: #D4784A;
-    --color-accent-light: #F0B49A;
-    --color-accent-tint: #FDF3EE;
+    /* ── Accent — berry ── */
+    --color-accent: #9B4A5A;
+    --color-accent-hover: #6E323D;
+    --color-accent-mid: #B56C79;
+    --color-accent-light: #E3AEB6;
+    --color-accent-tint: #F7ECEE;
 
     /* Aliases */
     --color-indigo: var(--color-accent);
@@ -58,7 +58,7 @@
     /* ── Gradients ── */
     --gradient-hero-blob-1: radial-gradient(
         ellipse at center,
-        rgba(196, 98, 42, 0.08) 0%,
+        rgba(155, 74, 90, 0.08) 0%,
         rgba(244, 166, 138, 0.05) 48%,
         transparent 72%
     );
@@ -141,15 +141,15 @@
     --shadow-xl: 0 24px 56px rgba(17, 24, 39, 0.12);
 
     --shadow-border: 0 1px 0 var(--color-border-subtle);
-    --shadow-button-hover: 0 8px 24px rgba(196, 98, 42, 0.30);
+    --shadow-button-hover: 0 8px 24px rgba(155, 74, 90, 0.30);
     --shadow-floating: 0 8px 28px rgba(17, 24, 39, 0.10);
-    --shadow-focus: 0 0 0 3px rgba(196, 98, 42, 0.25);
-    --shadow-focus-tight: 0 0 0 2px rgba(196, 98, 42, 0.20);
+    --shadow-focus: 0 0 0 3px rgba(155, 74, 90, 0.25);
+    --shadow-focus-tight: 0 0 0 2px rgba(155, 74, 90, 0.20);
 
     --shadow-journey: 0 8px 28px rgba(17, 24, 39, 0.06);
     --shadow-visual: 0 12px 40px rgba(17, 24, 39, 0.09);
     --shadow-carousel-btn: 0 2px 8px rgba(17, 24, 39, 0.08);
-    --shadow-carousel-btn-hover: 0 4px 16px rgba(196, 98, 42, 0.22);
+    --shadow-carousel-btn-hover: 0 4px 16px rgba(155, 74, 90, 0.22);
     --shadow-pego: 0 12px 36px rgba(17, 24, 39, 0.08);
     --shadow-none: none;
 

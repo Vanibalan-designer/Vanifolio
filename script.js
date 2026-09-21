@@ -563,7 +563,7 @@ function initCursor() {
             position: fixed;
             width: 7px;
             height: 7px;
-            background-color: #C4622A;
+            background-color: var(--color-accent, #9B4A5A);
             border-radius: 50%;
             transform: translate(-50%, -50%);
             transition: transform 120ms cubic-bezier(0.16,1,0.3,1);
