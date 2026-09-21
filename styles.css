@@ -574,14 +574,14 @@ strong {
     flex-shrink: 0;
 }
 
-/* Big serif headline */
+/* Big headline, matches the display type used across case studies */
 .hero-headline {
-    font-family: 'Instrument Serif', Georgia, serif;
-    font-size: clamp(3rem, 8.5vw, 7.5rem);
-    font-weight: 400;
+    font-family: var(--font-display);
+    font-size: clamp(2.75rem, 7.5vw, 6.6rem);
+    font-weight: 540;
     font-style: normal;
-    line-height: 1.02;
-    letter-spacing: -0.02em;
+    line-height: .98;
+    letter-spacing: -0.04em;
     color: #1a1a1a;
     margin: 0 0 2rem;
     text-align: center;
