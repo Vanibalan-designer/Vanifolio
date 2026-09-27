@@ -572,6 +572,12 @@ strong {
     display: inline-block;
     vertical-align: middle;
     flex-shrink: 0;
+    transition: transform 0.35s var(--ease-spring, cubic-bezier(0.34, 1.56, 0.64, 1)), box-shadow 0.35s ease;
+}
+
+.hero-greeting:hover .hero-avatar {
+    transform: scale(1.6) rotate(-4deg);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
 }
 
 /* Big headline, matches the display type used across case studies */
@@ -589,6 +595,10 @@ strong {
 
 .hero-headline em {
     font-style: italic;
+}
+
+.hero-highlight {
+    color: var(--color-accent);
 }
 
 /* Small "Currently designing" line */
@@ -621,11 +631,10 @@ strong {
     align-items: flex-end;
     justify-content: center;
     gap: 10px 8px;
-    padding: var(--space-3xl) var(--space-xl) var(--space-4xl);
+    padding: clamp(48px, 6vw, 88px) var(--space-xl) var(--space-4xl);
     position: relative;
     z-index: 1;
     width: 100%;
-    margin-top: auto;
 }
 
 @keyframes tag-fall {
@@ -1519,6 +1528,8 @@ strong {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transform: scale(1.07);
+    transform-origin: center;
 }
 
 .sticker-entrance {
