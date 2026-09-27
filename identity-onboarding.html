@@ -14,8 +14,8 @@
             <a href="index.html" class="nav-logo">VANI</a>
             <div class="nav-links">
                 <a href="index.html#case-studies">Work</a>
+                <a href="sidequests.html">Side quests</a>
                 <a href="index.html#experience">Experience</a>
-                <a href="ai-practices.html">AI Practices</a>
                 <a href="about.html">About</a>
                 <a href="contact.html" class="nav-cta nav-cta-secondary">Let's Talk</a>
             </div>
@@ -30,8 +30,8 @@
 <div class="mobile-menu">
     <div class="mobile-menu-links">
         <a href="index.html#case-studies">Work</a>
+        <a href="sidequests.html">Side quests</a>
         <a href="index.html#experience">Experience</a>
-        <a href="ai-practices.html">AI Practices</a>
         <a href="about.html">About</a>
         <a href="contact.html" class="nav-cta nav-cta-secondary">Let's Talk</a>
     </div>
@@ -92,28 +92,36 @@
       </div>
     </section>
 
-    <section class="walkthrough section-wrap">
+    <section class="walkthrough section-wrap id-showcase-section">
       <div class="story-copy">
         <p class="eyebrow">04 · The designed experience</p>
         <h2>One interface. Every meaningful state.</h2>
-        <p id="walkthroughBody"></p>
+        <p>A single interface adapts to verification, coverage and care — from first invitation through to a confirmed consultation.</p>
       </div>
       <div class="walkthrough-stage">
         <div class="step-tabs" id="stepTabs" role="group" aria-label="Onboarding product states"></div>
-        <div class="product-device">
-          <span class="phone-case">
-            <span class="phone-island" aria-hidden="true"></span>
-            <span class="phone-screen" id="walkthroughScreen"></span>
-            <span class="phone-button phone-button--one" aria-hidden="true"></span>
-            <span class="phone-button phone-button--two" aria-hidden="true"></span>
-          </span>
-          <div>
-            <span id="walkthroughCounter">01 / 07</span>
-            <strong id="walkthroughTitle"></strong>
-            <button type="button" id="walkthroughNext">
-              <span id="walkthroughNextLabel">Next state</span>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </button>
+        <div class="id-showcase">
+          <div class="id-frame" id="walkthroughScreen"></div>
+          <div class="id-meta">
+            <div class="id-ring" id="walkthroughRing">
+              <svg class="id-ring-svg" viewBox="0 0 40 40" aria-hidden="true">
+                <circle class="id-ring-track" cx="20" cy="20" r="17"></circle>
+                <circle class="id-ring-fill" cx="20" cy="20" r="17"></circle>
+              </svg>
+              <span class="id-ring-count" id="walkthroughCounter">01 / 07</span>
+            </div>
+            <div class="id-meta-text">
+              <strong id="walkthroughTitle"></strong>
+              <p id="walkthroughStepBody"></p>
+            </div>
+            <div class="id-controls">
+              <button type="button" id="walkthroughPrev" aria-label="Previous state">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+              </button>
+              <button type="button" id="walkthroughNext" aria-label="Next state">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>

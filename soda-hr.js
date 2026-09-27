@@ -3,17 +3,20 @@
         { label: "Sign up", title: "A clear entry point", body: "No broker required to get started — a company creates an account and moves straight into setup.", type: "image", src: "images/Case study SODA/5.png", alt: "SODA HR Portal sign up screen" },
         { label: "Welcome", title: "Oriented before configuring", body: "New teams land in a guided welcome flow before facing any policy decisions.", type: "image", src: "images/Case study SODA/1.png", alt: "SODA HR Portal welcome onboarding screen" },
         { label: "Add plans", title: "Plans, not paperwork", body: "Adding a benefit plan is a guided flow, not an insurance form re-created on screen.", type: "image", src: "images/Case study SODA/2.png", alt: "SODA HR Portal add plans flow" },
-        { label: "Dashboard", title: "Everything in one view", body: "Policies, plans and member groups resolve into a single dashboard HR can scan at a glance.", type: "image", src: "images/Case study SODA/3.png", alt: "SODA HR Portal dashboard overview" },
-        { label: "Utilisation", title: "Usage, not just setup", body: "Once live, HR can see how the health plan is actually being used, not just how it was configured.", type: "image", src: "images/Case study SODA/4.png", alt: "SODA HR Portal health plan utilisation view" },
+        { label: "Add employees", title: "Bulk or one at a time", body: "Employees go in directly or via spreadsheet upload — no waiting on a broker to process a roster change.", type: "video", src: "images/Case study SODA/add-employees.mp4", alt: "SODA HR Portal add employee details screen" },
+        { label: "Activate", title: "Live the same day", body: "Payment details and a clear billing schedule are the last step before the policy goes live.", type: "video", src: "images/Case study SODA/activate-policy.mp4", alt: "SODA HR Portal activate policy payment screen" },
+        { label: "Dashboard", title: "Everything in one view", body: "Policies, plans and member groups resolve into a single dashboard HR can scan at a glance.", type: "video", src: "images/Case study SODA/dashboard-live.mp4", alt: "SODA HR Portal dashboard overview" },
+        { label: "Utilisation", title: "Usage, not just setup", body: "Once live, HR can see how the health plan is actually being used, not just how it was configured.", type: "video", src: "images/Case study SODA/utilisation-live.mp4", alt: "SODA HR Portal health plan utilisation view" },
         { label: "Configure", title: "Rules before people", body: "Benefit rules are defined first, so assigning employees afterward is a simple, low-risk step.", type: "image", src: "images/Case study SODA/6.png", alt: "SODA HR Portal configure benefits for a plan" },
         { label: "Plan settings", title: "One policy, unlimited plans", body: "Multiple plans and member groups live inside a single policy instead of one policy per variation.", type: "image", src: "images/Case study SODA/7.png", alt: "SODA HR Portal benefit options and plan settings" }
     ];
 
     var craftMoments = [
-        { title: "Confidence over completion", body: "HR teams feared getting a policy choice wrong more than they feared complexity, so every step confirms explicitly before committing rather than optimising purely for speed.", image: "images/Case study SODA/2.png", alt: "SODA HR Portal add plans flow with guided confirmation" },
-        { title: "Policy-first IA", body: "The portal is structured so HR defines benefit policies first, then assigns members — not the other way around.", image: "images/Case study SODA/6.png", alt: "SODA HR Portal configure benefits screen" },
-        { title: "One policy, unlimited plans", body: "Companies no longer maintain multiple policies to cover different employee groups — one policy, one price, unlimited plans inside.", image: "images/Case study SODA/7.png", alt: "SODA HR Portal plan settings with multiple member groups" },
-        { title: "Self-serve on- and off-boarding", body: "HR teams onboard or deactivate employees directly from the dashboard, with no broker and no waiting.", image: "images/Case study SODA/3.png", alt: "SODA HR Portal dashboard showing employee management" }
+        { title: "Confidence over completion", body: "HR teams feared getting a policy choice wrong more than they feared complexity, so every step confirms explicitly before committing rather than optimising purely for speed.", type: "video", image: "images/Case study SODA/confidence-validation.mp4", alt: "SODA HR Portal validating required fields before letting HR continue" },
+        { title: "AI does the first draft", body: "A flex plan can be generated from industry benchmarks in one click, then reviewed and adjusted rather than built from a blank form.", type: "video", image: "images/Case study SODA/create-flex-plan.mp4", alt: "SODA HR Portal AI-assisted flex plan creation" },
+        { title: "Policy-first IA", body: "The portal is structured so HR defines benefit policies first, then assigns members — not the other way around.", type: "image", image: "images/Case study SODA/6.png", alt: "SODA HR Portal configure benefits screen" },
+        { title: "One policy, unlimited plans", body: "Companies no longer maintain multiple policies to cover different employee groups — one policy, one price, unlimited plans inside.", type: "image", image: "images/Case study SODA/7.png", alt: "SODA HR Portal plan settings with multiple member groups" },
+        { title: "Self-serve on- and off-boarding", body: "HR teams onboard or deactivate employees directly from the dashboard, with no broker and no waiting.", type: "image", image: "images/Case study SODA/3.png", alt: "SODA HR Portal dashboard showing employee management" }
     ];
 
     var journeyBefore = ["Brokers", "Manual setup", "Policy errors", "No self-serve"];
@@ -92,10 +95,13 @@
 
         var step = 0;
         var total = productSteps.length;
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var autoplayAbort = null;
 
         tabsEl.innerHTML = productSteps.map(function (item, index) {
             return '<button type="button" data-step="' + index + '" class="' + (index === 0 ? 'active' : '') + '">' +
                 '<span>0' + (index + 1) + '</span>' + item.label +
+                (reduceMotion ? '' : '<i class="step-fill" aria-hidden="true"></i>') +
                 '</button>';
         }).join('');
 
@@ -104,6 +110,7 @@
 
             tabsEl.querySelectorAll('button').forEach(function (btn, index) {
                 btn.classList.toggle('active', index === step);
+                btn.classList.toggle('is-done', index < step);
             });
 
             screenEl.innerHTML = '';
@@ -129,19 +136,41 @@
             nextLabel.textContent = step === total - 1 ? 'Replay' : 'Next state';
         }
 
+        function armAutoplay() {
+            if (reduceMotion) return;
+            if (autoplayAbort) autoplayAbort.abort();
+            var btn = tabsEl.children[step];
+            var fill = btn && btn.querySelector('.step-fill');
+            if (!fill) return;
+
+            // restart the fill animation from zero even if this button just played it
+            fill.style.animation = 'none';
+            void fill.offsetHeight;
+            fill.style.animation = '';
+
+            autoplayAbort = new AbortController();
+            fill.addEventListener('animationend', function () {
+                goToStep((step + 1) % total);
+            }, { once: true, signal: autoplayAbort.signal });
+        }
+
+        function goToStep(index) {
+            step = index;
+            render();
+            armAutoplay();
+        }
+
         tabsEl.addEventListener('click', function (e) {
             var btn = e.target.closest('button[data-step]');
             if (!btn) return;
-            step = parseInt(btn.dataset.step, 10);
-            render();
+            goToStep(parseInt(btn.dataset.step, 10));
         });
 
         nextBtn.addEventListener('click', function () {
-            step = (step + 1) % total;
-            render();
+            goToStep((step + 1) % total);
         });
 
-        render();
+        goToStep(step);
     }
 
     function initCraftList() {
@@ -154,28 +183,26 @@
             var article = document.createElement('article');
 
             var mediaWrap = document.createElement('div');
-            var browserCase = document.createElement('span');
-            browserCase.className = 'browser-case';
+            var stage = document.createElement('div');
+            stage.className = 'flat-screen-stage';
 
-            var chrome = document.createElement('span');
-            chrome.className = 'browser-chrome';
-            chrome.setAttribute('aria-hidden', 'true');
-            for (var d = 0; d < 3; d++) {
-                var dot = document.createElement('span');
-                dot.className = 'browser-dot';
-                chrome.appendChild(dot);
+            if (moment.type === 'video') {
+                var video = document.createElement('video');
+                video.src = moment.image;
+                video.setAttribute('aria-label', moment.alt);
+                video.autoplay = true;
+                video.loop = true;
+                video.muted = true;
+                video.playsInline = true;
+                stage.appendChild(video);
+            } else {
+                var img = document.createElement('img');
+                img.src = moment.image;
+                img.alt = moment.alt;
+                stage.appendChild(img);
             }
 
-            var screen = document.createElement('span');
-            screen.className = 'browser-screen';
-            var img = document.createElement('img');
-            img.src = moment.image;
-            img.alt = moment.alt;
-            screen.appendChild(img);
-
-            browserCase.appendChild(chrome);
-            browserCase.appendChild(screen);
-            mediaWrap.appendChild(browserCase);
+            mediaWrap.appendChild(stage);
 
             var num = document.createElement('span');
             num.textContent = '0' + (index + 1);

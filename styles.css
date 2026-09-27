@@ -1496,58 +1496,29 @@ strong {
 
 .sticker-laptop {
     position: absolute;
-    left: 50%;
-    top: 42%;
-    transform: translate(-50%, -50%) translateY(18px);
-    width: clamp(280px, 92%, 480px);
-    aspect-ratio: 1.5;
-    background:
-        radial-gradient(120% 90% at 26% 10%, rgba(255, 255, 255, 0.30) 0%, rgba(255, 255, 255, 0) 52%),
-        radial-gradient(90% 70% at 50% 100%, rgba(0, 0, 0, 0.10) 0%, rgba(0, 0, 0, 0) 60%),
-        linear-gradient(165deg, #a3a3a7 0%, #86868a 20%, #67676b 42%, #4c4c50 62%, #38383b 82%, #2c2c2f 100%);
-    border: 1px solid rgba(0, 0, 0, 0.38);
+    inset: 0;
+    width: 100%;
+    height: 100%;
     border-radius: 16px;
+    overflow: hidden;
     box-shadow:
-        inset 0 1.5px 0 rgba(255, 255, 255, 0.38),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.06),
-        inset 0 -14px 26px rgba(0, 0, 0, 0.14),
         0 2px 4px rgba(17, 24, 39, 0.10),
         0 30px 56px rgba(17, 24, 39, 0.24);
     opacity: 0;
+    transform: translateY(18px);
     transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
 }
 
 .sticker-laptop.is-visible {
     opacity: 1;
-    transform: translate(-50%, -50%) translateY(0);
+    transform: translateY(0);
 }
 
-.sticker-laptop::after {
-    content: '';
-    position: absolute;
-    left: 8%;
-    right: 8%;
-    bottom: -14px;
-    height: 22px;
-    background: radial-gradient(ellipse, rgba(17, 24, 39, 0.28) 0%, rgba(17, 24, 39, 0) 72%);
-    pointer-events: none;
-}
-
-.laptop-mark {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 11%;
-    aspect-ratio: 1;
-    filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.10));
-}
-
-.laptop-mark text {
-    fill: rgba(0, 0, 0, 0.60);
-    font-family: var(--font-display, 'Google Sans Flex', -apple-system, sans-serif);
-    font-weight: 600;
-    font-size: 58px;
+.sticker-laptop img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .sticker-entrance {
@@ -1637,7 +1608,7 @@ strong {
     }
     .sticker-laptop {
         opacity: 1;
-        transform: translate(-50%, -50%);
+        transform: none;
         transition: none;
     }
     .sticker-wiggle {

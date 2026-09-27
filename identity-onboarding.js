@@ -4,7 +4,7 @@
         { label: "Verify coverage", title: "Coverage recognised automatically", body: "The system matches verified identity to the right benefits without the person doing anything extra.", type: "video", src: "images/identity-v2/verify-coverage.mp4", alt: "User coverage recognised after Singpass verification" },
         { label: "Confirm", title: "Confidence, made visible", body: "Retrieved details are shown plainly so people can confirm rather than re-type.", type: "image", src: "images/identity-v2/confirm-singpass.jpg", alt: "Singpass confirm details screen" },
         { label: "Verify ID", title: "A second layer of trust", body: "Government ID is captured to back up what Singpass returned, so the record is airtight.", type: "video", src: "images/identity-v2/verify-id.mp4", alt: "ID document capture screen" },
-        { label: "It's really you", title: "Verification without a surveillance feeling", body: "A quick selfie frames identity as reassurance, not suspicion.", type: "video", src: "images/identity-v2/its-really-you.mp4", alt: "Selfie liveness check screen" },
+        { label: "It's really you", title: "Verification without a surveillance feeling", body: "A quick selfie frames identity as reassurance, not suspicion.", type: "video", src: "images/identity-v2/selfie-adults.mp4", rate: 0.65, alt: "Selfie liveness check screen" },
         { label: "Review once again", title: "Nothing overlooked", body: "People check their own details one last time before anything is finalised.", type: "image", src: "images/identity-v2/review-details.png", alt: "Review personal details screen" },
         { label: "Success", title: "Ready for care", body: "A verified identity opens straight into the first consultation, benefits already attached.", type: "image", src: "images/identity-v2/success-consultation.jpg", alt: "First telehealth consultation after verification" }
     ];
@@ -12,8 +12,9 @@
     var craftMoments = [
         { title: "Progress without uncertainty", body: "Each step names what is happening now and what will happen next, so verification feels finite.", type: "video", src: "images/identity-v2/progress-loading.mp4", alt: "Account setup progress indicator" },
         { title: "Coverage lands ready to use", body: "The right home experience and benefits appear immediately after verification, with nothing left for the person to configure.", type: "video", src: "images/identity-v2/coverage-lands.mp4", alt: "Coverage recognised and home screen ready after verification" },
-        { title: "Verification without a surveillance feeling", body: "Plain guidance and a clear success state frame the selfie as reassurance, not suspicion.", type: "video", src: "images/identity-v2/selfie-dependents.mp4", alt: "Friendly selfie verification for a dependent" },
-        { title: "Complexity stays behind the interface", body: "Multiple linked coverages resolve into one clear choice instead of surfacing the account complexity behind them.", type: "image", src: "images/identity-v2/multipolicy.jpg", alt: "Choose coverage screen with multiple linked policies" }
+        { title: "Verification without a surveillance feeling", body: "Plain guidance and a clear capture-to-upload sequence frame the selfie as reassurance, not suspicion — for a dependent as much as an adult.", type: "video", src: "images/identity-v2/selfie-dependents-capture.mp4", rate: 0.65, alt: "Friendly selfie verification for a dependent, from capture through upload" },
+        { title: "Complexity stays behind the interface", body: "Multiple linked coverages resolve into one clear choice instead of surfacing the account complexity behind them.", type: "image", src: "images/identity-v2/multipolicy.jpg", alt: "Choose coverage screen with multiple linked policies" },
+        { title: "One identity, the whole family", body: "Linked dependents surface as a simple list to choose from, instead of repeating identity verification for every family member.", type: "video", src: "images/identity-v2/who-is-seeing-doctor.mp4", alt: "Choosing which linked dependent is seeing the doctor" }
     ];
 
     var journeyBefore = ["Account", "Coverage", "Consultation", "Identity"];
@@ -83,21 +84,41 @@
     function initWalkthrough() {
         var tabsEl = document.getElementById('stepTabs');
         var screenEl = document.getElementById('walkthroughScreen');
-        var bodyEl = document.getElementById('walkthroughBody');
         var counterEl = document.getElementById('walkthroughCounter');
         var titleEl = document.getElementById('walkthroughTitle');
+        var stepBodyEl = document.getElementById('walkthroughStepBody');
+        var ringEl = document.getElementById('walkthroughRing');
+        var prevBtn = document.getElementById('walkthroughPrev');
         var nextBtn = document.getElementById('walkthroughNext');
-        var nextLabel = document.getElementById('walkthroughNextLabel');
-        if (!tabsEl || !screenEl) return;
+        if (!tabsEl || !screenEl || !ringEl) return;
 
+        var AUTOPLAY_MS = 5000;
         var step = 0;
         var total = productSteps.length;
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var autoplayAbort = null;
+        var preloaded = {};
 
         tabsEl.innerHTML = productSteps.map(function (item, index) {
             return '<button type="button" data-step="' + index + '" class="' + (index === 0 ? 'active' : '') + '">' +
                 '<span>0' + (index + 1) + '</span>' + item.label +
                 '</button>';
         }).join('');
+
+        function preloadStep(index) {
+            var item = productSteps[index];
+            if (!item || preloaded[item.src]) return;
+            preloaded[item.src] = true;
+            if (item.type === 'video') {
+                var v = document.createElement('video');
+                v.preload = 'auto';
+                v.muted = true;
+                v.src = item.src;
+            } else {
+                var img = new Image();
+                img.src = item.src;
+            }
+        }
 
         function render() {
             var current = productSteps[step];
@@ -109,12 +130,16 @@
             screenEl.innerHTML = '';
             if (current.type === 'video') {
                 var video = document.createElement('video');
-                video.src = current.src;
                 video.setAttribute('aria-label', current.alt);
                 video.autoplay = true;
                 video.loop = true;
                 video.muted = true;
                 video.playsInline = true;
+                if (current.rate) {
+                    video.playbackRate = current.rate;
+                    video.addEventListener('loadedmetadata', function () { video.playbackRate = current.rate; });
+                }
+                video.src = current.src;
                 screenEl.appendChild(video);
             } else {
                 var img = document.createElement('img');
@@ -123,25 +148,50 @@
                 screenEl.appendChild(img);
             }
 
-            bodyEl.textContent = current.body;
             counterEl.textContent = '0' + (step + 1) + ' / 0' + total;
             titleEl.textContent = current.title;
-            nextLabel.textContent = step === total - 1 ? 'Replay' : 'Next state';
+            stepBodyEl.textContent = current.body;
+
+            preloadStep((step + 1) % total);
+        }
+
+        function armAutoplay() {
+            ringEl.classList.remove('is-counting');
+            if (reduceMotion) return;
+            if (autoplayAbort) autoplayAbort.abort();
+
+            // force the ring animation to restart from zero even on the same element
+            void ringEl.offsetWidth;
+            ringEl.classList.add('is-counting');
+
+            autoplayAbort = new AbortController();
+            var fill = ringEl.querySelector('.id-ring-fill');
+            fill.addEventListener('animationend', function () {
+                goToStep((step + 1) % total);
+            }, { once: true, signal: autoplayAbort.signal });
+        }
+
+        function goToStep(index) {
+            step = index;
+            render();
+            armAutoplay();
         }
 
         tabsEl.addEventListener('click', function (e) {
             var btn = e.target.closest('button[data-step]');
             if (!btn) return;
-            step = parseInt(btn.dataset.step, 10);
-            render();
+            goToStep(parseInt(btn.dataset.step, 10));
         });
 
         nextBtn.addEventListener('click', function () {
-            step = (step + 1) % total;
-            render();
+            goToStep((step + 1) % total);
         });
 
-        render();
+        prevBtn.addEventListener('click', function () {
+            goToStep((step - 1 + total) % total);
+        });
+
+        goToStep(0);
     }
 
     function initCraftList() {
@@ -167,12 +217,16 @@
             var media;
             if (moment.type === 'video') {
                 media = document.createElement('video');
-                media.src = moment.src;
                 media.setAttribute('aria-label', moment.alt);
                 media.autoplay = true;
                 media.loop = true;
                 media.muted = true;
                 media.playsInline = true;
+                if (moment.rate) {
+                    media.playbackRate = moment.rate;
+                    media.addEventListener('loadedmetadata', function () { media.playbackRate = moment.rate; });
+                }
+                media.src = moment.src;
             } else {
                 media = document.createElement('img');
                 media.src = moment.src;

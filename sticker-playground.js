@@ -10,13 +10,20 @@ function initStickerPlayground() {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const STICKERS = [
-        { key: 'figma', file: 'images/stickers/figma.png', alt: 'Embroidered Figma patch', width: 64, compactWidth: 46, rot: -6, side: 'mac', left: 0.06, top: 0.08 },
-        { key: 'headphones', file: 'images/stickers/headphones.png', alt: 'Embroidered headphones patch', width: 84, compactWidth: 58, rot: 4, side: 'mac', left: 0.64, top: 0.04 },
-        { key: 'travel', file: 'images/stickers/travel.png', alt: 'Embroidered travel patch', width: 84, compactWidth: 58, rot: 5, side: 'mac', left: 0.76, top: 0.42 },
-        { key: 'cooking', file: 'images/stickers/cooking.png', alt: 'Embroidered cooking patch', width: 88, compactWidth: 60, rot: -4, side: 'mac', left: 0.58, top: 0.68 },
-        { key: 'beach', file: 'images/stickers/beach.png', alt: 'Embroidered beach patch', width: 84, compactWidth: 58, rot: -3, side: 'mac', left: 0.08, top: 0.68 },
-        { key: 'ai', file: 'images/stickers/ai.png', alt: 'Embroidered AI patch representing OpenAI and Claude', width: 84, compactWidth: 58, rot: -5, side: 'mac', left: 0.02, top: 0.36 },
-        { key: 'kolam', file: 'images/stickers/kolam.png', alt: 'Embroidered Sikku Kolam patch', width: 68, compactWidth: 50, rot: 0, side: 'ground', left: 0.40 },
+        { key: 'figma', file: 'images/stickers/figma.png', alt: 'Embroidered Figma patch', width: 56, compactWidth: 40, rot: -6, left: 0.36, top: 0.22 },
+        { key: 'headphones', file: 'images/stickers/headphones.png', alt: 'Embroidered headphones patch', width: 72, compactWidth: 50, rot: 4, left: 0.68, top: 0.20 },
+        { key: 'travel', file: 'images/stickers/travel.png', alt: 'Embroidered travel patch', width: 70, compactWidth: 48, rot: 5, left: 0.78, top: 0.46 },
+        { key: 'cooking', file: 'images/stickers/cooking.png', alt: 'Embroidered cooking patch', width: 74, compactWidth: 50, rot: -4, left: 0.58, top: 0.62 },
+        { key: 'beach', file: 'images/stickers/beach.png', alt: 'Embroidered beach patch', width: 70, compactWidth: 48, rot: -3, left: 0.40, top: 0.60 },
+        { key: 'ai', file: 'images/stickers/ai.png', alt: 'Embroidered AI patch representing OpenAI and Claude', width: 70, compactWidth: 48, rot: -5, left: 0.35, top: 0.42 },
+        { key: 'kolam', file: 'images/stickers/kolam.png', alt: 'Embroidered Sikku Kolam patch', width: 56, compactWidth: 40, rot: 0, left: 0.55, top: 0.72 },
+        { key: 'ambivert', file: 'images/stickers/ambivert.png', alt: 'Ambivert badge, collected like a conference sticker', width: 60, compactWidth: 42, rot: -6, left: 0.06, top: 0.80 },
+        { key: 'singapore', file: 'images/stickers/singapore.png', alt: 'Singapore location badge', width: 68, compactWidth: 46, rot: 5, left: 0.17, top: 0.90 },
+        { key: 'doodle-brush', file: 'images/stickers/doodle-brush.png', alt: 'Hand-drawn paintbrush doodle sticker', width: 42, compactWidth: 32, rot: -10, left: 0.03, top: 0.30 },
+        { key: 'doodle-rainbow', file: 'images/stickers/doodle-rainbow.png', alt: 'Hand-drawn rainbow doodle sticker', width: 54, compactWidth: 38, rot: 6, left: 0.50, top: 0.88 },
+        { key: 'plants', file: 'images/stickers/plants.png', alt: 'A little potted plant sticker', width: 76, compactWidth: 52, rot: -4, left: 0.01, top: 0.65 },
+        { key: 'community-badge', file: 'images/stickers/community-badge.png', alt: 'Figma Community conference badge', width: 58, compactWidth: 40, rot: -3, left: 0.33, top: 0.86 },
+        { key: 'supergraphic', file: 'images/stickers/supergraphic.png', alt: 'Figma Config conference supergraphic sticker', width: 50, compactWidth: 36, rot: 8, left: 0.91, top: 0.68 },
     ];
 
     const COMPACT_QUERY = window.matchMedia('(max-width: 640px)');
@@ -84,15 +91,8 @@ function initStickerPlayground() {
             const w = elRect.width || targetWidth;
             const h = elRect.height || targetWidth;
 
-            let left;
-            let top;
-            if (config.side === 'mac') {
-                left = laptopX + config.left * laptopRect.width;
-                top = laptopY + config.top * laptopRect.height;
-            } else {
-                left = config.left * rect.width;
-                top = laptopY + laptopRect.height + 18;
-            }
+            let left = laptopX + config.left * laptopRect.width;
+            let top = laptopY + config.top * laptopRect.height;
 
             const maxLeft = Math.max(-w * 0.15, rect.width - w * 0.85);
             const maxTop = Math.max(-h * 0.15, rect.height - h * 0.85);
@@ -255,7 +255,7 @@ function initStickerPlayground() {
         const wiggleDelay = 300 + entries.length * 70 + 400;
         setTimeout(() => {
             if (hasInteracted) return;
-            const groundEntry = entries.find((entry) => entry.config.side === 'ground') || entries[0];
+            const groundEntry = entries.find((entry) => entry.config.key === 'kolam') || entries[0];
             const target = groundEntry.el;
             target.classList.add('sticker-wiggle');
             target.addEventListener('animationend', () => target.classList.remove('sticker-wiggle'), { once: true });

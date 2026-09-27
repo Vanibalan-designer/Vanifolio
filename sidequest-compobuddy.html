@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CompoBuddy — Vani Balasundaram</title>
+<meta name="description" content="A learning tool that turns composition marking into clear, encouraging next steps.">
+<link rel="stylesheet" href="sidequest-compobuddy.css">
+<link rel="stylesheet" href="sidequest-worksite-nav.css">
+</head>
+<body>
+<main class="cb-page">
+  <header class="wsite-header">
+    <nav class="wsite-navbar">
+      <a href="index.html" class="wsite-logo">VANI</a>
+      <div class="wsite-links">
+        <a href="index.html#case-studies">Work</a>
+        <a href="sidequests.html" aria-current="page">Side quests</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="wsite-cta">Let&rsquo;s Talk</a>
+      </div>
+      <button class="wsite-menu-btn" type="button" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span></button>
+    </nav>
+    <div class="wsite-mobile-menu">
+      <a href="index.html#case-studies">Work</a>
+      <a href="sidequests.html" aria-current="page">Side quests</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="wsite-cta">Let&rsquo;s Talk</a>
+    </div>
+  </header>
+  <div class="wsite-spacer" aria-hidden="true"></div>
+
+  <section class="cb-hero">
+    <div class="cb-hero-copy">
+      <img class="cb-brand-logo" src="images/sidequest/compobuddy/logo-cropped.png" alt="CompoBuddy">
+      <p>Personal project · Learning experience</p>
+      <h1>Mark the writing.<br><em>Protect the writer.</em></h1>
+      <span>A composition companion designed to make feedback specific, calm and possible to act on.</span>
+      <a class="cb-prototype-link" href="https://claude.ai/code/artifact/f2c96803-0036-453f-b593-1c220f8f3970" target="_blank" rel="noreferrer">
+        Try the live prototype
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+      </a>
+    </div>
+    <div class="cb-hero-device cb-natural-phone">
+      <video muted loop playsinline preload="metadata" poster="images/sidequest/compobuddy/interaction-poster.jpg" aria-label="Latest CompoBuddy writing feedback experience" data-viewport-play>
+        <source src="images/sidequest/compobuddy/interaction.mp4" type="video/mp4">
+      </video>
+    </div>
+  </section>
+
+  <section class="cb-brief">
+    <p>The tension</p>
+    <div>
+      <h2>Children need honest feedback. They do not need a page that feels like a verdict.</h2>
+      <p>Traditional marking can arrive late and collapse many different skills into one score. I wanted to separate spelling, punctuation, word choice and writing technique, so a learner could see both what worked and what to try next.</p>
+    </div>
+  </section>
+
+  <section class="cb-flow">
+    <header><p>What I built</p><h2>From a blank page to a useful next draft.</h2></header>
+    <div class="cb-phones">
+      <figure>
+        <div class="cb-natural-phone"><img src="images/sidequest/compobuddy/onboarding.png" alt="Latest CompoBuddy onboarding explaining instant PSLE composition feedback"></div>
+        <figcaption><span>01</span><p><b>Set expectations</b>A short introduction explains the value before asking for work.</p></figcaption>
+      </figure>
+      <figure>
+        <div class="cb-natural-phone"><img src="images/sidequest/compobuddy/write.png" alt="Latest CompoBuddy writing screen with handwritten upload option"></div>
+        <figcaption><span>02</span><p><b>Meet the learner where they are</b>Type directly or photograph handwriting, then review extracted text.</p></figcaption>
+      </figure>
+      <figure>
+        <div class="cb-natural-phone"><img src="images/sidequest/compobuddy/results-score.png" alt="Latest CompoBuddy score summary with encouraging next steps"></div>
+        <figcaption><span>03</span><p><b>Turn results into momentum</b>The score is framed as a draft, supported by clear priorities.</p></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="cb-system">
+    <div><p>Product logic</p><h2>English and Tamil practice, without hiding the machinery.</h2></div>
+    <div class="cb-system-copy">
+      <p>The prototype supports practice questions or a school prompt, typed or photographed work, OCR review, and structured feedback across content, language and writing techniques.</p>
+      <ul>
+        <li>Review extracted handwriting before marking</li>
+        <li>Use colour to distinguish issue types&mdash;not severity</li>
+        <li>Show content and language as separate signals</li>
+        <li>Keep automated feedback editable and explainable</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="cb-principles">
+    <p>Design principles</p>
+    <div>
+      <article><span>01</span><h3>Show the next move</h3><p>Feedback is useful when a learner can act on it. Every issue points toward a concrete improvement.</p></article>
+      <article><span>02</span><h3>Correct without shaming</h3><p>Warm language and neutral annotation colours separate the work from the child&rsquo;s confidence.</p></article>
+      <article><span>03</span><h3>Keep the journey visible</h3><p>Pick, write and review stay legible as three small steps&mdash;not one intimidating assessment.</p></article>
+    </div>
+  </section>
+
+  <section class="cb-direction">
+    <div><p>UI direction</p><h2>Closer to a thoughtful workbook than a game.</h2></div>
+    <div>
+      <p>I reduced the sugar-rush palette into paper, ink and a few functional accents. Orange carries progression, teal marks useful language signals, and the interface gives the student&rsquo;s writing most of the space.</p>
+      <div class="cb-swatches"><i></i><i></i><i></i><i></i></div>
+    </div>
+  </section>
+
+  <section class="cb-next">
+    <p>Next step</p>
+    <h2>Help learners compare drafts, not just collect scores.</h2>
+    <p>The next meaningful layer is progress over time: before-and-after sentences, recurring patterns, and a simple view that lets a parent or teacher discuss improvement without turning the product into surveillance.</p>
+  </section>
+
+  <footer class="cb-footer">
+    <a href="sidequests.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg> All sidequests</a>
+    <span>CompoBuddy · UX case study</span>
+  </footer>
+</main>
+<script src="sidequests.js"></script>
+</body>
+</html>

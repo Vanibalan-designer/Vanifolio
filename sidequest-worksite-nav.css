@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap");
+
+.wsite-header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(250,251,253,.92);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(17,24,39,.08)}
+.wsite-navbar{height:73px;max-width:min(96vw,1680px);margin:0 auto;padding:0 32px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:32px}
+.wsite-logo{grid-column:1;justify-self:start;font-family:"Caveat",cursive;font-size:1.625rem;font-weight:700;color:#111827;letter-spacing:.01em;line-height:1;text-decoration:none}
+.wsite-links{grid-column:3;justify-self:end;display:flex;align-items:center;gap:32px}
+.wsite-links a{font-family:"Google Sans Flex","Helvetica Neue",Arial,sans-serif;font-size:.875rem;font-weight:400;color:#6b7280;letter-spacing:-.01em;text-decoration:none;transition:color .2s ease}
+.wsite-links a:hover{color:#9b4a5a}
+.wsite-links a[aria-current="page"]{color:#111827;font-weight:600}
+.wsite-cta{font-family:"Google Sans Flex","Helvetica Neue",Arial,sans-serif !important;background:#111827 !important;color:#fff !important;padding:.5rem 1.125rem !important;border-radius:9999px !important;font-size:.875rem !important;font-weight:500 !important;text-decoration:none;transition:background .2s ease,box-shadow .2s ease}
+.wsite-cta:hover{background:#2d2420 !important;box-shadow:0 4px 16px rgba(0,0,0,.18)}
+.wsite-menu-btn{display:none;flex-direction:column;gap:5px;padding:8px;background:none;border:0;cursor:pointer;grid-column:3;justify-self:end}
+.wsite-menu-btn span{width:22px;height:1.5px;background:#111827;border-radius:2px;transition:transform .25s ease,opacity .25s ease}
+.wsite-mobile-menu{position:fixed;top:73px;left:0;right:0;z-index:999;background:#fff;border-bottom:1px solid rgba(17,24,39,.08);display:flex;flex-direction:column;padding:12px 24px 24px;gap:4px;transform:translateY(-8px);opacity:0;pointer-events:none;transition:transform .22s ease,opacity .22s ease}
+.wsite-mobile-menu.is-open{transform:translateY(0);opacity:1;pointer-events:auto}
+.wsite-mobile-menu a{font-family:"Google Sans Flex","Helvetica Neue",Arial,sans-serif;font-size:1rem;color:#111827;text-decoration:none;padding:12px 0;border-bottom:1px solid rgba(17,24,39,.06)}
+.wsite-mobile-menu a:last-child{border-bottom:0}
+.wsite-mobile-menu a.wsite-cta{margin-top:8px;text-align:center;padding:.75rem 1.125rem !important}
+.wsite-spacer{height:73px}
+
+@media(max-width:760px){
+  .wsite-links{display:none}
+  .wsite-menu-btn{display:flex}
+  .wsite-navbar{grid-template-columns:auto auto}
+}
+.wsite-menu-btn.is-open span:first-child{transform:translateY(3.25px) rotate(45deg)}
+.wsite-menu-btn.is-open span:last-child{transform:translateY(-3.25px) rotate(-45deg)}
+
+@media(prefers-reduced-motion:reduce){
+  .wsite-mobile-menu,.wsite-menu-btn span{transition:none}
+}
