@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sidequests — Vani Balasundaram</title>
 <meta name="description" content="Playful visual experiments, interaction studies and small products by Vani Balasundaram.">
+<link rel="preload" as="image" href="images/sidequest/window-to-somewhere/01-window-closed.png">
+<link rel="preload" as="image" href="images/sidequest/window-to-somewhere/07-zoom-3.png">
 <link rel="stylesheet" href="sidequests.css">
 <link rel="stylesheet" href="sidequest-worksite-nav.css">
 </head>
@@ -79,9 +81,33 @@
       </a>
     </article>
 
+    <article class="sq-project-step sq-portal-step" id="window-portal">
+      <div class="sq-card sq-window-portal" role="button" tabindex="0" aria-label="Explore Window to Somewhere interaction" aria-describedby="window-portal-hint">
+        <header class="sq-card-head"><div><span>03</span><h2>Window to Somewhere</h2></div><p>Interaction experiment</p></header>
+        <div class="sq-window-stage">
+          <p class="sq-window-kicker">Move closer.</p>
+          <div class="sq-window-object" aria-hidden="true">
+            <div class="sq-window-scenes">
+              <img class="sq-window-scene sq-window-open" src="images/sidequest/window-to-somewhere/07-zoom-3.png" alt="" decoding="async">
+              <div class="portal-window-fixed-frame" aria-hidden="true">
+                <img class="portal-frame-strip portal-frame-top" src="images/sidequest/window-to-somewhere/01-window-closed.png" alt="">
+                <img class="portal-frame-strip portal-frame-bottom" src="images/sidequest/window-to-somewhere/01-window-closed.png" alt="">
+                <img class="portal-frame-strip portal-frame-left" src="images/sidequest/window-to-somewhere/01-window-closed.png" alt="">
+                <img class="portal-frame-strip portal-frame-right" src="images/sidequest/window-to-somewhere/01-window-closed.png" alt="">
+              </div>
+              <img class="sq-window-scene sq-window-closed-frame" src="images/sidequest/window-to-somewhere/01-window-closed.png" alt="" decoding="async">
+              <div class="portal-window-door portal-window-door-left"><img src="images/sidequest/window-to-somewhere/01-window-closed.png" alt=""></div>
+              <div class="portal-window-door portal-window-door-right"><img src="images/sidequest/window-to-somewhere/01-window-closed.png" alt=""></div>
+            </div>
+          </div>
+          <p class="sq-window-hint" id="window-portal-hint">A window that notices when you approach.</p>
+        </div>
+      </div>
+    </article>
+
     <article class="sq-project-step">
       <a href="sidequest-compobuddy.html" class="sq-card sq-psle">
-        <header class="sq-card-head"><div><span>03</span><h2>CompoBuddy</h2></div><p>AI-assisted writing · UX</p></header>
+        <header class="sq-card-head"><div><span>04</span><h2>CompoBuddy</h2></div><p>AI-assisted writing · UX</p></header>
         <div class="sq-psle-stage">
           <div class="sq-campaign-copy sq-psle-copy">
             <img class="sq-brand-mark" src="images/sidequest/compobuddy/logo-cropped.png" alt="CompoBuddy logo">
@@ -101,7 +127,7 @@
 
     <article class="sq-project-step">
       <a href="sidequest-little-world.html" class="sq-card sq-world">
-        <header class="sq-card-head"><div><span>04</span><h2>Little World</h2></div><p>App · Creative play · Family</p></header>
+        <header class="sq-card-head"><div><span>05</span><h2>Little World</h2></div><p>App · Creative play · Family</p></header>
         <div class="sq-world-stage">
           <div class="sq-campaign-copy sq-world-copy"><h3>A drawer, but for drawings that deserve better.</h3><p>A private app that turns a child&rsquo;s drawing into a sticker, and gives it a small world to live in.</p><span>Little World · real build</span></div>
           <div class="sq-cover-phone sq-world-phone">
@@ -114,7 +140,7 @@
 
     <article class="sq-project-step">
       <a href="ai-practices.html" class="sq-card sq-ai">
-        <header class="sq-card-head"><div><span>05</span><h2>AI Practices</h2></div><p>Agentic models · Workflow</p></header>
+        <header class="sq-card-head"><div><span>06</span><h2>AI Practices</h2></div><p>Agentic models · Workflow</p></header>
         <div class="sq-ai-stage">
           <div class="sq-campaign-copy sq-ai-copy"><h3>How I get AI to do real work, not demos.</h3><p>Agentic workflows I use for research, prototyping and decisions&mdash;built to ship, not just to impress in a meeting.</p><span>How I use AI to work faster</span></div>
           <div class="sq-ai-stats">
@@ -131,7 +157,7 @@
   </section>
 
   <footer class="sq-footer">
-    <p>Five experiments. A suspicious amount of colour. Plenty of product thinking.</p>
+    <p>Six experiments. A suspicious amount of colour. Plenty of product thinking.</p>
     <a href="index.html">Back to selected work <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
   </footer>
 </main>

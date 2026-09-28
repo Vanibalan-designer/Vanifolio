@@ -15,7 +15,6 @@ function initStickerPlayground() {
         { key: 'travel', file: 'images/stickers/travel.png', alt: 'Embroidered travel patch', width: 60, compactWidth: 42, rot: 5, left: 0.539, top: 0.599 },
         { key: 'cooking', file: 'images/stickers/cooking.png', alt: 'Embroidered cooking patch', width: 64, compactWidth: 44, rot: -4, left: 0.473, top: 0.647 },
         { key: 'beach', file: 'images/stickers/beach.png', alt: 'Embroidered beach patch', width: 60, compactWidth: 42, rot: -3, left: 0.414, top: 0.641 },
-        { key: 'ai', file: 'images/stickers/ai.png', alt: 'Embroidered AI patch representing OpenAI and Claude', width: 60, compactWidth: 42, rot: -5, left: 0.398, top: 0.587 },
         { key: 'kolam', file: 'images/stickers/kolam.png', alt: 'Embroidered Sikku Kolam patch', width: 46, compactWidth: 34, rot: 0, left: 0.463, top: 0.677 },
         { key: 'ambivert', file: 'images/stickers/ambivert.png', alt: 'Ambivert badge, collected like a conference sticker', width: 58, compactWidth: 40, rot: -6, left: 0.04, top: 0.08 },
         { key: 'singapore', file: 'images/stickers/singapore.png', alt: 'Singapore location badge', width: 66, compactWidth: 44, rot: 5, left: 0.05, top: 0.20 },
@@ -34,12 +33,49 @@ function initStickerPlayground() {
     const TILT_SENSITIVITY = 0.9;
     const TILT_LERP = 0.38;
     const LIFT_LERP = 0.22;
+    const MIN_ZOOM = 0.5;
+    const MAX_ZOOM = 2.2;
+    const ZOOM_STEP = 0.08;
+    const ARM_THRESHOLD = 64;
 
     let zCounter = 10;
     let hasInteracted = false;
+    const removedKeys = new Set();
 
-    function restTransform(rot) {
-        return `perspective(700px) rotate(${rot}deg) rotateX(0deg) rotateY(0deg) scale(1)`;
+    const resetBtn = document.createElement('button');
+    resetBtn.type = 'button';
+    resetBtn.className = 'sticker-reset-btn';
+    resetBtn.setAttribute('aria-label', 'Reset stickers');
+    resetBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 1 2.64 6.36"/><path d="M3 21v-6h6"/></svg><span>Reset</span>';
+    playground.appendChild(resetBtn);
+
+    const trashZone = document.createElement('div');
+    trashZone.className = 'sticker-trash-zone';
+    trashZone.setAttribute('aria-hidden', 'true');
+    trashZone.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>';
+    playground.appendChild(trashZone);
+
+    function rectsOverlap(a, b) {
+        return a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
+    }
+
+    function updateResetButton() {
+        resetBtn.classList.toggle('is-visible', removedKeys.size > 0);
+    }
+
+    resetBtn.addEventListener('click', () => {
+        removedKeys.clear();
+        entries.forEach(({ entrance, el }) => {
+            entrance.classList.remove('is-removed');
+            el.classList.remove('is-delete-armed');
+        });
+        placeAll();
+        updateResetButton();
+    });
+
+    function restTransform(rot, zoom) {
+        const scale = zoom === undefined ? 1 : zoom;
+        return `perspective(700px) rotate(${rot}deg) rotateX(0deg) rotateY(0deg) scale(${scale})`;
     }
 
     function shadowString(t) {
@@ -115,7 +151,7 @@ function initStickerPlayground() {
         }
     } catch (e) { /* ignore */ }
 
-    function attachDrag(config, el, img, sheen) {
+    function attachDrag(config, el, img, sheen, entrance) {
         let dragging = false;
         let startClientX = 0;
         let startClientY = 0;
@@ -130,6 +166,9 @@ function initStickerPlayground() {
         let targetTiltY = 0;
         let liftProgress = 0;
         let rafId = null;
+        let zoom = 1;
+        let armed = false;
+        let overTrash = false;
 
         function frame() {
             tiltX += (targetTiltX - tiltX) * TILT_LERP;
@@ -137,7 +176,7 @@ function initStickerPlayground() {
             const liftTarget = dragging ? 1 : 0;
             liftProgress += (liftTarget - liftProgress) * LIFT_LERP;
 
-            el.style.transform = `perspective(700px) rotate(${config.rot}deg) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg) scale(${(1 + liftProgress * 0.1).toFixed(3)})`;
+            el.style.transform = `perspective(700px) rotate(${config.rot}deg) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg) scale(${((1 + liftProgress * 0.1) * zoom).toFixed(3)})`;
             img.style.setProperty('--sticker-shadow', shadowString(liftProgress));
             const sheenStrength = Math.min(1, (Math.abs(tiltX) + Math.abs(tiltY)) / 16);
             sheen.style.setProperty('--sheen-opacity', String(sheenStrength * 0.9));
@@ -154,7 +193,7 @@ function initStickerPlayground() {
                 tiltX = 0;
                 tiltY = 0;
                 liftProgress = 0;
-                el.style.transform = restTransform(config.rot);
+                el.style.transform = restTransform(config.rot, zoom);
                 img.style.setProperty('--sticker-shadow', shadowString(0));
                 sheen.style.setProperty('--sheen-opacity', '0');
                 rafId = null;
@@ -171,9 +210,10 @@ function initStickerPlayground() {
             hasInteracted = true;
             dismissCue();
             el.classList.add('is-dragging');
+            armed = false;
+            overTrash = false;
             el.style.zIndex = String(zCounter++);
 
-            const entrance = el.parentElement;
             baseLeft = parseFloat(entrance.style.left) || 0;
             baseTop = parseFloat(entrance.style.top) || 0;
             startClientX = e.clientX;
@@ -205,9 +245,15 @@ function initStickerPlayground() {
             const newLeft = Math.min(maxLeft, Math.max(-pad, baseLeft + dx));
             const newTop = Math.min(maxTop, Math.max(-pad, baseTop + dy));
 
-            const entrance = el.parentElement;
             entrance.style.left = newLeft + 'px';
             entrance.style.top = newTop + 'px';
+
+            armed = dy > ARM_THRESHOLD && dy > Math.abs(dx);
+            trashZone.classList.toggle('is-visible', armed);
+
+            overTrash = armed && rectsOverlap(el.getBoundingClientRect(), trashZone.getBoundingClientRect());
+            trashZone.classList.toggle('is-hot', overTrash);
+            el.classList.toggle('is-delete-armed', overTrash);
 
             if (!reduceMotion) {
                 const now = performance.now();
@@ -227,16 +273,37 @@ function initStickerPlayground() {
             dragging = false;
             el.releasePointerCapture(e.pointerId);
             el.classList.remove('is-dragging');
+            el.classList.remove('is-delete-armed');
+            trashZone.classList.remove('is-visible', 'is-hot');
             targetTiltX = 0;
             targetTiltY = 0;
+
+            if (overTrash) {
+                overTrash = false;
+                entrance.classList.add('is-removed');
+                removedKeys.add(config.key);
+                updateResetButton();
+                return;
+            }
+
             ensureLoop();
         }
 
         el.addEventListener('pointerup', release);
         el.addEventListener('pointercancel', release);
+
+        el.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            hasInteracted = true;
+            dismissCue();
+            const delta = e.deltaY < 0 ? ZOOM_STEP : -ZOOM_STEP;
+            zoom = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, zoom + delta));
+            el.style.zIndex = String(zCounter++);
+            if (!dragging) ensureLoop();
+        }, { passive: false });
     }
 
-    entries.forEach(({ config, el, img, sheen }) => attachDrag(config, el, img, sheen));
+    entries.forEach(({ config, entrance, el, img, sheen }) => attachDrag(config, el, img, sheen, entrance));
 
     placeAll();
 

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Window to Somewhere — Vani Balasundaram</title>
+<meta name="description" content="An interaction experiment in cursor proximity, depth and spatial navigation.">
+<link rel="preload" as="image" href="images/sidequest/window-to-somewhere/07-zoom-3.png">
+<link rel="stylesheet" href="sidequest-window-to-somewhere.css">
+<link rel="stylesheet" href="sidequest-worksite-nav.css">
+<script>document.documentElement.classList.add(sessionStorage.getItem('windowPortalArrival')?'portal-arrival':'direct-arrival');sessionStorage.removeItem('windowPortalArrival');</script>
+</head>
+<body>
+<main class="ws-page">
+  <header class="wsite-header ws-nav">
+    <nav class="wsite-navbar">
+      <a href="index.html" class="wsite-logo">VANI</a>
+      <div class="wsite-links">
+        <a href="index.html#case-studies">Work</a>
+        <a href="sidequests.html" aria-current="page">Side quests</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="wsite-cta">Let&rsquo;s Talk</a>
+      </div>
+      <button class="wsite-menu-btn" type="button" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span></button>
+    </nav>
+    <div class="wsite-mobile-menu">
+      <a href="index.html#case-studies">Work</a><a href="sidequests.html" aria-current="page">Side quests</a><a href="index.html#experience">Experience</a><a href="about.html">About</a><a href="contact.html" class="wsite-cta">Let&rsquo;s Talk</a>
+    </div>
+  </header>
+
+  <section class="ws-hero" aria-label="Mountain landscape seen through Window to Somewhere">
+    <img src="images/sidequest/window-to-somewhere/07-zoom-3.png" alt="A sunlit alpine valley with a river winding between green mountains">
+    <div class="ws-hero-shade"></div>
+    <a class="ws-close" href="sidequests.html#window-portal" data-portal-return aria-label="Close Window to Somewhere and return to Side Quests">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.5 4.5 7 10l5.5 5.5M7.5 10H17"/></svg>
+      <span>Close window</span>
+    </a>
+    <div class="ws-hero-copy">
+      <p>Interaction experiment</p>
+      <h1>Window to Somewhere</h1>
+      <div><p>An exploration of proximity, motion and spatial navigation.</p><span>Scroll to explore ↓</span></div>
+    </div>
+  </section>
+
+  <section class="ws-story" aria-label="About the experiment">
+    <header><p>Behind the window</p><h2>A small experiment in making navigation feel physical.</h2></header>
+    <div class="ws-story-grid">
+      <article><span>01</span><h3>Idea</h3><p>What if a portfolio card noticed you before you touched it?</p></article>
+      <article><span>02</span><h3>Interaction</h3><p>Cursor proximity controls the physical opening of the window.</p></article>
+      <article><span>03</span><h3>Transition</h3><p>The card becomes the route, carrying the landscape into the next page.</p></article>
+      <article><span>04</span><h3>Experiment</h3><p>Proximity, parallax and cinematic movement turn a simple link into a threshold.</p></article>
+    </div>
+  </section>
+
+  <footer class="ws-footer"><a href="sidequests.html#window-portal" data-portal-return>← All sidequests</a><p>Window to Somewhere · 2026</p></footer>
+</main>
+<script src="sidequests.js"></script>
+</body>
+</html>
